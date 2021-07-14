@@ -4,7 +4,20 @@ import style from './Menu.module.css';
 function Menu(){
     return (
         <div>
-            Здесь будет меню
+            <ul>
+                <li>
+                    Парковка
+                </li>
+                <li>
+                    Страховка
+                </li>
+                <li>
+                    Бензин
+                </li>
+                <li>
+                    Обслуживание
+                </li>
+            </ul>
         </div>
     );
 }
