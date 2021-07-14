@@ -1,10 +1,15 @@
 import React from 'react';
+import Menu from '../Menu/Menu';
+import Title from '../Title/Title';
+import Slider from '../Slider/Slider';
 import style from './MainPage.module.css';
 
 function MainPage() {
     return (
         <div className={style.main_page}>
-            Здесь будет главная страница сайта
+            <Menu/>
+            <Title/>
+            <Slider/>
         </div>
     )
 }
