@@ -1,5 +1,3 @@
-import {RUS, ENG} from './settings';
-
 export const LANG_PACK = {
     'Menu': {
         RUS: {
