@@ -63,7 +63,11 @@
   transition: all 300ms;
 
   .menu__item + .menu__item {
-    padding-top: $step * 2;
+    margin-top: $step * 2;
+  }
+
+  .menu__icons_item {
+    margin-top: $step * 6;
   }
 
   /* В зависимости от размеров экрана изменяем положение пунктов меню */
@@ -73,11 +77,12 @@
   }
 }
 
-/* Отдельный пункт меню */
+/* Отдельный пункт меню с текстом */
 .menu__item {
   color: white;
   font-size: 1.5em;
   cursor: pointer;
+  user-select: none;
 
   &:hover {
     color: $main-accent;
@@ -90,6 +95,22 @@
 
   @media (min-width: $desktop-min-start) {
     font-size: 2.5em;
+  }
+}
+
+/* Пункт меню с иконками */
+.menu__icons_item {
+
+  svg:hover {
+    cursor: pointer;
+
+    path {
+      fill: $main-accent;
+    }
+  }
+
+  svg + svg {
+    margin-left: $step * 3;
   }
 }
 
