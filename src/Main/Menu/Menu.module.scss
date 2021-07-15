@@ -2,4 +2,9 @@
 
 .menu {
   background-color: white;
+  height: $step * 8;
+
+  @media (min-width: $tablet-start) {
+    width: $step * 8;
+  }
 }

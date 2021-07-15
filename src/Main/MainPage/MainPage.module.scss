@@ -5,10 +5,8 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-}
 
-@media (min-width: $tablet-start) {
-  .main_page {
+  @media (min-width: $tablet-start) {
     flex-direction: row;
   }
 }

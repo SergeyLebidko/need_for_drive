@@ -4,7 +4,9 @@ import style from './Menu.module.scss';
 function Menu() {
     return (
         <div className={style.menu}>
-            Здесь будет меню
+            <div>
+
+            </div>
         </div>
     );
 }
