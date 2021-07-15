@@ -8,8 +8,11 @@
   background-color: white;
   width: 100%;
   height: $step * 8;
-  padding-left: $step;
-  padding-top: 0;
+  padding: 0 $step 0 $step;
+
+  .menu__title {
+    margin-left: auto;
+  }
 
   .menu__lang_selector {
     margin-top: auto;
@@ -21,9 +24,7 @@
     background-color: $black;
     width: $step * 8;
     height: 100%;
-    padding-left: 0;
-    padding-top: $step;
-    padding-bottom: $step * 4;
+    padding: $step 0 ($step * 4) 0;
   }
 }
 
@@ -52,6 +53,18 @@
         stroke: white;
       }
     }
+  }
+}
+
+/* Заголовок с названием сайта */
+.menu__title {
+  font-family: 'Roboto Bold', sans-serif;
+  font-size: 2em;
+  color: $main-accent;
+
+  /* Данный заголовок должен быть виден только на устройствах с небольшим экраном */
+  @media (min-width: $tablet-start) {
+    display: none;
   }
 }
 
