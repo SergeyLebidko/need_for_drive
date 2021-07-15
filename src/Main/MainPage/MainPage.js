@@ -2,7 +2,7 @@ import React from 'react';
 import Menu from '../Menu/Menu';
 import Title from '../Title/Title';
 import Slider from '../Slider/Slider';
-import style from './MainPage.module.css';
+import style from './MainPage.module.scss';
 
 function MainPage() {
     return (

@@ -1,23 +1,10 @@
 import React from 'react';
-import style from './Menu.module.css';
+import style from './Menu.module.scss';
 
-function Menu(){
+function Menu() {
     return (
-        <div>
-            <ul>
-                <li>
-                    Парковка
-                </li>
-                <li>
-                    Страховка
-                </li>
-                <li>
-                    Бензин
-                </li>
-                <li>
-                    Обслуживание
-                </li>
-            </ul>
+        <div className={style.menu}>
+            Здесь будет меню
         </div>
     );
 }

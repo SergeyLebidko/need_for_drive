@@ -1,9 +1,9 @@
 import React from 'react';
-import style from './Slider.module.css';
+import style from './Slider.module.scss';
 
 function Slider() {
     return (
-        <div>
+        <div className={style.slider}>
             Здесь будет слайдер
         </div>
     )

@@ -1,0 +1,12 @@
+@import '../../vars.scss';
+
+.slider {
+  flex: 2;
+  background-color: dimgray;
+}
+
+@media (max-width: $desktop-min-end) {
+  .slider {
+    display: none;
+  }
+}

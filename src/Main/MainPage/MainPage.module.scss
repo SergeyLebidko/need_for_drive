@@ -1,0 +1,14 @@
+@import "../../vars";
+
+.main_page {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+@media (min-width: $mobile-end) {
+  .main_page {
+    flex-direction: row;
+  }
+}
