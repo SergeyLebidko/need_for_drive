@@ -29,11 +29,11 @@ function Menu() {
                     <FacebookIcon/>
                     <InstagramIcon/>
                 </li>
-                <li className={style.menu__lang_selector + ' ' + style.menu__lang_selector_mobile}>
+                <li className={`${style.menu__lang_selector} ${style.menu__lang_selector_mobile}`}>
                     Рус
                 </li>
             </ul>
-            <div className={style.menu__lang_selector + ' ' + style.menu__lang_selector_fixed}>
+            <div className={`${style.menu__lang_selector} ${style.menu__lang_selector_fixed}`}>
                 Рус
             </div>
         </div>
