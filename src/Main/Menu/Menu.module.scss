@@ -11,6 +11,10 @@
   padding-left: $step;
   padding-top: 0;
 
+  .menu__lang_selector {
+    margin-top: auto;
+  }
+
   /* При увеличении размеров окна - панель меню становится вертикальной и меняет цвет на черный */
   @media (min-width: $tablet-start) {
     flex-direction: column;
@@ -58,9 +62,12 @@
   left: -100%;
   width: 100%;
   height: 100%;
+  display: flex;
+  flex-direction: column;
   background-color: $opacity-black;
   padding-top: $step * 12;
   padding-left: $step * 2;
+  padding-bottom: $step * 2;
   transition: all 300ms;
 
   .menu__item + .menu__item {
@@ -71,9 +78,13 @@
     margin-top: $step * 6;
   }
 
+  .menu__lang_selector {
+    margin-top: auto;
+  }
+
   /* В зависимости от размеров экрана изменяем положение пунктов меню */
   @media (min-width: $tablet-start) {
-    padding-top: $step * 32;
+    padding-top: $step * 24;
     padding-left: $step * 16;
   }
 }
@@ -117,9 +128,9 @@
 
 /* Селектор выбора языка */
 .menu__lang_selector {
-  display: flex;
   justify-content: center;
   align-items: center;
+  border: 1px solid white;
   color: white;
   width: $step * 5;
   height: $step * 5;
@@ -127,9 +138,25 @@
   z-index: 1;
 
   &:hover {
-    border: 1px solid white;
+    border: 1px solid $main-accent;
     color: $main-accent;
     cursor: pointer;
+  }
+}
+
+.menu__lang_selector_fixed {
+  display: flex;
+
+  @media (max-width: $tablet-start) {
+    display: none;
+  }
+}
+
+.menu__lang_selector_mobile {
+  display: none;
+
+  @media (max-width: $mobile-end) {
+    display: flex;
   }
 }
 
