@@ -1,20 +1,26 @@
 {
   "files": {
-    "main.css": "/need_for_drive/static/css/main.e5ac02b7.chunk.css",
-    "main.js": "/need_for_drive/static/js/main.e6669314.chunk.js",
-    "main.js.map": "/need_for_drive/static/js/main.e6669314.chunk.js.map",
+    "main.css": "/need_for_drive/static/css/main.876f154e.chunk.css",
+    "main.js": "/need_for_drive/static/js/main.6e220991.chunk.js",
+    "main.js.map": "/need_for_drive/static/js/main.6e220991.chunk.js.map",
     "runtime-main.js": "/need_for_drive/static/js/runtime-main.39b6e1c8.js",
     "runtime-main.js.map": "/need_for_drive/static/js/runtime-main.39b6e1c8.js.map",
-    "static/js/2.bf37b790.chunk.js": "/need_for_drive/static/js/2.bf37b790.chunk.js",
-    "static/js/2.bf37b790.chunk.js.map": "/need_for_drive/static/js/2.bf37b790.chunk.js.map",
+    "static/js/2.b0019bb3.chunk.js": "/need_for_drive/static/js/2.b0019bb3.chunk.js",
+    "static/js/2.b0019bb3.chunk.js.map": "/need_for_drive/static/js/2.b0019bb3.chunk.js.map",
     "index.html": "/need_for_drive/index.html",
-    "static/css/main.e5ac02b7.chunk.css.map": "/need_for_drive/static/css/main.e5ac02b7.chunk.css.map",
-    "static/js/2.bf37b790.chunk.js.LICENSE.txt": "/need_for_drive/static/js/2.bf37b790.chunk.js.LICENSE.txt"
+    "static/css/main.876f154e.chunk.css.map": "/need_for_drive/static/css/main.876f154e.chunk.css.map",
+    "static/js/2.b0019bb3.chunk.js.LICENSE.txt": "/need_for_drive/static/js/2.b0019bb3.chunk.js.LICENSE.txt",
+    "static/media/index.scss": "/need_for_drive/static/media/Roboto-Regular.a8d6ac03.ttf",
+    "static/media/facebook_icon.c1876cc3.svg": "/need_for_drive/static/media/facebook_icon.c1876cc3.svg",
+    "static/media/instagram_icon.ade3447f.svg": "/need_for_drive/static/media/instagram_icon.ade3447f.svg",
+    "static/media/one_line.90e0d1e0.svg": "/need_for_drive/static/media/one_line.90e0d1e0.svg",
+    "static/media/telegram_icon.e8137bbe.svg": "/need_for_drive/static/media/telegram_icon.e8137bbe.svg",
+    "static/media/two_lines.40b8d13a.svg": "/need_for_drive/static/media/two_lines.40b8d13a.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.39b6e1c8.js",
-    "static/js/2.bf37b790.chunk.js",
-    "static/css/main.e5ac02b7.chunk.css",
-    "static/js/main.e6669314.chunk.js"
+    "static/js/2.b0019bb3.chunk.js",
+    "static/css/main.876f154e.chunk.css",
+    "static/js/main.6e220991.chunk.js"
   ]
 }
