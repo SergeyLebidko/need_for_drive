@@ -136,6 +136,7 @@
   height: $step * 5;
   border-radius: 50%;
   z-index: 1;
+  user-select: none;
 
   &:hover {
     border: 1px solid $main-accent;
