@@ -30,6 +30,9 @@ function Menu() {
                     <InstagramIcon/>
                 </li>
             </ul>
+            <div className={style.menu__lang_selector}>
+                Рус
+            </div>
         </div>
     );
 }

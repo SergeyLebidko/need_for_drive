@@ -19,6 +19,7 @@
     height: 100%;
     padding-left: 0;
     padding-top: $step;
+    padding-bottom: $step * 4;
   }
 }
 
@@ -111,6 +112,24 @@
 
   svg + svg {
     margin-left: $step * 3;
+  }
+}
+
+/* Селектор выбора языка */
+.menu__lang_selector {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  width: $step * 5;
+  height: $step * 5;
+  border-radius: 50%;
+  z-index: 1;
+
+  &:hover {
+    border: 1px solid white;
+    color: $main-accent;
+    cursor: pointer;
   }
 }
 
