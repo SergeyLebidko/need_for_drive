@@ -17,10 +17,5 @@ $desktop-min-end: 1439px;
 
 $desktop-start: 1440px;
 
-/* Пресеты шагов сетки */
-$mobile-step: 8px;
-$tablet-step: 16px;
-$desktop-min-step: 32px;
-$desktop-start-step: 34px;
-
-
+/* Минимальный шаг сетки */
+$step: 8px;

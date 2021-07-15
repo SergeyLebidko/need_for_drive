@@ -7,7 +7,7 @@
   justify-content: flex-start;
 }
 
-@media (min-width: $mobile-end) {
+@media (min-width: $tablet-start) {
   .main_page {
     flex-direction: row;
   }
