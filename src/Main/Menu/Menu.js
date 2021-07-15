@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
-import {ReactComponent as TwoLines} from '../../content/two_lines.svg';
-import {ReactComponent as OneLine} from '../../content/one_line.svg';
-import {ReactComponent as TelegramIcon} from '../../content/telegram_icon.svg';
-import {ReactComponent as FacebookIcon} from '../../content/facebook_icon.svg';
-import {ReactComponent as InstagramIcon} from '../../content/instagram_icon.svg';
+import {ReactComponent as TwoLines} from '../../content/images/two_lines.svg';
+import {ReactComponent as OneLine} from '../../content/images/one_line.svg';
+import {ReactComponent as TelegramIcon} from '../../content/images/telegram_icon.svg';
+import {ReactComponent as FacebookIcon} from '../../content/images/facebook_icon.svg';
+import {ReactComponent as InstagramIcon} from '../../content/images/instagram_icon.svg';
 import style from './Menu.module.scss';
 
 const menuItems = ['Парковка', 'Страховка', 'Бензин', 'Обслуживание'];
