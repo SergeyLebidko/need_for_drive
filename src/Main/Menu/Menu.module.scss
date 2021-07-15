@@ -115,9 +115,11 @@
   font-size: 1.5em;
   cursor: pointer;
   user-select: none;
+  transition: 500ms all;
 
   &:hover {
     color: $main-accent;
+    transition: 500ms all;
   }
 
   /* При увеличении размера экрана - увеличиваем размер шрифта меню */
@@ -132,13 +134,17 @@
 
 /* Пункт меню с иконками */
 .menu__icons_item {
-
-  svg:hover {
+  svg {
     cursor: pointer;
+  }
 
-    path {
-      fill: $main-accent;
-    }
+  svg path {
+    transition: 500ms all;
+  }
+
+  svg:hover path {
+    fill: $main-accent;
+    transition: 500ms all;
   }
 
   svg + svg {
@@ -158,11 +164,13 @@
   border-radius: 50%;
   z-index: 1;
   user-select: none;
+  transition: 500ms all;
+  cursor: pointer;
 
   &:hover {
     border: 1px solid $main-accent;
     color: $main-accent;
-    cursor: pointer;
+    transition: 500ms all;
   }
 }
 
