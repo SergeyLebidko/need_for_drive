@@ -1,17 +1,122 @@
 @import '../../vars.scss';
 
 .title {
-    flex: 3;
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .title__main {
+    margin-top: $step * 4;
+    margin-bottom: auto;
+  }
 }
 
+/* Стили для верхнего блока */
 .title__header {
-
+  display: flex;
+  padding: $step * 2;
+  justify-content: flex-end;
 }
 
+.title__small_service_title {
+  display: none;
+  font-family: 'Roboto Bold', sans-serif;
+  font-size: 2em;
+  color: $main-accent;
+
+  @media (min-width: $tablet-start) {
+    display: block;
+  }
+}
+
+.title__city {
+  font-family: 'Roboto Regular', sans-serif;
+  display: flex;
+  align-items: center;
+  color: $gray;
+
+  svg {
+    margin-right: $step;
+  }
+}
+
+/* Блок по середине, с крупным названием сервиса, слоганом и кнопкой бронирования */
 .title__main {
+  display: flex;
+  flex-direction: column;
+  padding: $step * 2;
+
+  .title__slogan {
+    margin-top: $step * 2;
+  }
+
+  .title__reservation_button {
+    margin-top: $step * 6;
+  }
+}
+
+.title__service_name {
+  font-family: 'Roboto Bold', sans-serif;
+  font-size: 2em;
+}
+
+.title__big_service_title {
+  font-family: 'Roboto Bold', sans-serif;
+  font-size: 2em;
+  color: $main-accent;
+}
+
+.title__slogan {
+  font-family: 'Roboto Regular', sans-serif;
+  color: $gray;
+}
+
+.title__reservation_button {
+  font-family: 'Roboto Regular', sans-serif;
+  font-size: 1.2em;
+  background-image: $default-gradient;
+  border: none;
+  outline: none;
+  color: white;
+  padding: ($step * 2) 0;
+  margin-right: -2 * $step;
+  margin-left: -2 * $step;
+
+  &:hover {
+    background-image: $hover-gradient;
+  }
+
+  &:focus {
+    background-image: $focus-gradient;
+  }
+
+  &:active {
+    background-image: $active-gradient;
+  }
+}
+
+/* Нижний блок: для копирайта и телефона */
+.title__footer {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: flex-end;
+  padding: $step * 2;
+  background-color: $black;
+  color: white;
+
+  .title__phone {
+    margin-bottom: $step;
+  }
 
 }
 
-.title__footer {
+.title__phone {
+  font-family: 'Roboto Regular', sans-serif;
+  color: $main-accent;
+}
 
+.title__copyright {
+  font-family: 'Roboto Regular', sans-serif;
+  color: white;
 }

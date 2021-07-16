@@ -13,21 +13,21 @@ function Title({lang}) {
     return (
         <div className={style.title}>
             <div className={style.title__header}>
-                <span>Need for drive</span>
-                <span>
+                <span className={style.title__small_service_title}>Need for drive</span>
+                <span className={style.title__city}>
                     <Pin/>
                     Город
                 </span>
             </div>
             <div className={style.title__main}>
-                <span>{serviceName}</span>
-                <span>Need for drive</span>
-                <span>{slogan}</span>
-                <input type="button" value={reservationButton}/>
+                <div className={style.title__service_name}>{serviceName}</div>
+                <div className={style.title__big_service_title}>Need for drive</div>
+                <div className={style.title__slogan}>{slogan}</div>
+                <input type="button" value={reservationButton} className={style.title__reservation_button}/>
             </div>
             <div className={style.title__footer}>
-                <span>&#169; 2016-{(new Date()).getFullYear()} "Need for drive"</span>
-                <span>8(495)234-22-44</span>
+                <span className={style.title__copyright}>&#169; 2016-{(new Date()).getFullYear()} "Need for drive"</span>
+                <span className={style.title__phone}>8(495)234-22-44</span>
             </div>
         </div>
     )

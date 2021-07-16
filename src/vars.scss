@@ -6,6 +6,12 @@ $gray: rgba(153, 153, 153, 1);
 $gray-light: rgba(238, 238, 238, 1);
 $background-admin: rgba(245, 246, 248, 1);
 
+/* Градиенты */
+$default-gradient: linear-gradient(90deg, #0EC261 2.61%, #039F67 112.6%);
+$hover_gradient: linear-gradient(90deg, #0B934A 2.61%, #026E47 112.6%);
+$active-gradient: linear-gradient(90deg, #076432 2.61%, #013C27 112.6%);
+$focus-gradient: linear-gradient(90deg, #0B934A 2.61%, #026E47 112.6%);
+
 /* Контрольные точки для медиазапросов */
 $mobile-start: 320px;
 $mobile-end: 767px;
