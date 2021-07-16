@@ -7,10 +7,10 @@ $gray-light: rgba(238, 238, 238, 1);
 $background-admin: rgba(245, 246, 248, 1);
 
 /* Градиенты */
-$default-gradient: linear-gradient(90deg, #0EC261 2.61%, #039F67 112.6%);
-$hover_gradient: linear-gradient(90deg, #0B934A 2.61%, #026E47 112.6%);
-$active-gradient: linear-gradient(90deg, #076432 2.61%, #013C27 112.6%);
-$focus-gradient: linear-gradient(90deg, #0B934A 2.61%, #026E47 112.6%);
+$default-gradient: linear-gradient(90deg, hsla(148, 87%, 41%, 1) 2.61%, hsla(158, 97%, 32%, 1) 112.6%);
+$hover_gradient: linear-gradient(90deg, hsla(148, 87%, 31%, 1) 2.61%, hsla(158, 97%, 22%, 1) 112.6%);
+$active-gradient: linear-gradient(90deg, hsla(148, 87%, 21%, 1) 2.61%, hsla(158, 97%, 12%, 1) 112.6%);
+$focus-gradient: linear-gradient(90deg, hsla(148, 87%, 31%, 1) 2.61%, hsla(158, 97%, 22%, 1) 112.6%);
 
 /* Радиус для границ элементов */
 $main-radius: 8px;
