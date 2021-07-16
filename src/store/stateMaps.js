@@ -4,6 +4,10 @@ function stateMapsFactory(component) {
             return state => ({
                 lang: state.lang
             });
+        case 'Title':
+            return state => ({
+                lang: state.lang
+            });
         default:
             return null;
     }
