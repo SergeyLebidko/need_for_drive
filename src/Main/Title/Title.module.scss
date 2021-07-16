@@ -132,10 +132,6 @@
     background-image: $hover-gradient;
   }
 
-  &:focus {
-    background-image: $focus-gradient;
-  }
-
   &:active {
     background-image: $active-gradient;
   }
