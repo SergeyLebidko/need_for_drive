@@ -9,6 +9,10 @@
   .title__main {
     margin-top: $step * 4;
     margin-bottom: auto;
+
+    @media (min-width: $tablet-start) {
+      margin-top: $step * 8;
+    }
   }
 }
 
@@ -17,6 +21,18 @@
   display: flex;
   padding: $step * 2;
   justify-content: flex-end;
+
+  .title__small_service_title {
+    margin-right: auto;
+  }
+
+  @media (min-width: $tablet-start) {
+    padding: $step * 4;
+  }
+
+  @media (min-width: $desktop-start) {
+    padding: ($step * 4) ($step * 8);
+  }
 }
 
 .title__small_service_title {
@@ -54,22 +70,42 @@
   .title__reservation_button {
     margin-top: $step * 6;
   }
+
+  @media (min-width: $tablet-start) {
+    padding: $step * 4;
+  }
+
+  @media (min-width: $desktop-start) {
+    padding: ($step * 4) ($step * 8);
+  }
 }
 
 .title__service_name {
   font-family: 'Roboto Bold', sans-serif;
   font-size: 2em;
+
+  @media (min-width: $tablet-start) {
+    font-size: 4em;
+  }
 }
 
 .title__big_service_title {
   font-family: 'Roboto Bold', sans-serif;
   font-size: 2em;
   color: $main-accent;
+
+  @media (min-width: $tablet-start) {
+    font-size: 4em;
+  }
 }
 
 .title__slogan {
   font-family: 'Roboto Regular', sans-serif;
   color: $gray;
+
+  @media (min-width: $tablet-start) {
+    font-size: 1.5em;
+  }
 }
 
 .title__reservation_button {
@@ -79,7 +115,7 @@
   border: none;
   outline: none;
   color: white;
-  padding: ($step * 2) 0;
+  padding: ($step * 2) ($step * 4);
   margin-right: -2 * $step;
   margin-left: -2 * $step;
 
@@ -93,6 +129,12 @@
 
   &:active {
     background-image: $active-gradient;
+  }
+
+  @media (min-width: $tablet-start) {
+    margin: 0;
+    align-self: flex-start;
+    border-radius: $main-radius;
   }
 }
 
@@ -109,14 +151,32 @@
     margin-bottom: $step;
   }
 
+  @media (min-width: $tablet-start) {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: $step * 4;
+    background-color: white;
+  }
+
+  @media (min-width: $desktop-start) {
+    padding: ($step * 4) ($step * 8);
+  }
 }
 
 .title__phone {
   font-family: 'Roboto Regular', sans-serif;
   color: $main-accent;
+
+  @media (min-width: $tablet-start) {
+    color: black;
+  }
 }
 
 .title__copyright {
   font-family: 'Roboto Regular', sans-serif;
   color: white;
+
+  @media (min-width: $tablet-start) {
+    color: $gray;
+  }
 }

@@ -12,6 +12,9 @@ $hover_gradient: linear-gradient(90deg, #0B934A 2.61%, #026E47 112.6%);
 $active-gradient: linear-gradient(90deg, #076432 2.61%, #013C27 112.6%);
 $focus-gradient: linear-gradient(90deg, #0B934A 2.61%, #026E47 112.6%);
 
+/* Радиус для границ элементов */
+$main-radius: 8px;
+
 /* Контрольные точки для медиазапросов */
 $mobile-start: 320px;
 $mobile-end: 767px;
