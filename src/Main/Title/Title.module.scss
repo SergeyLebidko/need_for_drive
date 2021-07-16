@@ -1,7 +1,7 @@
 @import '../../vars.scss';
 
 .title {
-  flex: 3;
+  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -13,6 +13,14 @@
     @media (min-width: $tablet-start) {
       margin-top: $step * 8;
     }
+  }
+
+  @media (min-width: $desktop-min-start) and (max-width: $desktop-min-end){
+    flex: 1;
+  }
+
+  @media (min-width: $desktop-start){
+    flex: 3;
   }
 }
 

@@ -4,7 +4,15 @@
   flex: 2;
   background-color: dimgray;
 
-  @media (max-width: $desktop-min-end) {
+  @media (min-width: $desktop-min-start) and (max-width: $desktop-min-end) {
+    flex: 1;
+  }
+
+  @media (min-width: $desktop-start) {
+    flex: 2;
+  }
+
+  @media (max-width: $tablet-end) {
     display: none;
   }
 }
