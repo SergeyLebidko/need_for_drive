@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
-import {ReactComponent as TwoLines} from '../../content/images/two_lines.svg';
-import {ReactComponent as OneLine} from '../../content/images/one_line.svg';
-import {ReactComponent as TelegramIcon} from '../../content/images/telegram_icon.svg';
-import {ReactComponent as FacebookIcon} from '../../content/images/facebook_icon.svg';
-import {ReactComponent as InstagramIcon} from '../../content/images/instagram_icon.svg';
+import {ReactComponent as TwoLines} from '../../content/images/icons/two_lines.svg';
+import {ReactComponent as OneLine} from '../../content/images/icons/one_line.svg';
+import {ReactComponent as TelegramIcon} from '../../content/images/icons/telegram_icon.svg';
+import {ReactComponent as FacebookIcon} from '../../content/images/icons/facebook_icon.svg';
+import {ReactComponent as InstagramIcon} from '../../content/images/icons/instagram_icon.svg';
 import {LANG_PACK} from '../../langPack';
 import {connect} from 'react-redux';
 import stateMapsFactory from '../../store/stateMaps';

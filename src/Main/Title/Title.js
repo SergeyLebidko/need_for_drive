@@ -1,5 +1,5 @@
 import React from 'react';
-import {ReactComponent as Pin} from '../../content/images/pin.svg';
+import {ReactComponent as Pin} from '../../content/images/icons/pin.svg';
 import {LANG_PACK} from '../../langPack';
 import stateMapsFactory from '../../store/stateMaps';
 import dispatchMapsFactory from '../../store/dispatchMaps';
