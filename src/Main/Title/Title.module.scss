@@ -16,11 +16,11 @@
   }
 
   @media (min-width: $desktop-min-start) and (max-width: $desktop-min-end) {
-    flex: 1;
+    flex: 3;
   }
 
   @media (min-width: $desktop-start) {
-    flex: 3;
+    flex: 1;
   }
 }
 

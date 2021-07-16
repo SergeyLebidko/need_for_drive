@@ -5,11 +5,11 @@
   background-color: dimgray;
 
   @media (min-width: $desktop-min-start) and (max-width: $desktop-min-end) {
-    flex: 1;
+    flex: 2;
   }
 
   @media (min-width: $desktop-start) {
-    flex: 2;
+    flex: 1;
   }
 
   @media (max-width: $tablet-end) {
