@@ -16,9 +16,9 @@ function Title({lang, city}) {
                 {city && <span className={style.title__city}><Pin/>{city}</span>}
             </div>
             <div className={style.title__main}>
-                <div className={style.title__service_name}>{serviceName}</div>
-                <div className={style.title__big_service_title}>Need for drive</div>
-                <div className={style.title__slogan}>{slogan}</div>
+                <h1 className={style.title__service_name}>{serviceName}</h1>
+                <h1 className={style.title__big_service_title}>Need for drive</h1>
+                <h3 className={style.title__slogan}>{slogan}</h3>
                 <input type="button" value={reservationButton} className={style.title__reservation_button}/>
             </div>
             <div className={style.title__footer}>
