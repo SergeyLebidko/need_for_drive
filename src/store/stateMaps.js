@@ -1,9 +1,11 @@
 function stateMapsFactory(component) {
     switch (component) {
+        case 'App':
         case 'Menu':
         case 'Title':
             return state => ({
-                lang: state.lang
+                lang: state.lang,
+                city: state.city
             })
         default:
             return null;

@@ -9,3 +9,12 @@ export function lang(state = RUS, action) {
             return state;
     }
 }
+
+export function city(state = null, action) {
+    switch (action.type) {
+        case act.SET_CITY:
+            return action.city;
+        default:
+            return state;
+    }
+}
