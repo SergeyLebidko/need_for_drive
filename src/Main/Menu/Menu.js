@@ -8,7 +8,7 @@ import {LANG_PACK} from '../../langPack';
 import {connect} from 'react-redux';
 import stateMapsFactory from '../../store/stateMaps';
 import dispatchMapsFactory from '../../store/dispatchMaps';
-import {RUS, ENG} from '../../settings';
+import {RUS, ENG, LS_LANG_KEY} from '../../settings';
 import style from './Menu.module.scss';
 
 // С помощью этой константы будем определять, на какой язык мы можем сейчас переключиться
@@ -32,7 +32,12 @@ function Menu({lang, setLang}) {
 
     let menuButtonClickHandler = () => setOpened(oldValue => !oldValue);
 
-    let langSelectorClickHandler = () => setLang(LANG_SWITCHER_MAP[lang]);
+    // При смене языка - сохраняем выбор пользователя также и в local storage, чтобы он был доступен при следующем входе на сайт
+    let langSelectorClickHandler = () => {
+        let nextLang = LANG_SWITCHER_MAP[lang];
+        setLang(LANG_SWITCHER_MAP[lang]);
+        localStorage.setItem(LS_LANG_KEY, nextLang);
+    };
 
     return (
         <div className={style.menu + (opened ? ` ${style.opened}` : '')}>
