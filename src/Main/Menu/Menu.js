@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {ReactComponent as TwoLines} from '../../content/images/icons/two_lines.svg';
 import {ReactComponent as OneLine} from '../../content/images/icons/one_line.svg';
 import {ReactComponent as TelegramIcon} from '../../content/images/icons/telegram_icon.svg';
@@ -27,6 +27,16 @@ function getNextLangTitle(lang) {
 // lang - текущий язык, setLang - функция для смены текущего языка
 function Menu({lang, setLang}) {
     let [opened, setOpened] = useState(false);
+
+    // Если меню открыто, то запрещаем прокрутку тела страницы
+    useEffect(() => {
+        let body = document.body;
+        if (opened) {
+            body.style.overflow = 'hidden';
+        } else {
+            body.style.overflow = 'auto';
+        }
+    }, [opened]);
 
     let {menuItems} = LANG_PACK['Menu'][lang];
 

@@ -1,18 +1,37 @@
 @import '../../vars.scss';
 
 .slider {
-  flex: 2;
-  background-color: dimgray;
-
-  @media (min-width: $desktop-min-start) and (max-width: $desktop-min-end) {
-    flex: 2;
-  }
+  display: flex;
+  overflow: scroll;
 
   @media (min-width: $desktop-start) {
     flex: 1;
   }
 
+  @media (min-width: $desktop-min-start) and (max-width: $desktop-min-end) {
+    flex: 3;
+  }
+
+  // Отключаем показ слайдера при небольшом разрешении экрана
   @media (max-width: $tablet-end) {
     display: none;
   }
+}
+
+.slider__slide {
+  min-width: 100%;
+  background-position: center center;
+  background-size: cover;
+}
+
+.slider__title {
+  font-family: 'Roboto Bold', sans-serif;
+  font-size: 2em;
+  color: white;
+}
+
+.slider__description {
+  font-family: 'Roboto Regular', sans-serif;
+  font-size: 1.2em;
+  color: white;
 }

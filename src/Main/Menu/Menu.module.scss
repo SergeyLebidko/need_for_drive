@@ -7,15 +7,11 @@
   justify-content: flex-start;
   background-color: white;
   width: 100%;
-  height: $step * 8;
+  min-height: $step * 6;
   padding: 0 ($step * 2) 0 $step;
 
   .menu__title {
     margin-left: auto;
-  }
-
-  .menu__lang_selector {
-    margin-top: auto;
   }
 
   /* При увеличении размеров окна - панель меню становится вертикальной и меняет цвет на черный */
@@ -23,7 +19,8 @@
     flex-direction: column;
     background-color: $black;
     width: $step * 8;
-    height: 100%;
+    min-height: 100vh;
+    max-height: 100%;
     padding: $step 0 ($step * 4) 0;
   }
 }
@@ -70,17 +67,16 @@
 
 /* Блок, содержащий пункты меню */
 .menu__items_block {
-  position: fixed;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: -100vw;
+  width: 100vw;
+  height: 100vh;
   background-color: $black;
-  padding-top: $step * 12;
-  padding-left: $step * 2;
-  padding-bottom: $step * 2;
+  padding: $step * 2;
   transition: all 300ms;
 
   .menu__item + .menu__item {
@@ -91,10 +87,6 @@
     margin-top: $step * 6;
   }
 
-  .menu__lang_selector {
-    margin-top: auto;
-  }
-
   /* На десктопах меню немного прозрачное */
   @media (min-width: $desktop-min-start) {
     background-color: $opacity-black;
@@ -102,7 +94,6 @@
 
   /* В зависимости от размеров экрана изменяем положение пунктов меню */
   @media (min-width: $tablet-start) {
-    padding-top: $step * 24;
     padding-left: $step * 16;
   }
 }
@@ -175,6 +166,9 @@
 }
 
 .menu__lang_selector_fixed {
+  position: fixed;
+  bottom: $step;
+  left: $step;
   display: flex;
 
   @media (max-width: $tablet-start) {
@@ -187,6 +181,9 @@
 
   @media (max-width: $mobile-end) {
     display: flex;
+    position: absolute;
+    bottom: $step;
+    left: $step;
   }
 }
 
@@ -194,6 +191,12 @@
 .opened {
 
   /* Модификаторы кнопки меню */
+  .menu__button {
+    position: fixed;
+    top: $step;
+    left: $step;
+  }
+
   .menu__button svg {
     transition: all 300ms;
 
