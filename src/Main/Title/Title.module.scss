@@ -15,11 +15,11 @@
     }
   }
 
-  @media (min-width: $desktop-min-start) and (max-width: $desktop-min-end){
+  @media (min-width: $desktop-min-start) and (max-width: $desktop-min-end) {
     flex: 1;
   }
 
-  @media (min-width: $desktop-start){
+  @media (min-width: $desktop-start) {
     flex: 3;
   }
 }
@@ -126,6 +126,7 @@
   padding: ($step * 2) ($step * 4);
   margin-right: -2 * $step;
   margin-left: -2 * $step;
+  cursor: pointer;
 
   &:hover {
     background-image: $hover-gradient;
