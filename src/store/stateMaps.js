@@ -7,6 +7,10 @@ function stateMapsFactory(component) {
                 lang: state.lang,
                 city: state.city
             })
+        case 'Slider':
+            return state => ({
+                lang: state.lang,
+            });
         default:
             return null;
     }
