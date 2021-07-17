@@ -3,7 +3,26 @@
 
 .slider {
   position: relative;
-  overflow: auto;
+  overflow: hidden;
+}
+
+.slider__slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-position: center center;
+  background-size: cover;
+  transition: all 300ms;
+}
+
+.prev_slide {
+  transform: translateX(-100%);
+}
+
+.next_slide {
+  transform: translateX(100%);
 }
 
 // Стили для блоков со стрелками
@@ -52,7 +71,7 @@
 // TODO Вставить стили для слайдов
 
 // Цветовые пресеты для кнопок на слайдах
-.button_1 {
+.button_0 {
   background: linear-gradient(90deg, hsla(169, 58%, 18%, 1) 0%, hsla(128, 83%, 26%, 1) 100%);
 
   &:hover {
@@ -64,7 +83,7 @@
   }
 }
 
-.button_2 {
+.button_1 {
   background: linear-gradient(90deg, hsla(216, 58%, 18%, 1) 0%, hsla(169, 83%, 26%, 1) 100%);
 
   &:hover {
@@ -76,7 +95,7 @@
   }
 }
 
-.button_3 {
+.button_2 {
   background: linear-gradient(90deg, hsla(32, 58%, 18%, 1) 0%, hsla(335, 83%, 26%, 1) 100%);
 
   &:hover {
@@ -88,7 +107,7 @@
   }
 }
 
-.button_4 {
+.button_3 {
   background: linear-gradient(90deg, hsla(263, 58%, 18%, 1) 0%, hsla(295, 83%, 26%, 1) 100%);
 
   &:hover {
