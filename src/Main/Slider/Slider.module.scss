@@ -6,6 +6,38 @@
   overflow: hidden;
 }
 
+// Стили для блока с точками-метками слайдов
+.slider__dots_block {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: $step * 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .slider__dot + .slider__dot {
+    margin-left: $step;
+  }
+}
+
+.slider__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.empty_dot {
+  background-color: white;
+}
+
+.full_dot {
+  background-color: $main-accent;
+}
+
+// Стили для слайдов
 .slider__slide {
   position: absolute;
   top: 0;
@@ -25,6 +57,8 @@
   transform: translateX(100%);
 }
 
+// TODO Вставить стили для контента слайдов
+
 // Стили для блоков со стрелками
 .slider__arrow_left, .slider__arrow_right {
   position: absolute;
@@ -34,12 +68,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  opacity: 0.3;
   cursor: pointer;
-  background-color: $main-accent-opacity;
 
   &:hover {
-    opacity: 0.8;
+    background-color: $main-accent-opacity;
   }
 
   svg {
@@ -67,8 +99,6 @@
   opacity: 0.9;
   pointer-events: none;
 }
-
-// TODO Вставить стили для слайдов
 
 // Цветовые пресеты для кнопок на слайдах
 .button_0 {

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import stateMapsFactory from '../../store/stateMaps';
 import dispatchMapsFactory from '../../store/dispatchMaps';
 import {connect} from 'react-redux';
@@ -12,43 +12,91 @@ import slide3 from '../../content/images/slides/slide-3.jpg';
 import style from './Slider.module.scss';
 
 const slideImages = [slide0, slide1, slide2, slide3];
+const slideCount = slideImages.length;
 
 function getNextIndex(index) {
-    return index === (slideImages.length - 1) ? 0 : index + 1;
+    return index === (slideCount - 1) ? 0 : index + 1;
 }
 
 function getPrevIndex(index) {
-    return index ? index - 1 : (slideImages.length - 1);
+    return index ? index - 1 : (slideCount - 1);
 }
 
 function Slider({lang}) {
     let [index, setIndex] = useState(0);
     let {slidersData, moreButton} = LANG_PACK['Slider'][lang];
 
+    // Реализовываем автоматическую перемотку слайдов по таймеру (каждые 10 сек)
+    useEffect(() => {
+        let interval = setInterval(() => {
+            setIndex(oldIndex => getNextIndex(oldIndex));
+        }, 10000);
+        return () => clearInterval(interval);
+    }, []);
+
+    let prevIndex = getPrevIndex(index);
+    let nextIndex = getNextIndex(index);
+
     let prevSlide = (
         <div
             key={slideImages[getPrevIndex(index)]}
             className={`${style.slider__slide} ${style.prev_slide}`}
-            style={{backgroundImage: `url("${slideImages[getPrevIndex(index)]}")`}}
-        />
+            style={{backgroundImage: `url("${slideImages[prevIndex]}")`}}
+        >
+            <div>
+                <h1>{slidersData[prevIndex].title}</h1>
+                <h3>{slidersData[prevIndex].description}</h3>
+                <input type="button" value={moreButton}/>
+            </div>
+        </div>
     );
     let slide = (
         <div
             key={slideImages[index]}
             className={style.slider__slide}
             style={{backgroundImage: `url("${slideImages[index]}")`}}
-        />
+        >
+            <div>
+                <h1>{slidersData[index].title}</h1>
+                <h3>{slidersData[index].description}</h3>
+                <input type="button" value={moreButton}/>
+            </div>
+        </div>
     );
     let nextSlide = (
         <div
             key={slideImages[getNextIndex(index)]}
             className={`${style.slider__slide} ${style.next_slide}`}
-            style={{backgroundImage: `url("${slideImages[getNextIndex(index)]}")`}}
-        />
+            style={{backgroundImage: `url("${slideImages[nextIndex]}")`}}
+        >
+            <div>
+                <h1>{slidersData[nextIndex].title}</h1>
+                <h3>{slidersData[nextIndex].description}</h3>
+                <input type="button" value={moreButton}/>
+            </div>
+        </div>
     );
 
-    let rightArrowHandler = () => setIndex(oldIndex => getNextIndex(oldIndex));
-    let leftArrowHandler = () => setIndex(oldIndex => getPrevIndex(oldIndex));
+    let rightArrowHandler = () => setIndex(oldIndex => getPrevIndex(oldIndex));
+    let leftArrowHandler = () => setIndex(oldIndex => getNextIndex(oldIndex));
+
+    // При клике на точку - реализовываем "перемотку" до нужного слайда
+    let dotClickHandler = dotIndex => {
+        if (dotIndex === index) return;
+
+        let distance = Math.abs(dotIndex - index);
+        if (distance === 1 || distance === (slideCount - 1)) setIndex(dotIndex);
+
+        // Если слайды не находятся рядом, то перематываем их в несколько шагов
+        let interval = setInterval(() => {
+            setIndex(oldIndex => {
+                if (oldIndex < dotIndex) return oldIndex + 1;
+                if (oldIndex > dotIndex) return oldIndex - 1;
+                clearInterval(interval);
+                return oldIndex;
+            })
+        }, 300);
+    };
 
     return (
         <div className={style.slider}>
@@ -61,6 +109,26 @@ function Slider({lang}) {
             </div>
             <div className={style.slider__arrow_right} onClick={leftArrowHandler}>
                 <ArrowRight/>
+            </div>
+            <div className={style.slider__dots_block}>
+                {slideImages.map(
+                    (element, elementIndex) => {
+                        if (elementIndex === index) return (
+                            <div
+                                className={`${style.slider__dot} ${style.full_dot}`}
+                                onClick={() => dotClickHandler(elementIndex)}
+                                key={element}
+                            />
+                        );
+                        return (
+                            <div
+                                className={`${style.slider__dot} ${style.empty_dot}`}
+                                onClick={() => dotClickHandler(elementIndex)}
+                                key={element}
+                            />
+                        )
+                    }
+                )}
             </div>
         </div>
     );
