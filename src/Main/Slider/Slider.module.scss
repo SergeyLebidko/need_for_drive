@@ -2,12 +2,47 @@
 @import '../../rulePresets';
 
 .slider {
+  position: relative;
   overflow-x: scroll;
   scroll-snap-type: x mandatory;
 
+  // Правило, убирающее полосу прокрутки в Firefox
+  scrollbar-width: none;
+
+  // Правило, убирающее полосу прокрутки в Chrome и Opera
   &::-webkit-scrollbar {
     display: none;
   }
+}
+
+.slider__arrow_left, .slider__arrow_right {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: $step * 6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0.3;
+  cursor: pointer;
+  background-color: $main-accent-opacity;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  svg {
+    width: $step * 5;
+    height: $step * 5;
+  }
+}
+
+.slider__arrow_left {
+  left: 0;
+}
+
+.slider__arrow_right {
+  right: 0;
 }
 
 .slider__slide {
