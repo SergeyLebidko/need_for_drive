@@ -2,19 +2,6 @@
 
 .slider {
   overflow: scroll;
-
-  @media (min-width: $desktop-start) {
-    flex: 1;
-  }
-
-  @media (min-width: $desktop-min-start) and (max-width: $desktop-min-end) {
-    flex: 3;
-  }
-
-  // Отключаем показ слайдера при небольшом разрешении экрана
-  @media (max-width: $tablet-end) {
-    display: none;
-  }
 }
 
 .slider__slide {
