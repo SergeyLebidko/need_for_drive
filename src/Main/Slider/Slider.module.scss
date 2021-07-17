@@ -1,23 +1,110 @@
 @import '../../vars.scss';
+@import '../../rulePresets';
 
 .slider {
-  overflow: scroll;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 .slider__slide {
   min-width: 100%;
   background-position: center center;
   background-size: cover;
+  position: relative;
+  scroll-snap-align: start;
+}
+
+.cap {
+  position: absolute;
+  top: 50%;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(to bottom, transparent, black);
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+.slider__text_content {
+  position: absolute;
+  top: 25vh;
+  left: $step * 8;
+  right: $step * 8;
+  display: flex;
+  flex-direction: column;
+
+  .slider__title, .slider__description, .slider__more_button {
+    margin-top: $step * 2;
+  }
 }
 
 .slider__title {
-  font-family: 'Roboto Bold', sans-serif;
-  font-size: 2em;
+  font-family: 'Roboto Regular', sans-serif;
+  font-size: 2.5em;
   color: white;
 }
 
 .slider__description {
-  font-family: 'Roboto Regular', sans-serif;
+  font-family: 'Roboto Light', sans-serif;
   font-size: 1.2em;
   color: white;
+}
+
+.slider__more_button {
+  @extend %button_preset;
+  border-radius: $small-radius;
+  align-self: flex-start;
+}
+
+// Пресеты для кнопок на разных слайдах
+.button_1 {
+  background: linear-gradient(90deg, hsla(169, 58%, 18%, 1) 0%, hsla(128, 83%, 26%, 1) 100%);
+
+  &:hover {
+    background: linear-gradient(90deg, hsla(169, 58%, 8%, 1) 0%, hsla(128, 83%, 16%, 1) 100%);
+  }
+
+  &:active {
+    background: linear-gradient(90deg, hsla(169, 58%, 0%, 1) 0%, hsla(128, 83%, 6%, 1) 100%);
+  }
+}
+
+.button_2 {
+  background: linear-gradient(90deg, hsla(216, 58%, 18%, 1) 0%, hsla(169, 83%, 26%, 1) 100%);
+
+  &:hover {
+    background: linear-gradient(90deg, hsla(216, 58%, 8%, 1) 0%, hsla(169, 83%, 16%, 1) 100%);
+  }
+
+  &:active {
+    background: linear-gradient(90deg, hsla(216, 58%, 0%, 1) 0%, hsla(169, 83%, 6%, 1) 100%);
+  }
+}
+
+.button_3 {
+  background: linear-gradient(90deg, hsla(32, 58%, 18%, 1) 0%, hsla(335, 83%, 26%, 1) 100%);
+
+  &:hover {
+    background: linear-gradient(90deg, hsla(32, 58%, 8%, 1) 0%, hsla(335, 83%, 16%, 1) 100%);
+  }
+
+  &:active {
+    background: linear-gradient(90deg, hsla(32, 58%, 0%, 1) 0%, hsla(335, 83%, 6%, 1) 100%);
+  }
+}
+
+.button_4 {
+  background: linear-gradient(90deg, hsla(263, 58%, 18%, 1) 0%, hsla(295, 83%, 26%, 1) 100%);
+
+  &:hover {
+    background: linear-gradient(90deg, hsla(263, 58%, 8%, 1) 0%, hsla(295, 83%, 16%, 1) 100%);
+  }
+
+  &:active {
+    background: linear-gradient(90deg, hsla(263, 58%, 0%, 1) 0%, hsla(295, 83%, 6%, 1) 100%);
+  }
 }

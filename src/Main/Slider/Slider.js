@@ -23,10 +23,15 @@ function Slider({lang}) {
                         className={style.slider__slide}
                         style={{backgroundImage: `url("${slideImages[index]}")`}}
                     >
-                        <div>
+                        <div className={style.cap}/>
+                        <div className={style.slider__text_content}>
                             <h1 className={style.slider__title}>{element.title}</h1>
                             <span className={style.slider__description}>{element.description}</span>
-                            <input type="button" value={moreButton}/>
+                            <input
+                                type="button"
+                                value={moreButton}
+                                className={`${style.slider__more_button} ${style["button_" + (index + 1)]}`}
+                            />
                         </div>
                     </div>
             )}
