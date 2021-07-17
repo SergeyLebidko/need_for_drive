@@ -3,6 +3,11 @@
 
 .slider {
   position: relative;
+}
+
+.slider__scroller {
+  width: 100%;
+  display: flex;
   overflow-x: scroll;
   scroll-snap-type: x mandatory;
 
@@ -95,7 +100,7 @@
   align-self: flex-start;
 }
 
-// Пресеты для кнопок на разных слайдах
+// Пресеты для кнопок на слайдах
 .button_1 {
   background: linear-gradient(90deg, hsla(169, 58%, 18%, 1) 0%, hsla(128, 83%, 26%, 1) 100%);
 

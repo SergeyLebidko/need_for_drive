@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import stateMapsFactory from '../../store/stateMaps';
 import dispatchMapsFactory from '../../store/dispatchMaps';
 import {connect} from 'react-redux';
@@ -14,33 +14,44 @@ import style from './Slider.module.scss';
 const slideImages = [Slide1, Slide2, Slide3, Slide4];
 
 function Slider({lang}) {
+    let scroller = useRef();
     let {slidersData, moreButton} = LANG_PACK['Slider'][lang];
+
+    let toLeft = () => {
+        scroller.current.scrollTo({left: 300, top: 0, behavior: 'smooth'});
+    }
+
+    let toRight = () => {
+        scroller.current.scrollTo({left: -300, top: 0, behavior: 'smooth'});
+    }
 
     return (
         <div className={style.slider}>
-            {slidersData.map(
-                (element, index) =>
-                    <div
-                        key={index}
-                        className={style.slider__slide}
-                        style={{backgroundImage: `url("${slideImages[index]}")`}}
-                    >
-                        <div className={style.cap}/>
-                        <div className={style.slider__text_content}>
-                            <h1 className={style.slider__title}>{element.title}</h1>
-                            <span className={style.slider__description}>{element.description}</span>
-                            <input
-                                type="button"
-                                value={moreButton}
-                                className={`${style.slider__more_button} ${style["button_" + (index + 1)]}`}
-                            />
+            <div className={style.slider__scroller} ref={scroller}>
+                {slidersData.map(
+                    (element, index) =>
+                        <div
+                            key={index}
+                            className={style.slider__slide}
+                            style={{backgroundImage: `url("${slideImages[index]}")`}}
+                        >
+                            <div className={style.cap}/>
+                            <div className={style.slider__text_content}>
+                                <h1 className={style.slider__title}>{element.title}</h1>
+                                <span className={style.slider__description}>{element.description}</span>
+                                <input
+                                    type="button"
+                                    value={moreButton}
+                                    className={`${style.slider__more_button} ${style["button_" + (index + 1)]}`}
+                                />
+                            </div>
                         </div>
-                    </div>
-            )}
-            <div className={style.slider__arrow_left}>
+                )}
+            </div>
+            <div className={style.slider__arrow_left} onClick={toLeft}>
                 <ArrowLeft/>
             </div>
-            <div className={style.slider__arrow_right}>
+            <div className={style.slider__arrow_right} onClick={toRight}>
                 <ArrowRight/>
             </div>
         </div>
