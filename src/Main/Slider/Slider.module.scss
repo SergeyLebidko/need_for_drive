@@ -1,7 +1,6 @@
 @import '../../vars.scss';
 
 .slider {
-  display: flex;
   overflow: scroll;
 
   @media (min-width: $desktop-start) {

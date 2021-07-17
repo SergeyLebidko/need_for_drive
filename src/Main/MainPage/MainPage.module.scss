@@ -5,7 +5,36 @@
   display: flex;
   flex-direction: column;
 
+  // В режиме для мобильных телефонов и "таблеток" слайдер отключен
+  > div:nth-child(3) {
+    display: none;
+  }
+
+  // При переходе к большим разрешениям экрана выстраиваем компоненты главной страницы в строку
   @media (min-width: $tablet-start) {
     flex-direction: row;
+  }
+
+  // В режимах для десктопов слайдер виден, но при разных разрешениях занимает разную площадь
+  @media (min-width: $desktop-min-start) and (max-width: $desktop-min-end) {
+    > div:nth-child(2) {
+      flex: 4;
+    }
+
+    > div:nth-child(3) {
+      display: flex;
+      flex: 3;
+    }
+  }
+
+  @media (min-width: $desktop-start) {
+    > div:nth-child(2) {
+      flex: 1;
+    }
+
+    > div:nth-child(3) {
+      display: flex;
+      flex: 1;
+    }
   }
 }
