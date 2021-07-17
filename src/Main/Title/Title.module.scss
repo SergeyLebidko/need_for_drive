@@ -6,39 +6,31 @@
   justify-content: space-between;
 
   .title__main {
-    margin-top: $step * 4;
-    margin-bottom: $step * 8;
+    margin-bottom: 30vh;
 
-    @media (min-width: $tablet-start) {
-      margin-top: $step * 8;
+    // Корректируем расположение центрального блока для мобильных устройств при повороте экрана в портретный режим
+    @media (orientation: landscape) and (max-width: $mobile-end) {
+      margin-bottom: 0;
     }
-  }
-
-  .title__footer {
-    margin-top: auto;
-  }
-
-  @media (min-width: $desktop-min-start) and (max-width: $desktop-min-end) {
-    flex: 4;
   }
 }
 
-/* Стили для верхнего блока */
+// Стили для верхнего блока
 .title__header {
   display: flex;
-  padding: $step * 2;
-  justify-content: flex-end;
+  width: 100%;
+  padding: 0 ($step * 2);
 
-  .title__small_service_title {
-    margin-right: auto;
-  }
-
-  @media (min-width: $tablet-start) {
-    padding: $step * 4;
+  @media (min-width: $tablet-start) and (max-width: $desktop-min-end) {
+    padding: ($step * 2) ($step * 4);
   }
 
   @media (min-width: $desktop-start) {
-    padding: ($step * 4) ($step * 8);
+    padding: ($step * 4) ($step * 6);
+  }
+
+  .title__city {
+    margin-left: auto;
   }
 }
 
@@ -64,26 +56,46 @@
   }
 }
 
-/* Блок по середине, с крупным названием сервиса, слоганом и кнопкой бронирования */
+// Блок по середине, с крупным названием сервиса и слоганом
 .title__main {
+  width: 100%;
   display: flex;
   flex-direction: column;
-  padding: $step * 2;
+
+  .title__service_name, .title__big_service_title {
+    margin: 0 ($step * 2);
+
+    @media (min-width: $tablet-start) and (max-width: $desktop-min-end) {
+      margin: 0 ($step * 4);
+    }
+
+    @media (min-width: $desktop-start) {
+      margin: 0 ($step * 6);
+    }
+  }
 
   .title__slogan {
-    margin-top: $step * 2;
+    margin: $step ($step * 2) ($step * 2);
+
+    @media (min-width: $tablet-start) and (max-width: $desktop-min-end) {
+      margin: ($step * 2) ($step * 4) ($step * 4);
+    }
+
+    @media (min-width: $desktop-start) {
+      margin: ($step * 4) ($step * 6) ($step * 6);
+    }
   }
 
   .title__reservation_button {
-    margin-top: $step * 6;
-  }
+    margin-left: 0;
 
-  @media (min-width: $tablet-start) {
-    padding: $step * 4;
-  }
+    @media (min-width: $tablet-start) and (max-width: $desktop-min-end) {
+      margin-left: $step * 4;
+    }
 
-  @media (min-width: $desktop-start) {
-    padding: ($step * 4) ($step * 8);
+    @media (min-width: $desktop-start) {
+      margin-left: $step * 6
+    }
   }
 }
 
@@ -115,6 +127,7 @@
   }
 }
 
+// Кнопка бронирования
 .title__reservation_button {
   font-family: 'Roboto Regular', sans-serif;
   font-size: 1.2em;
@@ -123,8 +136,6 @@
   outline: none;
   color: white;
   padding: ($step * 2) ($step * 4);
-  margin-right: -2 * $step;
-  margin-left: -2 * $step;
   cursor: pointer;
 
   &:hover {
@@ -136,34 +147,33 @@
   }
 
   @media (min-width: $tablet-start) {
-    margin: 0;
-    align-self: flex-start;
     border-radius: $main-radius;
+    align-self: flex-start;
   }
 }
 
-/* Нижний блок: для копирайта и телефона */
+// Нижний блок: для копирайта и телефона
 .title__footer {
+  width: 100%;
   display: flex;
   flex-direction: column-reverse;
   align-items: flex-end;
-  padding: $step * 2;
+  padding: $step $step * 2;
   background-color: $black;
   color: white;
-
-  .title__phone {
-    margin-bottom: $step;
-  }
 
   @media (min-width: $tablet-start) {
     flex-direction: row;
     justify-content: space-between;
-    padding: $step * 4;
     background-color: white;
   }
 
+  @media (min-width: $tablet-start) and (max-width: $desktop-min-end) {
+    padding: ($step * 2) ($step * 4);
+  }
+
   @media (min-width: $desktop-start) {
-    padding: ($step * 4) ($step * 8);
+    padding: ($step * 4) ($step * 6);
   }
 }
 

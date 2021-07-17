@@ -1,9 +1,14 @@
-@import "../../vars";
+@import '../../vars';
 
 .main_page {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+
+  // В режиме для мобильных телефонов блок с описанием сервиса занимает все доступное пространство
+  > div:nth-child(2) {
+    flex: 1;
+  }
 
   // В режиме для мобильных телефонов и "таблеток" слайдер отключен
   > div:nth-child(3) {
