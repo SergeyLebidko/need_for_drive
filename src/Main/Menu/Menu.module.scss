@@ -1,36 +1,34 @@
 @import '../../vars.scss';
 
-/* Контейнер со всеми элементами меню: кнопкой, блоком с отдельными пунктами меню и т.д. */
+// Контейнер с элементами меню: кнопкой, блоком с отдельными пунктами меню и т.д.
 .menu {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
   background-color: white;
-  width: 100%;
-  min-height: $step * 6;
-  padding: 0 ($step * 2) 0 $step;
+  min-height: $step * 8;
+  padding: $step ($step * 2);
 
   .menu__title {
     margin-left: auto;
   }
 
-  /* При увеличении размеров окна - панель меню становится вертикальной и меняет цвет на черный */
+  // При увеличении размеров окна - панель меню становится вертикальной и меняет цвет на черный
   @media (min-width: $tablet-start) {
     flex-direction: column;
-    background-color: $black;
     width: $step * 8;
-    min-height: 100vh;
-    max-height: 100%;
-    padding: $step 0 ($step * 4) 0;
+    min-height: 100%;
+    background-color: $black;
+    padding: $step;
   }
 }
 
-/* Кнопка меню и её составляющие */
+// Кнопка меню и её составляющие
 .menu__button {
   position: relative;
   width: $step * 6;
   height: $step * 6;
   cursor: pointer;
+  transition: all 300ms;
   z-index: 1;
 
   svg {
@@ -45,7 +43,7 @@
       stroke: black;
       transition: all 300ms;
 
-      /* При увеличении размеров окна - линии кнопки меню становятся черными */
+      // При увеличении размеров окна - линии кнопки меню становятся белыми (так как фон панели меню меняется на черный)
       @media (min-width: $tablet-start) {
         stroke: white;
       }
@@ -53,19 +51,19 @@
   }
 }
 
-/* Заголовок с названием сайта */
+// Заголовок с названием сайта
 .menu__title {
   font-family: 'Roboto Bold', sans-serif;
   font-size: 2em;
   color: $main-accent;
 
-  /* Данный заголовок должен быть виден только на устройствах с небольшим экраном */
+  // Данный заголовок должен быть виден только на устройствах с небольшим экраном
   @media (min-width: $tablet-start) {
     display: none;
   }
 }
 
-/* Блок, содержащий пункты меню */
+// Блок, содержащий пункты меню
 .menu__items_block {
   display: flex;
   flex-direction: column;
@@ -76,29 +74,29 @@
   width: 100vw;
   height: 100vh;
   background-color: $black;
-  padding: $step * 2;
+  padding-left: $step * 3;
   transition: all 300ms;
 
   .menu__item + .menu__item {
-    margin-top: $step * 2;
+    margin-top: 2vh;
   }
 
   .menu__icons_item {
-    margin-top: $step * 6;
+    margin-top: 6vh;
   }
 
-  /* На десктопах меню немного прозрачное */
+  // На десктопах фон блока с пунктами меню немного прозрачен
   @media (min-width: $desktop-min-start) {
     background-color: $opacity-black;
   }
 
-  /* В зависимости от размеров экрана изменяем положение пунктов меню */
+  // На экранах большего размера пункты меню сильнее смещены от края окна
   @media (min-width: $tablet-start) {
     padding-left: $step * 16;
   }
 }
 
-/* Отдельный пункт меню с текстом */
+// Отдельный пункт меню с текстом
 .menu__item {
   font-family: 'Roboto Regular', sans-serif;
   text-transform: uppercase;
@@ -113,7 +111,7 @@
     transition: 500ms all;
   }
 
-  /* При увеличении размера экрана - увеличиваем размер шрифта меню */
+  // При увеличении размера экрана - увеличиваем размер шрифта меню
   @media (min-width: $tablet-start) {
     font-size: 2em;
   }
@@ -123,19 +121,19 @@
   }
 }
 
-/* Пункт меню с иконками */
+// Пункт меню с иконками */
 .menu__icons_item {
+  cursor: pointer;
+
   svg {
-    cursor: pointer;
-  }
+    path {
+      transition: 500ms all;
+    }
 
-  svg path {
-    transition: 500ms all;
-  }
-
-  svg:hover path {
-    fill: $main-accent;
-    transition: 500ms all;
+    &:hover path {
+      fill: $main-accent;
+      transition: 500ms all;
+    }
   }
 
   svg + svg {
@@ -143,20 +141,20 @@
   }
 }
 
-/* Селектор выбора языка */
+// Селектор выбора языка
 .menu__lang_selector {
   font-family: 'Roboto Regular', sans-serif;
   justify-content: center;
   align-items: center;
   border: 1px solid white;
   color: white;
-  width: $step * 5;
-  height: $step * 5;
+  width: $step * 6;
+  height: $step * 6;
   border-radius: 50%;
   z-index: 1;
   user-select: none;
-  transition: 500ms all;
   cursor: pointer;
+  transition: 500ms all;
 
   &:hover {
     border: 1px solid $main-accent;
@@ -165,6 +163,7 @@
   }
 }
 
+// Модификаторы для селектора выбора языка
 .menu__lang_selector_fixed {
   position: fixed;
   bottom: $step;
@@ -182,45 +181,36 @@
   @media (max-width: $mobile-end) {
     display: flex;
     position: absolute;
-    bottom: $step;
-    left: $step;
+    bottom: $step * 2;
+    left: $step * 3;
   }
 }
 
-/* Модификатор стилей для открытого меню */
+// Модификатор стилей компонентов для открытого меню
 .opened {
 
-  /* Модификаторы кнопки меню */
+  // Модификаторы кнопки меню
   .menu__button {
-    position: fixed;
-    top: $step;
-    left: $step;
-  }
-
-  .menu__button svg {
-    transition: all 300ms;
-
     path {
       stroke: white;
       transition: all 300ms;
     }
+
+    svg:first-child {
+      opacity: 0;
+    }
+
+    svg:nth-child(2) {
+      transform: rotate(45deg);
+    }
+
+    svg:nth-child(3) {
+      transform: rotate(-45deg);
+    }
   }
 
-  .menu__button svg:first-child {
-    opacity: 0;
-  }
-
-  .menu__button svg:nth-child(2) {
-    transform: rotate(45deg);
-  }
-
-  .menu__button svg:nth-child(3) {
-    transform: rotate(-45deg);
-  }
-
-  /* Модификаторы блока с пунктами меню */
+  // Модификаторы блока с пунктами меню
   .menu__items_block {
     left: 0;
-    transition: all 300ms;
   }
 }
