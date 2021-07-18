@@ -37,46 +37,6 @@ function Slider({lang}) {
     let prevIndex = getPrevIndex(index);
     let nextIndex = getNextIndex(index);
 
-    let prevSlide = (
-        <div
-            key={slideImages[getPrevIndex(index)]}
-            className={`${style.slider__slide} ${style.prev_slide}`}
-            style={{backgroundImage: `url("${slideImages[prevIndex]}")`}}
-        >
-            <div>
-                <h1>{slidersData[prevIndex].title}</h1>
-                <h3>{slidersData[prevIndex].description}</h3>
-                <input type="button" value={moreButton}/>
-            </div>
-        </div>
-    );
-    let slide = (
-        <div
-            key={slideImages[index]}
-            className={style.slider__slide}
-            style={{backgroundImage: `url("${slideImages[index]}")`}}
-        >
-            <div>
-                <h1>{slidersData[index].title}</h1>
-                <h3>{slidersData[index].description}</h3>
-                <input type="button" value={moreButton}/>
-            </div>
-        </div>
-    );
-    let nextSlide = (
-        <div
-            key={slideImages[getNextIndex(index)]}
-            className={`${style.slider__slide} ${style.next_slide}`}
-            style={{backgroundImage: `url("${slideImages[nextIndex]}")`}}
-        >
-            <div>
-                <h1>{slidersData[nextIndex].title}</h1>
-                <h3>{slidersData[nextIndex].description}</h3>
-                <input type="button" value={moreButton}/>
-            </div>
-        </div>
-    );
-
     let rightArrowHandler = () => setIndex(oldIndex => getPrevIndex(oldIndex));
     let leftArrowHandler = () => setIndex(oldIndex => getNextIndex(oldIndex));
 
@@ -98,12 +58,41 @@ function Slider({lang}) {
         }, 300);
     };
 
+    let currentSlidesData = [
+        {
+            ...slidersData[prevIndex],
+            image: slideImages[prevIndex],
+            className: `${style.slider__slide} ${style.prev_slide}`
+        },
+        {
+            ...slidersData[index],
+            image: slideImages[index],
+            className: style.slider__slide
+        },
+        {
+            ...slidersData[nextIndex],
+            image: slideImages[nextIndex],
+            className: `${style.slider__slide} ${style.next_slide}`
+        }
+    ];
+
     return (
         <div className={style.slider}>
             <div className={style.cap}/>
-            {prevSlide}
-            {slide}
-            {nextSlide}
+            {currentSlidesData.map(
+                element =>
+                    <div
+                        key={element.image}
+                        className={element.className}
+                        style={{backgroundImage: `url("${element.image}")`}}
+                    >
+                        <div>
+                            <h1>{element.title}</h1>
+                            <h3>{element.description}</h3>
+                            <input type="button" value={moreButton}/>
+                        </div>
+                    </div>
+            )}
             <div className={style.slider__arrow_left} onClick={rightArrowHandler}>
                 <ArrowLeft/>
             </div>
