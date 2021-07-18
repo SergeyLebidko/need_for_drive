@@ -58,41 +58,49 @@ function Slider({lang}) {
         }, 300);
     };
 
+    // Готовим данные к рендерингу
     let currentSlidesData = [
         {
             ...slidersData[prevIndex],
             image: slideImages[prevIndex],
-            className: `${style.slider__slide} ${style.prev_slide}`
+            slideClassName: `${style.slider__slide} ${style.prev_slide}`,
+            buttonClassName: `${style.slide__more_button} ${style["button_" + prevIndex]}`
         },
         {
             ...slidersData[index],
             image: slideImages[index],
-            className: style.slider__slide
+            slideClassName: style.slider__slide,
+            buttonClassName: `${style.slide__more_button} ${style["button_" + index]}`
         },
         {
             ...slidersData[nextIndex],
             image: slideImages[nextIndex],
-            className: `${style.slider__slide} ${style.next_slide}`
+            slideClassName: `${style.slider__slide} ${style.next_slide}`,
+            buttonClassName: `${style.slide__more_button} ${style["button_" + nextIndex]}`
         }
     ];
 
     return (
         <div className={style.slider}>
-            <div className={style.cap}/>
             {currentSlidesData.map(
                 element =>
                     <div
                         key={element.image}
-                        className={element.className}
+                        className={element.slideClassName}
                         style={{backgroundImage: `url("${element.image}")`}}
                     >
-                        <div>
-                            <h1>{element.title}</h1>
-                            <h3>{element.description}</h3>
-                            <input type="button" value={moreButton}/>
+                        <div className={style.slide__text_block}>
+                            <h1 className={style.slide__title}>{element.title}</h1>
+                            <h3 className={style.slide__description}>{element.description}</h3>
+                            <input
+                                type="button"
+                                value={moreButton}
+                                className={element.buttonClassName}
+                            />
                         </div>
                     </div>
             )}
+            <div className={style.cap}/>
             <div className={style.slider__arrow_left} onClick={rightArrowHandler}>
                 <ArrowLeft/>
             </div>

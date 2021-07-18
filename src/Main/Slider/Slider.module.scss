@@ -57,7 +57,37 @@
   transform: translateX(100%);
 }
 
-// TODO Вставить стили для контента слайдов
+.slide__text_block {
+  position: absolute;
+  top: 25vh;
+  left: $step * 8;
+  width: 70%;
+
+  .slide__description {
+    margin-top: $step;
+  }
+
+  .slide__more_button {
+    margin-top: $step * 4;
+  }
+}
+
+.slide__title {
+  font-family: "Roboto Regular", sans-serif;
+  font-size: 2.5em;
+  color: white;
+}
+
+.slide__description {
+  font-family: "Roboto Light", sans-serif;
+  font-size: 1.5em;
+  color: white;
+}
+
+.slide__more_button {
+  @extend %button_preset;
+  border-radius: $small-radius;
+}
 
 // Стили для блоков со стрелками
 .slider__arrow_left, .slider__arrow_right {
@@ -91,7 +121,7 @@
 // Стиль для блока, создающего затемнение
 .cap {
   position: absolute;
-  top: 50%;
+  top: 30%;
   bottom: 0;
   left: 0;
   width: 100%;
