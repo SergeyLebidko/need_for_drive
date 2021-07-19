@@ -6,10 +6,10 @@ import {connect} from 'react-redux';
 import {LANG_PACK} from '../../langPack';
 import {ReactComponent as ArrowRight} from '../../content/images/icons/arrow_right.svg';
 import {ReactComponent as ArrowLeft} from '../../content/images/icons/arrow_left.svg';
-import slide0 from '../../content/images/slides/slide-0.jpg';
-import slide1 from '../../content/images/slides/slide-1.jpg';
-import slide2 from '../../content/images/slides/slide-2.jpg';
-import slide3 from '../../content/images/slides/slide-3.jpg';
+import slide0 from '../../content/images/slides/slide-0.png';
+import slide1 from '../../content/images/slides/slide-1.png';
+import slide2 from '../../content/images/slides/slide-2.png';
+import slide3 from '../../content/images/slides/slide-3.png';
 import style from './Slider.module.scss';
 
 const slideImages = [slide0, slide1, slide2, slide3];
