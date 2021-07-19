@@ -41,10 +41,10 @@ function Menu({lang, setLang}) {
 
     let {menuItems} = LANG_PACK['Menu'][lang];
 
-    let menuButtonClickHandler = () => setOpened(oldOpened => !oldOpened);
+    let handleMenuButtonClick = () => setOpened(oldOpened => !oldOpened);
 
     // При смене языка - сохраняем выбор пользователя также и в local storage, чтобы он был доступен при следующем входе на сайт
-    let langSelectorClickHandler = () => {
+    let handleLangSelectorClick = () => {
         let nextLang = LANG_SWITCHER_MAP[lang];
         setLang(LANG_SWITCHER_MAP[lang]);
         localStorage.setItem(LS_LANG_KEY, nextLang);
@@ -52,7 +52,7 @@ function Menu({lang, setLang}) {
 
     return (
         <div className={style.menu + (opened ? ` ${style.opened}` : '')}>
-            <div className={style.menu__button} onClick={menuButtonClickHandler}>
+            <div className={style.menu__button} onClick={handleMenuButtonClick}>
                 <TwoLines/>
                 <OneLine/>
                 <OneLine/>
@@ -67,14 +67,14 @@ function Menu({lang, setLang}) {
                 </li>
                 <li
                     className={`${style.menu__lang_selector} ${style.menu__lang_selector_mobile}`}
-                    onClick={langSelectorClickHandler}
+                    onClick={handleLangSelectorClick}
                 >
                     {getNextLangTitle(lang)}
                 </li>
             </ul>
             <div
                 className={`${style.menu__lang_selector} ${style.menu__lang_selector_fixed}`}
-                onClick={langSelectorClickHandler}
+                onClick={handleLangSelectorClick}
             >
                 {getNextLangTitle(lang)}
             </div>

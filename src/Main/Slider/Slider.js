@@ -33,8 +33,8 @@ function Slider({lang}) {
     let prevIndex = getPrevIndex(index);
     let nextIndex = getNextIndex(index);
 
-    let rightArrowHandler = () => setIndex(oldIndex => getPrevIndex(oldIndex));
-    let leftArrowHandler = () => setIndex(oldIndex => getNextIndex(oldIndex));
+    let handleRightArrowClick = () => setIndex(oldIndex => getPrevIndex(oldIndex));
+    let handleLeftArrowClick = () => setIndex(oldIndex => getNextIndex(oldIndex));
 
     // При клике на точку - реализовываем "перемотку" до нужного слайда
     let dotClickHandler = dotIndex => {
@@ -97,10 +97,10 @@ function Slider({lang}) {
                     </div>
             )}
             <div className={style.cap}/>
-            <div className={style.slider__arrow_left} onClick={rightArrowHandler}>
+            <div className={style.slider__arrow_left} onClick={handleRightArrowClick}>
                 <ArrowLeft/>
             </div>
-            <div className={style.slider__arrow_right} onClick={leftArrowHandler}>
+            <div className={style.slider__arrow_right} onClick={handleLeftArrowClick}>
                 <ArrowRight/>
             </div>
             <div className={style.slider__dots_block}>
