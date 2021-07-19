@@ -15,17 +15,12 @@ import style from './Slider.module.scss';
 const slideImages = [slide0, slide1, slide2, slide3];
 const slideCount = slideImages.length;
 
-function getNextIndex(index) {
-    return index === (slideCount - 1) ? 0 : index + 1;
-}
-
-function getPrevIndex(index) {
-    return index ? index - 1 : (slideCount - 1);
-}
-
 function Slider({lang}) {
     let [index, setIndex] = useState(0);
     let {slidersData, moreButton} = LANG_PACK['Slider'][lang];
+
+    let getNextIndex = index => index === (slideCount - 1) ? 0 : index + 1;
+    let getPrevIndex = index => index ? index - 1 : (slideCount - 1);
 
     // Реализовываем автоматическую перемотку слайдов по таймеру (каждые 10 сек)
     useEffect(() => {
