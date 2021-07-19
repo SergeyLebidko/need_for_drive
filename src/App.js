@@ -6,7 +6,6 @@ import dispatchMapsFactory from './store/dispatchMaps';
 import stateMapsFactory from './store/stateMaps';
 import {connect} from 'react-redux';
 import {RUS, ENG, LS_LANG_KEY} from './settings';
-import './App.scss';
 
 function App({lang, setLang, defineCity}) {
 
