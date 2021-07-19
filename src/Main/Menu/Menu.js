@@ -41,7 +41,7 @@ function Menu({lang, setLang}) {
 
     let {menuItems} = LANG_PACK['Menu'][lang];
 
-    let menuButtonClickHandler = () => setOpened(oldValue => !oldValue);
+    let menuButtonClickHandler = () => setOpened(oldOpened => !oldOpened);
 
     // При смене языка - сохраняем выбор пользователя также и в local storage, чтобы он был доступен при следующем входе на сайт
     let langSelectorClickHandler = () => {
