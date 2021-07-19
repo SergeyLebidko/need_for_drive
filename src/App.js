@@ -1,4 +1,5 @@
 import React, {useEffect} from 'react';
+import PropTypes from 'prop-types';
 import {HashRouter, Switch, Route} from 'react-router-dom';
 import MainPage from './Main/MainPage/MainPage';
 import dispatchMapsFactory from './store/dispatchMaps';
@@ -26,6 +27,12 @@ function App({lang, setLang, defineCity}) {
             </Switch>
         </HashRouter>
     );
+}
+
+App.propTypes = {
+    lang: PropTypes.string,
+    setLang: PropTypes.func,
+    defineCity: PropTypes.func
 }
 
 let stateMap = stateMapsFactory('App');

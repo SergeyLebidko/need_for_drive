@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import PropTypes from 'prop-types';
 import stateMapsFactory from '../../store/stateMaps';
 import dispatchMapsFactory from '../../store/dispatchMaps';
 import {connect} from 'react-redux';
@@ -129,6 +130,10 @@ function Slider({lang}) {
             </div>
         </div>
     );
+}
+
+Slider.propTypes = {
+    lang: PropTypes.string
 }
 
 let stateMap = stateMapsFactory('Slider');

@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import PropTypes from 'prop-types';
 import {ReactComponent as TwoLines} from '../../content/images/icons/two_lines.svg';
 import {ReactComponent as OneLine} from '../../content/images/icons/one_line.svg';
 import {ReactComponent as TelegramIcon} from '../../content/images/icons/telegram_icon.svg';
@@ -79,6 +80,11 @@ function Menu({lang, setLang}) {
             </div>
         </div>
     );
+}
+
+Menu.propTypes = {
+    lang: PropTypes.string,
+    setLang: PropTypes.func
 }
 
 let stateMap = stateMapsFactory('Menu');

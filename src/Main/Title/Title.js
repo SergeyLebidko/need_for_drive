@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {ReactComponent as Pin} from '../../content/images/icons/pin.svg';
 import {LANG_PACK} from '../../langPack';
 import stateMapsFactory from '../../store/stateMaps';
@@ -23,11 +24,16 @@ function Title({lang, city}) {
             </div>
             <div className={style.title__footer}>
                 <span
-                    className={style.title__copyright}>&#169; 2016-{(new Date()).getFullYear()} "Need for drive"</span>
+                    className={style.title__copyright}>&#169; 2016-{(new Date()).getFullYear()} &quotNeed for drive&quot</span>
                 <span className={style.title__phone}>8(495)234-22-44</span>
             </div>
         </div>
     )
+}
+
+Title.propTypes = {
+    lang: PropTypes.string,
+    city: PropTypes.string
 }
 
 let stateMap = stateMapsFactory('Title');
