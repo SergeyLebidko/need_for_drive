@@ -59,7 +59,7 @@ function Menu({lang, setLang}) {
             </div>
             <h1 className={style.menu__title}>Need for drive</h1>
             <ul className={style.menu__items_block}>
-                {menuItems.map((item, index) => <li key={index} className={style.menu__item}>{item}</li>)}
+                {menuItems.map(item => <li key={item} className={style.menu__item}>{item}</li>)}
                 <li key="icons_item" className={style.menu__icons_item}>
                     <TelegramIcon/>
                     <FacebookIcon/>
