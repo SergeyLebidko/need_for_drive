@@ -1,5 +1,5 @@
 import * as act from './actions';
-import {GEO_API_KEY, RUS, ENG} from '../settings';
+import {GEO_API_KEY, GEO_API_URL, RUS, ENG} from '../settings';
 
 // Создатель действия для установки языка
 export function setLang(lang) {
@@ -12,20 +12,9 @@ export function setLang(lang) {
 // Создатель действия для определения города пользователя (по ip)
 export function loadCity(lang) {
     return async dispatch => {
-        let url = 'https://suggestions.dadata.ru/suggestions/api/4_1/rs/iplocate/address';
-        let query;
-        switch (lang) {
-            case RUS:
-                query = '?language=ru';
-                break;
-            case ENG:
-                query = '?language=en';
-                break;
-            default:
-                query = '';
-        }
-        url += query;
-        let options = {
+        const langMap = {[RUS]: 'ru', [ENG]: 'en'};
+        const url = `${GEO_API_URL}?${new URLSearchParams({language: langMap[lang]}).toString()}`;
+        const options = {
             method: 'GET',
             mode: 'cors',
             headers: {
