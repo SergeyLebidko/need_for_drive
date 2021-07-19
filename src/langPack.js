@@ -39,7 +39,7 @@ export const LANG_PACK = {
                     description: 'Наши автомобили проходят еженедельное ТО'
                 }
             ],
-            moreButton: 'Подробнее'
+            slideButtonText: 'Подробнее'
         },
         ENG: {
             slidersData: [
@@ -60,7 +60,7 @@ export const LANG_PACK = {
                     description: 'Our vehicles are serviced weekly'
                 }
             ],
-            moreButton: 'More details'
+            slideButtonText: 'More details'
         }
     }
 }

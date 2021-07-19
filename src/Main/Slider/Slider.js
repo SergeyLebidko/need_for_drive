@@ -17,7 +17,7 @@ const slideCount = slideImages.length;
 
 function Slider({lang}) {
     let [index, setIndex] = useState(0);
-    let {slidersData, moreButton} = LANG_PACK['Slider'][lang];
+    let {slidersData, slideButtonText} = LANG_PACK['Slider'][lang];
 
     let getNextIndex = index => index === (slideCount - 1) ? 0 : index + 1;
     let getPrevIndex = index => index ? index - 1 : (slideCount - 1);
@@ -90,7 +90,7 @@ function Slider({lang}) {
                             <h3 className={style.slide__description}>{element.description}</h3>
                             <input
                                 type="button"
-                                value={moreButton}
+                                value={slideButtonText}
                                 className={element.buttonClassName}
                             />
                         </div>
