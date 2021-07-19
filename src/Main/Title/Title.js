@@ -25,7 +25,7 @@ function Title({lang, city}) {
             </div>
             <div className={style.title__footer}>
                 <span
-                    className={style.title__copyright}>&#169; 2016-{currentYear} &quotNeed for drive&quot</span>
+                    className={style.title__copyright}>&#169; 2016-{currentYear} &quot;Need for drive&quot;</span>
                 <span className={style.title__phone}>8(495)234-22-44</span>
             </div>
         </div>
