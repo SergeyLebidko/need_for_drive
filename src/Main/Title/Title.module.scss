@@ -37,7 +37,7 @@
 
 .title__small_service_title {
   display: none;
-  font-family: 'Roboto Bold', sans-serif;
+  font-weight: bold;
   font-size: 2em;
   color: $main-accent;
 
@@ -47,7 +47,6 @@
 }
 
 .title__city {
-  font-family: 'Roboto Regular', sans-serif;
   display: flex;
   align-items: center;
   color: $gray;
@@ -101,7 +100,7 @@
 }
 
 .title__service_name {
-  font-family: 'Roboto Bold', sans-serif;
+  font-weight: bold;
   font-size: 2em;
 
   @media (min-width: $tablet-start) {
@@ -110,7 +109,7 @@
 }
 
 .title__big_service_title {
-  font-family: 'Roboto Bold', sans-serif;
+  font-weight: bold;
   font-size: 2em;
   color: $main-accent;
 
@@ -120,7 +119,6 @@
 }
 
 .title__slogan {
-  font-family: 'Roboto Regular', sans-serif;
   color: $gray;
 
   @media (min-width: $tablet-start) {
@@ -173,7 +171,6 @@
 }
 
 .title__phone {
-  font-family: 'Roboto Regular', sans-serif;
   text-decoration: none;
   color: $main-accent;
 
@@ -183,7 +180,6 @@
 }
 
 .title__copyright {
-  font-family: 'Roboto Regular', sans-serif;
   color: white;
 
   @media (min-width: $tablet-start) {

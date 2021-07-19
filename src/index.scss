@@ -12,6 +12,7 @@ time, mark, audio, video {
 }
 
 * {
+  font-family: Roboto, sans-serif;
   box-sizing: border-box;
 }
 
@@ -48,16 +49,19 @@ canvas {
 
 // Подключение внешних шрифтов
 @font-face {
-  font-family: 'Roboto Bold';
-  src: url('./content/fonts/Roboto-Bold.ttf');
-}
-
-@font-face {
-  font-family: 'Roboto Regular';
+  font-family: Roboto;
   src: url('./content/fonts/Roboto-Regular.ttf');
+  font-weight: normal;
 }
 
 @font-face {
-  font-family: 'Roboto Light';
+  font-family: Roboto;
+  src: url('./content/fonts/Roboto-Bold.ttf');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: Roboto;
   src: url('./content/fonts/Roboto-Light.ttf');
+  font-weight: 300;
 }
