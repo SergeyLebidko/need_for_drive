@@ -7,7 +7,7 @@ function dispatchMapsFactory(component) {
                 setLang: lang => dispatch(setLang(lang)),
                 defineCity: lang => dispatch(loadCity(lang))
             });
-        case 'Menu':
+        case 'LangSelector':
             return dispatch => ({
                 setLang: lang => dispatch(setLang(lang))
             });
