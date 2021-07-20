@@ -11,7 +11,7 @@ import slide0 from '../../content/images/slides/slide-0.png';
 import slide1 from '../../content/images/slides/slide-1.png';
 import slide2 from '../../content/images/slides/slide-2.png';
 import slide3 from '../../content/images/slides/slide-3.png';
-import style from './Slider.module.scss';
+import './Slider.scss';
 
 const slideImages = [slide0, slide1, slide2, slide3];
 const slideCount = slideImages.length;
@@ -60,25 +60,25 @@ function Slider({lang}) {
         {
             ...slidersData[prevIndex],
             image: slideImages[prevIndex],
-            slideClassName: `${style.slider__slide} ${style.prev_slide}`,
-            buttonClassName: `${style.slide__more_button} ${style["button_" + prevIndex]}`
+            slideClassName: 'slider__slide prev_slide',
+            buttonClassName: `slide__button button_${prevIndex}`
         },
         {
             ...slidersData[index],
             image: slideImages[index],
-            slideClassName: style.slider__slide,
-            buttonClassName: `${style.slide__more_button} ${style["button_" + index]}`
+            slideClassName: 'slider__slide',
+            buttonClassName: `slide__button button_${index}`
         },
         {
             ...slidersData[nextIndex],
             image: slideImages[nextIndex],
-            slideClassName: `${style.slider__slide} ${style.next_slide}`,
-            buttonClassName: `${style.slide__more_button} ${style["button_" + nextIndex]}`
+            slideClassName: 'slider__slide next_slide',
+            buttonClassName: `slide__button} button_${nextIndex}`
         }
     ];
 
     return (
-        <div className={style.slider}>
+        <div className="slider">
             <Arrow direction={TO_LEFT_ARROW} handleClick={handleLeftArrowClick}/>
             <Arrow direction={TO_RIGHT_ARROW} handleClick={handleRightArrowClick}/>
             {currentSlidesData.map(
@@ -88,9 +88,9 @@ function Slider({lang}) {
                         className={element.slideClassName}
                         style={{backgroundImage: `url("${element.image}")`}}
                     >
-                        <div className={style.slide__text_block}>
-                            <h1 className={style.slide__title}>{element.title}</h1>
-                            <h3 className={style.slide__description}>{element.description}</h3>
+                        <div className="slide__text_block">
+                            <h1 className="slide__title">{element.title}</h1>
+                            <h3 className="slide__description">{element.description}</h3>
                             <input
                                 type="button"
                                 value={slideButtonText}
@@ -99,7 +99,7 @@ function Slider({lang}) {
                         </div>
                     </div>
             )}
-            <div className={style.cap}/>
+            <div className="slider__cap"/>
             <DotsBlock dotsCount={slideCount} currentIndex={index} handleClick={dotClickHandler}/>
         </div>
     );

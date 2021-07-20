@@ -36,7 +36,7 @@
     margin-top: $step;
   }
 
-  .slide__more_button {
+  .slide__button {
     margin-top: $step * 4;
   }
 }
@@ -52,13 +52,13 @@
   color: $white;
 }
 
-.slide__more_button {
+.slide__button {
   @extend %button_preset;
   border-radius: $small-radius;
 }
 
 // Стиль для блока, создающего затемнение
-.cap {
+.slider__cap {
   position: absolute;
   top: 30%;
   bottom: 0;
