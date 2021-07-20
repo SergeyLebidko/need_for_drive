@@ -83,7 +83,6 @@ function Slider({lang}) {
             {currentSlidesData.map(
                 slideData => <Slide key={slideData.image} slideData={slideData} slideButtonText={slideButtonText}/>
             )}
-            <div className="slider__cap"/>
             <DotsBlock dotsCount={slideCount} currentIndex={index} handleClick={handleDotClick}/>
         </div>
     );
