@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import DotsBlock from '../DotsBlock/DotsBlock';
 import Arrow from '../Arrow/Arrow';
 import PropTypes from 'prop-types';
 import stateMapsFactory from '../../store/stateMaps';
@@ -99,26 +100,7 @@ function Slider({lang}) {
                     </div>
             )}
             <div className={style.cap}/>
-            <div className={style.slider__dots_block}>
-                {slideImages.map(
-                    (element, elementIndex) => {
-                        if (elementIndex === index) return (
-                            <div
-                                className={`${style.slider__dot} ${style.full_dot}`}
-                                onClick={() => dotClickHandler(elementIndex)}
-                                key={element}
-                            />
-                        );
-                        return (
-                            <div
-                                className={`${style.slider__dot} ${style.empty_dot}`}
-                                onClick={() => dotClickHandler(elementIndex)}
-                                key={element}
-                            />
-                        )
-                    }
-                )}
-            </div>
+            <DotsBlock dotsCount={slideCount} currentIndex={index} handleClick={dotClickHandler}/>
         </div>
     );
 }
