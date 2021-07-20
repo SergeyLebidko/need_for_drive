@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
 import {HashRouter, Switch, Route} from 'react-router-dom';
-import MainPage from './Main/MainPage/MainPage';
+import MainPage from './MainPage/MainPage';
 import dispatchMapsFactory from './store/dispatchMaps';
 import stateMapsFactory from './store/stateMaps';
 import {connect} from 'react-redux';

@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {ReactComponent as Pin} from '../../content/images/icons/pin.svg';
-import {LANG_PACK} from '../../langPack';
-import stateMapsFactory from '../../store/stateMaps';
-import dispatchMapsFactory from '../../store/dispatchMaps';
+import {ReactComponent as Pin} from '../content/images/icons/pin.svg';
+import {LANG_PACK} from '../langPack';
+import stateMapsFactory from '../store/stateMaps';
+import dispatchMapsFactory from '../store/dispatchMaps';
 import {connect} from 'react-redux';
 import style from './Title.module.scss';
 
