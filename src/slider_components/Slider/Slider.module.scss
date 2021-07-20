@@ -131,49 +131,49 @@
 
 // Цветовые пресеты для кнопок на слайдах
 .button_0 {
-  background: linear-gradient(90deg, hsla(169, 58%, 18%, 1) 0%, hsla(128, 83%, 26%, 1) 100%);
+  background: $green-gradient;
 
   &:hover {
-    background: linear-gradient(90deg, hsla(169, 58%, 8%, 1) 0%, hsla(128, 83%, 16%, 1) 100%);
+    background: $green-gradient-hover;
   }
 
   &:active {
-    background: linear-gradient(90deg, hsla(169, 58%, 0%, 1) 0%, hsla(128, 83%, 6%, 1) 100%);
+    background: $green-gradient-active;
   }
 }
 
 .button_1 {
-  background: linear-gradient(90deg, hsla(216, 58%, 18%, 1) 0%, hsla(169, 83%, 26%, 1) 100%);
+  background: $teal-gradient;
 
   &:hover {
-    background: linear-gradient(90deg, hsla(216, 58%, 8%, 1) 0%, hsla(169, 83%, 16%, 1) 100%);
+    background: $teal-gradient-hover;
   }
 
   &:active {
-    background: linear-gradient(90deg, hsla(216, 58%, 0%, 1) 0%, hsla(169, 83%, 6%, 1) 100%);
+    background: $teal-gradient-active;
   }
 }
 
 .button_2 {
-  background: linear-gradient(90deg, hsla(32, 58%, 18%, 1) 0%, hsla(335, 83%, 26%, 1) 100%);
+  background: $brown-gradient;
 
   &:hover {
-    background: linear-gradient(90deg, hsla(32, 58%, 8%, 1) 0%, hsla(335, 83%, 16%, 1) 100%);
+    background: $brown-gradient-hover;
   }
 
   &:active {
-    background: linear-gradient(90deg, hsla(32, 58%, 0%, 1) 0%, hsla(335, 83%, 6%, 1) 100%);
+    background: $brown-gradient-active;
   }
 }
 
 .button_3 {
-  background: linear-gradient(90deg, hsla(263, 58%, 18%, 1) 0%, hsla(295, 83%, 26%, 1) 100%);
+  background: $purple-gradient;
 
   &:hover {
-    background: linear-gradient(90deg, hsla(263, 58%, 8%, 1) 0%, hsla(295, 83%, 16%, 1) 100%);
+    background: $purple-gradient-hover;
   }
 
   &:active {
-    background: linear-gradient(90deg, hsla(263, 58%, 0%, 1) 0%, hsla(295, 83%, 6%, 1) 100%);
+    background: $purple-gradient-active;
   }
 }
