@@ -1,11 +1,10 @@
 // Основные цвета
-$main-accent: rgba(14, 194, 97, 1);
-$main-accent-opacity: rgba(14, 194, 97, 0.3);
-$black: rgba(18, 18, 18, 1);
-$opacity-black: rgba(18, 18, 18, 0.9);
-$gray: rgba(153, 153, 153, 1);
-$gray-light: rgba(238, 238, 238, 1);
-$background-admin: rgba(245, 246, 248, 1);
+$main-accent: hsla(148, 87%, 41%, 1);
+$main-accent-opacity: hsla(148, 87%, 41%, 0.3);
+$black: hsla(0, 0%, 7%, 1);
+$black-opacity: hsla(0, 0%, 7%, 0.9);
+$gray: hsla(0, 0%, 60%, 1);
+$gray-light: hsla(0, 0%, 93%, 1);
 
 // Градиенты
 $default-gradient: linear-gradient(90deg, hsla(148, 87%, 41%, 1) 2.61%, hsla(158, 97%, 32%, 1) 112.6%);

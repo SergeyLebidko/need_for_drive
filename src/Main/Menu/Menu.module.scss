@@ -88,7 +88,7 @@
 
   // На десктопах фон блока с пунктами меню немного прозрачен
   @media (min-width: $desktop-min-start) {
-    background-color: $opacity-black;
+    background-color: $black-opacity;
   }
 
   // На экранах большего размера пункты меню сильнее смещены от края окна
