@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
-import {ReactComponent as TwoLines} from '../../content/images/icons/two_lines.svg';
-import {ReactComponent as OneLine} from '../../content/images/icons/one_line.svg';
+import MenuButton from '../MenuButton/MenuButton';
 import {ReactComponent as TelegramIcon} from '../../content/images/icons/telegram_icon.svg';
 import {ReactComponent as FacebookIcon} from '../../content/images/icons/facebook_icon.svg';
 import {ReactComponent as InstagramIcon} from '../../content/images/icons/instagram_icon.svg';
@@ -41,7 +40,7 @@ function Menu({lang, setLang}) {
 
     let {menuItems} = LANG_PACK['Menu'][lang];
 
-    let handleMenuButtonClick = () => setOpened(oldOpened => !oldOpened);
+    let handleMenuButtonClick = () => setOpened(menuOpened => !menuOpened);
 
     // При смене языка - сохраняем выбор пользователя также и в local storage, чтобы он был доступен при следующем входе на сайт
     let handleLangSelectorClick = () => {
@@ -52,11 +51,7 @@ function Menu({lang, setLang}) {
 
     return (
         <div className={style.menu + (opened ? ` ${style.opened}` : '')}>
-            <div className={style.menu__button} onClick={handleMenuButtonClick}>
-                <TwoLines/>
-                <OneLine/>
-                <OneLine/>
-            </div>
+            <MenuButton hasOpened={opened} handleClick={handleMenuButtonClick}/>
             <h1 className={style.menu__title}>Need for drive</h1>
             <ul className={style.menu__items_block}>
                 {menuItems.map(item => <li key={item} className={style.menu__item}>{item}</li>)}

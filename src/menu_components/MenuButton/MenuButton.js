@@ -4,9 +4,10 @@ import {ReactComponent as TwoLines} from '../../content/images/icons/two_lines.s
 import {ReactComponent as OneLine} from '../../content/images/icons/one_line.svg';
 import './MenuButton.scss';
 
-function MenuButton({handleClick}) {
+function MenuButton({hasOpened, handleClick}) {
+    let containerClasses = 'menu_button' + (hasOpened ? ' opened' : '');
     return (
-        <div className="menu_button" onClick={handleClick}>
+        <div className={containerClasses} onClick={handleClick}>
             <TwoLines/>
             <OneLine/>
             <OneLine/>
@@ -15,6 +16,7 @@ function MenuButton({handleClick}) {
 }
 
 MenuButton.propTypes = {
+    hasOpened: PropTypes.bool,
     handleClick: PropTypes.func
 }
 
