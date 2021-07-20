@@ -1,7 +1,7 @@
 import {RUS, ENG} from './settings';
 
 export const LANG_PACK = {
-    'Menu': {
+    'MenuItemsBlock': {
         [RUS]: {
             menuItems: ['Парковка', 'Страховка', 'Бензин', 'Обслуживание']
         },

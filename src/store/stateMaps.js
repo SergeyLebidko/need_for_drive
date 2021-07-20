@@ -7,6 +7,7 @@ function stateMapsFactory(component) {
             });
         case 'App':
         case 'LangSelector':
+        case 'MenuItemsBlock':
         case 'Slider':
             return state => ({
                 lang: state.lang,

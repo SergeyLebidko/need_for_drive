@@ -8,7 +8,7 @@
   min-height: $step * 8;
   padding: $step ($step * 2);
 
-  .menu__title {
+  &__title {
     margin-left: auto;
   }
 
@@ -31,16 +31,5 @@
   // Данный заголовок должен быть виден только на устройствах с небольшим экраном
   @media (min-width: $tablet-start) {
     display: none;
-  }
-}
-
-
-
-// Модификатор стилей компонентов для открытого меню
-.opened {
-
-  // Модификаторы блока с пунктами меню
-  .menu__items_block {
-    left: 0;
   }
 }
