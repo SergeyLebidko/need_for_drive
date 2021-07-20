@@ -1,12 +1,12 @@
 import React, {useState, useEffect} from 'react';
+import Slide, {PREV_SLIDE, CURRENT_SLIDE, NEXT_SLIDE} from '../Slide/Slide';
 import DotsBlock from '../DotsBlock/DotsBlock';
-import Arrow from '../Arrow/Arrow';
+import Arrow, {TO_LEFT_ARROW, TO_RIGHT_ARROW} from '../Arrow/Arrow';
 import PropTypes from 'prop-types';
 import stateMapsFactory from '../../store/stateMaps';
 import dispatchMapsFactory from '../../store/dispatchMaps';
 import {connect} from 'react-redux';
 import {LANG_PACK} from '../../langPack';
-import {TO_LEFT_ARROW, TO_RIGHT_ARROW} from '../Arrow/Arrow';
 import slide0 from '../../content/images/slides/slide-0.png';
 import slide1 from '../../content/images/slides/slide-1.png';
 import slide2 from '../../content/images/slides/slide-2.png';
@@ -23,7 +23,7 @@ function Slider({lang}) {
     let getNextIndex = index => index === (slideCount - 1) ? 0 : index + 1;
     let getPrevIndex = index => index ? index - 1 : (slideCount - 1);
 
-    // Реализовываем автоматическую перемотку слайдов по таймеру (каждые 10 сек)
+    // Добавляем автоматическую перемотку слайдов по таймеру (каждые 10 сек)
     useEffect(() => {
         let interval = setInterval(() => {
             setIndex(oldIndex => getNextIndex(oldIndex));
@@ -38,7 +38,7 @@ function Slider({lang}) {
     let handleLeftArrowClick = () => setIndex(oldIndex => getPrevIndex(oldIndex));
 
     // При клике на точку - реализовываем "перемотку" до нужного слайда
-    let dotClickHandler = dotIndex => {
+    let handleDotClick = dotIndex => {
         if (dotIndex === index) return;
 
         let distance = Math.abs(dotIndex - index);
@@ -55,25 +55,24 @@ function Slider({lang}) {
         }, 300);
     };
 
-    // Готовим данные к рендерингу
     let currentSlidesData = [
         {
             ...slidersData[prevIndex],
             image: slideImages[prevIndex],
-            slideClassName: 'slider__slide prev_slide',
-            buttonClassName: `slide__button button_${prevIndex}`
+            position: PREV_SLIDE,
+            slideIndex: prevIndex
         },
         {
             ...slidersData[index],
             image: slideImages[index],
-            slideClassName: 'slider__slide',
-            buttonClassName: `slide__button button_${index}`
+            position: CURRENT_SLIDE,
+            slideIndex: index
         },
         {
             ...slidersData[nextIndex],
             image: slideImages[nextIndex],
-            slideClassName: 'slider__slide next_slide',
-            buttonClassName: `slide__button} button_${nextIndex}`
+            position: NEXT_SLIDE,
+            slideIndex: nextIndex
         }
     ];
 
@@ -82,25 +81,10 @@ function Slider({lang}) {
             <Arrow direction={TO_LEFT_ARROW} handleClick={handleLeftArrowClick}/>
             <Arrow direction={TO_RIGHT_ARROW} handleClick={handleRightArrowClick}/>
             {currentSlidesData.map(
-                element =>
-                    <div
-                        key={element.image}
-                        className={element.slideClassName}
-                        style={{backgroundImage: `url("${element.image}")`}}
-                    >
-                        <div className="slide__text_block">
-                            <h1 className="slide__title">{element.title}</h1>
-                            <h3 className="slide__description">{element.description}</h3>
-                            <input
-                                type="button"
-                                value={slideButtonText}
-                                className={element.buttonClassName}
-                            />
-                        </div>
-                    </div>
+                slideData => <Slide key={slideData.image} slideData={slideData} slideButtonText={slideButtonText}/>
             )}
             <div className="slider__cap"/>
-            <DotsBlock dotsCount={slideCount} currentIndex={index} handleClick={dotClickHandler}/>
+            <DotsBlock dotsCount={slideCount} currentIndex={index} handleClick={handleDotClick}/>
         </div>
     );
 }

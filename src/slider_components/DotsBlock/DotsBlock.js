@@ -11,7 +11,7 @@ function DotsBlock({dotsCount, currentIndex, handleClick}) {
         } else {
             dotClassList = 'dots_block__dot empty_dot';
         }
-        dots.push(<div className={dotClassList} onClick={() => handleClick(index)}/>);
+        dots.push(<div key={index} className={dotClassList} onClick={() => handleClick(index)}/>);
     }
 
     return (
