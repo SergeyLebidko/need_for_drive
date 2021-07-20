@@ -1,26 +1,28 @@
+import {RUS, ENG} from './settings';
+
 export const LANG_PACK = {
     'Menu': {
-        RUS: {
+        [RUS]: {
             menuItems: ['Парковка', 'Страховка', 'Бензин', 'Обслуживание']
         },
-        ENG: {
+        [ENG]: {
             menuItems: ['Parking', 'Insurance', 'Petrol', 'Service']
         }
     },
     'Title': {
-        RUS: {
+        [RUS]: {
             serviceName: 'Каршеринг',
             slogan: 'Поминутная аренда авто твоего города',
             reservationButton: 'Забронировать'
         },
-        ENG: {
+        [ENG]: {
             serviceName: 'Carsharing',
             slogan: 'Per-minute car rental in your city',
             reservationButton: 'Reservation'
         }
     },
     'Slider': {
-        RUS: {
+        [RUS]: {
             slidersData: [
                 {
                     title: 'Бесплатная парковка',
@@ -41,7 +43,7 @@ export const LANG_PACK = {
             ],
             slideButtonText: 'Подробнее'
         },
-        ENG: {
+        [ENG]: {
             slidersData: [
                 {
                     title: 'Free parking',

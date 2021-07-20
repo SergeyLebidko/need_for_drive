@@ -8,3 +8,8 @@ export const LS_LANG_KEY = 'lang_key'
 // Константы для хранения текущего языка
 export const RUS = 'RUS';
 export const ENG = 'ENG';
+
+export const LANG_SWITCHER_MAP = {
+    [RUS]: ENG,
+    [ENG]: RUS
+}

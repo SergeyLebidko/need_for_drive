@@ -112,50 +112,6 @@
   }
 }
 
-// Селектор выбора языка
-.menu__lang_selector {
-  justify-content: center;
-  align-items: center;
-  border: 1px solid white;
-  color: $white;
-  width: $step * 6;
-  height: $step * 6;
-  border-radius: 50%;
-  z-index: 2;
-  user-select: none;
-  cursor: pointer;
-  transition: 500ms all;
-
-  &:hover {
-    border: 1px solid $main-accent;
-    color: $main-accent;
-    transition: 500ms all;
-  }
-}
-
-// Модификаторы для селектора выбора языка
-.menu__lang_selector_fixed {
-  position: fixed;
-  bottom: $step;
-  left: $step;
-  display: flex;
-
-  @media (max-width: $tablet-start) {
-    display: none;
-  }
-}
-
-.menu__lang_selector_mobile {
-  display: none;
-
-  @media (max-width: $mobile-end) {
-    display: flex;
-    position: absolute;
-    bottom: $step * 2;
-    left: $step * 3;
-  }
-}
-
 // Модификатор стилей компонентов для открытого меню
 .opened {
 

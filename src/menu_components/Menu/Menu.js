@@ -1,28 +1,16 @@
 import React, {useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
 import MenuButton from '../MenuButton/MenuButton';
+import LangSelector from '../LangSelector/LangSelector';
 import {ReactComponent as TelegramIcon} from '../../content/images/icons/telegram_icon.svg';
 import {ReactComponent as FacebookIcon} from '../../content/images/icons/facebook_icon.svg';
 import {ReactComponent as InstagramIcon} from '../../content/images/icons/instagram_icon.svg';
+import {LANG_SWITCHER_MAP, LS_LANG_KEY} from '../../settings';
 import {LANG_PACK} from '../../langPack';
 import {connect} from 'react-redux';
 import stateMapsFactory from '../../store/stateMaps';
 import dispatchMapsFactory from '../../store/dispatchMaps';
-import {RUS, ENG, LS_LANG_KEY} from '../../settings';
 import style from './Menu.module.scss';
-
-// С помощью этой константы будем определять, на какой язык мы можем сейчас переключиться
-const LANG_SWITCHER_MAP = {
-    RUS: ENG,
-    ENG: RUS
-}
-
-function getNextLangTitle(lang) {
-    return {
-        RUS: 'Рус',
-        ENG: 'Eng'
-    }[LANG_SWITCHER_MAP[lang]]
-}
 
 // lang - текущий язык, setLang - функция для смены текущего языка
 function Menu({lang, setLang}) {
@@ -60,19 +48,9 @@ function Menu({lang, setLang}) {
                     <FacebookIcon/>
                     <InstagramIcon/>
                 </li>
-                <li
-                    className={`${style.menu__lang_selector} ${style.menu__lang_selector_mobile}`}
-                    onClick={handleLangSelectorClick}
-                >
-                    {getNextLangTitle(lang)}
-                </li>
+                <LangSelector lang={lang} handleClick={handleLangSelectorClick}/>
             </ul>
-            <div
-                className={`${style.menu__lang_selector} ${style.menu__lang_selector_fixed}`}
-                onClick={handleLangSelectorClick}
-            >
-                {getNextLangTitle(lang)}
-            </div>
+            <LangSelector lang={lang} handleClick={handleLangSelectorClick}/>
         </div>
     );
 }
