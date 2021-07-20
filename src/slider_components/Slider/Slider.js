@@ -1,11 +1,11 @@
 import React, {useState, useEffect} from 'react';
+import Arrow from '../Arrow/Arrow';
 import PropTypes from 'prop-types';
 import stateMapsFactory from '../../store/stateMaps';
 import dispatchMapsFactory from '../../store/dispatchMaps';
 import {connect} from 'react-redux';
 import {LANG_PACK} from '../../langPack';
-import {ReactComponent as ArrowRight} from '../../content/images/icons/arrow_right.svg';
-import {ReactComponent as ArrowLeft} from '../../content/images/icons/arrow_left.svg';
+import {TO_LEFT_ARROW, TO_RIGHT_ARROW} from '../Arrow/Arrow';
 import slide0 from '../../content/images/slides/slide-0.png';
 import slide1 from '../../content/images/slides/slide-1.png';
 import slide2 from '../../content/images/slides/slide-2.png';
@@ -33,8 +33,8 @@ function Slider({lang}) {
     let prevIndex = getPrevIndex(index);
     let nextIndex = getNextIndex(index);
 
-    let handleRightArrowClick = () => setIndex(oldIndex => getPrevIndex(oldIndex));
-    let handleLeftArrowClick = () => setIndex(oldIndex => getNextIndex(oldIndex));
+    let handleRightArrowClick = () => setIndex(oldIndex => getNextIndex(oldIndex));
+    let handleLeftArrowClick = () => setIndex(oldIndex => getPrevIndex(oldIndex));
 
     // При клике на точку - реализовываем "перемотку" до нужного слайда
     let dotClickHandler = dotIndex => {
@@ -78,6 +78,8 @@ function Slider({lang}) {
 
     return (
         <div className={style.slider}>
+            <Arrow direction={TO_LEFT_ARROW} handleClick={handleLeftArrowClick}/>
+            <Arrow direction={TO_RIGHT_ARROW} handleClick={handleRightArrowClick}/>
             {currentSlidesData.map(
                 element =>
                     <div
@@ -97,12 +99,6 @@ function Slider({lang}) {
                     </div>
             )}
             <div className={style.cap}/>
-            <div className={style.slider__arrow_left} onClick={handleRightArrowClick}>
-                <ArrowLeft/>
-            </div>
-            <div className={style.slider__arrow_right} onClick={handleLeftArrowClick}>
-                <ArrowRight/>
-            </div>
             <div className={style.slider__dots_block}>
                 {slideImages.map(
                     (element, elementIndex) => {
