@@ -3,9 +3,8 @@ import PropTypes from 'prop-types';
 import MenuButton from '../MenuButton/MenuButton';
 import MenuItemsBlock from '../MenuItemsBlock/MenuItemsBlock';
 import LangSelector from '../LangSelector/LangSelector';
-import style from './Menu.module.scss';
+import './Menu.scss';
 
-// lang - текущий язык, setLang - функция для смены текущего языка
 function Menu() {
     let [opened, setOpened] = useState(false);
 
@@ -23,9 +22,9 @@ function Menu() {
     let handleMenuButtonClick = () => setOpened(menuOpened => !menuOpened);
 
     return (
-        <div className={style.menu + (opened ? ` ${style.opened}` : '')}>
+        <div className="menu">
             <MenuButton hasOpened={opened} handleClick={handleMenuButtonClick}/>
-            <h1 className={style.menu__title}>Need for drive</h1>
+            <h1 className="menu__title">Need for drive</h1>
             <MenuItemsBlock hasOpened={opened}/>
             <LangSelector/>
         </div>
