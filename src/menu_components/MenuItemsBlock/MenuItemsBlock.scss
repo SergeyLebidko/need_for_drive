@@ -1,4 +1,5 @@
 @import '../../styles/vars';
+@import '../LangSelector/LangSelector';
 
 .menu_items_block {
   position: fixed;
@@ -13,6 +14,14 @@
 
 .items_block_opened {
   left: 0;
+}
+
+@media (min-width: $tablet-start) {
+  .menu_items_block {
+    > .lang_selector {
+      display: none;
+    }
+  }
 }
 
 @media (min-width: $desktop-min-start) {

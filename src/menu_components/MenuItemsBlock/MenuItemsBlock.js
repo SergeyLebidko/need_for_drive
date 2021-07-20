@@ -24,8 +24,8 @@ function MenuItemsBlock({hasOpened, lang}) {
                     <FacebookIcon/>
                     <InstagramIcon/>
                 </li>
-                <LangSelector/>
             </ul>
+            <LangSelector/>
         </div>
     );
 }
