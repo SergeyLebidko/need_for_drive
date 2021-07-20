@@ -5,7 +5,7 @@ import {ReactComponent as OneLine} from '../../content/images/icons/one_line.svg
 import './MenuButton.scss';
 
 function MenuButton({hasOpened, handleClick}) {
-    let containerClasses = 'menu_button' + (hasOpened ? ' opened' : '');
+    let containerClasses = 'menu_button' + (hasOpened ? ' menu_button_opened' : '');
     return (
         <div className={containerClasses} onClick={handleClick}>
             <TwoLines/>

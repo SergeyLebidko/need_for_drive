@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import stateMapsFactory from '../../store/stateMaps';
 import dispatchMapsFactory from '../../store/dispatchMaps';
-import './LangSelector.scss';
 import {ENG, RUS, LANG_SWITCHER_MAP, LS_LANG_KEY} from '../../settings';
+import './LangSelector.scss';
 
 function LangSelector({lang, setLang}) {
     let getNextLangTitle = lang => ({[RUS]: 'Рус', [ENG]: 'Eng'}[LANG_SWITCHER_MAP[lang]]);

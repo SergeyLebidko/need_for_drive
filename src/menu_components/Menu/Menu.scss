@@ -1,7 +1,6 @@
 @import '../../styles/vars';
 @import '../LangSelector/LangSelector';
 
-// Контейнер с элементами меню: кнопкой, блоком с отдельными пунктами меню и т.д.
 .menu {
   display: flex;
   align-items: center;
@@ -37,6 +36,7 @@
     }
 
     .lang_selector {
+      margin-top: auto;
       display: block;
     }
   }

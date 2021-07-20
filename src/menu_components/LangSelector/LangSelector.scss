@@ -18,26 +18,3 @@
     transition: 300ms all;
   }
 }
-
-// Модификаторы для селектора выбора языка
-.lang_selector_fixed {
-  position: fixed;
-  bottom: $step;
-  left: $step;
-  display: flex;
-
-  @media (max-width: $tablet-start) {
-    display: none;
-  }
-}
-
-.lang_selector_mobile {
-  display: none;
-
-  @media (max-width: $mobile-end) {
-    display: flex;
-    position: absolute;
-    bottom: $step * 2;
-    left: $step * 3;
-  }
-}

@@ -13,7 +13,7 @@ import './MenuItemsBlock.scss';
 function MenuItemsBlock({hasOpened, lang}) {
     let {menuItems} = LANG_PACK['MenuItemsBlock'][lang];
 
-    let classNames = 'menu_items_block' + (hasOpened ? ' opened' : '');
+    let classNames = 'menu_items_block' + (hasOpened ? ' items_block_opened' : '');
 
     return (
         <div className={classNames}>
