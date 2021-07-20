@@ -4,7 +4,7 @@
 .menu {
   display: flex;
   align-items: center;
-  background-color: white;
+  background-color: $white;
   min-height: $step * 8;
   padding: $step ($step * 2);
 
@@ -100,7 +100,7 @@
 // Отдельный пункт меню с текстом
 .menu__item {
   text-transform: uppercase;
-  color: white;
+  color: $white;
   font-size: 1.5em;
   cursor: pointer;
   user-select: none;
@@ -146,7 +146,7 @@
   justify-content: center;
   align-items: center;
   border: 1px solid white;
-  color: white;
+  color: $white;
   width: $step * 6;
   height: $step * 6;
   border-radius: 50%;

@@ -30,7 +30,7 @@
 }
 
 .empty_dot {
-  background-color: white;
+  background-color: $white;
 }
 
 .full_dot {
@@ -74,13 +74,13 @@
 
 .slide__title {
   font-size: 2.5em;
-  color: white;
+  color: $white;
 }
 
 .slide__description {
   font-weight: 300;
   font-size: 1.5em;
-  color: white;
+  color: $white;
 }
 
 .slide__more_button {

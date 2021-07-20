@@ -153,12 +153,12 @@
   align-items: flex-end;
   padding: $step $step * 2;
   background-color: $black;
-  color: white;
+  color: $white;
 
   @media (min-width: $tablet-start) {
     flex-direction: row;
     justify-content: space-between;
-    background-color: white;
+    background-color: $white;
   }
 
   @media (min-width: $tablet-start) and (max-width: $desktop-min-end) {
@@ -175,12 +175,12 @@
   color: $main-accent;
 
   @media (min-width: $tablet-start) {
-    color: black;
+    color: $black;
   }
 }
 
 .title__copyright {
-  color: white;
+  color: $white;
 
   @media (min-width: $tablet-start) {
     color: $gray;
