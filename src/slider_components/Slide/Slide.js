@@ -18,12 +18,12 @@ function Slide({slideData}) {
 
     let buttonClassName = `button slide__button button_${buttonColor} button_small_round_border`;
 
-    let inlineStyle = {
+    let backgroundImageStyle = {
         backgroundImage: `linear-gradient(to bottom, transparent 50%, black 100%), url("${image}")`
     };
 
     return (
-        <div className={slideClassName} style={inlineStyle}>
+        <div className={slideClassName} style={backgroundImageStyle}>
             <div className="slide__text_block">
                 <h1 className="slide__title">{title}</h1>
                 <h3 className="slide__description">{description}</h3>
