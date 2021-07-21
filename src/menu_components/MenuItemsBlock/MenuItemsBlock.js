@@ -13,18 +13,18 @@ import './MenuItemsBlock.scss';
 function MenuItemsBlock({hasOpened, lang}) {
     let {menuItems} = LANG_PACK['MenuItemsBlock'][lang];
 
-    let classNames = 'menu_items_block' + (hasOpened ? ' items_block_opened' : '');
+    let classNames = 'menu_items_block' + (hasOpened ? ' menu_items_block_visible' : '');
 
     return (
         <div className={classNames}>
-            <ul>
-                {menuItems.map(item => <li key={item}>{item}</li>)}
-                <li key="icons_item">
+            <nav className="menu_items_block__navigation">
+                {menuItems.map(item => <span key={item} className="menu_items_block__item">{item}</span>)}
+                <span key="icons" className="menu_items_block__icons_item">
                     <TelegramIcon/>
                     <FacebookIcon/>
                     <InstagramIcon/>
-                </li>
-            </ul>
+                </span>
+            </nav>
             <LangSelector/>
         </div>
     );

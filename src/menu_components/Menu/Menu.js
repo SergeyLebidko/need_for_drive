@@ -18,7 +18,6 @@ function Menu() {
         }
     }, [opened]);
 
-
     let handleMenuButtonClick = () => setOpened(menuOpened => !menuOpened);
 
     return (
