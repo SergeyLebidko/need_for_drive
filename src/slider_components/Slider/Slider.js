@@ -19,7 +19,7 @@ function Slider({sliderData}) {
         if (!sliderData.length) return;
         let interval = setInterval(() => {
             setIndex(oldIndex => getNextIndex(oldIndex));
-        }, 1000);
+        }, 10000);
         return () => clearInterval(interval);
     }, [sliderData]);
 
