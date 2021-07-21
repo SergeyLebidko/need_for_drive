@@ -55,14 +55,6 @@
 
   .title__reservation_button {
     margin-left: 0;
-
-    @media (min-width: $tablet-start) and (max-width: $desktop-min-end) {
-      margin-left: $step * 4;
-    }
-
-    @media (min-width: $desktop-start) {
-      margin-left: $step * 6
-    }
   }
 }
 
@@ -137,6 +129,10 @@
     margin: ($step * 2) ($step * 4) ($step * 4);
   }
 
+  .title__reservation_button {
+    margin-left: $step * 4;
+  }
+
   .title__footer {
     padding: ($step * 2) ($step * 4);
   }
@@ -186,6 +182,10 @@
 
   .title__slogan {
     margin: ($step * 4) ($step * 6) ($step * 6);
+  }
+
+  .title__reservation_button {
+    margin-left: $step * 6
   }
 
   .title__footer {
