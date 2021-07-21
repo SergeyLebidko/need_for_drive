@@ -6,12 +6,12 @@
   flex-direction: column;
 
   // В режиме для мобильных телефонов блок с описанием сервиса занимает все доступное пространство
-  > div:nth-child(2) {
+  > section:nth-child(2) {
     flex: 1;
   }
 
   // В режиме для мобильных телефонов и "таблеток" слайдер отключен
-  > div:nth-child(3) {
+  > section:nth-child(3) {
     display: none;
   }
 
@@ -22,22 +22,22 @@
 
   // В режимах для десктопов слайдер виден, но при разных разрешениях занимает разную площадь
   @media (min-width: $desktop-min-start) and (max-width: $desktop-min-end) {
-    > div:nth-child(2) {
+    > section:nth-child(2) {
       flex: 4;
     }
 
-    > div:nth-child(3) {
+    > section:nth-child(3) {
       display: flex;
       flex: 3;
     }
   }
 
   @media (min-width: $desktop-start) {
-    > div:nth-child(2) {
+    > section:nth-child(2) {
       flex: 1;
     }
 
-    > div:nth-child(3) {
+    > section:nth-child(3) {
       display: flex;
       flex: 1;
     }
