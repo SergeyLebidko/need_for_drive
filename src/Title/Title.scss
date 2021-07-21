@@ -6,13 +6,8 @@
   flex-direction: column;
   justify-content: space-between;
 
-  .title__main {
+  &__main {
     margin-bottom: 20vh;
-
-    // Корректируем расположение центрального блока для мобильных устройств при повороте экрана в портретный режим
-    @media (orientation: landscape) and (max-width: $mobile-end) {
-      margin-bottom: 0;
-    }
   }
 }
 
@@ -21,14 +16,6 @@
   display: flex;
   width: 100%;
   padding: 0 ($step * 2);
-
-  @media (min-width: $tablet-start) and (max-width: $desktop-min-end) {
-    padding: ($step * 2) ($step * 4);
-  }
-
-  @media (min-width: $desktop-start) {
-    padding: ($step * 4) ($step * 6);
-  }
 
   .title__city {
     margin-left: auto;
@@ -40,10 +27,6 @@
   font-weight: bold;
   font-size: 2em;
   color: $main-accent;
-
-  @media (min-width: $tablet-start) {
-    display: block;
-  }
 }
 
 .title__city {
@@ -64,26 +47,10 @@
 
   .title__service_name, .title__big_service_title {
     margin: 0 ($step * 2);
-
-    @media (min-width: $tablet-start) and (max-width: $desktop-min-end) {
-      margin: 0 ($step * 4);
-    }
-
-    @media (min-width: $desktop-start) {
-      margin: 0 ($step * 6);
-    }
   }
 
   .title__slogan {
     margin: $step ($step * 2) ($step * 2);
-
-    @media (min-width: $tablet-start) and (max-width: $desktop-min-end) {
-      margin: ($step * 2) ($step * 4) ($step * 4);
-    }
-
-    @media (min-width: $desktop-start) {
-      margin: ($step * 4) ($step * 6) ($step * 6);
-    }
   }
 
   .title__reservation_button {
@@ -102,28 +69,16 @@
 .title__service_name {
   font-weight: bold;
   font-size: 2em;
-
-  @media (min-width: $tablet-start) {
-    font-size: 4em;
-  }
 }
 
 .title__big_service_title {
   font-weight: bold;
   font-size: 2em;
   color: $main-accent;
-
-  @media (min-width: $tablet-start) {
-    font-size: 4em;
-  }
 }
 
 .title__slogan {
   color: $gray;
-
-  @media (min-width: $tablet-start) {
-    font-size: 1.5em;
-  }
 }
 
 // Кнопка бронирования
@@ -138,11 +93,6 @@
   &:active {
     background-image: $active-gradient;
   }
-
-  @media (min-width: $tablet-start) {
-    border-radius: $main-radius;
-    align-self: flex-start;
-  }
 }
 
 // Нижний блок: для копирайта и телефона
@@ -154,35 +104,91 @@
   padding: $step $step * 2;
   background-color: $black;
   color: $white;
-
-  @media (min-width: $tablet-start) {
-    flex-direction: row;
-    justify-content: space-between;
-    background-color: $white;
-  }
-
-  @media (min-width: $tablet-start) and (max-width: $desktop-min-end) {
-    padding: ($step * 2) ($step * 4);
-  }
-
-  @media (min-width: $desktop-start) {
-    padding: ($step * 4) ($step * 6);
-  }
 }
 
 .title__phone {
   text-decoration: none;
   color: $main-accent;
-
-  @media (min-width: $tablet-start) {
-    color: $black;
-  }
 }
 
 .title__copyright {
   color: $white;
+}
 
-  @media (min-width: $tablet-start) {
+// Корректируем расположение центрального блока для мобильных устройств при повороте экрана в портретный режим
+@media (orientation: landscape) and (max-width: $mobile-end) {
+  .title {
+    &__main {
+      margin-bottom: 0;
+    }
+  }
+}
+
+@media (min-width: $tablet-start) and (max-width: $desktop-min-end) {
+  .title__header {
+    padding: ($step * 2) ($step * 4);
+  }
+
+  .title__service_name, .title__big_service_title {
+    margin: 0 ($step * 4);
+  }
+
+  .title__slogan {
+    margin: ($step * 2) ($step * 4) ($step * 4);
+  }
+
+  .title__footer {
+    padding: ($step * 2) ($step * 4);
+  }
+}
+
+@media (min-width: $tablet-start) {
+  .title__small_service_title {
+    display: block;
+  }
+
+  .title__service_name, .title__big_service_title {
+    font-size: 4em;
+  }
+
+  .title__slogan {
+    font-size: 1.5em;
+  }
+
+  .title__reservation_button {
+    border-radius: $main-radius;
+    align-self: flex-start;
+  }
+
+  .title__footer {
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: $white;
+  }
+
+  .title__phone {
+    color: $black;
+  }
+
+  .title__copyright {
     color: $gray;
+  }
+}
+
+@media (min-width: $desktop-start) {
+  .title__header {
+    padding: ($step * 4) ($step * 6);
+  }
+
+  .title__service_name, .title__big_service_title {
+    margin: 0 ($step * 6);
+  }
+
+  .title__slogan {
+    margin: ($step * 4) ($step * 6) ($step * 6);
+  }
+
+  .title__footer {
+    padding: ($step * 4) ($step * 6);
   }
 }
