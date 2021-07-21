@@ -5,32 +5,32 @@ import {LANG_PACK} from '../langPack';
 import stateMapsFactory from '../store/stateMaps';
 import dispatchMapsFactory from '../store/dispatchMaps';
 import {connect} from 'react-redux';
-import style from './Title.module.scss';
+import './Title.scss';
 
 function Title({lang, city}) {
     let {serviceName, slogan, reservationButton} = LANG_PACK['Title'][lang];
     let currentYear = (new Date()).getFullYear();
 
     return (
-        <div className={style.title}>
-            <div className={style.title__header}>
-                <span className={style.title__small_service_title}>Need for drive</span>
-                {city && <span className={style.title__city}><Pin/>{city}</span>}
-            </div>
-            <div className={style.title__main}>
-                <h1 className={style.title__service_name}>{serviceName}</h1>
-                <h1 className={style.title__big_service_title}>Need for drive</h1>
-                <h3 className={style.title__slogan}>{slogan}</h3>
-                <input type="button" value={reservationButton} className={style.title__reservation_button}/>
-            </div>
-            <div className={style.title__footer}>
-                <span
-                    className={style.title__copyright}>&#169; 2016-{currentYear} &quot;Need for drive&quot;
+        <div className="title">
+            <header className="title__header">
+                <span className="title__small_service_title">Need for drive</span>
+                {city && <span className="title__city"><Pin/>{city}</span>}
+            </header>
+            <main className="title__main">
+                <h1 className="title__service_name">{serviceName}</h1>
+                <h1 className="title__big_service_title">Need for drive</h1>
+                <h3 className="title__slogan">{slogan}</h3>
+                <input type="button" value={reservationButton} className="title__reservation_button"/>
+            </main>
+            <footer className="title__footer">
+                <span className="title__copyright">
+                    &#169; 2016-{currentYear} &quot;Need for drive&quot;
                 </span>
-                <a href="tel:84952342244" className={style.title__phone}>
+                <a href="tel:84952342244" className="title__phone">
                     8(495)234-22-44
                 </a>
-            </div>
+            </footer>
         </div>
     )
 }
