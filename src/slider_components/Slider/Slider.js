@@ -77,14 +77,14 @@ function Slider({lang}) {
     ];
 
     return (
-        <div className="slider">
+        <section className="slider">
             {currentSlidesData.map(
                 slideData => <Slide key={slideData.image} slideData={slideData} slideButtonText={slideButtonText}/>
             )}
             <Arrow direction={TO_LEFT_ARROW} handleClick={handleLeftArrowClick}/>
             <Arrow direction={TO_RIGHT_ARROW} handleClick={handleRightArrowClick}/>
             <DotsBlock dotsCount={slideCount} currentIndex={index} handleClick={handleDotClick}/>
-        </div>
+        </section>
     );
 }
 
