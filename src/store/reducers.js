@@ -18,3 +18,12 @@ export function city(state = null, action) {
             return state;
     }
 }
+
+export function sliderData(state = [], action) {
+    switch (action.type) {
+        case act.SET_SLIDER_DATA:
+            return action.sliderData;
+        default:
+            return state;
+    }
+}

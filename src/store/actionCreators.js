@@ -47,3 +47,11 @@ export function setCity(city) {
         city
     }
 }
+
+// Создатель действия для установки данных слайдера
+export function setSliderData(sliderData) {
+    return {
+        type: act.SET_SLIDER_DATA,
+        sliderData
+    }
+}

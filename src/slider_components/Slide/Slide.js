@@ -6,8 +6,8 @@ export const PREV_SLIDE = 'ps';
 export const CURRENT_SLIDE = 'cs';
 export const NEXT_SLIDE = 'ns';
 
-function Slide({slideData, slideButtonText}) {
-    let {title, description, image, buttonColor, position} = slideData;
+function Slide({slideData}) {
+    let {title, description, image, buttonColor, buttonText, position} = slideData;
 
     const slideClassSelector = {
         [PREV_SLIDE]: 'slide prev_slide',
@@ -27,7 +27,7 @@ function Slide({slideData, slideButtonText}) {
             <div className="slide__text_block">
                 <h1 className="slide__title">{title}</h1>
                 <h3 className="slide__description">{description}</h3>
-                <button className={buttonClassName}>{slideButtonText}</button>
+                <button className={buttonClassName}>{buttonText}</button>
             </div>
         </div>
     );
@@ -39,6 +39,7 @@ Slide.propTypes = {
         description: PropTypes.string,
         image: PropTypes.string,
         buttonColor: PropTypes.string,
+        buttonText: PropTypes.string,
         position: PropTypes.string
     }),
     slideButtonText: PropTypes.string

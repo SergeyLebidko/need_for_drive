@@ -1,4 +1,4 @@
-import {setLang, loadCity} from './actionCreators';
+import {setLang, loadCity, setSliderData} from './actionCreators';
 
 function dispatchMapsFactory(component) {
     switch (component) {
@@ -6,6 +6,10 @@ function dispatchMapsFactory(component) {
             return dispatch => ({
                 setLang: lang => dispatch(setLang(lang)),
                 defineCity: lang => dispatch(loadCity(lang))
+            });
+        case 'MainPage':
+            return dispatch => ({
+                setSliderData: sliderData => dispatch(setSliderData(sliderData))
             });
         case 'LangSelector':
             return dispatch => ({

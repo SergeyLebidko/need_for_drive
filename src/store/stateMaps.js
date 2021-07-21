@@ -6,11 +6,15 @@ function stateMapsFactory(component) {
                 city: state.city
             });
         case 'App':
+        case 'MainPage':
         case 'LangSelector':
         case 'MenuItemsBlock':
-        case 'Slider':
             return state => ({
                 lang: state.lang,
+            });
+        case 'Slider':
+            return state => ({
+                sliderData: state.sliderData
             });
         default:
             return null;

@@ -6,43 +6,22 @@ import PropTypes from 'prop-types';
 import stateMapsFactory from '../../store/stateMaps';
 import dispatchMapsFactory from '../../store/dispatchMaps';
 import {connect} from 'react-redux';
-import {LANG_PACK} from '../../langPack';
-import slide0 from '../../content/images/slides/slide-0.png';
-import slide1 from '../../content/images/slides/slide-1.png';
-import slide2 from '../../content/images/slides/slide-2.png';
-import slide3 from '../../content/images/slides/slide-3.png';
 import './Slider.scss';
 
-const SLIDE_COUNT = 4;
-
-function Slider({lang}) {
+function Slider({sliderData}) {
     let [index, setIndex] = useState(0);
 
-    // Готовим данные слайдов
-    const slidersImages = [slide0, slide1, slide2, slide3];
-    const slidersButtonColors = ['dark_green', 'teal', 'brown', 'purple'];
-    const {slidersText, slideButtonText} = LANG_PACK['Slider'][lang];
-    const slidersData = [];
-
-    for (let index = 0; index < SLIDE_COUNT; index++) slidersData.push({
-        ...slidersText[index],
-        image: slidersImages[index],
-        buttonColor: slidersButtonColors[index]
-    });
-
-    let getNextIndex = index => index === (SLIDE_COUNT - 1) ? 0 : index + 1;
-    let getPrevIndex = index => index ? index - 1 : (SLIDE_COUNT - 1);
+    let getNextIndex = index => index === (sliderData.length - 1) ? 0 : index + 1;
+    let getPrevIndex = index => index ? index - 1 : (sliderData.length - 1);
 
     // Добавляем автоматическую перемотку слайдов по таймеру (каждые 10 сек)
     useEffect(() => {
+        if (!sliderData.length) return;
         let interval = setInterval(() => {
             setIndex(oldIndex => getNextIndex(oldIndex));
-        }, 10000);
+        }, 1000);
         return () => clearInterval(interval);
-    }, []);
-
-    let prevIndex = getPrevIndex(index);
-    let nextIndex = getNextIndex(index);
+    }, [sliderData]);
 
     let handleRightArrowClick = () => setIndex(oldIndex => getNextIndex(oldIndex));
     let handleLeftArrowClick = () => setIndex(oldIndex => getPrevIndex(oldIndex));
@@ -50,9 +29,8 @@ function Slider({lang}) {
     // При клике на точку - реализовываем "перемотку" до нужного слайда
     let handleDotClick = dotIndex => {
         if (dotIndex === index) return;
-
         let distance = Math.abs(dotIndex - index);
-        if (distance === 1 || distance === (SLIDE_COUNT - 1)) setIndex(dotIndex);
+        if (distance === 1 || distance === (sliderData.length - 1)) setIndex(dotIndex);
 
         // Если слайды не находятся рядом, то перематываем их в несколько шагов
         let interval = setInterval(() => {
@@ -65,17 +43,19 @@ function Slider({lang}) {
         }, 300);
     };
 
+    let prevIndex = getPrevIndex(index);
+    let nextIndex = getNextIndex(index);
     let currentSlidesData = [
         {
-            ...slidersData[prevIndex],
+            ...sliderData[prevIndex],
             position: PREV_SLIDE,
         },
         {
-            ...slidersData[index],
+            ...sliderData[index],
             position: CURRENT_SLIDE,
         },
         {
-            ...slidersData[nextIndex],
+            ...sliderData[nextIndex],
             position: NEXT_SLIDE,
         }
     ];
@@ -83,17 +63,17 @@ function Slider({lang}) {
     return (
         <section className="slider">
             {currentSlidesData.map(
-                slideData => <Slide key={slideData.image} slideData={slideData} slideButtonText={slideButtonText}/>
+                slideData => <Slide key={slideData.image} slideData={slideData}/>
             )}
             <Arrow direction={TO_LEFT_ARROW} handleClick={handleLeftArrowClick}/>
             <Arrow direction={TO_RIGHT_ARROW} handleClick={handleRightArrowClick}/>
-            <DotsBlock dotsCount={SLIDE_COUNT} currentIndex={index} handleClick={handleDotClick}/>
+            <DotsBlock dotsCount={sliderData.length} currentIndex={index} handleClick={handleDotClick}/>
         </section>
     );
 }
 
 Slider.propTypes = {
-    lang: PropTypes.string
+    sliderData: PropTypes.array
 }
 
 let stateMap = stateMapsFactory('Slider');
