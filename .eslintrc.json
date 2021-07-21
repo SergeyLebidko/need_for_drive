@@ -19,6 +19,7 @@
     "react-hooks"
   ],
   "rules": {
+    "import/prefer-default-export": "off",
     "react-hooks/exhaustive-deps": "warn",
     "no-underscore-dangle": "off",
     "no-param-reassign": "off"
