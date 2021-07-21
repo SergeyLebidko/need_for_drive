@@ -21,7 +21,7 @@ function Title({lang, city}) {
                 <h1 className="title__service_name">{serviceName}</h1>
                 <h1 className="title__big_service_title">Need for drive</h1>
                 <h3 className="title__slogan">{slogan}</h3>
-                <button className="title__reservation_button">{reservationButton}</button>
+                <button className="button button_main_accent title__reservation_button">{reservationButton}</button>
             </main>
             <footer className="title__footer">
                 <span className="title__copyright">

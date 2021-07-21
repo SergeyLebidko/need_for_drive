@@ -1,0 +1,80 @@
+@import 'vars';
+
+.button {
+  font-size: 1.2em;
+  border: none;
+  outline: none;
+  color: $white;
+  padding: ($step * 2) ($step * 4);
+  cursor: pointer;
+}
+
+// Цветовые модификаторы кнопок
+.button_main_accent {
+  background-image: $default-gradient;
+
+  &:hover {
+    background-image: $hover-gradient;
+  }
+
+  &:active {
+    background-image: $active-gradient;
+  }
+}
+
+.button_dark_green {
+  background-image: $dark-green-gradient;
+
+  &:hover {
+    background-image: $dark-green-gradient-hover;
+  }
+
+  &:active {
+    background-image: $dark-green-gradient-active;
+  }
+}
+
+.button_teal {
+  background-image: $teal-gradient;
+
+  &:hover {
+    background-image: $teal-gradient-hover;
+  }
+
+  &:active {
+    background-image: $teal-gradient-active;
+  }
+}
+
+.button_brown {
+  background-image: $brown-gradient;
+
+  &:hover {
+    background-image: $brown-gradient-hover;
+  }
+
+  &:active {
+    background-image: $brown-gradient-active;
+  }
+}
+
+.button_purple {
+  background-image: $purple-gradient;
+
+  &:hover {
+    background-image: $purple-gradient-hover;
+  }
+
+  &:active {
+    background-image: $purple-gradient-active;
+  }
+}
+
+// Модификаторы закругления границ кнопок
+.button_small_round_border {
+  border-radius: $main-radius;
+}
+
+.button_main_round_border {
+  border-radius: $main-radius;
+}

@@ -7,7 +7,7 @@ export const CURRENT_SLIDE = 'cs';
 export const NEXT_SLIDE = 'ns';
 
 function Slide({slideData, slideButtonText}) {
-    let {title, description, image, position, slideIndex} = slideData;
+    let {title, description, image, buttonColor, position} = slideData;
 
     const slideClassSelector = {
         [PREV_SLIDE]: 'slide prev_slide',
@@ -16,7 +16,7 @@ function Slide({slideData, slideButtonText}) {
     }
     let slideClassName = slideClassSelector[position];
 
-    let buttonClassName = `slide__button button_${slideIndex}`;
+    let buttonClassName = `button slide__button button_${buttonColor} button_small_round_border`;
 
     let inlineStyle = {
         backgroundImage: `linear-gradient(to bottom, transparent 50%, black 100%), url("${image}")`
@@ -38,8 +38,8 @@ Slide.propTypes = {
         title: PropTypes.string,
         description: PropTypes.string,
         image: PropTypes.string,
-        position: PropTypes.string,
-        slideIndex: PropTypes.number
+        buttonColor: PropTypes.string,
+        position: PropTypes.string
     }),
     slideButtonText: PropTypes.string
 };

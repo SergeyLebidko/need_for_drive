@@ -1,5 +1,5 @@
 @import '../../styles/vars';
-@import '../../styles/rulePresets';
+@import '../../styles/buttons';
 
 .slide {
   position: absolute;
@@ -44,58 +44,4 @@
   font-weight: 300;
   font-size: 1.5em;
   color: $white;
-}
-
-.slide__button {
-  @extend %button_preset;
-  border-radius: $small-radius;
-}
-
-// Цветовые пресеты для кнопок на слайдах
-.button_0 {
-  background: $green-gradient;
-
-  &:hover {
-    background: $green-gradient-hover;
-  }
-
-  &:active {
-    background: $green-gradient-active;
-  }
-}
-
-.button_1 {
-  background: $teal-gradient;
-
-  &:hover {
-    background: $teal-gradient-hover;
-  }
-
-  &:active {
-    background: $teal-gradient-active;
-  }
-}
-
-.button_2 {
-  background: $brown-gradient;
-
-  &:hover {
-    background: $brown-gradient-hover;
-  }
-
-  &:active {
-    background: $brown-gradient-active;
-  }
-}
-
-.button_3 {
-  background: $purple-gradient;
-
-  &:hover {
-    background: $purple-gradient-hover;
-  }
-
-  &:active {
-    background: $purple-gradient-active;
-  }
 }

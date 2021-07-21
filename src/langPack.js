@@ -23,7 +23,7 @@ export const LANG_PACK = {
     },
     'Slider': {
         [RUS]: {
-            slidersData: [
+            slidersText: [
                 {
                     title: 'Бесплатная парковка',
                     description: 'Оставляйте машину на платных городских парковках, в аэропортах и разрешенных местах, не нарушая ПДД.'
@@ -44,7 +44,7 @@ export const LANG_PACK = {
             slideButtonText: 'Подробнее'
         },
         [ENG]: {
-            slidersData: [
+            slidersText: [
                 {
                     title: 'Free parking',
                     description: 'Leave your car in paid city parking lots, airports and permitted places without breaking traffic rules'

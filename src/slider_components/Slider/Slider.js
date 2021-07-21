@@ -13,15 +13,25 @@ import slide2 from '../../content/images/slides/slide-2.png';
 import slide3 from '../../content/images/slides/slide-3.png';
 import './Slider.scss';
 
-const slideImages = [slide0, slide1, slide2, slide3];
-const slideCount = slideImages.length;
+const SLIDE_COUNT = 4;
 
 function Slider({lang}) {
     let [index, setIndex] = useState(0);
-    let {slidersData, slideButtonText} = LANG_PACK['Slider'][lang];
 
-    let getNextIndex = index => index === (slideCount - 1) ? 0 : index + 1;
-    let getPrevIndex = index => index ? index - 1 : (slideCount - 1);
+    // Готовим данные слайдов
+    const slidersImages = [slide0, slide1, slide2, slide3];
+    const slidersButtonColors = ['dark_green', 'teal', 'brown', 'purple'];
+    const {slidersText, slideButtonText} = LANG_PACK['Slider'][lang];
+    const slidersData = [];
+
+    for (let index = 0; index < SLIDE_COUNT; index++) slidersData.push({
+        ...slidersText[index],
+        image: slidersImages[index],
+        buttonColor: slidersButtonColors[index]
+    });
+
+    let getNextIndex = index => index === (SLIDE_COUNT - 1) ? 0 : index + 1;
+    let getPrevIndex = index => index ? index - 1 : (SLIDE_COUNT - 1);
 
     // Добавляем автоматическую перемотку слайдов по таймеру (каждые 10 сек)
     useEffect(() => {
@@ -42,7 +52,7 @@ function Slider({lang}) {
         if (dotIndex === index) return;
 
         let distance = Math.abs(dotIndex - index);
-        if (distance === 1 || distance === (slideCount - 1)) setIndex(dotIndex);
+        if (distance === 1 || distance === (SLIDE_COUNT - 1)) setIndex(dotIndex);
 
         // Если слайды не находятся рядом, то перематываем их в несколько шагов
         let interval = setInterval(() => {
@@ -58,21 +68,15 @@ function Slider({lang}) {
     let currentSlidesData = [
         {
             ...slidersData[prevIndex],
-            image: slideImages[prevIndex],
             position: PREV_SLIDE,
-            slideIndex: prevIndex
         },
         {
             ...slidersData[index],
-            image: slideImages[index],
             position: CURRENT_SLIDE,
-            slideIndex: index
         },
         {
             ...slidersData[nextIndex],
-            image: slideImages[nextIndex],
             position: NEXT_SLIDE,
-            slideIndex: nextIndex
         }
     ];
 
@@ -83,7 +87,7 @@ function Slider({lang}) {
             )}
             <Arrow direction={TO_LEFT_ARROW} handleClick={handleLeftArrowClick}/>
             <Arrow direction={TO_RIGHT_ARROW} handleClick={handleRightArrowClick}/>
-            <DotsBlock dotsCount={slideCount} currentIndex={index} handleClick={handleDotClick}/>
+            <DotsBlock dotsCount={SLIDE_COUNT} currentIndex={index} handleClick={handleDotClick}/>
         </section>
     );
 }

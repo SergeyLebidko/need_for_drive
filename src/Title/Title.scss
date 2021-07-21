@@ -1,5 +1,5 @@
 @import '../styles/vars';
-@import '../styles/rulePresets';
+@import '../styles/buttons';
 
 .title {
   display: flex;
@@ -69,19 +69,6 @@
 
 .title__slogan {
   color: $gray;
-}
-
-.title__reservation_button {
-  @extend %button_preset;
-  background-image: $default-gradient;
-
-  &:hover {
-    background-image: $hover-gradient;
-  }
-
-  &:active {
-    background-image: $active-gradient;
-  }
 }
 
 .title__footer {
