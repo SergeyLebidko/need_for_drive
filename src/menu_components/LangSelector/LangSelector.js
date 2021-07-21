@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
-import stateMapsFactory from '../../store/stateMaps';
-import dispatchMapsFactory from '../../store/dispatchMaps';
+import {createStoreConnectedComponent} from '../../store/connector';
 import {ENG, RUS, LANG_SWITCHER_MAP, LS_LANG_KEY} from '../../settings';
 import './LangSelector.scss';
 
@@ -28,6 +26,4 @@ LangSelector.propTypes = {
     setLang: PropTypes.func
 }
 
-let stateMap = stateMapsFactory('LangSelector');
-let dispatchMap = dispatchMapsFactory('LangSelector');
-export default connect(stateMap, dispatchMap)(LangSelector);
+export default createStoreConnectedComponent(LangSelector);

@@ -4,9 +4,7 @@ import LangSelector from '../LangSelector/LangSelector';
 import {ReactComponent as TelegramIcon} from '../../content/images/icons/telegram_icon.svg';
 import {ReactComponent as FacebookIcon} from '../../content/images/icons/facebook_icon.svg';
 import {ReactComponent as InstagramIcon} from '../../content/images/icons/instagram_icon.svg';
-import stateMapsFactory from '../../store/stateMaps';
-import dispatchMapsFactory from '../../store/dispatchMaps';
-import {connect} from 'react-redux';
+import {createStoreConnectedComponent} from '../../store/connector';
 import {LANG_PACK} from '../../langPack';
 import './MenuItemsBlock.scss';
 
@@ -35,6 +33,4 @@ MenuItemsBlock.propTypes = {
     lang: PropTypes.string
 }
 
-let stateMap = stateMapsFactory('MenuItemsBlock');
-let dispatchMap = dispatchMapsFactory('MenuItemsBlock');
-export default connect(stateMap, dispatchMap)(MenuItemsBlock);
+export default createStoreConnectedComponent(MenuItemsBlock);

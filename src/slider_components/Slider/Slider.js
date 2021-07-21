@@ -3,10 +3,9 @@ import Slide, {PREV_SLIDE, CURRENT_SLIDE, NEXT_SLIDE} from '../Slide/Slide';
 import DotsBlock from '../DotsBlock/DotsBlock';
 import Arrow, {TO_LEFT_ARROW, TO_RIGHT_ARROW} from '../Arrow/Arrow';
 import PropTypes from 'prop-types';
-import stateMapsFactory from '../../store/stateMaps';
-import dispatchMapsFactory from '../../store/dispatchMaps';
-import {connect} from 'react-redux';
 import './Slider.scss';
+
+import {createStoreConnectedComponent} from "../../store/connector";
 
 function Slider({sliderData}) {
     let [index, setIndex] = useState(0);
@@ -78,6 +77,4 @@ Slider.propTypes = {
     sliderData: PropTypes.array
 }
 
-let stateMap = stateMapsFactory('Slider');
-let dispatchMap = dispatchMapsFactory('Slider');
-export default connect(stateMap, dispatchMap)(Slider);
+export default createStoreConnectedComponent(Slider);

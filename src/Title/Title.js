@@ -2,9 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {ReactComponent as Pin} from '../content/images/icons/pin.svg';
 import {LANG_PACK} from '../langPack';
-import stateMapsFactory from '../store/stateMaps';
-import dispatchMapsFactory from '../store/dispatchMaps';
-import {connect} from 'react-redux';
+import {createStoreConnectedComponent} from '../store/connector';
 import './Title.scss';
 
 function Title({lang, city}) {
@@ -40,6 +38,4 @@ Title.propTypes = {
     city: PropTypes.string
 }
 
-let stateMap = stateMapsFactory('Title');
-let dispatchMap = dispatchMapsFactory('Title');
-export default connect(stateMap, dispatchMap)(Title);
+export default createStoreConnectedComponent(Title);

@@ -2,9 +2,7 @@ import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
 import {HashRouter, Switch, Route} from 'react-router-dom';
 import MainPage from './MainPage/MainPage';
-import dispatchMapsFactory from './store/dispatchMaps';
-import stateMapsFactory from './store/stateMaps';
-import {connect} from 'react-redux';
+import {createStoreConnectedComponent} from './store/connector';
 import {RUS, ENG, LS_LANG_KEY} from './settings';
 
 function App({lang, setLang, defineCity}) {
@@ -34,6 +32,4 @@ App.propTypes = {
     defineCity: PropTypes.func
 }
 
-let stateMap = stateMapsFactory('App');
-let dispatchMap = dispatchMapsFactory('App');
-export default connect(stateMap, dispatchMap)(App);
+export default createStoreConnectedComponent(App);
