@@ -21,12 +21,12 @@ function Menu() {
     let handleMenuButtonClick = () => setOpened(menuOpened => !menuOpened);
 
     return (
-        <div className="menu">
+        <section className="menu">
             <MenuButton hasOpened={opened} handleClick={handleMenuButtonClick}/>
             <h1 className="menu__title">Need for drive</h1>
             <MenuItemsBlock hasOpened={opened}/>
             <LangSelector/>
-        </div>
+        </section>
     );
 }
 
