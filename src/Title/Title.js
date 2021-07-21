@@ -12,7 +12,7 @@ function Title({lang, city}) {
     let currentYear = (new Date()).getFullYear();
 
     return (
-        <div className="title">
+        <section className="title">
             <header className="title__header">
                 <span className="title__small_service_title">Need for drive</span>
                 {city && <span className="title__city"><Pin/>{city}</span>}
@@ -31,7 +31,7 @@ function Title({lang, city}) {
                     8(495)234-22-44
                 </a>
             </footer>
-        </div>
+        </section>
     )
 }
 
