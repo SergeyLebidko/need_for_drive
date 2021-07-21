@@ -11,7 +11,6 @@
   }
 }
 
-// Стили для верхнего блока
 .title__header {
   display: flex;
   width: 100%;
@@ -39,7 +38,6 @@
   }
 }
 
-// Блок по середине, с крупным названием сервиса и слоганом
 .title__main {
   width: 100%;
   display: flex;
@@ -73,7 +71,6 @@
   color: $gray;
 }
 
-// Кнопка бронирования
 .title__reservation_button {
   @extend %button_preset;
   background-image: $default-gradient;
@@ -87,7 +84,6 @@
   }
 }
 
-// Нижний блок: для копирайта и телефона
 .title__footer {
   width: 100%;
   display: flex;
@@ -121,16 +117,18 @@
     padding: ($step * 2) ($step * 4);
   }
 
-  .title__service_name, .title__big_service_title {
-    margin: 0 ($step * 4);
-  }
+  .title__main {
+    .title__service_name, .title__big_service_title {
+      margin: 0 ($step * 4);
+    }
 
-  .title__slogan {
-    margin: ($step * 2) ($step * 4) ($step * 4);
-  }
+    .title__slogan {
+      margin: ($step * 2) ($step * 4) ($step * 4);
+    }
 
-  .title__reservation_button {
-    margin-left: $step * 4;
+    .title__reservation_button {
+      margin-left: $step * 4;
+    }
   }
 
   .title__footer {
@@ -176,16 +174,18 @@
     padding: ($step * 4) ($step * 6);
   }
 
-  .title__service_name, .title__big_service_title {
-    margin: 0 ($step * 6);
-  }
+  .title__main {
+    .title__service_name, .title__big_service_title {
+      margin: 0 ($step * 6);
+    }
 
-  .title__slogan {
-    margin: ($step * 4) ($step * 6) ($step * 6);
-  }
+    .title__slogan {
+      margin: ($step * 4) ($step * 6) ($step * 6);
+    }
 
-  .title__reservation_button {
-    margin-left: $step * 6
+    .title__reservation_button {
+      margin-left: $step * 6
+    }
   }
 
   .title__footer {
