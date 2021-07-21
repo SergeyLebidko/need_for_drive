@@ -62,9 +62,11 @@ function Slider({sliderData}) {
 
     return (
         <section className="slider">
-            {currentSlidesData.map(
-                slideData => <Slide key={slideData.image} slideData={slideData}/>
-            )}
+            {sliderData.length > 0 ?
+                currentSlidesData.map(slideData => <Slide key={slideData.image} slideData={slideData}/>)
+                :
+                ''
+            }
             <Arrow direction={TO_LEFT_ARROW} handleClick={handleLeftArrowClick}/>
             <Arrow direction={TO_RIGHT_ARROW} handleClick={handleRightArrowClick}/>
             <DotsBlock dotsCount={sliderData.length} currentIndex={index} handleClick={handleDotClick}/>
