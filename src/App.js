@@ -10,6 +10,9 @@ function App({lang, setLang, defineCity}) {
     // При монтировании приложения - ищем языковую настройку в local storage и, если нашли - применяем её
     useEffect(() => {
         let lang = localStorage.getItem(LS_LANG_KEY);
+
+        console.log('App', lang);
+
         if (lang === RUS || lang === ENG) setLang(lang);
     }, []);
 

@@ -9,7 +9,12 @@ import {LANG_PACK} from '../../langPack';
 import './MenuItemsBlock.scss';
 
 function MenuItemsBlock({hasOpened, lang}) {
+    console.log('lang', lang);
+    console.log('LANG PACK', LANG_PACK);
+
     let {menuItems} = LANG_PACK['MenuItemsBlock'][lang];
+
+    console.log('menuItems', menuItems);
 
     let classNames = 'menu_items_block' + (hasOpened ? ' menu_items_block_visible' : '');
 

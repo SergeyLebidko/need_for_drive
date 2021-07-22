@@ -6,8 +6,8 @@ export const GEO_API_KEY = 'b322506c01afde93ab2d13340a578f4e55814d53';
 export const LS_LANG_KEY = 'lang_key'
 
 // Константы для хранения текущего языка
-export const RUS = 'RUS';
-export const ENG = 'ENG';
+export const RUS = 'ru';
+export const ENG = 'en';
 
 export const LANG_SWITCHER_MAP = {
     [RUS]: ENG,
