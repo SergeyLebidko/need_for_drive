@@ -24,4 +24,4 @@ MainPage.propTypes = {
     setSliderData: PropTypes.func
 }
 
-export default createStoreConnectedComponent(MainPage);
+export default createStoreConnectedComponent('MainPage')(MainPage);

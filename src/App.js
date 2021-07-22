@@ -32,4 +32,4 @@ App.propTypes = {
     defineCity: PropTypes.func
 }
 
-export default createStoreConnectedComponent(App);
+export default createStoreConnectedComponent('App')(App);

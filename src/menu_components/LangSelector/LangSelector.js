@@ -26,4 +26,4 @@ LangSelector.propTypes = {
     setLang: PropTypes.func
 }
 
-export default createStoreConnectedComponent(LangSelector);
+export default createStoreConnectedComponent('LangSelector')(LangSelector);

@@ -38,4 +38,4 @@ Title.propTypes = {
     city: PropTypes.string
 }
 
-export default createStoreConnectedComponent(Title);
+export default createStoreConnectedComponent('Title')(Title);

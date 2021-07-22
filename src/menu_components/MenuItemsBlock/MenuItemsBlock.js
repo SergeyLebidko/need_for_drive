@@ -32,4 +32,4 @@ MenuItemsBlock.propTypes = {
     lang: PropTypes.string
 }
 
-export default createStoreConnectedComponent(MenuItemsBlock);
+export default createStoreConnectedComponent('MenuItemsBlock')(MenuItemsBlock);

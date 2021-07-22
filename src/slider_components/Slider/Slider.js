@@ -77,4 +77,4 @@ Slider.propTypes = {
     sliderData: PropTypes.array
 }
 
-export default createStoreConnectedComponent(Slider);
+export default createStoreConnectedComponent('Slider')(Slider);
