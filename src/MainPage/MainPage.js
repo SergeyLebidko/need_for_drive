@@ -16,7 +16,7 @@ function MainPage({lang, setSliderData}) {
             <Title/>
             <Slider/>
         </div>
-    )
+    );
 }
 
 MainPage.propTypes = {
