@@ -23,8 +23,8 @@ function App({lang, setLang, defineCity}) {
         <HashRouter>
             <Switch>
                 <Route exact path="/" component={MainPage}/>
-                <Route path="/order" component={OrderCreator}/>
                 <Route path="/order/:orderId" component={OrderViewer}/>
+                <Route path="/order" component={OrderCreator}/>
             </Switch>
         </HashRouter>
     );
