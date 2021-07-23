@@ -1,0 +1,13 @@
+@import '../../styles/vars';
+
+.order_creator {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: $tablet-start) {
+  .order_creator {
+    flex-direction: row;
+  }
+}
