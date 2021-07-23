@@ -8,7 +8,7 @@ function OrderCreator() {
     return (
         <div className="order_creator">
             <Menu/>
-            <section>
+            <section className="order_creator__content">
                 <PageHeader/>
                 <TabControl/>
             </section>

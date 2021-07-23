@@ -6,6 +6,10 @@
   flex-direction: column;
 }
 
+.order_creator__content {
+  flex: 1;
+}
+
 @media (min-width: $tablet-start) {
   .order_creator {
     flex-direction: row;

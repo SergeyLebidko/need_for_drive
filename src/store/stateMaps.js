@@ -12,6 +12,10 @@ function stateMapsFactory(component) {
             return state => ({
                 lang: state.lang,
             });
+        case 'PageHeader':
+            return state => ({
+                city: state.city
+            });
         case 'Slider':
             return state => ({
                 sliderData: state.sliderData
