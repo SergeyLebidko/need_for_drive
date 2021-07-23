@@ -1,13 +1,17 @@
 import React from 'react';
 import Menu from '../../common_components/menu_components/Menu/Menu';
-import CreatorContent from '../CreatorContent/CreatorContent';
+import PageHeader from '../../common_components/PageHeader/PageHeader';
+import TabControl from '../TabControl/TabControl';
 import './OrderCreator.scss';
 
-function OrderCreator(){
+function OrderCreator() {
     return (
         <div className="order_creator">
             <Menu/>
-            <CreatorContent/>
+            <section>
+                <PageHeader/>
+                <TabControl/>
+            </section>
         </div>
     )
 }

@@ -3,7 +3,7 @@ import './PageHeader.scss';
 
 function PageHeader(){
     return (
-        <header>
+        <header className="page_header">
             Need for car
         </header>
     );
