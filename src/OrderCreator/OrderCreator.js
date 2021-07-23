@@ -1,10 +1,12 @@
 import React from 'react';
+import Menu from '../menu_components/Menu/Menu';
 import './OrderCreator.scss';
 
 function OrderCreator(){
     return (
-        <div>
-            Здесь будет форма создания заказа
+        <div className="order_creator">
+            <Menu/>
+            <section>Здесь будет контент</section>
         </div>
     )
 }
