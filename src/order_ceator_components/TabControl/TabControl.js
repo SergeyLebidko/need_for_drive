@@ -20,7 +20,7 @@ function TabControl() {
     let TabComponent = TAB_SELECTOR[mode];
     return (
         <div>
-            <TabTitles setMode={setMode}/>
+            <TabTitles mode={mode} setMode={setMode}/>
             <div>
                 <OrderDetails/>
                 <TabComponent/>

@@ -16,6 +16,10 @@
 
   &__tab_title {
     position: relative;
+
+    span:hover {
+      cursor: pointer;
+    }
   }
 
   &__tab_title::after {
@@ -29,4 +33,16 @@
   &__tab_title + &__tab_title {
     margin-top: $step * 2;
   }
+}
+
+.disabled_title {
+  color: $gray;
+}
+
+.available_title {
+  color: $black;
+}
+
+.selected_title {
+  color: $main-accent;
 }
