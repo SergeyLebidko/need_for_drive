@@ -1,0 +1,32 @@
+@import '../../styles/vars';
+
+.tab_titles {
+  border-bottom: 1px solid $gray-light;
+  padding: $step * 2;
+
+  &__content {
+    max-width: $content-width;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  &__tab_title {
+    position: relative;
+  }
+
+  &__tab_title::after {
+    content: '\25BC';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  &__tab_title + &__tab_title {
+    margin-top: $step * 2;
+  }
+}

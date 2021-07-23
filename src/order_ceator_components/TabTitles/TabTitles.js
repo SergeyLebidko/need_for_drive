@@ -11,18 +11,18 @@ function TabTitles({setMode}) {
     let handleTotalTabChoice = () => setMode(TOTAL_MODE);
 
     return (
-        <div>
-            <ul>
-                <li onClick={handleLocationTabChoice}>
+        <div className="tab_titles">
+            <ul className="tab_titles__content">
+                <li className="tab_titles__tab_title" onClick={handleLocationTabChoice}>
                     Местоположение
                 </li>
-                <li onClick={handleModelTabChoice}>
+                <li className="tab_titles__tab_title" onClick={handleModelTabChoice}>
                     Модель
                 </li>
-                <li onClick={handleExtraTabChoice}>
+                <li className="tab_titles__tab_title" onClick={handleExtraTabChoice}>
                     Дополнительно
                 </li>
-                <li onClick={handleTotalTabChoice}>
+                <li className="tab_titles__tab_title" onClick={handleTotalTabChoice}>
                     Итого
                 </li>
             </ul>

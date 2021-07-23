@@ -33,8 +33,10 @@ function TabControl() {
     return (
         <div>
             <TabTitles setMode={setMode}/>
-            <OrderDetails/>
-            {content}
+            <div>
+                <OrderDetails/>
+                {content}
+            </div>
         </div>
     )
 }
