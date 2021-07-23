@@ -8,16 +8,15 @@ import TabTitles from '../TabTitles/TabTitles';
 import {LOCATION_MODE, MODEL_MODE, EXTRA_MODE, TOTAL_MODE} from '../../settings';
 import './TabControl.scss';
 
-const TAB_SELECTOR = {
-    [LOCATION_MODE]: LocationTab,
-    [MODEL_MODE]: ModelTab,
-    [EXTRA_MODE]: ExtraTab,
-    [TOTAL_MODE]: TotalTab
-}
-
 function TabControl() {
     let [mode, setMode] = useState(LOCATION_MODE);
 
+    const TAB_SELECTOR = {
+        [LOCATION_MODE]: LocationTab,
+        [MODEL_MODE]: ModelTab,
+        [EXTRA_MODE]: ExtraTab,
+        [TOTAL_MODE]: TotalTab
+    }
     let TabComponent = TAB_SELECTOR[mode];
     return (
         <div>
