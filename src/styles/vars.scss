@@ -1,0 +1,50 @@
+// Основные цвета
+$main-accent: hsla(148, 87%, 41%, 1);
+$main-accent-opacity: hsla(148, 87%, 41%, 0.3);
+$black: hsla(0, 0%, 7%, 1);
+$black-opacity: hsla(0, 0%, 7%, 0.9);
+$gray: hsla(0, 0%, 60%, 1);
+$gray-light: hsla(0, 0%, 93%, 1);
+$white: hsl(0, 0%, 100%);
+
+// Основные градиенты
+$default-gradient: linear-gradient(90deg, hsla(148, 87%, 41%, 1) 2.61%, hsla(158, 97%, 32%, 1) 112.6%);
+$hover_gradient: linear-gradient(90deg, hsla(148, 87%, 31%, 1) 2.61%, hsla(158, 97%, 22%, 1) 112.6%);
+$active-gradient: linear-gradient(90deg, hsla(148, 87%, 21%, 1) 2.61%, hsla(158, 97%, 12%, 1) 112.6%);
+$focus-gradient: linear-gradient(90deg, hsla(148, 87%, 31%, 1) 2.61%, hsla(158, 97%, 22%, 1) 112.6%);
+
+// Дополнительные градиенты
+$dark-green-gradient: linear-gradient(90deg, hsla(169, 58%, 18%, 1) 0%, hsla(128, 83%, 26%, 1) 100%);
+$dark-green-gradient-hover: linear-gradient(90deg, hsla(169, 58%, 8%, 1) 0%, hsla(128, 83%, 16%, 1) 100%);
+$dark-green-gradient-active: linear-gradient(90deg, hsla(169, 58%, 0%, 1) 0%, hsla(128, 83%, 6%, 1) 100%);
+
+$teal-gradient: linear-gradient(90deg, hsla(216, 58%, 18%, 1) 0%, hsla(169, 83%, 26%, 1) 100%);
+$teal-gradient-hover: linear-gradient(90deg, hsla(216, 58%, 8%, 1) 0%, hsla(169, 83%, 16%, 1) 100%);
+$teal-gradient-active: linear-gradient(90deg, hsla(216, 58%, 0%, 1) 0%, hsla(169, 83%, 6%, 1) 100%);
+
+$brown-gradient: linear-gradient(90deg, hsla(32, 58%, 18%, 1) 0%, hsla(335, 83%, 26%, 1) 100%);
+$brown-gradient-hover: linear-gradient(90deg, hsla(32, 58%, 8%, 1) 0%, hsla(335, 83%, 16%, 1) 100%);
+$brown-gradient-active: linear-gradient(90deg, hsla(32, 58%, 0%, 1) 0%, hsla(335, 83%, 6%, 1) 100%);
+
+$purple-gradient: linear-gradient(90deg, hsla(263, 58%, 18%, 1) 0%, hsla(295, 83%, 26%, 1) 100%);
+$purple-gradient-hover: linear-gradient(90deg, hsla(263, 58%, 8%, 1) 0%, hsla(295, 83%, 16%, 1) 100%);
+$purple-gradient-active: linear-gradient(90deg, hsla(263, 58%, 0%, 1) 0%, hsla(295, 83%, 6%, 1) 100%);
+
+// Радиус для границ элементов
+$main-radius: 8px;
+$small-radius: 4px;
+
+// Контрольные точки для медиазапросов
+$mobile-start: 320px;
+$mobile-end: 767px;
+
+$tablet-start: 768px;
+$tablet-end: 1023px;
+
+$desktop-min-start: 1024px;
+$desktop-min-end: 1439px;
+
+$desktop-start: 1440px;
+
+// Минимальный шаг сетки
+$step: 8px;

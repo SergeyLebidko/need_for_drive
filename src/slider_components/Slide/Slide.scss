@@ -1,0 +1,47 @@
+@import '../../styles/vars';
+@import '../../styles/buttons';
+
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-position: center center;
+  background-size: cover;
+  transition: all 300ms;
+}
+
+.prev_slide {
+  transform: translateX(-100%);
+}
+
+.next_slide {
+  transform: translateX(100%);
+}
+
+.slide__text_block {
+  position: absolute;
+  top: 25vh;
+  left: $step * 8;
+  width: 70%;
+
+  .slide__description {
+    margin-top: $step;
+  }
+
+  .slide__button {
+    margin-top: $step * 4;
+  }
+}
+
+.slide__title {
+  font-size: 2.5em;
+  color: $white;
+}
+
+.slide__description {
+  font-weight: 300;
+  font-size: 1.5em;
+  color: $white;
+}

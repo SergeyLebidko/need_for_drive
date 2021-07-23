@@ -1,0 +1,43 @@
+@import '../../styles/vars';
+@import '../LangSelector/LangSelector';
+
+.menu {
+  display: flex;
+  align-items: center;
+  background-color: $white;
+  min-height: $step * 8;
+  padding: $step ($step * 2);
+
+  &__title {
+    margin-left: auto;
+  }
+
+  > .lang_selector {
+    display: none;
+  }
+}
+
+.menu__title {
+  font-weight: bold;
+  font-size: 2em;
+  color: $main-accent;
+}
+
+@media (min-width: $tablet-start) {
+  .menu {
+    flex-direction: column;
+    width: $step * 8;
+    min-height: 100%;
+    background-color: $black;
+    padding: $step;
+
+    &__title {
+      display: none;
+    }
+
+    > .lang_selector {
+      margin-top: auto;
+      display: block;
+    }
+  }
+}
