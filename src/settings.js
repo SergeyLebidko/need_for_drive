@@ -13,3 +13,9 @@ export const LANG_SWITCHER_MAP = {
     [RUS]: ENG,
     [ENG]: RUS
 }
+
+// Константы для работы с вкладками при создании заказа
+export const LOCATION_MODE = 'lm';
+export const MODEL_MODE = 'mm';
+export const EXTRA_MODE = 'em';
+export const TOTAL_MODE = 'tm';

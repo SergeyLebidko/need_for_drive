@@ -4,12 +4,10 @@ import LocationTab from '../LocationTab/LocationTab';
 import ModelTab from '../ModelTab/ModelTab';
 import ExtraTab from '../ExtraTab/ExtraTab';
 import TotalTab from '../TotalTab/TotalTab';
+import TabTitles from '../TabTitles/TabTitles';
+import {LOCATION_MODE, MODEL_MODE, EXTRA_MODE, TOTAL_MODE} from '../settings';
 import './TabControl.scss';
 
-const LOCATION_MODE = 'lm';
-const MODEL_MODE = 'mm';
-const EXTRA_MODE = 'em';
-const TOTAL_MODE = 'tm';
 
 function TabControl() {
     let [mode, setMode] = useState(LOCATION_MODE);
@@ -34,6 +32,7 @@ function TabControl() {
 
     return (
         <div>
+            <TabTitles setMode={setMode}/>
             <OrderDetails/>
             {content}
         </div>
