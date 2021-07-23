@@ -1,13 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {withRouter} from 'react-router-dom';
 import {ReactComponent as Pin} from '../content/images/icons/pin.svg';
 import {LANG_PACK} from '../langPack';
 import {createStoreConnectedComponent} from '../store/connector';
 import './Title.scss';
 
-function Title({lang, city}) {
+function Title({lang, city, history}) {
     let {serviceName, slogan, reservationButton} = LANG_PACK['Title'][lang];
     let currentYear = (new Date()).getFullYear();
+
+    let handleReservationButtonClick = () => history.push('/order');
 
     return (
         <section className="title">
@@ -19,7 +22,12 @@ function Title({lang, city}) {
                 <h1 className="title__service_name">{serviceName}</h1>
                 <h1 className="title__big_service_title">Need for drive</h1>
                 <h3 className="title__slogan">{slogan}</h3>
-                <button className="button button_main_accent title__reservation_button">{reservationButton}</button>
+                <button
+                    className="button button_main_accent title__reservation_button"
+                    onClick={handleReservationButtonClick}
+                >
+                    {reservationButton}
+                </button>
             </main>
             <footer className="title__footer">
                 <span className="title__copyright">
@@ -35,7 +43,8 @@ function Title({lang, city}) {
 
 Title.propTypes = {
     lang: PropTypes.string,
-    city: PropTypes.string
+    city: PropTypes.string,
+    history: PropTypes.func
 }
 
-export default createStoreConnectedComponent('Title')(Title);
+export default createStoreConnectedComponent('Title')(withRouter(Title));
