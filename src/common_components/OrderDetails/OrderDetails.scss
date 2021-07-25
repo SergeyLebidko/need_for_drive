@@ -1,4 +1,5 @@
 @import '../../styles/vars';
+@import '../../styles/buttons';
 
 .order_details {
   border-top: 1px solid $gray-light;
@@ -11,8 +12,9 @@
   }
 
   &__parameter_list {
-    padding: ($step * 2) 0;
+    padding: ($step * 4) 0;
     width: 100%;
+    font-size: 0.9em;
   }
 
   &__parameter {
@@ -34,6 +36,27 @@
   &__parameter_value {
     color: $gray;
     text-align: right;
+  }
+
+  &__button {
+    width: 100%;
+  }
+}
+
+@media (min-width: $tablet-start) {
+  .order_details {
+    &__parameter_list {
+      font-size: 1em;
+    }
+  }
+}
+
+@media (min-width: $tablet-start) and (max-width: $tablet-end) {
+  .order_details {
+    &__button {
+      width: initial;
+      float: right;
+    }
   }
 }
 

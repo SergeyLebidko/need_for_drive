@@ -1,7 +1,15 @@
 import React from 'react';
+import classNames from 'classnames';
 import './OrderDetails.scss';
 
 function OrderDetails() {
+    let buttonClasses = classNames({
+        'button': true,
+        'button_gray_light': true,
+        'button_main_round_border': true,
+        'order_details__button': true
+    });
+
     return (
         <div className="order_details">
             <header className="order_details__header">Ваш заказ</header>
@@ -16,7 +24,9 @@ function OrderDetails() {
                     </span>
                 </li>
             </ul>
-            <button></button>
+            <button className={buttonClasses} disabled>
+                Выбрать модель
+            </button>
         </div>
     );
 }
