@@ -40,6 +40,12 @@
     font-weight: 300;
   }
 
+  &__price {
+    display: block;
+    font-size: 1.2em;
+    margin-bottom: $step * 4;
+  }
+
   &__button {
     width: 100%;
   }

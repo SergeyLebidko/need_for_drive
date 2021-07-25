@@ -24,6 +24,7 @@ function OrderDetails() {
                     </span>
                 </li>
             </ul>
+            <span className="order_details__price">Цена: от 8 000 до 12 000 &#8381;</span>
             <button className={buttonClasses} disabled>
                 Выбрать модель
             </button>
