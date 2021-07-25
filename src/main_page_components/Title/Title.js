@@ -44,7 +44,7 @@ function Title({lang, city, history}) {
 Title.propTypes = {
     lang: PropTypes.string,
     city: PropTypes.string,
-    history: PropTypes.func
+    history: PropTypes.object
 }
 
 export default createStoreConnectedComponent('Title')(withRouter(Title));

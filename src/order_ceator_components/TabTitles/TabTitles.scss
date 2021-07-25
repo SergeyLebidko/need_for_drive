@@ -22,16 +22,18 @@
     }
   }
 
-  &__tab_title::after {
+  &__tab_title:not(:last-child)::after {
     content: '\25BC';
     position: absolute;
     top: 100%;
     left: 50%;
     transform: translateX(-50%);
+    color: $gray;
   }
 
   &__tab_title + &__tab_title {
     margin-top: $step * 2;
+    margin-left: 0;
   }
 }
 
@@ -45,4 +47,38 @@
 
 .selected_title {
   color: $main-accent;
+}
+
+@media (min-width: $tablet-start) {
+  .tab_titles {
+    &__content {
+      flex-direction: row;
+    }
+
+    &__tab_title:not(:last-child)::after {
+      content: '\25BA';
+      position: absolute;
+      top: 50%;
+      left: 100%;
+      transform: translate($step, -50%);
+      color: $gray;
+    }
+
+    &__tab_title + &__tab_title {
+      margin-top: 0;
+      margin-left: $step * 4;
+    }
+  }
+}
+
+@media (min-width: $tablet-start) and (max-width: $desktop-min-end) {
+  .tab_titles {
+    padding: ($step * 2) ($step * 4);
+  }
+}
+
+@media (min-width: $desktop-start) {
+  .tab_titles {
+    padding: ($step * 2) ($step * 6);
+  }
 }
