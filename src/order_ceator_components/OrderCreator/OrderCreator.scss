@@ -1,5 +1,4 @@
 @import '../../styles/vars';
-@import '../TabControl/TabControl';
 
 .order_creator {
   min-height: 100vh;
@@ -11,10 +10,6 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-
-    .tab_control {
-      flex: 1;
-    }
   }
 }
 

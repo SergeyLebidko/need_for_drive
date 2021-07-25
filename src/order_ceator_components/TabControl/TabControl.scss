@@ -5,6 +5,7 @@
 @import '../tab_components/TotalTab/TotalTab';
 
 .tab_control {
+  flex: 1;
   display: flex;
   flex-direction: column;
 
@@ -29,8 +30,6 @@
 @media (min-width: $tablet-start) {
   .tab_control {
     &__content_wrapper {
-      flex: 1;
-      display: flex;
       justify-content: center;
     }
 
