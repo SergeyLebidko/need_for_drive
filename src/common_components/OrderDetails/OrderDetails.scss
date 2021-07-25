@@ -24,6 +24,7 @@
 
   &__parameter_name {
     color: $black;
+    font-weight: 300;
   }
 
   &__spacer {
@@ -36,6 +37,7 @@
   &__parameter_value {
     color: $gray;
     text-align: right;
+    font-weight: 300;
   }
 
   &__button {
