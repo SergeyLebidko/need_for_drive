@@ -4,8 +4,14 @@
   padding: $step * 2;
 }
 
-@media (min-width: $tablet-start) {
+@media (min-width: $tablet-start) and (max-width: $tablet-end) {
   .total_tab {
-    padding: ($step * 2) 0;
+    padding: ($step * 2) ($step * 4);
+  }
+}
+
+@media (min-width: $desktop-min-start) {
+  .total_tab {
+    padding: ($step * 2) ($step * 2) ($step * 2) 0;
   }
 }

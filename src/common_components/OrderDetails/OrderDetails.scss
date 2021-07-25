@@ -4,13 +4,42 @@
   border-top: 1px solid $gray-light;
   border-left: none;
   padding: $step * 2;
+
+  &__header {
+    text-align: right;
+  }
+
+  &__parameter_list {
+    padding: ($step * 2) 0;
+    width: 100%;
+  }
+
+  &__parameter {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__parameter_name {
+    color: $black;
+  }
+
+  &__spacer {
+    flex: 1;
+    border-bottom: 1px dotted $gray;
+    min-width: $step * 4;
+    margin: 0 $step;
+  }
+
+  &__parameter_value {
+    color: $gray;
+    text-align: right;
+  }
 }
 
-@media (min-width: $tablet-start) {
+@media (min-width: $desktop-min-start) {
   .order_details {
     border-top: none;
     border-left: 1px solid $gray-light;
-    width: $step * 35;
-    padding: $step * 2;
+    padding: ($step * 2) 0 ($step * 2) ($step * 2);
   }
 }
