@@ -19,11 +19,13 @@ function TabControl() {
     }
     let TabComponent = TAB_SELECTOR[mode];
     return (
-        <div>
+        <div className="tab_control">
             <TabTitles mode={mode} setMode={setMode}/>
-            <div>
-                <OrderDetails/>
-                <TabComponent/>
+            <div className="tab_control__content_wrapper">
+                <div className="tab_control__content">
+                    <TabComponent/>
+                    <OrderDetails/>
+                </div>
             </div>
         </div>
     )

@@ -1,0 +1,16 @@
+@import '../../styles/vars';
+
+.order_details {
+  border-top: 1px solid $gray-light;
+  border-left: none;
+  padding: $step * 2;
+}
+
+@media (min-width: $tablet-start) {
+  .order_details {
+    border-top: none;
+    border-left: 1px solid $gray-light;
+    width: $step * 35;
+    padding: $step * 2;
+  }
+}

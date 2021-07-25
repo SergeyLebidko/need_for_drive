@@ -1,0 +1,11 @@
+@import '../../../styles/vars';
+
+.location_tab {
+  padding: $step * 2;
+}
+
+@media (min-width: $tablet-start) {
+  .location_tab {
+    padding: ($step * 2) 0;
+  }
+}

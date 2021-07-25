@@ -1,9 +1,9 @@
 import React from 'react';
 import './OrderDetails.scss';
 
-function OrderDetails(){
+function OrderDetails() {
     return (
-        <div>
+        <div className="order_details">
             Здесь блок с деталями заказа
         </div>
     );

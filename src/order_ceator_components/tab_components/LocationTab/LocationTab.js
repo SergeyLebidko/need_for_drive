@@ -3,7 +3,7 @@ import './LocationTab.scss';
 
 function LocationTab() {
     return (
-        <div>
+        <div className="location_tab">
             Это вкладка с данными о местоположении автомобиля
         </div>
     )

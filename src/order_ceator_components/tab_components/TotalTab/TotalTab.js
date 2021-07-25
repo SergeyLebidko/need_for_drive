@@ -3,7 +3,7 @@ import './TotalTab.scss';
 
 function TotalTab(){
     return (
-        <div>
+        <div className="total_tab">
             Это вкладка с итоговыми данными заказа
         </div>
     )

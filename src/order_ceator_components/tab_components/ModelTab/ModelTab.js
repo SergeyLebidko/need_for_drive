@@ -3,7 +3,7 @@ import './ModelTab.scss';
 
 function ModelTab(){
     return (
-        <div>
+        <div className="model_tab">
             Это вкладка с элементами для выбора модели
         </div>
     )

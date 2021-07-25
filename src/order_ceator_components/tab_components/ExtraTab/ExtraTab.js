@@ -3,7 +3,7 @@ import './ExtraTab.scss';
 
 function ExtraTab() {
     return (
-        <div>
+        <div className="extra_tab">
             Это вкладка с дополнительными параметрами заказа
         </div>
     )
