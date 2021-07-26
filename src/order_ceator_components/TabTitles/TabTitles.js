@@ -1,29 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import {LOCATION_MODE, MODEL_MODE, EXTRA_MODE, TOTAL_MODE} from '../../settings';
+import {TOTAL_MODE} from '../../settings';
+import {createStoreConnectedComponent} from '../../store/connector';
 import './TabTitles.scss';
 
-function TabTitles({mode, setMode}) {
-    const itemsData = [
-        {
-            title: 'Местоположение',
-            boundMode: LOCATION_MODE
-        },
-        {
-            title: 'Модель',
-            boundMode: MODEL_MODE
-        },
-        {
-            title: 'Дополнительно',
-            boundMode: EXTRA_MODE
-        },
-        {
-            title: 'Итого',
-            boundMode: TOTAL_MODE
-        }
-    ];
-
+function TabTitles({tabItemsData, mode, setMode}) {
     let checkAccessibilityMode = nextMode => {
         /*
             TODO Заменить код функции при реализации функциональности
@@ -58,15 +40,16 @@ function TabTitles({mode, setMode}) {
     return (
         <div className="tab_titles">
             <ul className="tab_titles__content">
-                {itemsData.map(item => createItemJSX(item))}
+                {tabItemsData.map(item => createItemJSX(item))}
             </ul>
         </div>
     )
 }
 
 TabTitles.propTypes = {
+    tabItemsData: PropTypes.array,
     setMode: PropTypes.func,
     mode: PropTypes.string
 }
 
-export default TabTitles;
+export default createStoreConnectedComponent('TabTitles')(TabTitles);

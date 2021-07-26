@@ -55,3 +55,11 @@ export function setSliderData(sliderData) {
         sliderData
     }
 }
+
+// Создатель действия для установки списка вкладок страницы оформления заказа
+export function setTabItemsData(tabItemsData) {
+    return {
+        type: act.SET_TAB_ITEMS_DATA,
+        tabItemsData
+    }
+}

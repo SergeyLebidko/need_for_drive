@@ -20,6 +20,10 @@ function stateMapsFactory(component) {
             return state => ({
                 sliderData: state.sliderData
             });
+        case 'TabTitles':
+            return state => ({
+                tabItemsData: state.tabItemsData
+            });
         default:
             return null;
     }

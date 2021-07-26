@@ -27,3 +27,12 @@ export function sliderData(state = [], action) {
             return state;
     }
 }
+
+export function tabItemsData(state = [], action) {
+    switch (action.type) {
+        case act.SET_TAB_ITEMS_DATA:
+            return action.tabItemsData;
+        default:
+            return state;
+    }
+}
