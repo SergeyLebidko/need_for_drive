@@ -1,0 +1,52 @@
+@import '../../styles/vars';
+@import '../../styles/inputs';
+
+.place_form {
+  &__form_row {
+    margin: ($step * 2) 0;
+  }
+
+  &__form_label {
+    font-weight: 300;
+    text-align: left;
+    padding: $step 0;
+  }
+
+  &__form_field {
+    input {
+      min-width: calc(100% - 1em);
+    }
+  }
+
+  &__clear_field_button {
+    position: relative;
+    left: -1em;
+    cursor: pointer;
+  }
+}
+
+@media (min-width: $tablet-start) {
+  .place_form {
+    display: table;
+    align-self: flex-start;
+
+    &__form_row {
+      display: table-row;
+    }
+
+    &__form_label {
+      display: table-cell;
+      font-weight: 300;
+      text-align: right;
+      padding: $step ($step * 2) $step 0;
+    }
+
+    &__form_field {
+      display: table-cell;
+
+      input {
+        min-width: 20em;
+      }
+    }
+  }
+}
