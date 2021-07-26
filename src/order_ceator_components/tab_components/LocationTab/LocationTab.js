@@ -1,5 +1,5 @@
 import React from 'react';
-import PlaceForm from '../../../common_components/PlaceForm/PlaceForm';
+import PlaceForm from '../../PlaceForm/PlaceForm';
 import tempMap from '../../../content/images/map.png';
 import './LocationTab.scss';
 
