@@ -1,0 +1,9 @@
+@import 'vars';
+
+.text_input {
+  font-size: 1em;
+  font-weight: 300;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid $gray;
+}
