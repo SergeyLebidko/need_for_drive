@@ -13,6 +13,7 @@
     flex: 1;
     display: flex;
     justify-content: flex-start;
+    padding: 0 ($step * 2);
   }
 
   &__content {
@@ -39,20 +40,18 @@
   }
 }
 
-@media (min-width: $desktop-min-start) and (max-width: $desktop-min-end) {
+@media (min-width: $tablet-start) and (max-width: $desktop-min-end) {
   .tab_control {
-    &__content {
-      margin-left: $step * 4;
-      margin-right: $step * 4;
+    &__content_wrapper {
+      padding: 0 ($step * 4);
     }
   }
 }
 
 @media (min-width: $desktop-start) {
   .tab_control {
-    &__content {
-      margin-left: $step * 6;
-      margin-right: $step * 6;
+    &__content_wrapper {
+      padding: 0 ($step * 6);
     }
   }
 }

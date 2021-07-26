@@ -1,17 +1,12 @@
 @import '../../../styles/vars';
 
 .total_tab {
-  padding: $step * 2;
+  padding-top: $step * 2;
+  padding-right: 0;
 }
 
-@media (min-width: $tablet-start) and (max-width: $tablet-end) {
+@media (min-width: $tablet-start) {
   .total_tab {
-    padding: ($step * 2) ($step * 4);
-  }
-}
-
-@media (min-width: $desktop-min-start) {
-  .total_tab {
-    padding: ($step * 2) ($step * 2) ($step * 2) 0;
+    padding-right: $step * 2;
   }
 }
