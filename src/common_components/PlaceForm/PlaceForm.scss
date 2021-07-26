@@ -25,7 +25,7 @@
   }
 }
 
-@media (min-width: $tablet-start) {
+@media (min-width: $desktop-min-start) {
   .place_form {
     display: table;
     align-self: flex-start;

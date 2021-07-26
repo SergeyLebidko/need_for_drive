@@ -27,7 +27,7 @@
   }
 }
 
-@media (min-width: $desktop-min-start) {
+@media (min-width: $tablet-start) {
   .tab_control {
     &__content_wrapper {
       justify-content: center;
@@ -35,6 +35,13 @@
 
     &__content {
       flex-direction: row;
+    }
+  }
+}
+
+@media (min-width: $desktop-min-start) and (max-width: $desktop-min-end) {
+  .tab_control {
+    &__content {
       margin-left: $step * 4;
       margin-right: $step * 4;
     }

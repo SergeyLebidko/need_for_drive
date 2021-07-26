@@ -8,13 +8,13 @@
 
   &__header {
     text-align: right;
-    font-size: 1.2em;
+    font-weight: bold;
   }
 
   &__parameter_list {
     padding: ($step * 4) 0;
     width: 100%;
-    font-size: 0.9em;
+    font-size: 0.8em;
   }
 
   &__parameter {
@@ -42,7 +42,6 @@
 
   &__price {
     display: block;
-    font-size: 1.2em;
     margin-bottom: $step * 4;
   }
 
@@ -53,25 +52,23 @@
 
 @media (min-width: $tablet-start) {
   .order_details {
-    &__parameter_list {
-      font-size: 1em;
-    }
+    border-top: none;
+    border-left: 1px solid $gray-light;
   }
 }
 
 @media (min-width: $tablet-start) and (max-width: $tablet-end) {
   .order_details {
-    &__button {
-      width: initial;
-      float: right;
-    }
+    padding: ($step * 2) ($step * 4) ($step * 2) ($step * 2);
   }
 }
 
 @media (min-width: $desktop-min-start) {
   .order_details {
-    border-top: none;
-    border-left: 1px solid $gray-light;
     padding: ($step * 2) 0 ($step * 2) ($step * 2);
+
+    &__parameter_list {
+      font-size: 1em;
+    }
   }
 }
