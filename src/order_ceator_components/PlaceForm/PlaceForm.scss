@@ -13,15 +13,18 @@
   }
 
   &__form_field {
+    display: table-cell;
+
     input {
-      min-width: calc(100% - 1em);
+      min-width: 17em;
     }
   }
 
   &__clear_field_button {
     position: relative;
-    left: -1em;
+    top: 1px;
     cursor: pointer;
+    border-bottom: 1px solid $gray;
   }
 }
 
@@ -43,10 +46,6 @@
 
     &__form_field {
       display: table-cell;
-
-      input {
-        min-width: 17em;
-      }
     }
   }
 }
