@@ -12,6 +12,7 @@ function LocationTab() {
                     </div>
                     <div className="location_tab__form_field">
                         <input className="text_input" placeholder="Начните вводить город ..."/>
+                        <span className="location_tab__clear_field_button">&#215;</span>
                     </div>
                 </div>
                 <div className="location_tab__form_row">
@@ -19,7 +20,8 @@ function LocationTab() {
                         Пункт выдачи
                     </div>
                     <div className="location_tab__form_field">
-                        <input className="text_input" placeholder="Начните вводить пунк выдачи ..."/>
+                        <input className="text_input" placeholder="Начните вводить пункт выдачи ..."/>
+                        <span className="location_tab__clear_field_button">&#215;</span>
                     </div>
                 </div>
             </div>

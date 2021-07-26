@@ -22,8 +22,14 @@
 
   &__form_field {
     input {
-      min-width: 100%;
+      min-width: calc(100% - 1em);
     }
+  }
+
+  &__clear_field_button {
+    position: relative;
+    left: -1em;
+    cursor: pointer;
   }
 
   &__map_label {
