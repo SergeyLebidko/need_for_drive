@@ -21,26 +21,30 @@ function TabTitles({tabItemsData, mode, setMode}) {
         setMode(selectedMode);
     }
 
-    let createItemJSX = item => {
-        let hasModeAvailable = checkAccessibilityMode(item.boundMode);
-        let itemClassNames = classNames({
+    let getItemClassNames = boundMode => {
+        let hasModeAvailable = checkAccessibilityMode(boundMode);
+        return classNames({
             'disabled_title': !hasModeAvailable,
-            'available_title': hasModeAvailable && item.boundMode !== mode,
-            'selected_title': hasModeAvailable && item.boundMode === mode
+            'available_title': hasModeAvailable && boundMode !== mode,
+            'selected_title': hasModeAvailable && boundMode === mode
         });
-        return (
-            <li key={item.title} className="tab_titles__tab_title">
-                <span className={itemClassNames} onClick={() => handleChangeMode(item.boundMode)}>
-                    {item.title}
-                </span>
-            </li>
-        );
     }
 
     return (
         <div className="tab_titles">
             <ul className="tab_titles__content">
-                {tabItemsData.map(item => createItemJSX(item))}
+                {tabItemsData.map(
+                    item => (
+                        <li key={item.title} className="tab_titles__tab_title">
+                            <span
+                                className={getItemClassNames(item.boundMode)}
+                                onClick={() => handleChangeMode(item.boundMode)}
+                            >
+                                {item.title}
+                            </span>
+                        </li>
+                    )
+                )}
             </ul>
         </div>
     )
