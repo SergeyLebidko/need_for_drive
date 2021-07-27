@@ -6,6 +6,11 @@
   padding-left: 0;
   padding-bottom: $step * 2;
 
+  &__content_block {
+    position: sticky;
+    top: $step * 2;
+  }
+
   &__header {
     text-align: right;
     font-weight: bold;
