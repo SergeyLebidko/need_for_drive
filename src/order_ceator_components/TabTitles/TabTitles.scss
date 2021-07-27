@@ -1,0 +1,84 @@
+@import '../../styles/vars';
+
+.tab_titles {
+  border-bottom: 1px solid $gray-light;
+  padding: $step * 2;
+
+  &__content {
+    max-width: $content-width;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  &__tab_title {
+    position: relative;
+
+    span:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__tab_title:not(:last-child)::after {
+    content: '\25BC';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    color: $gray;
+  }
+
+  &__tab_title + &__tab_title {
+    margin-top: $step * 2;
+    margin-left: 0;
+  }
+}
+
+.disabled_title {
+  color: $gray;
+}
+
+.available_title {
+  color: $black;
+}
+
+.selected_title {
+  color: $main-accent;
+}
+
+@media (min-width: $tablet-start) {
+  .tab_titles {
+    &__content {
+      flex-direction: row;
+    }
+
+    &__tab_title:not(:last-child)::after {
+      content: '\25BA';
+      position: absolute;
+      top: 50%;
+      left: 100%;
+      transform: translate($step, -50%);
+      color: $gray;
+    }
+
+    &__tab_title + &__tab_title {
+      margin-top: 0;
+      margin-left: $step * 4;
+    }
+  }
+}
+
+@media (min-width: $tablet-start) and (max-width: $desktop-min-end) {
+  .tab_titles {
+    padding: ($step * 2) ($step * 4);
+  }
+}
+
+@media (min-width: $desktop-start) {
+  .tab_titles {
+    padding: ($step * 2) ($step * 6);
+  }
+}

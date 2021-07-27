@@ -1,7 +1,9 @@
 import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
 import {HashRouter, Switch, Route} from 'react-router-dom';
-import MainPage from './MainPage/MainPage';
+import MainPage from './main_page_components/MainPage/MainPage';
+import OrderCreator from './order_ceator_components/OrderCreator/OrderCreator';
+import OrderViewer from './order_viewer_components/OrderViewer/OrderViewer';
 import {createStoreConnectedComponent} from './store/connector';
 import {RUS, ENG, LS_LANG_KEY} from './settings';
 
@@ -21,6 +23,8 @@ function App({lang, setLang, defineCity}) {
         <HashRouter>
             <Switch>
                 <Route exact path="/" component={MainPage}/>
+                <Route path="/order/:orderId" component={OrderViewer}/>
+                <Route path="/order" component={OrderCreator}/>
             </Switch>
         </HashRouter>
     );

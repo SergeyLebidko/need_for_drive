@@ -1,0 +1,12 @@
+@import '../../../styles/vars';
+
+.model_tab {
+  padding-top: $step * 2;
+  padding-right: 0;
+}
+
+@media (min-width: $tablet-start) {
+  .model_tab {
+    padding-right: $step * 2;
+  }
+}

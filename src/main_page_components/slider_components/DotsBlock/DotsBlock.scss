@@ -1,0 +1,33 @@
+@import '../../../styles/vars';
+
+.dots_block {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: $step * 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+
+  .dots_block__dot + .dots_block__dot {
+    margin-left: $step;
+  }
+}
+
+.dots_block__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.empty_dot {
+  background-color: $white;
+}
+
+.full_dot {
+  background-color: $main-accent;
+}

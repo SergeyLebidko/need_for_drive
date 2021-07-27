@@ -1,0 +1,66 @@
+@import '../../styles/vars';
+@import '../../styles/buttons';
+
+.order_details {
+  padding-top: $step * 2;
+  padding-left: 0;
+  padding-bottom: $step * 2;
+
+  &__header {
+    text-align: right;
+    font-weight: bold;
+  }
+
+  &__parameter_list {
+    padding: ($step * 4) 0;
+    width: 100%;
+    font-size: 0.8em;
+  }
+
+  &__parameter {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__parameter_name {
+    color: $black;
+    font-weight: 300;
+  }
+
+  &__spacer {
+    flex: 1;
+    border-bottom: 1px dotted $gray;
+    min-width: $step * 4;
+    margin: 0 $step;
+  }
+
+  &__parameter_value {
+    color: $gray;
+    text-align: right;
+    font-weight: 300;
+  }
+
+  &__price {
+    display: block;
+    margin-bottom: $step * 4;
+  }
+
+  &__button {
+    width: 100%;
+  }
+}
+
+@media (min-width: $tablet-start) {
+  .order_details {
+    border-left: 1px solid $gray-light;
+    padding-left: $step * 2;
+  }
+}
+
+@media (min-width: $desktop-min-start) {
+  .order_details {
+    &__parameter_list {
+      font-size: 1em;
+    }
+  }
+}
