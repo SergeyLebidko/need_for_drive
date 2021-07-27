@@ -1,5 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
+import {getFormattedPrice} from '../../utils';
 import './OrderDetails.scss';
 
 function OrderDetails() {
@@ -34,7 +35,9 @@ function OrderDetails() {
                     </span>
                     </li>
                 </ul>
-                <span className="order_details__price">Цена: от 8 000 до 12 000 &#8381;</span>
+                <span className="order_details__price">
+                    Цена: от {getFormattedPrice(8000)} до {getFormattedPrice(12000)} &#8381;
+                </span>
                 <button className={buttonClasses} disabled>
                     Выбрать модель
                 </button>
