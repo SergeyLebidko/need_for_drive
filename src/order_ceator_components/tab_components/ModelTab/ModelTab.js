@@ -1,10 +1,11 @@
 import React from 'react';
+import CategorySelector from '../../CategorySelector/CategorySelector';
 import './ModelTab.scss';
 
 function ModelTab(){
     return (
         <div className="model_tab">
-            Это вкладка с элементами для выбора модели
+            <CategorySelector/>
         </div>
     )
 }
