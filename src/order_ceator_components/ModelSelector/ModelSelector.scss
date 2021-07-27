@@ -3,48 +3,6 @@
 .model_selector {
   display: flex;
   flex-direction: column;
-
-  &__card {
-    max-width: 100%;
-    padding: $step;
-    display: flex;
-    flex-direction: column;
-    border: 1px solid $gray-light;
-    cursor: pointer;
-
-    &:hover {
-      border: 1px solid $gray;
-
-      .model_selector__photo {
-        transform: translateY(-$step * 2);
-      }
-    }
-  }
-
-  &__title {
-    text-transform: uppercase;
-    font-size: 1.2em;
-  }
-
-  &__price {
-    color: $gray;
-  }
-
-  &__photo {
-    width: 70%;
-    margin-top: $step * 4;
-    align-self: flex-end;
-    object-fit: contain;
-    transition: all 300ms;
-  }
-}
-
-.selected_card {
-  border: 1px solid $main-accent;
-
-  &:hover {
-    border: 1px solid $main-accent;
-  }
 }
 
 @media (min-width: $desktop-min-start) {
@@ -52,10 +10,6 @@
     width: 95%;
     flex-direction: row;
     flex-wrap: wrap;
-
-    &__card {
-      width: 50%;
-    }
   }
 }
 
