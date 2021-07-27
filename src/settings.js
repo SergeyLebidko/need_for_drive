@@ -4,6 +4,8 @@ import car3 from './content/images/car3.png';
 import car4 from './content/images/car4.png';
 import car5 from './content/images/car5.png';
 import car6 from './content/images/car6.png';
+import car7 from './content/images/car7.png';
+import car8 from './content/images/car8.png';
 
 // Адрес сервиса геолокации и ключ api для него
 export const GEO_API_URL = 'https://suggestions.dadata.ru/suggestions/api/4_1/rs/iplocate/address';
@@ -61,39 +63,51 @@ export const CATEGORY_LIST = ['Эконом+', 'Спорт', 'Супер-эко�
 */
 export const MODEL_LIST = [
     {
-        model: 'SANTA FE',
+        title: 'SANTA FE',
         costStart: 10000,
         costEnd: 32000,
         file: car1
     },
     {
-        model: 'SONATA',
+        title: 'SONATA',
         costStart: 8000,
         costEnd: 25000,
         file: car2
     },
     {
-        model: 'CRETA',
+        title: 'CRETA',
         costStart: 5000,
         costEnd: 15000,
         file: car3
     },
     {
-        model: 'TESLA CYBERTRACK',
+        title: 'TESLA CYBERTRACK',
         costStart: 15000,
         costEnd: 40000,
         file: car4
     },
     {
-        model: 'TIGUAN',
+        title: 'TIGUAN',
         costStart: 11000,
         costEnd: 20000,
         file: car5
     },
     {
-        model: 'CAYENNE',
+        title: 'CAYENNE',
         costStart: 25000,
         costEnd: 50000,
         file: car6
+    },
+    {
+        title: 'QASHQAI',
+        costStart: 15000,
+        costEnd: 35500,
+        file: car7
+    },
+    {
+        title: 'X-TRAIL',
+        costStart: 17300,
+        costEnd: 28250,
+        file: car8
     }
 ]
