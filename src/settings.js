@@ -19,3 +19,23 @@ export const LOCATION_MODE = 'lm';
 export const MODEL_MODE = 'mm';
 export const EXTRA_MODE = 'em';
 export const TOTAL_MODE = 'tm';
+
+// Список вкладок формы создания заказа
+export const TAB_TITLES_DATA = [
+    {
+        title: 'Местоположение',
+        boundMode: LOCATION_MODE
+    },
+    {
+        title: 'Модель',
+        boundMode: MODEL_MODE
+    },
+    {
+        title: 'Дополнительно',
+        boundMode: EXTRA_MODE
+    },
+    {
+        title: 'Итого',
+        boundMode: TOTAL_MODE
+    }
+];

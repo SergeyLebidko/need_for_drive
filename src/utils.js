@@ -3,7 +3,6 @@ import slide1 from './content/images/slides/slide-1.png';
 import slide2 from './content/images/slides/slide-2.png';
 import slide3 from './content/images/slides/slide-3.png';
 import {LANG_PACK} from './langPack';
-import {EXTRA_MODE, LOCATION_MODE, MODEL_MODE, TOTAL_MODE} from "./settings";
 
 export function createSliderData(lang) {
     const SLIDE_COUNT = 4;
@@ -20,25 +19,4 @@ export function createSliderData(lang) {
     });
 
     return slidersData;
-}
-
-export function createTabTitlesData() {
-    return [
-        {
-            title: 'Местоположение',
-            boundMode: LOCATION_MODE
-        },
-        {
-            title: 'Модель',
-            boundMode: MODEL_MODE
-        },
-        {
-            title: 'Дополнительно',
-            boundMode: EXTRA_MODE
-        },
-        {
-            title: 'Итого',
-            boundMode: TOTAL_MODE
-        }
-    ];
 }

@@ -4,13 +4,13 @@ import Menu from '../../common_components/menu_components/Menu/Menu';
 import PageHeader from '../../common_components/PageHeader/PageHeader';
 import TabControl from '../TabControl/TabControl';
 import {createStoreConnectedComponent} from '../../store/connector';
-import {createTabTitlesData} from '../../utils';
+import {TAB_TITLES_DATA} from '../../settings';
 import './OrderCreator.scss';
 
 function OrderCreator({setTabItemsData}) {
 
     // При монтировании передаем нижележащим компонентам список вкладок
-    useEffect(() => setTabItemsData(createTabTitlesData()), []);
+    useEffect(() => setTabItemsData(TAB_TITLES_DATA), []);
 
     return (
         <div className="order_creator">
