@@ -7,9 +7,12 @@
   }
 
   &__form_label {
-    font-weight: 300;
     text-align: left;
     padding: $step ($step * 2) $step 0;
+
+    label {
+      font-weight: 300;
+    }
   }
 
   &__form_field {
