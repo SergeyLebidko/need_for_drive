@@ -28,6 +28,10 @@ function stateMapsFactory(component) {
             return state => ({
                 categoryList: state.categoryList
             });
+        case 'ModelSelector':
+            return state => ({
+                modelList: state.modelList
+            });
         default:
             return null;
     }

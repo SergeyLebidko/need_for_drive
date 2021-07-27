@@ -45,3 +45,12 @@ export function categoryList(state = [], action) {
             return state;
     }
 }
+
+export function modelList(state = [], action) {
+    switch (action.type) {
+        case act.SET_MODEL_LIST:
+            return action.modelList;
+        default:
+            return state;
+    }
+}

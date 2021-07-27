@@ -71,3 +71,11 @@ export function setCategoryList(categoryList) {
         categoryList
     }
 }
+
+// Создатель действия для установки списка моделей авто
+export function setModelList(modelList) {
+    return {
+        type: act.SET_MODEL_LIST,
+        modelList
+    }
+}

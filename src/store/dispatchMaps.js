@@ -1,4 +1,4 @@
-import {setLang, loadCity, setSliderData, setTabItemsData, setCategoryList} from './actionCreators';
+import {setLang, loadCity, setSliderData, setTabItemsData, setCategoryList, setModelList} from './actionCreators';
 
 function dispatchMapsFactory(component) {
     switch (component) {
@@ -18,7 +18,8 @@ function dispatchMapsFactory(component) {
         case 'OrderCreator':
             return dispatch => ({
                 setTabItemsData: tabItemsData => dispatch(setTabItemsData(tabItemsData)),
-                setCategoryList: categoryList => dispatch(setCategoryList(categoryList))
+                setCategoryList: categoryList => dispatch(setCategoryList(categoryList)),
+                setModelList: modelList => dispatch(setModelList(modelList))
             });
         default:
             return null;
