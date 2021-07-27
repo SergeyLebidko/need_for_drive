@@ -1,14 +1,28 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import {createStoreConnectedComponent} from '../../store/connector';
 import './CategorySelector.scss';
 
-function CategorySelector(){
+function CategorySelector({categoryList}) {
     return (
         <ul>
-           <li>
-               <input type="radio"/><label>Все модели</label>
-           </li>
+            <li key="all_categories">
+                <input type="radio" name="category_list" id="all_categories"/>
+                <label htmlFor="all_categories">Все модели</label>
+            </li>
+            {categoryList.map(
+                (category, index) =>
+                    <li key={category}>
+                        <input type="radio" name="category_list" id={`category_${index}`}/>
+                        <label htmlFor={`category_${index}`}>{category}</label>
+                    </li>
+            )}
         </ul>
     )
 }
 
-export default CategorySelector;
+CategorySelector.propTypes = {
+    categoryList: PropTypes.array
+}
+
+export default createStoreConnectedComponent('CategorySelector')(CategorySelector);

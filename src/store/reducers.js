@@ -36,3 +36,12 @@ export function tabItemsData(state = [], action) {
             return state;
     }
 }
+
+export function categoryList(state = [], action) {
+    switch (action.type) {
+        case act.SET_CATEGORY_LIST:
+            return action.categoryList;
+        default:
+            return state;
+    }
+}

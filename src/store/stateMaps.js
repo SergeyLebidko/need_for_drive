@@ -24,6 +24,10 @@ function stateMapsFactory(component) {
             return state => ({
                 tabItemsData: state.tabItemsData
             });
+        case 'CategorySelector':
+            return state => ({
+                categoryList: state.categoryList
+            });
         default:
             return null;
     }
