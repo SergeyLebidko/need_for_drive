@@ -1,7 +1,7 @@
 import React from 'react';
 import './PlaceForm.scss';
 
-function PlaceForm() {
+function PlaceSelector() {
     return (
         <div className="place_form">
             <div className="place_form__form_row">
@@ -26,4 +26,4 @@ function PlaceForm() {
     );
 }
 
-export default PlaceForm;
+export default PlaceSelector;
