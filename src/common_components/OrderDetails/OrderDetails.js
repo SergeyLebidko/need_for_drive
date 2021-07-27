@@ -5,7 +5,7 @@ import './OrderDetails.scss';
 function OrderDetails() {
     let buttonClasses = classNames({
         'button': true,
-        'button_gray_light': true,
+        'button_main_accent': true,
         'button_main_round_border': true,
         'order_details__button': true
     });
@@ -21,6 +21,15 @@ function OrderDetails() {
                     <span className="order_details__spacer"/>
                     <span className="order_details__parameter_value">
                         Ульяновск, Нариманова 42
+                    </span>
+                </li>
+                <li className="order_details__parameter">
+                    <span className="order_details__parameter_name">
+                        Модель
+                    </span>
+                    <span className="order_details__spacer"/>
+                    <span className="order_details__parameter_value">
+                        Huyndai, i30 N
                     </span>
                 </li>
             </ul>

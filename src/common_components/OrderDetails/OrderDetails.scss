@@ -22,6 +22,10 @@
     justify-content: space-between;
   }
 
+  &__parameter + &__parameter {
+    margin-top: $step * 2;
+  }
+
   &__parameter_name {
     color: $black;
     font-weight: 300;
