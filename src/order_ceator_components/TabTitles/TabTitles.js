@@ -1,19 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import {TOTAL_MODE} from '../../settings';
 import {createStoreConnectedComponent} from '../../store/connector';
 import './TabTitles.scss';
 
 function TabTitles({tabItemsData, mode, setMode}) {
-    let checkAccessibilityMode = nextMode => {
+    let checkAccessibilityMode = () => {
         /*
             TODO Заменить код функции при реализации функциональности
             Эта строка кода нужна сейчас только для тестирования верстки.
             При реализации функциональности сервиса она должна быть заменена на код определения доступности
             выбранного режима в зависимости от состояния формируемого пользователем заказа.
         */
-        return nextMode !== TOTAL_MODE;
+        return true;
     }
 
     let handleChangeMode = selectedMode => {
