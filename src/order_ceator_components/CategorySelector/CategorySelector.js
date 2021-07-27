@@ -1,20 +1,37 @@
-import React from 'react';
+import React, {useState} from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import {createStoreConnectedComponent} from '../../store/connector';
 import './CategorySelector.scss';
 
 function CategorySelector({categoryList}) {
+    let [selectedCategoryIndex, setSelectedCategoryIndex] = useState(0);
+
+    let currentCategoryList = ['Все модели', ...categoryList];
+
+    let getRadioClassNames = index => classNames({
+        'category_selector__radio': true,
+        'checked_radio': index === selectedCategoryIndex,
+        'not_checked_radio': index !== selectedCategoryIndex
+    });
+
+    let getTitleClassNames = index => classNames({
+        'category_selector__title': true,
+        'checked_title': index === selectedCategoryIndex,
+        'not_checked_title': index !== selectedCategoryIndex
+    });
+
+    let handleClick = index => setSelectedCategoryIndex(index);
+
     return (
-        <ul>
-            <li key="all_categories">
-                <input type="radio" name="category_list" id="all_categories"/>
-                <label htmlFor="all_categories">Все модели</label>
-            </li>
-            {categoryList.map(
+        <ul className="category_selector">
+            {currentCategoryList.map(
                 (category, index) =>
-                    <li key={category}>
-                        <input type="radio" name="category_list" id={`category_${index}`}/>
-                        <label htmlFor={`category_${index}`}>{category}</label>
+                    <li key={category} className="category_selector__item">
+                        <span className={getRadioClassNames(index)} onClick={() => handleClick(index)}/>
+                        <span className={getTitleClassNames(index)} onClick={() => handleClick(index)}>
+                            {category}
+                        </span>
                     </li>
             )}
         </ul>

@@ -1,0 +1,54 @@
+@import '../../styles/vars';
+@import '../../styles/inputs';
+
+.category_selector {
+  &__item {
+    margin-top: $step;
+    margin-right: 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  &__radio {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    cursor: pointer;
+    border-radius: 50%;
+  }
+
+  &__title {
+    font-weight: 300;
+    margin-left: $step;
+    cursor: pointer;
+  }
+}
+
+.checked_radio {
+  border: 3px solid $main-accent;
+}
+
+.not_checked_radio {
+  border: 1px solid $gray;
+}
+
+.checked_title {
+  color: $black;
+}
+
+.not_checked_title {
+  color: $gray;
+}
+
+@media (min-width: $desktop-min-start) {
+  .category_selector {
+    display: flex;
+    flex-wrap: wrap;
+
+    &__item {
+      margin-top: 0;
+      margin-right: $step * 2.5;
+    }
+  }
+}
