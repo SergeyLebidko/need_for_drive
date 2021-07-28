@@ -6,6 +6,7 @@ import ExtraTab from '../tab_components/ExtraTab/ExtraTab';
 import TotalTab from '../tab_components/TotalTab/TotalTab';
 import TabTitles from '../TabTitles/TabTitles';
 import ToModelTabButton from '../button_components/ToModelTabButton/ToModelTabButton';
+import ToExtraTabButton from '../button_components/ToModelTabButton/ToExtraTabButton';
 import {LOCATION_MODE, MODEL_MODE, EXTRA_MODE, TOTAL_MODE} from '../../settings';
 import './TabControl.scss';
 
@@ -21,7 +22,8 @@ function TabControl() {
     let TabComponent = TAB_SELECTOR[mode];
 
     const BUTTON_COMPONENT_SELECTOR = {
-        [LOCATION_MODE]: ToModelTabButton
+        [LOCATION_MODE]: ToModelTabButton,
+        [MODEL_MODE]: ToExtraTabButton
     }
     let OrderDetailsButtonComponent = BUTTON_COMPONENT_SELECTOR[mode]
     let orderDetailsButton = <OrderDetailsButtonComponent setMode={setMode}/>
