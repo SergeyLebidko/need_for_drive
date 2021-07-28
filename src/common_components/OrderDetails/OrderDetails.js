@@ -1,16 +1,9 @@
 import React from 'react';
-import classNames from 'classnames';
+import PropTypes from 'prop-types';
 import {getFormattedPrice} from '../../utils';
 import './OrderDetails.scss';
 
-function OrderDetails() {
-    let buttonClasses = classNames({
-        'button': true,
-        'button_main_accent': true,
-        'button_main_round_border': true,
-        'order_details__button': true
-    });
-
+function OrderDetails({button}) {
     return (
         <div className="order_details">
             <div className="order_details__content_block">
@@ -38,12 +31,14 @@ function OrderDetails() {
                 <span className="order_details__price">
                     Цена: от {getFormattedPrice(8000)} до {getFormattedPrice(12000)} &#8381;
                 </span>
-                <button className={buttonClasses} disabled>
-                    Выбрать модель
-                </button>
+                {button}
             </div>
         </div>
     );
+}
+
+OrderDetails.propTypes = {
+    button: PropTypes.element
 }
 
 export default OrderDetails;
