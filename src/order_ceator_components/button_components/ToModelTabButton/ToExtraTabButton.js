@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import {MODEL_MODE} from '../../../settings';
+import {EXTRA_MODE} from '../../../settings';
 import '../../../styles/buttons.scss';
 
 function ToExtraTabButton({setMode}) {
@@ -12,7 +12,7 @@ function ToExtraTabButton({setMode}) {
     });
 
     // TODO При реализации функциональности добавить логику проверки возможности переключения на вкладку выбора дополнительных параметров заказа
-    let handleClick = setMode(MODEL_MODE);
+    let handleClick = setMode(EXTRA_MODE);
 
     return (
         <button className={buttonClasses} onClick={handleClick}>
