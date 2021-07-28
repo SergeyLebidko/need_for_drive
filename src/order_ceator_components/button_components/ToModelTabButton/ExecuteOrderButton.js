@@ -12,7 +12,7 @@ function ExecuteOrderButton({history}) {
     });
 
     // TODO При реализации функциональности добавить логику оформления заказа и переключения на страницу уже оформленного заказа
-    let handleClick = history.push('/order/order_id');
+    let handleClick = () => history.push('/order/order_id');
 
     return (
         <button className={buttonClasses} onClick={handleClick}>

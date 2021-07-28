@@ -25,15 +25,15 @@ function TabControl() {
 
     let orderDetailsButton;
     if (mode === TOTAL_MODE) {
-        orderDetailsButton = <ExecuteOrderButton/>
+        orderDetailsButton = <ExecuteOrderButton/>;
     } else {
         const BUTTON_COMPONENT_SELECTOR = {
             [LOCATION_MODE]: ToModelTabButton,
             [MODEL_MODE]: ToExtraTabButton,
             [EXTRA_MODE]: ToTotalTabButton
         }
-        let OrderDetailsButtonComponent = BUTTON_COMPONENT_SELECTOR[mode]
-        orderDetailsButton = <OrderDetailsButtonComponent setMode={setMode}/>
+        let OrderDetailsButtonComponent = BUTTON_COMPONENT_SELECTOR[mode];
+        orderDetailsButton = <OrderDetailsButtonComponent setMode={setMode}/>;
     }
 
     return (

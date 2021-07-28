@@ -12,7 +12,7 @@ function ToModelTabButton({setMode}) {
     });
 
     // TODO При реализации функциональности добавить логику проверки возможности переключения на вкладку выбора модели
-    let handleClick = setMode(MODEL_MODE);
+    let handleClick = () => setMode(MODEL_MODE);
 
     return (
         <button className={buttonClasses} onClick={handleClick}>

@@ -12,7 +12,7 @@ function ToTotalTabButton({setMode}) {
     });
 
     // TODO При реализации функциональности добавить логику проверки возможности переключения на вкладку "Итого"
-    let handleClick = setMode(TOTAL_MODE);
+    let handleClick = () => setMode(TOTAL_MODE);
 
     return (
         <button className={buttonClasses} onClick={handleClick}>
