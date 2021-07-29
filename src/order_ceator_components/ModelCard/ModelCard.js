@@ -5,8 +5,7 @@ import {getFormattedPrice} from '../../utils';
 import './ModelCard.scss';
 
 function ModelCard({model, hasSelected, handleClick}) {
-    let cardClassNames = classNames({
-        'model_card': true,
+    let cardClassNames = classNames('model_card', {
         'selected_card': hasSelected
     });
 

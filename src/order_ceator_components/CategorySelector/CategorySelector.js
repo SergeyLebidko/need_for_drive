@@ -9,14 +9,12 @@ function CategorySelector({categoryList}) {
 
     let currentCategoryList = ['Все модели', ...categoryList];
 
-    let getRadioClassNames = index => classNames({
-        'category_selector__radio': true,
+    let getRadioClassNames = index => classNames('category_selector__radio', {
         'checked_radio': index === selectedCategoryIndex,
         'not_checked_radio': index !== selectedCategoryIndex
     });
 
-    let getTitleClassNames = index => classNames({
-        'category_selector__title': true,
+    let getTitleClassNames = index => classNames('category_selector__title', {
         'checked_title': index === selectedCategoryIndex,
         'not_checked_title': index !== selectedCategoryIndex
     });
