@@ -1,5 +1,5 @@
 import React from 'react';
-import PlaceSelector from '../../PlaceSelector/PlaceSelector';
+import PlaceSelector from '../../place_selector_components/PlaceSelector/PlaceSelector';
 import tempMap from '../../../content/images/map.png';
 import './LocationTab.scss';
 
