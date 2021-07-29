@@ -2,6 +2,8 @@
 @import '../../styles/inputs';
 
 .category_selector {
+  padding-left: $step * 2;
+
   input {
     display: none;
   }
