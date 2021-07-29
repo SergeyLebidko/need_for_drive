@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import OrderDetails from '../../common_components/order_details_components/OrderDetails/OrderDetails';
+import OrderDetailsViewer from '../../common_components/order_details_components/OrderDetailsViewer/OrderDetailsViewer';
 import OrderDetailsActionButton, {TO_MODEL_TAB_ACTION, TO_EXTRA_TAB_ACTION, TO_TOTAL_TAB_ACTION, EXECUTE_ACTION}
     from '../../common_components/order_details_components/OrdeDetailsActionButton/OrderDetailsActionButton';
 import LocationTab from '../tab_components/LocationTab/LocationTab';
@@ -35,7 +35,7 @@ function TabControl() {
             <div className="tab_control__content_wrapper">
                 <div className="tab_control__content">
                     <TabComponent/>
-                    <OrderDetails button={orderDetailsActionButton}/>
+                    <OrderDetailsViewer button={orderDetailsActionButton}/>
                 </div>
             </div>
         </div>

@@ -1,7 +1,7 @@
 @import '../../../styles/vars';
 @import '../../../styles/buttons';
 
-.order_details {
+.order_details_viewer {
   padding-top: $step * 2;
   padding-left: 0;
   padding-bottom: $step * 2;
@@ -60,14 +60,14 @@
 }
 
 @media (min-width: $tablet-start) {
-  .order_details {
+  .order_details_viewer {
     border-left: 1px solid $gray-light;
     padding-left: $step * 2;
   }
 }
 
 @media (min-width: $desktop-min-start) {
-  .order_details {
+  .order_details_viewer {
     &__parameter_list {
       font-size: 1em;
     }
