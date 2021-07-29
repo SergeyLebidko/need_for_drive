@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {getFormattedPrice} from '../../utils';
+import {getFormattedPrice} from '../../../utils';
 import './OrderDetails.scss';
 
 function OrderDetails({button}) {

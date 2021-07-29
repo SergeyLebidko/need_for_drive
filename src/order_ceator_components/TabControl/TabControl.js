@@ -1,14 +1,12 @@
 import React, {useState} from 'react';
-import OrderDetails from '../../common_components/OrderDetails/OrderDetails';
+import OrderDetails from '../../common_components/order_details_components/OrderDetails/OrderDetails';
+import OrderDetailsActionButton, {TO_MODEL_TAB_ACTION, TO_EXTRA_TAB_ACTION, TO_TOTAL_TAB_ACTION, EXECUTE_ACTION}
+    from '../../common_components/order_details_components/OrdeDetailsActionButton/OrderDetailsActionButton';
 import LocationTab from '../tab_components/LocationTab/LocationTab';
 import ModelTab from '../tab_components/ModelTab/ModelTab';
 import ExtraTab from '../tab_components/ExtraTab/ExtraTab';
 import TotalTab from '../tab_components/TotalTab/TotalTab';
 import TabTitles from '../TabTitles/TabTitles';
-import ToModelTabButton from '../button_components/ToModelTabButton/ToModelTabButton';
-import ToExtraTabButton from '../button_components/ToModelTabButton/ToExtraTabButton';
-import ToTotalTabButton from '../button_components/ToModelTabButton/ToTotalTabButton';
-import ExecuteOrderButton from '../button_components/ToModelTabButton/ExecuteOrderButton';
 import {LOCATION_MODE, MODEL_MODE, EXTRA_MODE, TOTAL_MODE} from '../../settings';
 import './TabControl.scss';
 
@@ -23,18 +21,13 @@ function TabControl() {
     }
     let TabComponent = TAB_SELECTOR[mode];
 
-    let orderDetailsButton;
-    if (mode === TOTAL_MODE) {
-        orderDetailsButton = <ExecuteOrderButton/>;
-    } else {
-        const BUTTON_COMPONENT_SELECTOR = {
-            [LOCATION_MODE]: ToModelTabButton,
-            [MODEL_MODE]: ToExtraTabButton,
-            [EXTRA_MODE]: ToTotalTabButton
-        }
-        let OrderDetailsButtonComponent = BUTTON_COMPONENT_SELECTOR[mode];
-        orderDetailsButton = <OrderDetailsButtonComponent setMode={setMode}/>;
+    const BUTTON_COMPONENT_SELECTOR = {
+        [LOCATION_MODE]: <OrderDetailsActionButton type={TO_MODEL_TAB_ACTION} setMode={setMode}/>,
+        [MODEL_MODE]: <OrderDetailsActionButton type={TO_EXTRA_TAB_ACTION} setMode={setMode}/>,
+        [EXTRA_MODE]: <OrderDetailsActionButton type={TO_TOTAL_TAB_ACTION} setMode={setMode}/>,
+        [TOTAL_MODE]: <OrderDetailsActionButton type={EXECUTE_ACTION} setMode={setMode}/>
     }
+    let orderDetailsActionButton = BUTTON_COMPONENT_SELECTOR[mode];
 
     return (
         <div className="tab_control">
@@ -42,7 +35,7 @@ function TabControl() {
             <div className="tab_control__content_wrapper">
                 <div className="tab_control__content">
                     <TabComponent/>
-                    <OrderDetails button={orderDetailsButton}/>
+                    <OrderDetails button={orderDetailsActionButton}/>
                 </div>
             </div>
         </div>
