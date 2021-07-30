@@ -31,7 +31,8 @@ function stateMapsFactory(component) {
             });
         case 'ExtraTab':
             return state => ({
-                colorList: state.colorList
+                colorList: state.colorList,
+                rateList: state.rateList
             });
         default:
             return null;

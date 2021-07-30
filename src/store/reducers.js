@@ -63,3 +63,12 @@ export function colorList(state = [], action) {
             return state;
     }
 }
+
+export function rateList(state = [], action) {
+    switch (action.type) {
+        case act.SET_RATE_LIST:
+            return action.rateList;
+        default:
+            return state;
+    }
+}

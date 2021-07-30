@@ -86,9 +86,16 @@ export function setModelList(modelList) {
   Возможно, данные списка цветов будет рациональнее получать из объекта, соответствующего выбранному автомобилю. Сейчас
   этот код нужен для тестирования верстки.
 */
-export function setColorList(colorList){
+export function setColorList(colorList) {
     return {
         type: act.SET_COLOR_LIST,
         colorList
+    }
+}
+
+export function setRateList(rateList) {
+    return {
+        type: act.SET_RATE_LIST,
+        rateList
     }
 }

@@ -5,17 +5,19 @@ import DateSelector from '../../DateSelector/DateSelector';
 import {createStoreConnectedComponent} from '../../../store/connector';
 import './ExtraTab.scss';
 
-function ExtraTab({colorList}) {
+function ExtraTab({colorList, rateList}) {
     return (
         <div className="extra_tab">
             <RadioSelector itemList={colorList}/>
             <DateSelector/>
+            <RadioSelector caption="Тариф" itemList={rateList} onlyColumn/>
         </div>
     )
 }
 
 ExtraTab.propTypes = {
-    colorList: PropTypes.array
+    colorList: PropTypes.array,
+    rateList: PropTypes.array
 }
 
 export default createStoreConnectedComponent('ExtraTab')(ExtraTab);

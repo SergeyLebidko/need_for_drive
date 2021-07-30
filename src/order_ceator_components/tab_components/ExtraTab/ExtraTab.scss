@@ -6,7 +6,7 @@
   padding-top: $step * 2;
   padding-right: 0;
 
-  .radio_selector + .date_selector {
+  .radio_selector + .date_selector, .date_selector + .radio_selector {
     margin-top: $step * 5;
   }
 }

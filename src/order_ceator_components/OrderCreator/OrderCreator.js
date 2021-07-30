@@ -4,10 +4,10 @@ import Menu from '../../common_components/menu_components/Menu/Menu';
 import PageHeader from '../../common_components/PageHeader/PageHeader';
 import TabControl from '../TabControl/TabControl';
 import {createStoreConnectedComponent} from '../../store/connector';
-import {TAB_TITLES_DATA, CATEGORY_LIST, MODEL_LIST, COLOR_LIST} from '../../settings';
+import {TAB_TITLES_DATA, CATEGORY_LIST, MODEL_LIST, COLOR_LIST, RATE_LIST} from '../../settings';
 import './OrderCreator.scss';
 
-function OrderCreator({setTabItemsData, setCategoryList, setModelList, setColorList}) {
+function OrderCreator({setTabItemsData, setCategoryList, setModelList, setColorList, setRateList}) {
 
     // Передаем нижележащим компонентам необходимые данные
     useEffect(() => {
@@ -15,6 +15,7 @@ function OrderCreator({setTabItemsData, setCategoryList, setModelList, setColorL
         setCategoryList(CATEGORY_LIST);
         setModelList(MODEL_LIST);
         setColorList(COLOR_LIST);
+        setRateList(RATE_LIST)
     }, []);
 
     return (
@@ -32,7 +33,8 @@ OrderCreator.propTypes = {
     setTabItemsData: PropTypes.func,
     setCategoryList: PropTypes.func,
     setModelList: PropTypes.func,
-    setColorList: PropTypes.func
+    setColorList: PropTypes.func,
+    setRateList: PropTypes.func
 }
 
 export default createStoreConnectedComponent('OrderCreator')(OrderCreator);

@@ -5,7 +5,8 @@ import {
     setTabItemsData,
     setCategoryList,
     setModelList,
-    setColorList
+    setColorList,
+    setRateList
 } from './actionCreators';
 
 function dispatchMapsFactory(component) {
@@ -28,7 +29,8 @@ function dispatchMapsFactory(component) {
                 setTabItemsData: tabItemsData => dispatch(setTabItemsData(tabItemsData)),
                 setCategoryList: categoryList => dispatch(setCategoryList(categoryList)),
                 setModelList: modelList => dispatch(setModelList(modelList)),
-                setColorList: colorList => dispatch(setColorList(colorList))
+                setColorList: colorList => dispatch(setColorList(colorList)),
+                setRateList: rateList => dispatch(setRateList(rateList))
             });
         default:
             return null;
