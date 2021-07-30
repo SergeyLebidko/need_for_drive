@@ -1,0 +1,23 @@
+@import '../../styles/vars';
+
+.option_selector {
+
+  &__caption {
+    font-weight: 300;
+    margin-bottom: $step * 2;
+  }
+
+  &__item {
+    margin-top: $step;
+  }
+
+  &__title {
+    cursor: pointer;
+    font-weight: 300;
+    color: $gray;
+  }
+}
+
+.checked_title {
+  color: $black;
+}

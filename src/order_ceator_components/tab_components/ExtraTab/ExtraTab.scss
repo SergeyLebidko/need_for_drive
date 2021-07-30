@@ -9,6 +9,10 @@
   .radio_selector + .date_selector, .date_selector + .radio_selector {
     margin-top: $step * 5;
   }
+
+  .option_selector {
+    margin-top: $step * 5;
+  }
 }
 
 @media (min-width: $tablet-start) {
