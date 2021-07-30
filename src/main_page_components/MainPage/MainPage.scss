@@ -20,6 +20,10 @@
 @media (min-width: $tablet-start) {
   .main_page {
     flex-direction: row;
+
+    .title {
+      margin-left: $step * 8;
+    }
   }
 }
 

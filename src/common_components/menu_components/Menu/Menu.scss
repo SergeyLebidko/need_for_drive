@@ -7,6 +7,7 @@
   background-color: $white;
   min-height: $step * 8;
   padding: $step ($step * 2);
+  z-index: 100;
 
   &__title {
     margin-left: auto;
@@ -25,6 +26,12 @@
 
 @media (min-width: $tablet-start) {
   .menu {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    // Правка
+
     flex-direction: column;
     width: $step * 8;
     min-height: 100%;

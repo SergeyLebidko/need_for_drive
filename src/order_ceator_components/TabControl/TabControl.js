@@ -1,5 +1,7 @@
 import React, {useState} from 'react';
-import OrderDetails from '../../common_components/OrderDetails/OrderDetails';
+import OrderDetailsViewer from '../../common_components/order_details_components/OrderDetailsViewer/OrderDetailsViewer';
+import OrderDetailsActionButton, {TO_MODEL_TAB_ACTION, TO_EXTRA_TAB_ACTION, TO_TOTAL_TAB_ACTION, EXECUTE_ACTION}
+    from '../../common_components/order_details_components/OrdeDetailsActionButton/OrderDetailsActionButton';
 import LocationTab from '../tab_components/LocationTab/LocationTab';
 import ModelTab from '../tab_components/ModelTab/ModelTab';
 import ExtraTab from '../tab_components/ExtraTab/ExtraTab';
@@ -18,13 +20,22 @@ function TabControl() {
         [TOTAL_MODE]: TotalTab
     }
     let TabComponent = TAB_SELECTOR[mode];
+
+    const BUTTON_COMPONENT_SELECTOR = {
+        [LOCATION_MODE]: <OrderDetailsActionButton type={TO_MODEL_TAB_ACTION} setMode={setMode}/>,
+        [MODEL_MODE]: <OrderDetailsActionButton type={TO_EXTRA_TAB_ACTION} setMode={setMode}/>,
+        [EXTRA_MODE]: <OrderDetailsActionButton type={TO_TOTAL_TAB_ACTION} setMode={setMode}/>,
+        [TOTAL_MODE]: <OrderDetailsActionButton type={EXECUTE_ACTION} setMode={setMode}/>
+    }
+    let orderDetailsActionButton = BUTTON_COMPONENT_SELECTOR[mode];
+
     return (
         <div className="tab_control">
             <TabTitles mode={mode} setMode={setMode}/>
             <div className="tab_control__content_wrapper">
                 <div className="tab_control__content">
                     <TabComponent/>
-                    <OrderDetails/>
+                    <OrderDetailsViewer button={orderDetailsActionButton}/>
                 </div>
             </div>
         </div>

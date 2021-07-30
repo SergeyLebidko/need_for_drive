@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import LangSelector from '../LangSelector/LangSelector';
 import {ReactComponent as TelegramIcon} from '../../../content/images/icons/telegram_icon.svg';
 import {ReactComponent as FacebookIcon} from '../../../content/images/icons/facebook_icon.svg';
@@ -10,10 +11,10 @@ import './MenuItemsBlock.scss';
 
 function MenuItemsBlock({hasOpened, lang}) {
     let {menuItems} = LANG_PACK['MenuItemsBlock'][lang];
-    let classNames = 'menu_items_block' + (hasOpened ? ' menu_items_block_visible' : '');
+    let containerClassNames = classNames('menu_items_block', {'menu_items_block_visible': hasOpened});
 
     return (
-        <div className={classNames}>
+        <div className={containerClassNames}>
             <nav className="menu_items_block__navigation">
                 {menuItems.map(item => <span key={item} className="menu_items_block__item">{item}</span>)}
                 <span key="icons" className="menu_items_block__icons_item">

@@ -16,5 +16,9 @@
 @media (min-width: $tablet-start) {
   .order_creator {
     flex-direction: row;
+
+    &__content {
+      margin-left: $step * 8;
+    }
   }
 }

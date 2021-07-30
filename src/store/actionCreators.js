@@ -63,3 +63,19 @@ export function setTabItemsData(tabItemsData) {
         tabItemsData
     }
 }
+
+// Создатель действия для установки списка категорий
+export function setCategoryList(categoryList) {
+    return {
+        type: act.SET_CATEGORY_LIST,
+        categoryList
+    }
+}
+
+// Создатель действия для установки списка моделей авто
+export function setModelList(modelList) {
+    return {
+        type: act.SET_MODEL_LIST,
+        modelList
+    }
+}

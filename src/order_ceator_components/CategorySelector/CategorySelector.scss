@@ -1,0 +1,81 @@
+@import '../../styles/vars';
+@import '../../styles/inputs';
+
+.category_selector {
+  padding-left: $step * 2;
+
+  input {
+    display: none;
+  }
+
+  &__item {
+    margin-top: $step;
+    margin-right: 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  &__title {
+    position: relative;
+    font-weight: 300;
+    margin-left: $step;
+    cursor: pointer;
+
+    &::after, &::before {
+      position: absolute;
+      top: 0;
+      left: - $step * 3;
+      content: '';
+      border-radius: 50%;
+      transition: all 500ms;
+    }
+
+    &::before {
+      border: 4px solid $main-accent;
+      width: calc(1em - 7px);
+      height: calc(1em - 7px);
+    }
+
+    &::after {
+      border: 1px solid $gray;
+      width: 1em;
+      height: 1em;
+    }
+  }
+}
+
+.checked_title {
+  color: $black;
+
+  &::after {
+    opacity: 0;
+  }
+
+  &::before {
+    opacity: 1;
+  }
+}
+
+.not_checked_title {
+  color: $gray;
+
+  &::after {
+    opacity: 1;
+  }
+
+  &::before {
+    opacity: 0;
+  }
+}
+
+@media (min-width: $desktop-min-start) {
+  .category_selector {
+    display: flex;
+    flex-wrap: wrap;
+
+    &__item {
+      margin-right: $step * 4;
+    }
+  }
+}

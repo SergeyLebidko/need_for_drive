@@ -20,3 +20,7 @@ export function createSliderData(lang) {
 
     return slidersData;
 }
+
+export function getFormattedPrice(price) {
+    return new Intl.NumberFormat('ru-RU').format(price);
+}

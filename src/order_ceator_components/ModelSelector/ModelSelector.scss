@@ -1,0 +1,20 @@
+@import '../../styles/vars';
+
+.model_selector {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: $desktop-min-start) {
+  .model_selector {
+    width: 95%;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
+
+@media (min-width: $desktop-start) {
+  .model_selector {
+    width: 75%;
+  }
+}

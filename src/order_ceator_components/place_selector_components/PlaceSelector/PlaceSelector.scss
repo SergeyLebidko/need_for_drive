@@ -1,0 +1,16 @@
+@import '../../../styles/vars';
+@import '../../../styles/inputs';
+@import '../SelectorItem/SelectorItem';
+
+.place_form {
+  .selector_item {
+    margin: ($step * 2) 0;
+  }
+}
+
+@media (min-width: $desktop-min-start) {
+  .place_form {
+    display: table;
+    align-self: flex-start;
+  }
+}

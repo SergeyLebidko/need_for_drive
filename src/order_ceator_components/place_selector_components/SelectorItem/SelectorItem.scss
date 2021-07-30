@@ -1,0 +1,41 @@
+@import '../../../styles/vars';
+
+.selector_item {
+
+  &__label {
+    text-align: left;
+    padding: $step ($step * 2) $step 0;
+
+    label {
+      font-weight: 300;
+    }
+  }
+
+  &__field {
+    input {
+      width: calc(100% - 1em);
+    }
+  }
+
+  &__clear_button {
+    cursor: pointer;
+    position: relative;
+    left: -1em;
+  }
+}
+
+@media (min-width: $desktop-min-start) {
+  .selector_item {
+    display: table-row;
+
+    &__label {
+      display: table-cell;
+      text-align: right;
+    }
+
+    &__field {
+      display: table-cell;
+      width: 20em;
+    }
+  }
+}

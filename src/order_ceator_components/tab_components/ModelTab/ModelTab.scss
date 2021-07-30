@@ -1,12 +1,18 @@
 @import '../../../styles/vars';
+@import '../../ModelSelector/ModelSelector';
 
 .model_tab {
   padding-top: $step * 2;
   padding-right: 0;
+
+  .model_selector {
+    margin-top: $step * 8;
+  }
 }
 
 @media (min-width: $tablet-start) {
   .model_tab {
     padding-right: $step * 2;
+    padding-bottom: $step * 2;
   }
 }
