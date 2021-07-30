@@ -1,5 +1,5 @@
 import React from 'react';
-import CategorySelector from '../../CategorySelector/CategorySelector';
+import CategorySelector from '../../../common_components/CategorySelector/CategorySelector';
 import ModelSelector from '../../ModelSelector/ModelSelector';
 import './ModelTab.scss';
 
