@@ -7,8 +7,6 @@ import './RadioSelector.scss';
 function RadioSelector({itemList}) {
     let [selectedCategoryIndex, setSelectedCategoryIndex] = useState(0);
 
-    let currentCategoryList = ['Все модели', ...itemList];
-
     let getTitleClassNames = index => classNames('radio_selector__title', {
         'checked_title': index === selectedCategoryIndex,
         'not_checked_title': index !== selectedCategoryIndex
@@ -20,7 +18,7 @@ function RadioSelector({itemList}) {
 
     return (
         <ul className="radio_selector">
-            {currentCategoryList.map(
+            {itemList.map(
                 (item, index) => {
                     let radioId = randomstring.generate('alphabetic');
                     return (
