@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import RadioSelector from '../../../common_components/CategorySelector/RadioSelector';
+import RadioSelector from '../../../common_components/RadioSelector/RadioSelector';
 import ModelSelector from '../../ModelSelector/ModelSelector';
 import {createStoreConnectedComponent} from '../../../store/connector';
 import './ModelTab.scss';

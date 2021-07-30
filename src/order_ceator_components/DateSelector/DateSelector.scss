@@ -1,0 +1,7 @@
+@import '../../styles/vars';
+
+.date_selector {
+  .react-datepicker__current-month {
+    text-transform: capitalize;
+  }
+}

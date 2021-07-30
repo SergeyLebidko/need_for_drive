@@ -1,8 +1,14 @@
 @import '../../../styles/vars';
+@import '../../../common_components/RadioSelector/RadioSelector';
+@import '../../DateSelector/DateSelector';
 
 .extra_tab {
   padding-top: $step * 2;
   padding-right: 0;
+
+  .radio_selector + .date_selector {
+    margin-top: $step * 4;
+  }
 }
 
 @media (min-width: $tablet-start) {
