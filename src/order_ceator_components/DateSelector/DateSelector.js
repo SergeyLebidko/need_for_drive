@@ -10,6 +10,22 @@ function DateSelector() {
     let [startDate, setStartDate] = useState(null);
     let [endDate, setEndDate] = useState(null);
 
+    let filterDate = () => {
+        return true;
+    }
+
+    let filterTime = () => {
+        return true
+    }
+
+    let handleChangeStartDate = date => {
+        setStartDate(date);
+    }
+
+    let handleChangeEndDate = date => {
+        setEndDate(date);
+    }
+
     return (
         <div className="date_selector">
             <h1 className="date_selector__caption">Дата аренды</h1>
@@ -21,16 +37,18 @@ function DateSelector() {
                     <div className="date_selector__cell">
                         <DatePicker
                             selected={startDate}
-                            onChange={date => setStartDate(date)}
+                            onChange={handleChangeStartDate}
                             showTimeSelect
-                            selectsStart
                             startDate={startDate}
                             endDate={endDate}
-                            dateFormat="Pp"
+                            maxDate={endDate}
                             timeIntervals={10}
-                            locale="ru-RU"
+                            dateFormat='Pp'
+                            locale={ru}
                             timeCaption="Время"
                             isClearable
+                            filterDate={filterDate}
+                            filterTime={filterTime}
                         />
                     </div>
                 </div>
@@ -41,17 +59,18 @@ function DateSelector() {
                     <div className="date_selector__cell">
                         <DatePicker
                             selected={endDate}
-                            onChange={date => setEndDate(date)}
+                            onChange={handleChangeEndDate}
                             showTimeSelect
-                            selectsEnd
                             startDate={startDate}
                             endDate={endDate}
                             minDate={startDate}
-                            dateFormat="Pp"
                             timeIntervals={10}
-                            locale="ru-RU"
+                            dateFormat='Pp'
+                            locale={ru}
                             timeCaption="Время"
                             isClearable
+                            filterDate={filterDate}
+                            filterTime={filterTime}
                         />
                     </div>
                 </div>
