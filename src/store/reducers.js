@@ -54,3 +54,12 @@ export function modelList(state = [], action) {
             return state;
     }
 }
+
+export function colorList(state = [], action) {
+    switch (action.type) {
+        case act.SET_COLOR_LIST:
+            return action.colorList;
+        default:
+            return state;
+    }
+}

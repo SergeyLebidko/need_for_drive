@@ -29,6 +29,10 @@ function stateMapsFactory(component) {
                 categoryList: state.categoryList,
                 modelList: state.modelList
             });
+        case 'ExtraTab':
+            return state => ({
+                colorList: state.colorList
+            });
         default:
             return null;
     }

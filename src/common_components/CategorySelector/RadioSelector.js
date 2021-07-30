@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import capitalize from 'capitalize';
 import randomstring from 'randomstring';
 import './RadioSelector.scss';
 
@@ -29,7 +30,7 @@ function RadioSelector({itemList}) {
                                 onClick={() => handleClick(index)}
                                 htmlFor={radioId}
                             >
-                                {item}
+                                {capitalize(item)}
                             </label>
                         </li>
                     )
