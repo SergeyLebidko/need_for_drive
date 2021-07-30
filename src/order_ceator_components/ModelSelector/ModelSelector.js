@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import ModelCard from '../ModelCard/ModelCard';
-import {createStoreConnectedComponent} from '../../store/connector';
 import './ModelSelector.scss';
 
 function ModelSelector({modelList}) {
@@ -28,4 +27,4 @@ ModelSelector.propTypes = {
     modelList: PropTypes.array
 }
 
-export default createStoreConnectedComponent('ModelSelector')(ModelSelector);
+export default (ModelSelector);

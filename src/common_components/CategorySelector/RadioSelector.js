@@ -2,35 +2,36 @@ import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import randomstring from 'randomstring';
-import {createStoreConnectedComponent} from '../../store/connector';
-import './CategorySelector.scss';
+import './RadioSelector.scss';
 
-function CategorySelector({categoryList}) {
+function RadioSelector({itemList}) {
     let [selectedCategoryIndex, setSelectedCategoryIndex] = useState(0);
 
-    let currentCategoryList = ['Все модели', ...categoryList];
+    let currentCategoryList = ['Все модели', ...itemList];
 
-    let getTitleClassNames = index => classNames('category_selector__title', {
+    let getTitleClassNames = index => classNames('radio_selector__title', {
         'checked_title': index === selectedCategoryIndex,
         'not_checked_title': index !== selectedCategoryIndex
     });
 
     let handleClick = index => setSelectedCategoryIndex(index);
 
+    let radioGroupName = randomstring.generate('alphabetic');
+
     return (
-        <ul className="category_selector">
+        <ul className="radio_selector">
             {currentCategoryList.map(
-                (category, index) => {
+                (item, index) => {
                     let radioId = randomstring.generate('alphabetic');
                     return (
-                        <li key={category} className="category_selector__item">
-                            <input type="radio" name="category_selector" id={radioId}/>
+                        <li key={item} className="radio_selector__item">
+                            <input type="radio" name={`radio_selector_${radioGroupName}`} id={radioId}/>
                             <label
                                 className={getTitleClassNames(index)}
                                 onClick={() => handleClick(index)}
                                 htmlFor={radioId}
                             >
-                                {category}
+                                {item}
                             </label>
                         </li>
                     )
@@ -40,8 +41,8 @@ function CategorySelector({categoryList}) {
     )
 }
 
-CategorySelector.propTypes = {
-    categoryList: PropTypes.array
+RadioSelector.propTypes = {
+    itemList: PropTypes.array
 }
 
-export default createStoreConnectedComponent('CategorySelector')(CategorySelector);
+export default (RadioSelector);

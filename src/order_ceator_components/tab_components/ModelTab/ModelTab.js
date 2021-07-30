@@ -1,15 +1,22 @@
 import React from 'react';
-import CategorySelector from '../../../common_components/CategorySelector/CategorySelector';
+import PropTypes from 'prop-types';
+import RadioSelector from '../../../common_components/CategorySelector/RadioSelector';
 import ModelSelector from '../../ModelSelector/ModelSelector';
+import {createStoreConnectedComponent} from '../../../store/connector';
 import './ModelTab.scss';
 
-function ModelTab(){
+function ModelTab({categoryList, modelList}) {
     return (
         <div className="model_tab">
-            <CategorySelector/>
-            <ModelSelector/>
+            <RadioSelector itemList={categoryList}/>
+            <ModelSelector modelList={modelList}/>
         </div>
     )
 }
 
-export default ModelTab;
+ModelTab.propTypes = {
+    categoryList: PropTypes.array,
+    modelList: PropTypes.array
+}
+
+export default createStoreConnectedComponent('ModelTab')(ModelTab);

@@ -1,7 +1,7 @@
 @import '../../styles/vars';
 @import '../../styles/inputs';
 
-.category_selector {
+.radio_selector {
   padding-left: $step * 2;
 
   input {
@@ -70,7 +70,7 @@
 }
 
 @media (min-width: $desktop-min-start) {
-  .category_selector {
+  .radio_selector {
     display: flex;
     flex-wrap: wrap;
 
