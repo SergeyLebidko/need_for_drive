@@ -6,7 +6,8 @@ import {
     setCategoryList,
     setModelList,
     setColorList,
-    setRateList
+    setRateList,
+    setOptionList
 } from './actionCreators';
 
 function dispatchMapsFactory(component) {
@@ -30,7 +31,8 @@ function dispatchMapsFactory(component) {
                 setCategoryList: categoryList => dispatch(setCategoryList(categoryList)),
                 setModelList: modelList => dispatch(setModelList(modelList)),
                 setColorList: colorList => dispatch(setColorList(colorList)),
-                setRateList: rateList => dispatch(setRateList(rateList))
+                setRateList: rateList => dispatch(setRateList(rateList)),
+                setOptionList: optionList => dispatch(setOptionList(optionList))
             });
         default:
             return null;

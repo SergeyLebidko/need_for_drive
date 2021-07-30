@@ -99,3 +99,10 @@ export function setRateList(rateList) {
         rateList
     }
 }
+
+export function setOptionList(optionList) {
+    return {
+        type: act.SET_OPTION_LIST,
+        optionList
+    }
+}

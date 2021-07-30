@@ -72,3 +72,12 @@ export function rateList(state = [], action) {
             return state;
     }
 }
+
+export function optionList(state = [], action) {
+    switch (action.type) {
+        case act.SET_OPTION_LIST:
+            return action.optionList;
+        default:
+            return state;
+    }
+}

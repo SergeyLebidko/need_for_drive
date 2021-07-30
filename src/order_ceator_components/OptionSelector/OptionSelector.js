@@ -1,51 +1,44 @@
 import React, {useState} from 'react';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import randomstring from 'randomstring';
 import './OptionSelector.scss';
 
-function OptionSelector() {
-    let [hasFuelTank, setHasFuelTank] = useState(false);
-    let [hasChildrenChair, setHasChildrenChair] = useState(false);
-    let [hasRightWheel, setHasRightWheel] = useState(false);
+function OptionSelector({optionList}) {
+    let [checked, setChecked] = useState(Array(optionList.length).fill(false));
 
-    let tankOptionClasses = classNames('option_selector__option', {'checked_option': hasFuelTank});
-    let chairOptionClasses = classNames('option_selector__option', {'checked_option': hasChildrenChair});
-    let wheelOptionClasses = classNames('option_selector__option', {'checked_option': hasRightWheel});
-
-    // TODO При реализации функциональности добавить к обработчикам код добавления/удаления опции непосредственно в заказ
-    let handleTankOptionClick = () => setHasFuelTank(fuelTank => !fuelTank);
-    let handleChairOptionClick = () => setHasChildrenChair(childrenChair => !childrenChair);
-    let handleWheelOptionClick = () => setHasRightWheel(rightWheel => !rightWheel);
-
-    let tankId = randomstring.generate('alphabetic');
-    let chairId = randomstring.generate('alphabetic');
-    let wheelId = randomstring.generate('alphabetic');
+    // TODO При реализации функциональности добавить к обработчику код добавления/удаления опции непосредственно в заказе
+    let handleChange = checkedIndex => {
+        setChecked(oldChecked => oldChecked.map((val, index) => index === checkedIndex ? !val : val));
+    };
 
     return (
         <div className="option_selector">
             <h1 className="option_selector__caption">Доп. услуги</h1>
+            {optionList.length > 0 &&
             <ul>
-                <li className="option_selector__item">
-                    <input type="checkbox" id={tankId}/>
-                    <label className={tankOptionClasses} onClick={handleTankOptionClick} htmlFor={tankId}>
-                        Полный бак, 500 р.
-                    </label>
-                </li>
-                <li className="option_selector__item">
-                    <input type="checkbox" id={chairId}/>
-                    <label className={chairOptionClasses} onClick={handleChairOptionClick} htmlFor={chairId}>
-                        Детское кресло, 200 р.
-                    </label>
-                </li>
-                <li className="option_selector__item">
-                    <input type="checkbox" id={wheelId}/>
-                    <label className={wheelOptionClasses} onClick={handleWheelOptionClick} htmlFor={wheelId}>
-                        Правый руль, 1600 р.
-                    </label>
-                </li>
+                {optionList.map(
+                    (option, index) => {
+                        let inputId = randomstring.generate('alphabetic');
+                        let optionClassNames = classNames('option_selector__option', {'checked_option': checked[index]})
+                        return (
+                            <li key={option} className="option_selector__item">
+                                <input type="checkbox" id={inputId}/>
+                                <label className={optionClassNames} onClick={() => handleChange(index)} htmlFor={inputId}>
+                                    Полный бак, 500 р.
+                                </label>
+                            </li>
+                        )
+                    }
+                )}
             </ul>
+            }
         </div>
     )
+}
+
+OptionSelector.propTypes = {
+    optionList: PropTypes.array
 }
 
 export default OptionSelector;
