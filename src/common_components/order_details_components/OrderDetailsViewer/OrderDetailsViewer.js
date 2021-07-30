@@ -83,7 +83,7 @@ function OrderDetailsViewer({button}) {
                     </li>
                 </ul>
                 <span className="order_details_viewer__price">
-                    Цена: от {getFormattedPrice(8000)} до {getFormattedPrice(12000)} &#8381;
+                    Цена: {getFormattedPrice(16000)} &#8381;
                 </span>
                 {button}
             </div>
