@@ -8,9 +8,9 @@ function OptionSelector() {
     let [hasChildrenChair, setHasChildrenChair] = useState(false);
     let [hasRightWheel, setHasRightWheel] = useState(false);
 
-    let tankOptionClasses = classNames('option_selector__title', {'checked_title': hasFuelTank});
-    let chairOptionClasses = classNames('option_selector__title', {'checked_title': hasChildrenChair});
-    let wheelOptionClasses = classNames('option_selector__title', {'checked_title': hasRightWheel});
+    let tankOptionClasses = classNames('option_selector__option', {'checked_option': hasFuelTank});
+    let chairOptionClasses = classNames('option_selector__option', {'checked_option': hasChildrenChair});
+    let wheelOptionClasses = classNames('option_selector__option', {'checked_option': hasRightWheel});
 
     // TODO При реализации функциональности добавить к обработчикам код добавления/удаления опции непосредственно в заказ
     let handleTankOptionClick = () => setHasFuelTank(fuelTank => !fuelTank);
