@@ -25,7 +25,7 @@ function OptionSelector({optionList}) {
                             <li key={option} className="option_selector__item">
                                 <input type="checkbox" id={inputId}/>
                                 <label className={optionClassNames} onClick={() => handleChange(index)} htmlFor={inputId}>
-                                    Полный бак, 500 р.
+                                    {option}
                                 </label>
                             </li>
                         )
