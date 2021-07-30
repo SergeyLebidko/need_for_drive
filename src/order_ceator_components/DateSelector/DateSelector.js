@@ -6,24 +6,35 @@ import './DateSelector.scss';
 
 setDefaultLocale(ru);
 
+const TIME_MINUTES_INTERVAL = 10;
+
 function DateSelector() {
     let [startDate, setStartDate] = useState(null);
     let [endDate, setEndDate] = useState(null);
 
-    let filterDate = () => {
-        return true;
-    }
+    // TODO При реализации функциональности добавить код отсечения дат и времени, меньших текущего
 
-    let filterTime = () => {
-        return true
-    }
+    /*
+      TODO При реализации функциональности добавить дополнительные проверки в обработчик
+      Необходимо добавить проверку выбора даты/времени, которая бы не давала изменить время начала аренды так чтобы
+      оно стало больше времени окончания аренды при одинаковых датах
+    */
+    let handleChangeStartDate = date => setStartDate(date);
 
-    let handleChangeStartDate = date => {
-        setStartDate(date);
-    }
+    /*
+      TODO При реализации функциональности добавить дополнительные проверки в обработчик
+      Необходимо добавить проверку выбора даты/времени, которая бы не давала изменить время окончания аренды так, чтобы
+      оно стало меньше времени начала аренды при одинаковых датах
+    */
+    let handleChangeEndDate = date => setEndDate(date);
 
-    let handleChangeEndDate = date => {
-        setEndDate(date);
+    const commonDatePickerProps = {
+        showTimeSelect: true,
+        timeIntervals: TIME_MINUTES_INTERVAL,
+        dateFormat: 'Pp',
+        locale: ru,
+        timeCaption: 'Время',
+        isClearable: true
     }
 
     return (
@@ -36,19 +47,12 @@ function DateSelector() {
                     </div>
                     <div className="date_selector__cell">
                         <DatePicker
+                            {...commonDatePickerProps}
                             selected={startDate}
                             onChange={handleChangeStartDate}
-                            showTimeSelect
                             startDate={startDate}
                             endDate={endDate}
                             maxDate={endDate}
-                            timeIntervals={10}
-                            dateFormat='Pp'
-                            locale={ru}
-                            timeCaption="Время"
-                            isClearable
-                            filterDate={filterDate}
-                            filterTime={filterTime}
                         />
                     </div>
                 </div>
@@ -58,19 +62,12 @@ function DateSelector() {
                     </div>
                     <div className="date_selector__cell">
                         <DatePicker
+                            {...commonDatePickerProps}
                             selected={endDate}
                             onChange={handleChangeEndDate}
-                            showTimeSelect
                             startDate={startDate}
                             endDate={endDate}
                             minDate={startDate}
-                            timeIntervals={10}
-                            dateFormat='Pp'
-                            locale={ru}
-                            timeCaption="Время"
-                            isClearable
-                            filterDate={filterDate}
-                            filterTime={filterTime}
                         />
                     </div>
                 </div>
