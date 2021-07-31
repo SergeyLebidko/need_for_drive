@@ -2,10 +2,36 @@
 
 .total_tab {
   padding: ($step * 2) 0 ($step * 2) 0;
+
+  &__details_block {
+
+  }
+
+  &__photo_block {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: $step * 4;
+
+    img {
+      max-width: 80%;
+      object-fit: contain;
+    }
+  }
 }
 
-@media (min-width: $tablet-start) {
+@media (min-width: $desktop-min-start) {
   .total_tab {
     padding: ($step * 2) ($step * 2) ($step * 2) 0;
+    display: flex;
+
+    &__photo_block {
+      flex: 1;
+      margin-top: 0;
+
+      img {
+        max-height: $step * 25;
+      }
+    }
   }
 }
