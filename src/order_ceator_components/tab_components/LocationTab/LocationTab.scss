@@ -4,8 +4,7 @@
 .location_tab {
   display: flex;
   flex-direction: column;
-  padding-top: $step * 2;
-  padding-right: 0;
+  padding: ($step * 2) 0 ($step * 2) 0;
 
   .place_form {
     margin: 0 0 ($step * 4) 0;
@@ -34,6 +33,6 @@
 
 @media (min-width: $tablet-start) {
   .location_tab {
-    padding-right: $step * 2;
+    padding: ($step * 2) ($step * 2) ($step * 2) 0;
   }
 }
