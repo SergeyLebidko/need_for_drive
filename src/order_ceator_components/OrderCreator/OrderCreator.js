@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Menu from '../../common_components/menu_components/Menu/Menu';
 import PageHeader from '../../common_components/PageHeader/PageHeader';
 import TabControl from '../TabControl/TabControl';
+import ConfirmModal from '../ConfirmModal/ConfirmModal';
 import {createStoreConnectedComponent} from '../../store/connector';
 import {TAB_TITLES_DATA, CATEGORY_LIST, MODEL_LIST, COLOR_LIST, RATE_LIST, OPTION_LIST} from '../../settings';
 import './OrderCreator.scss';
@@ -21,6 +22,7 @@ function OrderCreator({setTabItemsData, setCategoryList, setModelList, setColorL
 
     return (
         <div className="order_creator">
+            <ConfirmModal/>
             <Menu/>
             <section className="order_creator__content">
                 <PageHeader/>
