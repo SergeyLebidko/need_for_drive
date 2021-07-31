@@ -25,7 +25,7 @@ function TotalTab() {
                         Доступна с
                     </span>
                     <span className="total_tab__available_value">
-                        01.08.2021
+                        01.08.2021 12:00
                     </span>
                 </li>
             </ul>

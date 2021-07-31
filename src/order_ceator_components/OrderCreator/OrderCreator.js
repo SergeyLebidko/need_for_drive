@@ -5,7 +5,7 @@ import PageHeader from '../../common_components/PageHeader/PageHeader';
 import TabControl from '../TabControl/TabControl';
 import OrderConfirmModal from '../OrderConfirmModal/OrderConfirmModal';
 import {createStoreConnectedComponent} from '../../store/connector';
-import {TAB_TITLES_DATA, CATEGORY_LIST, MODEL_LIST, COLOR_LIST, RATE_LIST, OPTION_LIST} from '../../settings';
+import {TAB_ITEMS_DATA, CATEGORY_LIST, MODEL_LIST, COLOR_LIST, RATE_LIST, OPTION_LIST} from '../../settings';
 import './OrderCreator.scss';
 
 function OrderCreator(props) {
@@ -22,7 +22,7 @@ function OrderCreator(props) {
 
     // Передаем нижележащим компонентам необходимые данные
     useEffect(() => {
-        setTabItemsData(TAB_TITLES_DATA);
+        setTabItemsData(TAB_ITEMS_DATA);
         setCategoryList(CATEGORY_LIST);
         setModelList(MODEL_LIST);
         setColorList(COLOR_LIST);
