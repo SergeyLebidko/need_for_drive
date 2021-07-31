@@ -24,6 +24,10 @@ function stateMapsFactory(component) {
             return state => ({
                 tabItemsData: state.tabItemsData
             });
+        case 'OrderCreator':
+            return state => ({
+                hasOrderConfirmModalShow: state.hasOrderConfirmModalShow
+            });
         case 'ModelTab':
             return state => ({
                 categoryList: state.categoryList,

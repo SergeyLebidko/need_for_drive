@@ -3,12 +3,22 @@ import PropTypes from 'prop-types';
 import Menu from '../../common_components/menu_components/Menu/Menu';
 import PageHeader from '../../common_components/PageHeader/PageHeader';
 import TabControl from '../TabControl/TabControl';
-import ConfirmModal from '../ConfirmModal/ConfirmModal';
+import OrderConfirmModal from '../OrderConfirmModal/OrderConfirmModal';
 import {createStoreConnectedComponent} from '../../store/connector';
 import {TAB_TITLES_DATA, CATEGORY_LIST, MODEL_LIST, COLOR_LIST, RATE_LIST, OPTION_LIST} from '../../settings';
 import './OrderCreator.scss';
 
-function OrderCreator({setTabItemsData, setCategoryList, setModelList, setColorList, setRateList, setOptionList}) {
+function OrderCreator(props) {
+    let {
+        setTabItemsData,
+        setCategoryList,
+        setModelList,
+        setColorList,
+        setRateList,
+        setOptionList,
+        hasOrderConfirmModalShow,
+        hideOrderConfirmModal
+    } = props;
 
     // Передаем нижележащим компонентам необходимые данные
     useEffect(() => {
@@ -20,9 +30,12 @@ function OrderCreator({setTabItemsData, setCategoryList, setModelList, setColorL
         setOptionList(OPTION_LIST)
     }, []);
 
+    // TODO При реализации функциональности вставить код отправки сформированного заказа на бэкенд
+    let handleConfirmOrderCreate = () => hideOrderConfirmModal();
+
     return (
         <div className="order_creator">
-            <ConfirmModal/>
+            {hasOrderConfirmModalShow && <OrderConfirmModal handleConfirm={handleConfirmOrderCreate}/>}
             <Menu/>
             <section className="order_creator__content">
                 <PageHeader/>
@@ -38,7 +51,9 @@ OrderCreator.propTypes = {
     setModelList: PropTypes.func,
     setColorList: PropTypes.func,
     setRateList: PropTypes.func,
-    setOptionList: PropTypes.func
+    setOptionList: PropTypes.func,
+    hasOrderConfirmModalShow: PropTypes.bool,
+    hideOrderConfirmModal: PropTypes.func
 }
 
 export default createStoreConnectedComponent('OrderCreator')(OrderCreator);
