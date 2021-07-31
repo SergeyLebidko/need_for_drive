@@ -4,7 +4,30 @@
   padding: ($step * 2) 0 ($step * 2) 0;
 
   &__details_block {
+    li:last-child {
+      margin-top: $step * 0.5;
+    }
+  }
 
+  &__model_field {
+    font-size: 1.4em;
+  }
+
+  &__auto_number_field {
+    display: inline-block;
+    margin: $step 0;
+    padding: 4px 12px;
+    border: 1px solid $black;
+    border-radius: $small-radius;
+  }
+
+  &__gas_caption, &__available_caption {
+    font-weight: bold;
+    padding-right: $step;
+  }
+
+  &__gas_value, &__available_value {
+    font-weight: 300;
   }
 
   &__photo_block {
@@ -30,7 +53,7 @@
       margin-top: 0;
 
       img {
-        max-height: $step * 25;
+        max-height: $step * 18;
       }
     }
   }
