@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import capitalize from 'capitalize';
-import randomstring from 'randomstring';
+import {getRandomString} from '../../utils';
 import './RadioSelector.scss';
 
 function RadioSelector({caption, itemList, onlyColumn}) {
@@ -15,7 +15,7 @@ function RadioSelector({caption, itemList, onlyColumn}) {
 
     let handleClick = index => setSelectedCategoryIndex(index);
 
-    let radioGroupName = randomstring.generate('alphabetic');
+    let radioGroupName = getRandomString();
 
     let itemsContainerClassNames = classNames('radio_selector__items_container', {'only_column': onlyColumn})
 
@@ -25,7 +25,7 @@ function RadioSelector({caption, itemList, onlyColumn}) {
             <ul className={itemsContainerClassNames}>
                 {itemList.map(
                     (item, index) => {
-                        let radioId = randomstring.generate('alphabetic');
+                        let radioId = getRandomString('alphabetic');
                         return (
                             <li key={item} className="radio_selector__item">
                                 <input type="radio" name={`radio_selector_${radioGroupName}`} id={radioId}/>

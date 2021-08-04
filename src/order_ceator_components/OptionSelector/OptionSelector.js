@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import randomstring from 'randomstring';
+import {getRandomString} from '../../utils';
 import './OptionSelector.scss';
 
 function OptionSelector({optionList}) {
@@ -19,7 +19,7 @@ function OptionSelector({optionList}) {
             <ul>
                 {optionList.map(
                     (option, index) => {
-                        let inputId = randomstring.generate('alphabetic');
+                        let inputId = getRandomString();
                         let optionClassNames = classNames('option_selector__option', {'checked_option': checked[index]})
                         return (
                             <li key={option} className="option_selector__item">
