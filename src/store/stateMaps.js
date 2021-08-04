@@ -25,6 +25,7 @@ function stateMapsFactory(component) {
                 tabItemsData: state.tabItemsData
             });
         case 'OrderCreator':
+        case 'OrderViewer':
             return state => ({
                 hasModalShow: state.hasModalShow
             });

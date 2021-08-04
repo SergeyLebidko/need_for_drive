@@ -36,9 +36,10 @@ function dispatchMapsFactory(component) {
                 setRateList: rateList => dispatch(setRateList(rateList)),
                 setOptionList: optionList => dispatch(setOptionList(optionList))
             });
-        case 'OrderDetailsActionButton':
+        case 'OrderPane':
+        case 'TabControl':
             return dispatch => ({
-                showOrderConfirmModal: () => dispatch(showModal())
+                showModal: () => dispatch(showModal())
             });
         case 'Modal':
             return dispatch => ({
