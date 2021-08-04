@@ -1,11 +1,18 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import car from '../../../content/images/car1.png';
 import './TotalTab.scss';
 
-function TotalTab() {
+// TODO При реализации функциональности компонент будет получать объект заказа из хранилища Redux. Сейчас нужен для тестирования верстки
+function TotalTab({order}) {
     return (
         <div className="total_tab">
             <ul className="total_tab__details_block">
+                {('id' in order) &&
+                <li>
+                    <span className="total_tab__confirm_caption">Ваш заказ подтвержден</span>
+                </li>
+                }
                 <li>
                     <span className="total_tab__model_field">Hyundai, i30 N</span>
                 </li>
@@ -34,6 +41,14 @@ function TotalTab() {
             </div>
         </div>
     )
+}
+
+TotalTab.defaultProps = {
+    order: {}
+}
+
+TotalTab.propTypes = {
+    order: PropTypes.object
 }
 
 export default TotalTab;

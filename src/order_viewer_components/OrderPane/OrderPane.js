@@ -12,8 +12,8 @@ function OrderPane({showModal}) {
 
     return (
         <div className="order_pane">
-            <div className="order_creator__content">
-                <TotalTab/>
+            <div className="order_pane__content">
+                <TotalTab order={{id: 'ORDER01234567890'}}/>
                 <OrderDetailsViewer button={detailsViewerButton}/>
             </div>
         </div>
