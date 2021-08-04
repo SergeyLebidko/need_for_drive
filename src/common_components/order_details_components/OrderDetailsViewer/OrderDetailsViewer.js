@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import ViewerParameter from '../ViewerParameter/ViewerParameter';
 import {getFormattedPrice} from '../../../utils';
 import './OrderDetailsViewer.scss';
 
@@ -9,78 +10,14 @@ function OrderDetailsViewer({button}) {
             <div className="order_details_viewer__content_block">
                 <header className="order_details_viewer__header">Ваш заказ</header>
                 <ul className="order_details_viewer__parameter_list">
-                    <li className="order_details_viewer__parameter">
-                    <span className="order_details_viewer__parameter_name">
-                        Пункт выдачи
-                    </span>
-                        <span className="order_details_viewer__spacer"/>
-                        <span className="order_details_viewer__parameter_value">
-                        Ульяновск, Нариманова 42
-                    </span>
-                    </li>
-                    <li className="order_details_viewer__parameter">
-                    <span className="order_details_viewer__parameter_name">
-                        Модель
-                    </span>
-                        <span className="order_details_viewer__spacer"/>
-                        <span className="order_details_viewer__parameter_value">
-                        Huyndai, i30 N
-                    </span>
-                    </li>
-                    <li className="order_details_viewer__parameter">
-                    <span className="order_details_viewer__parameter_name">
-                        Цвет
-                    </span>
-                        <span className="order_details_viewer__spacer"/>
-                        <span className="order_details_viewer__parameter_value">
-                        Голубой
-                    </span>
-                    </li>
-                    <li className="order_details_viewer__parameter">
-                    <span className="order_details_viewer__parameter_name">
-                        Длительность аренды
-                    </span>
-                        <span className="order_details_viewer__spacer"/>
-                        <span className="order_details_viewer__parameter_value">
-                        1д 2ч
-                    </span>
-                    </li>
-                    <li className="order_details_viewer__parameter">
-                    <span className="order_details_viewer__parameter_name">
-                        Тариф
-                    </span>
-                        <span className="order_details_viewer__spacer"/>
-                        <span className="order_details_viewer__parameter_value">
-                        На сутки
-                    </span>
-                    </li>
-                    <li className="order_details_viewer__parameter">
-                    <span className="order_details_viewer__parameter_name">
-                        Полный бак
-                    </span>
-                        <span className="order_details_viewer__spacer"/>
-                        <span className="order_details_viewer__parameter_value">
-                        Да
-                    </span>
-                    </li>
-                    <li className="order_details_viewer__parameter">
-                    <span className="order_details_viewer__parameter_name">
-                        Детское кресло
-                    </span>
-                        <span className="order_details_viewer__spacer"/>
-                        <span className="order_details_viewer__parameter_value">
-                        Да
-                    </span>
-                    </li>
-                    <li className="order_details_viewer__parameter">
-                    <span className="order_details_viewer__parameter_name">
-                        Правый руль
-                    </span>
-                        <span className="order_details_viewer__spacer"/>
-                        <span className="order_details_viewer__parameter_value">
-                        Да
-                    </span>
-                    </li>
+                    <ViewerParameter parameterName="Пункт выдачи" parameterValue="Ульяновск, Нариманова 42"/>
+                    <ViewerParameter parameterName="Модель" parameterValue="Huyndai, i30 N"/>
+                    <ViewerParameter parameterName="Цвет" parameterValue="Голубой"/>
+                    <ViewerParameter parameterName="Длительность аренды" parameterValue="1д 2ч"/>
+                    <ViewerParameter parameterName="Тариф" parameterValue="На сутки"/>
+                    <ViewerParameter parameterName="Полный бак" parameterValue="Да"/>
+                    <ViewerParameter parameterName="Детские кресло" parameterValue="Да"/>
+                    <ViewerParameter parameterName="Правый руль" parameterValue="Да"/>
                 </ul>
                 <span className="order_details_viewer__price">
                     Цена: {getFormattedPrice(16000)} &#8381;
