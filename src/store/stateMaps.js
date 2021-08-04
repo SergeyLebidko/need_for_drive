@@ -26,7 +26,7 @@ function stateMapsFactory(component) {
             });
         case 'OrderCreator':
             return state => ({
-                hasOrderConfirmModalShow: state.hasOrderConfirmModalShow
+                hasModalShow: state.hasModalShow
             });
         case 'ModelTab':
             return state => ({

@@ -8,8 +8,8 @@ import {
     setColorList,
     setRateList,
     setOptionList,
-    showOrderConfirmModal,
-    hideOrderConfirmModal
+    showModal,
+    hideModal
 } from './actionCreators';
 
 function dispatchMapsFactory(component) {
@@ -34,16 +34,15 @@ function dispatchMapsFactory(component) {
                 setModelList: modelList => dispatch(setModelList(modelList)),
                 setColorList: colorList => dispatch(setColorList(colorList)),
                 setRateList: rateList => dispatch(setRateList(rateList)),
-                setOptionList: optionList => dispatch(setOptionList(optionList)),
-                hideOrderConfirmModal: () => dispatch(hideOrderConfirmModal())
+                setOptionList: optionList => dispatch(setOptionList(optionList))
             });
         case 'OrderDetailsActionButton':
             return dispatch => ({
-                showOrderConfirmModal: () => dispatch(showOrderConfirmModal())
+                showOrderConfirmModal: () => dispatch(showModal())
             });
-        case 'OrderConfirmModal':
+        case 'Modal':
             return dispatch => ({
-                hideOrderConfirmModal: () => dispatch(hideOrderConfirmModal())
+                hideModal: () => dispatch(hideModal())
             })
         default:
             return null;

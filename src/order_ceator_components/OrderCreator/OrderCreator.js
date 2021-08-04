@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Menu from '../../common_components/menu_components/Menu/Menu';
 import PageHeader from '../../common_components/PageHeader/PageHeader';
 import TabControl from '../TabControl/TabControl';
-import OrderConfirmModal from '../../common_components/OrderConfirmModal/OrderConfirmModal';
+import OrderConfirmModal from '../../common_components/Modal/Modal';
 import {createStoreConnectedComponent} from '../../store/connector';
 import {TAB_ITEMS_DATA, CATEGORY_LIST, MODEL_LIST, COLOR_LIST, RATE_LIST, OPTION_LIST} from '../../settings';
 import './OrderCreator.scss';
@@ -16,8 +16,8 @@ function OrderCreator(props) {
         setColorList,
         setRateList,
         setOptionList,
-        hasOrderConfirmModalShow,
-        hideOrderConfirmModal
+        hasModalShow,
+        history
     } = props;
 
     // Передаем нижележащим компонентам необходимые данные
@@ -31,11 +31,13 @@ function OrderCreator(props) {
     }, []);
 
     // TODO При реализации функциональности вставить код отправки сформированного заказа на бэкенд
-    let handleConfirmOrderCreate = () => hideOrderConfirmModal();
+    // С целью тестирования верстки пока переводим пользователя на страницу фиктивного заказа
+    // В дальнейшем, при реализации функционала будем переключать на страницу уже сформированного заказа
+    let handleConfirmOrderCreate = () => history.push('/order/ORDER1234567890');
 
     return (
         <div className="order_creator">
-            {hasOrderConfirmModalShow && <OrderConfirmModal handleConfirm={handleConfirmOrderCreate}/>}
+            {hasModalShow && <OrderConfirmModal caption="Подтвердить заказ" handleConfirm={handleConfirmOrderCreate}/>}
             <Menu/>
             <section className="order_creator__content">
                 <PageHeader/>
@@ -52,8 +54,8 @@ OrderCreator.propTypes = {
     setColorList: PropTypes.func,
     setRateList: PropTypes.func,
     setOptionList: PropTypes.func,
-    hasOrderConfirmModalShow: PropTypes.bool,
-    hideOrderConfirmModal: PropTypes.func
+    hasModalShow: PropTypes.bool,
+    history: PropTypes.object
 }
 
 export default createStoreConnectedComponent('OrderCreator')(OrderCreator);

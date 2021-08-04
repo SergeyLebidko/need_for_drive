@@ -107,14 +107,14 @@ export function setOptionList(optionList) {
     }
 }
 
-export function showOrderConfirmModal() {
+export function showModal() {
     return {
-        type: act.SHOW_ORDER_CONFIRM_MODAL
+        type: act.SHOW_MODAL
     }
 }
 
-export function hideOrderConfirmModal() {
+export function hideModal() {
     return {
-        type: act.HIDE_ORDER_CONFIRM_MODAL
+        type: act.HIDE_MODAL
     }
 }
