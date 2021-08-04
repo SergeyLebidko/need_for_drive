@@ -79,3 +79,42 @@ export function setModelList(modelList) {
         modelList
     }
 }
+
+/*
+  Создатель действия для установки списка цветов выбранного автомобиля.
+  TODO При реализации логики, рассмотреть необходимость удаления или сохранения этой функции.
+  Возможно, данные списка цветов будет рациональнее получать из объекта, соответствующего выбранному автомобилю. Сейчас
+  этот код нужен для тестирования верстки.
+*/
+export function setColorList(colorList) {
+    return {
+        type: act.SET_COLOR_LIST,
+        colorList
+    }
+}
+
+export function setRateList(rateList) {
+    return {
+        type: act.SET_RATE_LIST,
+        rateList
+    }
+}
+
+export function setOptionList(optionList) {
+    return {
+        type: act.SET_OPTION_LIST,
+        optionList
+    }
+}
+
+export function showOrderConfirmModal() {
+    return {
+        type: act.SHOW_ORDER_CONFIRM_MODAL
+    }
+}
+
+export function hideOrderConfirmModal() {
+    return {
+        type: act.HIDE_ORDER_CONFIRM_MODAL
+    }
+}

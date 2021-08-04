@@ -54,3 +54,41 @@ export function modelList(state = [], action) {
             return state;
     }
 }
+
+export function colorList(state = [], action) {
+    switch (action.type) {
+        case act.SET_COLOR_LIST:
+            return action.colorList;
+        default:
+            return state;
+    }
+}
+
+export function rateList(state = [], action) {
+    switch (action.type) {
+        case act.SET_RATE_LIST:
+            return action.rateList;
+        default:
+            return state;
+    }
+}
+
+export function optionList(state = [], action) {
+    switch (action.type) {
+        case act.SET_OPTION_LIST:
+            return action.optionList;
+        default:
+            return state;
+    }
+}
+
+export function hasOrderConfirmModalShow(state = false, action) {
+    switch (action.type) {
+        case act.SHOW_ORDER_CONFIRM_MODAL:
+            return true;
+        case act.HIDE_ORDER_CONFIRM_MODAL:
+            return false;
+        default:
+            return state;
+    }
+}

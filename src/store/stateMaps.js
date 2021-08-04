@@ -24,13 +24,20 @@ function stateMapsFactory(component) {
             return state => ({
                 tabItemsData: state.tabItemsData
             });
-        case 'CategorySelector':
+        case 'OrderCreator':
             return state => ({
-                categoryList: state.categoryList
+                hasOrderConfirmModalShow: state.hasOrderConfirmModalShow
             });
-        case 'ModelSelector':
+        case 'ModelTab':
             return state => ({
+                categoryList: state.categoryList,
                 modelList: state.modelList
+            });
+        case 'ExtraTab':
+            return state => ({
+                colorList: state.colorList,
+                rateList: state.rateList,
+                optionList: state.optionList
             });
         default:
             return null;

@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import randomstring from 'randomstring';
+import {getRandomString} from '../../../utils';
 import './SelectorItem.scss';
 
 function SelectorItem({caption, placeholder}) {
-    let inputId = randomstring.generate('alphabetic');
+    let inputId = getRandomString();
 
     return (
         <div className="selector_item">

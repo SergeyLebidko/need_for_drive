@@ -1,11 +1,19 @@
 @import '../../styles/vars';
 @import '../../styles/inputs';
 
-.category_selector {
-  padding-left: $step * 2;
+.radio_selector {
 
   input {
     display: none;
+  }
+
+  &__caption {
+    font-weight: 300;
+    margin-bottom: $step;
+  }
+
+  &__items_container {
+    padding-left: $step * 2;
   }
 
   &__item {
@@ -69,10 +77,18 @@
   }
 }
 
+.only_column {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+}
+
 @media (min-width: $desktop-min-start) {
-  .category_selector {
-    display: flex;
-    flex-wrap: wrap;
+  .radio_selector {
+    &__items_container {
+      display: flex;
+      flex-wrap: wrap;
+    }
 
     &__item {
       margin-right: $step * 4;

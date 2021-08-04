@@ -70,13 +70,25 @@
   }
 }
 
+.button_dark_red {
+  background-image: $dark-red-gradient;
+
+  &:hover {
+    background-image: $dark-red-gradient-hover;
+  }
+
+  &:active {
+    background-image: $dark-red-gradient-active;
+  }
+}
+
 .button_gray_light {
   background-color: $gray-light;
 }
 
 // Модификаторы закругления границ кнопок
 .button_small_round_border {
-  border-radius: $main-radius;
+  border-radius: $small-radius;
 }
 
 .button_main_round_border {

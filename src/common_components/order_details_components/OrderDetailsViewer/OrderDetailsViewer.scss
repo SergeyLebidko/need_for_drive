@@ -1,5 +1,6 @@
 @import '../../../styles/vars';
 @import '../../../styles/buttons';
+@import '../ViewerParameter/ViewerParameter';
 
 .order_details_viewer {
   padding-top: $step * 2;
@@ -26,31 +27,8 @@
     font-size: 0.8em;
   }
 
-  &__parameter {
-    display: flex;
-    justify-content: space-between;
-  }
-
-  &__parameter + &__parameter {
+  .viewer_parameter + .viewer_parameter {
     margin-top: $step * 2;
-  }
-
-  &__parameter_name {
-    color: $black;
-    font-weight: 300;
-  }
-
-  &__spacer {
-    flex: 1;
-    border-bottom: 1px dotted $gray;
-    min-width: $step * 4;
-    margin: 0 $step;
-  }
-
-  &__parameter_value {
-    color: $gray;
-    text-align: right;
-    font-weight: 300;
   }
 
   &__price {
