@@ -1,8 +1,7 @@
 import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import capitalize from 'capitalize';
-import {getRandomString} from '../../utils';
+import {getRandomString, capitalize} from '../../utils';
 import './RadioSelector.scss';
 
 function RadioSelector({caption, itemList, onlyColumn}) {
