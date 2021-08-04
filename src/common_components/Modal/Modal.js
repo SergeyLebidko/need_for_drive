@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
 import {createStoreConnectedComponent} from '../../store/connector';
 import './Modal.scss';
@@ -6,12 +6,16 @@ import './Modal.scss';
 export const CONFIRM_ORDER_MODAL = 'confirm_order_modal';
 export const REMOVE_ORDER_MODAL = 'cancel_order_modal';
 
-function Modal({type, action, hideModal}) {
+function Modal({type, action, hasModalShow, hideModal}) {
     // Перед выполнением действия подтверждения обязательно закрываем модальное окно
     let handleYesButtonClick = () => {
         hideModal();
         action();
     }
+
+    useEffect(() => () => {
+        if (hasModalShow) hideModal();
+    }, [hasModalShow]);
 
     let handleNoButtonClick = () => hideModal();
 
@@ -53,6 +57,7 @@ function Modal({type, action, hideModal}) {
 Modal.propTypes = {
     type: PropTypes.string,
     action: PropTypes.func,
+    hasModalShow: PropTypes.bool,
     hideModal: PropTypes.func
 }
 

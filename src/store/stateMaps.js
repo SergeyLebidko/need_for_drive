@@ -40,6 +40,10 @@ function stateMapsFactory(component) {
                 rateList: state.rateList,
                 optionList: state.optionList
             });
+        case 'Modal':
+            return state => ({
+                hasModalShow: state.hasModalShow
+            });
         default:
             return null;
     }
