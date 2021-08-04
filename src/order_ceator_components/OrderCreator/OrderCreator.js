@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Menu from '../../common_components/menu_components/Menu/Menu';
 import PageHeader from '../../common_components/PageHeader/PageHeader';
 import TabControl from '../TabControl/TabControl';
-import OrderConfirmModal from '../OrderConfirmModal/OrderConfirmModal';
+import OrderConfirmModal from '../../common_components/OrderConfirmModal/OrderConfirmModal';
 import {createStoreConnectedComponent} from '../../store/connector';
 import {TAB_ITEMS_DATA, CATEGORY_LIST, MODEL_LIST, COLOR_LIST, RATE_LIST, OPTION_LIST} from '../../settings';
 import './OrderCreator.scss';
