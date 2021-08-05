@@ -1,5 +1,16 @@
 import * as act from './actions';
-import {GEO_API_KEY, GEO_API_URL, RUS, ENG} from '../settings';
+import {
+    RUS,
+    ENG,
+    GEO_API_KEY,
+    GEO_API_URL,
+    TAB_ITEMS_DATA,
+    CATEGORY_LIST,
+    MODEL_LIST,
+    COLOR_LIST,
+    RATE_LIST,
+    OPTION_LIST
+} from '../settings';
 
 // Создатель действия для установки языка
 export function setLang(lang) {
@@ -93,6 +104,7 @@ export function setColorList(colorList) {
     }
 }
 
+// Создатель действия для установки списка тарифов
 export function setRateList(rateList) {
     return {
         type: act.SET_RATE_LIST,
@@ -100,6 +112,7 @@ export function setRateList(rateList) {
     }
 }
 
+// Создатель действия для установки списка доступных дополнительных опций
 export function setOptionList(optionList) {
     return {
         type: act.SET_OPTION_LIST,
@@ -107,18 +120,33 @@ export function setOptionList(optionList) {
     }
 }
 
+// Функция для отображения модального окна
 export function showModal() {
     return {
         type: act.SHOW_MODAL
     }
 }
 
+// Функция для скрытия модального окна
 export function hideModal() {
     return {
         type: act.HIDE_MODAL
     }
 }
 
+// Функция инициализирует все данные, необходимые для страницы создания заказа
+export function loadOrderCreatorData(){
+    return async dispatch => {
+        dispatch(setTabItemsData(TAB_ITEMS_DATA));
+        dispatch(setCategoryList(CATEGORY_LIST));
+        dispatch(setModelList(MODEL_LIST));
+        dispatch(setColorList(COLOR_LIST));
+        dispatch(setRateList(RATE_LIST));
+        dispatch(setOptionList(OPTION_LIST));
+    }
+}
+
+// Функция - инициализатор объекта заказа
 export function initOrder(order) {
     return {
         type: act.INIT_ORDER,

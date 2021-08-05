@@ -1,16 +1,4 @@
-import {
-    setLang,
-    loadCity,
-    setSliderData,
-    setTabItemsData,
-    setCategoryList,
-    setModelList,
-    setColorList,
-    setRateList,
-    setOptionList,
-    showModal,
-    hideModal
-} from './actionCreators';
+import {setLang, loadCity, setSliderData, showModal, hideModal, loadOrderCreatorData} from './actionCreators';
 
 function dispatchMapsFactory(component) {
     switch (component) {
@@ -29,12 +17,7 @@ function dispatchMapsFactory(component) {
             });
         case 'OrderCreator':
             return dispatch => ({
-                setTabItemsData: tabItemsData => dispatch(setTabItemsData(tabItemsData)),
-                setCategoryList: categoryList => dispatch(setCategoryList(categoryList)),
-                setModelList: modelList => dispatch(setModelList(modelList)),
-                setColorList: colorList => dispatch(setColorList(colorList)),
-                setRateList: rateList => dispatch(setRateList(rateList)),
-                setOptionList: optionList => dispatch(setOptionList(optionList))
+                loadOrderCreatorData: () => dispatch(loadOrderCreatorData())
             });
         case 'OrderPane':
         case 'TabControl':

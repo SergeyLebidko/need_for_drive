@@ -5,30 +5,10 @@ import PageHeader from '../../common_components/PageHeader/PageHeader';
 import TabControl from '../TabControl/TabControl';
 import Modal, {CONFIRM_ORDER_MODAL} from '../../common_components/Modal/Modal';
 import {createStoreConnectedComponent} from '../../store/connector';
-import {TAB_ITEMS_DATA, CATEGORY_LIST, MODEL_LIST, COLOR_LIST, RATE_LIST, OPTION_LIST} from '../../settings';
 import './OrderCreator.scss';
 
-function OrderCreator(props) {
-    let {
-        setTabItemsData,
-        setCategoryList,
-        setModelList,
-        setColorList,
-        setRateList,
-        setOptionList,
-        hasModalShow,
-        history
-    } = props;
-
-    // Передаем нижележащим компонентам необходимые данные
-    useEffect(() => {
-        setTabItemsData(TAB_ITEMS_DATA);
-        setCategoryList(CATEGORY_LIST);
-        setModelList(MODEL_LIST);
-        setColorList(COLOR_LIST);
-        setRateList(RATE_LIST);
-        setOptionList(OPTION_LIST)
-    }, []);
+function OrderCreator({loadOrderCreatorData, hasModalShow, history}) {
+    useEffect(() => loadOrderCreatorData(), []);
 
     // TODO При реализации функциональности вставить код отправки сформированного заказа на бэкенд
     // С целью тестирования верстки пока переводим пользователя на страницу фиктивного заказа
@@ -48,12 +28,7 @@ function OrderCreator(props) {
 }
 
 OrderCreator.propTypes = {
-    setTabItemsData: PropTypes.func,
-    setCategoryList: PropTypes.func,
-    setModelList: PropTypes.func,
-    setColorList: PropTypes.func,
-    setRateList: PropTypes.func,
-    setOptionList: PropTypes.func,
+    loadOrderCreatorData: PropTypes.func,
     hasModalShow: PropTypes.bool,
     history: PropTypes.object
 }
