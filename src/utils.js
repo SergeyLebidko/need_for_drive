@@ -2,7 +2,7 @@ import slide0 from './content/images/slides/slide-0.png';
 import slide1 from './content/images/slides/slide-1.png';
 import slide2 from './content/images/slides/slide-2.png';
 import slide3 from './content/images/slides/slide-3.png';
-import {DEFAULT_REQUEST_HEADERS, CITY_LIST_URL} from './urls';
+import {DEFAULT_REQUEST_HEADERS, CITY_LIST_URL, POINT_LIST_URL} from './urls';
 import {LANG_PACK} from './langPack';
 
 export function createSliderData(lang) {
@@ -41,6 +41,12 @@ export function capitalize(str) {
 
 export async function loadCityList() {
     return fetch(CITY_LIST_URL, {headers: DEFAULT_REQUEST_HEADERS})
+        .then(response => response.json())
+        .then(json => json.data);
+}
+
+export async function loadPointList() {
+    return fetch(POINT_LIST_URL, {headers: DEFAULT_REQUEST_HEADERS})
         .then(response => response.json())
         .then(json => json.data);
 }

@@ -10,7 +10,7 @@ import {
     RATE_LIST,
     OPTION_LIST
 } from '../settings';
-import {loadCityList} from '../utils';
+import {loadCityList, loadPointList} from '../utils';
 
 // Создатель действия для установки языка
 export function setLang(lang) {
@@ -144,10 +144,24 @@ export function loadOrderCreatorData() {
         dispatch(setRateList(RATE_LIST));
         dispatch(setOptionList(OPTION_LIST));
 
-        // Загружаем список городов
+        // Загружаем списки городов и точек авто
         let _cityList = await loadCityList();
+        let _pointList = await loadPointList();
+
+        // Отсекаем города, не имеющие поинтов
+        _cityList = _cityList.filter(city => {
+            let point = _pointList.find(point => point.cityId && point.cityId.id === city.id);
+            return !!point;
+        });
+
+        // Отсекаем поинты, не привязанные ни к одному городу
+        _pointList = _pointList.filter(point => {
+            let city = _cityList.find(city => point.cityId && point.cityId.id === city.id);
+            return !!city;
+        });
 
         console.log('Список городов', _cityList);
+        console.log('Список местоположений', _pointList);
     }
 }
 
