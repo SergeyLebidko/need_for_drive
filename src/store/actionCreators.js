@@ -2,7 +2,6 @@ import * as act from './actions';
 import {
     RUS,
     ENG,
-    GEO_API_KEY,
     GEO_API_URL,
     TAB_ITEMS_DATA,
     CATEGORY_LIST,
@@ -31,7 +30,7 @@ export function loadCity(lang) {
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json',
-                'Authorization': 'Token ' + GEO_API_KEY
+                'Authorization': 'Token ' + process.env.REACT_APP_DADATA_API_KEY
             }
         }
 
@@ -135,7 +134,7 @@ export function hideModal() {
 }
 
 // Функция инициализирует все данные, необходимые для страницы создания заказа
-export function loadOrderCreatorData(){
+export function loadOrderCreatorData() {
     return async dispatch => {
         dispatch(setTabItemsData(TAB_ITEMS_DATA));
         dispatch(setCategoryList(CATEGORY_LIST));
