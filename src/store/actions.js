@@ -9,3 +9,4 @@ export const SET_RATE_LIST = 'set_rate_list';
 export const SET_OPTION_LIST = 'set_option_list';
 export const SHOW_MODAL = 'show_modal';
 export const HIDE_MODAL = 'hide_modal';
+export const INIT_ORDER = 'init_order';

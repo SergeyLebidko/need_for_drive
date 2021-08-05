@@ -92,3 +92,12 @@ export function hasModalShow(state = false, action) {
             return state;
     }
 }
+
+export function order(state = null, action) {
+    switch (action.type) {
+        case act.INIT_ORDER:
+            return action.order;
+        default:
+            return state;
+    }
+}

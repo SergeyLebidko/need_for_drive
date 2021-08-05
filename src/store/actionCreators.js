@@ -118,3 +118,10 @@ export function hideModal() {
         type: act.HIDE_MODAL
     }
 }
+
+export function initOrder(order) {
+    return {
+        type: act.INIT_ORDER,
+        order
+    }
+}
