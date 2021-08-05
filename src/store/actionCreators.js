@@ -10,7 +10,7 @@ import {
     RATE_LIST,
     OPTION_LIST
 } from '../settings';
-import {loadCityList, loadPointList} from '../utils';
+import {loadCityList, loadPointList, loadCityCoords, loadPointCoords} from '../utils';
 
 // Создатель действия для установки языка
 export function setLang(lang) {
@@ -160,8 +160,26 @@ export function loadOrderCreatorData() {
             return !!city;
         });
 
+        let coords;
+
+        // Создаем список координат городов
+        let _cityCoords = [];
+        for (let city of _cityList){
+            coords = await loadCityCoords(city);
+            _cityCoords.push(coords);
+        }
+
+        // Создаем список координат поинтов
+        let _pointCoords = [];
+        for (let point of _pointList){
+            coords = await loadPointCoords(point, _cityList);
+            _pointCoords.push(coords);
+        }
+
         console.log('Список городов', _cityList);
         console.log('Список местоположений', _pointList);
+        console.log('Список координат городов', _cityCoords);
+        console.log('Список координат местоположений', _pointCoords);
     }
 }
 

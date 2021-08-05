@@ -4,6 +4,11 @@ import slide2 from './content/images/slides/slide-2.png';
 import slide3 from './content/images/slides/slide-3.png';
 import {DEFAULT_REQUEST_HEADERS, CITY_LIST_URL, POINT_LIST_URL} from './urls';
 import {LANG_PACK} from './langPack';
+import Geocode from 'react-geocode';
+
+Geocode.setApiKey(process.env.REACT_APP_GEOCODER_API_KEY);
+Geocode.setLanguage('ru');
+Geocode.setRegion('ru');
 
 export function createSliderData(lang) {
     const SLIDE_COUNT = 4;
@@ -49,4 +54,17 @@ export async function loadPointList() {
     return fetch(POINT_LIST_URL, {headers: DEFAULT_REQUEST_HEADERS})
         .then(response => response.json())
         .then(json => json.data);
+}
+
+export async function loadCityCoords(city) {
+    let geoData = await Geocode.fromAddress(city.name);
+    let {lat, lng} = geoData.results[0].geometry.location;
+    return {id: city.id, lat, lng};
+}
+
+export async function loadPointCoords(point, cityList) {
+    let cityOfPoint = cityList.find(city => city.id === point.cityId.id);
+    let geoData = await Geocode.fromAddress(cityOfPoint.name + ' ' + point.address);
+    let {lat, lng} = geoData.results[0].geometry.location;
+    return {id: point.id, lat, lng};
 }
