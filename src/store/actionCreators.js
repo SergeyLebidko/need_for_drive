@@ -10,6 +10,7 @@ import {
     RATE_LIST,
     OPTION_LIST
 } from '../settings';
+import {loadCityList} from '../utils';
 
 // Создатель действия для установки языка
 export function setLang(lang) {
@@ -142,6 +143,11 @@ export function loadOrderCreatorData() {
         dispatch(setColorList(COLOR_LIST));
         dispatch(setRateList(RATE_LIST));
         dispatch(setOptionList(OPTION_LIST));
+
+        // Загружаем список городов
+        let _cityList = await loadCityList();
+
+        console.log('Список городов', _cityList);
     }
 }
 

@@ -2,6 +2,7 @@ import slide0 from './content/images/slides/slide-0.png';
 import slide1 from './content/images/slides/slide-1.png';
 import slide2 from './content/images/slides/slide-2.png';
 import slide3 from './content/images/slides/slide-3.png';
+import {DEFAULT_REQUEST_HEADERS, CITY_LIST_URL} from './urls';
 import {LANG_PACK} from './langPack';
 
 export function createSliderData(lang) {
@@ -34,6 +35,12 @@ export function getRandomString(size = 16) {
     return result.join('');
 }
 
-export function capitalize(str){
+export function capitalize(str) {
     return str[0].toUpperCase() + str.slice(1).toLowerCase();
+}
+
+export async function loadCityList() {
+    return fetch(CITY_LIST_URL, {headers: DEFAULT_REQUEST_HEADERS})
+        .then(response => response.json())
+        .then(json => json.data);
 }
