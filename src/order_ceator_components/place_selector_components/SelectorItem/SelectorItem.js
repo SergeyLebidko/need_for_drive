@@ -8,15 +8,11 @@ function SelectorItem({caption, placeholder}) {
 
     return (
         <div className="selector_item">
-            <div className="selector_item__label">
+            <div className="selector_item__label_block">
                 <label htmlFor={inputId}>{caption}</label>
             </div>
-            <div className="selector_item__field">
-                <input
-                    id={inputId}
-                    className="text_input"
-                    placeholder={placeholder}
-                />
+            <div className="selector_item__input_block">
+                <input id={inputId} placeholder={placeholder}/>
                 <span className="selector_item__clear_button">&#215;</span>
             </div>
         </div>
