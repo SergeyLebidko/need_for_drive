@@ -4,10 +4,11 @@ import Menu from '../../common_components/menu_components/Menu/Menu';
 import PageHeader from '../../common_components/PageHeader/PageHeader';
 import TabControl from '../TabControl/TabControl';
 import Modal, {CONFIRM_ORDER_MODAL} from '../../common_components/Modal/Modal';
+import Preloader from '../../common_components/Preloader/Preloader';
 import {createStoreConnectedComponent} from '../../store/connector';
 import './OrderCreator.scss';
 
-function OrderCreator({loadOrderCreatorData, hasModalShow, history}) {
+function OrderCreator({loadOrderCreatorData, hasOrderCreatorDataLoaded, hasModalShow, history}) {
     useEffect(() => loadOrderCreatorData(), []);
 
     // TODO При реализации функциональности вставить код отправки сформированного заказа на бэкенд
@@ -17,18 +18,25 @@ function OrderCreator({loadOrderCreatorData, hasModalShow, history}) {
 
     return (
         <div className="order_creator">
-            {hasModalShow && <Modal type={CONFIRM_ORDER_MODAL} action={handleOrderCreate}/>}
-            <Menu/>
-            <section className="order_creator__content">
-                <PageHeader/>
-                <TabControl/>
-            </section>
+            {hasOrderCreatorDataLoaded ?
+                <>
+                    {hasModalShow && <Modal type={CONFIRM_ORDER_MODAL} action={handleOrderCreate}/>}
+                    <Menu/>
+                    <section className="order_creator__content">
+                        <PageHeader/>
+                        <TabControl/>
+                    </section>
+                </>
+                :
+                <Preloader/>
+            }
         </div>
     )
 }
 
 OrderCreator.propTypes = {
     loadOrderCreatorData: PropTypes.func,
+    hasOrderCreatorDataLoaded: PropTypes.bool,
     hasModalShow: PropTypes.bool,
     history: PropTypes.object
 }

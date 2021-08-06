@@ -25,6 +25,13 @@ function stateMapsFactory(component) {
                 tabItemsData: state.tabItemsData
             });
         case 'OrderCreator':
+            return state => ({
+                hasModalShow: state.hasModalShow,
+                hasOrderCreatorDataLoaded: (function () {
+                    let {cityList, pointList, cityCoords, pointCoords} = state;
+                    return cityList.length > 0 && pointList.length > 0 && cityCoords.length > 0 && pointCoords.length > 0;
+                })()
+            });
         case 'OrderViewer':
             return state => ({
                 hasModalShow: state.hasModalShow
