@@ -147,7 +147,7 @@ export function order(state = null, action) {
         }
         case act.CLEAR_ORDER_CITY: {
             let _order = {...state}
-            delete order.cityId;
+            delete _order.cityId;
             return _order;
         }
         case act.CLEAR_ORDER_POINT: {

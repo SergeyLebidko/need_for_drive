@@ -1,5 +1,6 @@
 import React, {useState, useEffect, useRef} from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import PopupItem from '../PopupItem/PopupItem';
 import {getRandomString} from '../../../utils';
 import './SelectorItem.scss';
@@ -90,6 +91,8 @@ function SelectorItem({caption, placeholder, items, defaultItem, handleSelect, s
         handleSelect(item);
     }
 
+    let clearButtonClasses = classNames('selector_item__clear_button', {'disabled_clear_button': items.length === 0});
+
     return (
         <div className="selector_item" ref={selectorRef}>
             <div className="selector_item__label_block">
@@ -103,8 +106,11 @@ function SelectorItem({caption, placeholder, items, defaultItem, handleSelect, s
                     onChange={handleChangeInputValue}
                     onFocus={handleInputFocus}
                     onKeyDown={handleInputKeyDown}
+                    disabled={items.length === 0}
                 />
-                <span className="selector_item__clear_button" onClick={handleClearValue}>&#215;</span>
+                <span className={clearButtonClasses} onClick={handleClearValue}>
+                    &#215;
+                </span>
                 {popupItems.length > 0 &&
                 <ul className="selector_item__popup__block">
                     {popupItems.map(

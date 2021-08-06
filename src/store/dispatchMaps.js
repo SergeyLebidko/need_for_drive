@@ -1,4 +1,15 @@
-import {setLang, loadCity, setSliderData, showModal, hideModal, loadOrderCreatorData} from './actionCreators';
+import {
+    setLang,
+    loadCity,
+    setSliderData,
+    showModal,
+    hideModal,
+    loadOrderCreatorData,
+    setOrderCity,
+    setOrderPoint,
+    clearOrderCity,
+    clearOrderPoint
+} from './actionCreators';
 
 function dispatchMapsFactory(component) {
     switch (component) {
@@ -28,6 +39,13 @@ function dispatchMapsFactory(component) {
             return dispatch => ({
                 hideModal: () => dispatch(hideModal())
             })
+        case 'PlaceSelector':
+            return dispatch => ({
+                setOrderCity: city => dispatch(setOrderCity(city)),
+                setOrderPoint: point => dispatch(setOrderPoint(point)),
+                clearOrderCity: () => dispatch(clearOrderCity()),
+                clearOrderPoint: () => dispatch(clearOrderPoint())
+            });
         default:
             return null;
     }

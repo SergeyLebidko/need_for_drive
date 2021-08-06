@@ -22,6 +22,10 @@
       border: none;
       border-bottom: 1px solid $gray;
       padding-right: 1.5em;
+
+      &:disabled {
+        border-bottom: 1px solid $gray-light;
+      }
     }
   }
 
@@ -42,6 +46,10 @@
     z-index: 1;
     padding: 5px;
   }
+}
+
+.disabled_clear_button {
+  color: $gray;
 }
 
 @media (min-width: $desktop-min-start) {

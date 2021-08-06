@@ -1,20 +1,32 @@
-import React from 'react';
+import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import SelectorItem from '../SelectorItem/SelectorItem';
 import {createStoreConnectedComponent} from '../../../store/connector';
 import './PlaceSelector.scss';
 
-function PlaceSelector({order, cityList, pointList}) {
+function PlaceSelector({order, cityList, pointList, setOrderCity, setOrderPoint, clearOrderCity, clearOrderPoint}) {
+    let [pointListToSelector, setPointListToSelector] = useState([]);
+
     let {cityId: selectedCity, pointId: selectedPoint} = order;
 
     let handleCitySelect = city => {
-        // TODO Тестовый вывод
-        console.log(city);
+        if (city) {
+            setPointListToSelector(pointList.filter(point => point.cityId.id === city.id));
+            setOrderCity(city);
+            clearOrderPoint();
+        } else {
+            clearOrderCity();
+            clearOrderPoint();
+            setPointListToSelector([]);
+        }
     }
 
     let handlePointSelect = point => {
-        // TODO Тестовый вывод
-        console.log(point);
+        if (point) {
+            setOrderPoint(point);
+        } else {
+            clearOrderPoint();
+        }
     }
 
     return (
@@ -30,7 +42,7 @@ function PlaceSelector({order, cityList, pointList}) {
             <SelectorItem
                 caption="Пункт выдачи"
                 placeholder="Начните вводить пункт выдачи"
-                items={pointList}
+                items={pointListToSelector}
                 defaultItem={selectedPoint}
                 handleSelect={handlePointSelect}
                 searchFieldName="address"
@@ -42,7 +54,11 @@ function PlaceSelector({order, cityList, pointList}) {
 PlaceSelector.propTypes = {
     order: PropTypes.object,
     cityList: PropTypes.array,
-    pointList: PropTypes.array
+    pointList: PropTypes.array,
+    setOrderCity: PropTypes.func,
+    setOrderPoint: PropTypes.func,
+    clearOrderCity: PropTypes.func,
+    clearOrderPoint: PropTypes.func
 }
 
 export default createStoreConnectedComponent('PlaceSelector')(PlaceSelector);
