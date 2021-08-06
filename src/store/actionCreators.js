@@ -148,41 +148,73 @@ export function loadOrderCreatorData() {
         dispatch(initOrder({}));
 
         // Загружаем списки городов и точек авто
-        let _cityList = await loadCityList();
-        let _pointList = await loadPointList();
+        let cityList = await loadCityList();
+        let pointList = await loadPointList();
 
         // Отсекаем города, не имеющие поинтов
-        _cityList = _cityList.filter(city => {
-            let point = _pointList.find(point => point.cityId && point.cityId.id === city.id);
+        cityList = cityList.filter(city => {
+            let point = pointList.find(point => point.cityId && point.cityId.id === city.id);
             return !!point;
         });
 
         // Отсекаем поинты, не привязанные ни к одному городу
-        _pointList = _pointList.filter(point => {
-            let city = _cityList.find(city => point.cityId && point.cityId.id === city.id);
+        pointList = pointList.filter(point => {
+            let city = cityList.find(city => point.cityId && point.cityId.id === city.id);
             return !!city;
         });
 
         let coords;
 
         // Создаем список координат городов
-        let _cityCoords = [];
-        for (let city of _cityList){
+        let cityCoords = [];
+        for (let city of cityList){
             coords = await loadCityCoords(city);
-            _cityCoords.push(coords);
+            cityCoords.push(coords);
         }
 
         // Создаем список координат поинтов
-        let _pointCoords = [];
-        for (let point of _pointList){
-            coords = await loadPointCoords(point, _cityList);
-            _pointCoords.push(coords);
+        let pointCoords = [];
+        for (let point of pointList){
+            coords = await loadPointCoords(point, cityList);
+            pointCoords.push(coords);
         }
 
-        console.log('Список городов', _cityList);
-        console.log('Список местоположений', _pointList);
-        console.log('Список координат городов', _cityCoords);
-        console.log('Список координат местоположений', _pointCoords);
+        dispatch(setCityList(cityList));
+        dispatch(setPointList(pointList));
+        dispatch(setCityCoords(cityCoords));
+        dispatch(setPointCoords(pointCoords));
+    }
+}
+
+// Создатель действия для сохранения списка городов
+export function setCityList(cityList){
+    return {
+        type: act.SET_CITY_LIST,
+        cityList
+    }
+}
+
+// Создатель действия для сохранения списка местоположений
+export function setPointList(pointList) {
+    return {
+        type: act.SET_POINT_LIST,
+        pointList
+    }
+}
+
+// Создатель действия для сохранения списка координат городов
+export function setCityCoords(cityCoords) {
+    return {
+        type: act.SET_CITY_COORDS,
+        cityCoords
+    }
+}
+
+// Создатель действия для сохранения списка координат местоположений
+export function setPointCoords(pointCoords) {
+    return {
+        type: act.SET_POINT_COORDS,
+        pointCoords
     }
 }
 

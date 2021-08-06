@@ -93,6 +93,42 @@ export function hasModalShow(state = false, action) {
     }
 }
 
+export function cityList(state = [], action) {
+    switch (action.type) {
+        case act.SET_CITY_LIST:
+            return action.cityList;
+        default:
+            return state;
+    }
+}
+
+export function pointList(state = [], action) {
+    switch (action.type) {
+        case act.SET_POINT_LIST:
+            return action.pointList;
+        default:
+            return state;
+    }
+}
+
+export function cityCoords(state = [], action) {
+    switch (action.type) {
+        case act.SET_CITY_COORDS:
+            return action.cityCoords;
+        default:
+            return state;
+    }
+}
+
+export function pointCoords(state = [], action) {
+    switch (action.type) {
+        case act.SET_POINT_COORDS:
+            return action.pointCoords;
+        default:
+            return state;
+    }
+}
+
 export function order(state = null, action) {
     switch (action.type) {
         case act.INIT_ORDER:
