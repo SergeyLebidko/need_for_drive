@@ -1,5 +1,6 @@
 import React, {useState, useEffect, useRef} from 'react';
 import PropTypes from 'prop-types';
+import PopupItem from '../PopupItem/PopupItem';
 import {getRandomString} from '../../../utils';
 import './SelectorItem.scss';
 
@@ -102,17 +103,17 @@ function SelectorItem({caption, placeholder, items, defaultItem, handleSelect, s
                 />
                 <span className="selector_item__clear_button" onClick={handleClearValue}>&#215;</span>
                 {popupItems.length > 0 &&
-                <ul className="selector__popup_block" ref={popupRef}>
+                <ul className="selector_item__popup__block" ref={popupRef}>
                     {popupItems.map(
                         (item, index) =>
-                            <li
+                            <PopupItem
                                 key={item.id}
-                                className={index === selectedPopupIndex ? 'selected_popup_item' : ''}
-                                onClick={() => popupItemClickHandler(item)}
-                                onMouseEnter={() => popupMouseEnterHandler(index)}
-                            >
-                                {item[searchFieldName]}
-                            </li>
+                                item={item}
+                                hasSelect={index === selectedPopupIndex}
+                                handleClick={() => popupItemClickHandler(item)}
+                                handleMouseEnter={() => popupMouseEnterHandler(index)}
+                                fieldName={searchFieldName}
+                            />
                     )}
                 </ul>
                 }

@@ -12,6 +12,8 @@
   }
 
   &__input_block {
+    position: relative;
+
     input {
       width: calc(100% - 1em);
       font-size: 1em;
@@ -27,6 +29,38 @@
     cursor: pointer;
     position: relative;
     left: -1em;
+  }
+
+  &__popup__block {
+    position: absolute;
+    top: 2em;
+    left: 0;
+    width: calc(100% - 1em);
+    background-color: white;
+    border: 1px solid $gray-light;
+    border-radius: $small-radius;
+    z-index: 1;
+    padding: 5px;
+    max-height: 12em;
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+      width: 3px;
+      height: 3px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: lightgray;
+      border-radius: 5px;
+    }
+
+    &:hover::-webkit-scrollbar-thumb {
+      background-color: dimgray;
+    }
+
+    &::-webkit-scrollbar-corner {
+      border-radius: 5px;
+    }
   }
 }
 
