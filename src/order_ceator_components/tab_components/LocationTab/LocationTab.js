@@ -1,14 +1,13 @@
 import React from 'react';
 import PlaceSelector from '../../place_selector_components/PlaceSelector/PlaceSelector';
-import tempMap from '../../../content/images/map.png';
+import Map from '../../map_components/Map/Map';
 import './LocationTab.scss';
 
 function LocationTab() {
     return (
         <div className="location_tab">
             <PlaceSelector/>
-            <label className="location_tab__map_label">Выбрать на карте</label>
-            <img src={tempMap} className="location_tab__map"/>
+            <Map/>
         </div>
     )
 }
