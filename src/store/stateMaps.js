@@ -57,6 +57,14 @@ function stateMapsFactory(component) {
                 cityList: state.cityList,
                 pointList: state.pointList
             });
+        case 'Map':
+            return state => ({
+                order: state.order,
+                cityCoords: state.cityCoords,
+                pointCoords: state.pointCoords,
+                cityList: state.cityList,
+                pointList: state.pointList
+            });
         default:
             return null;
     }

@@ -5,4 +5,17 @@
     margin-bottom: $step * 2;
     font-weight: 300;
   }
+
+  &__container {
+    width: 100%;
+    height: 50vh;
+  }
+}
+
+@media (min-width: $desktop-min-start) {
+  .map {
+    &__container {
+      width: 75%;
+    }
+  }
 }

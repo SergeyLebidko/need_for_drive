@@ -46,6 +46,12 @@ function dispatchMapsFactory(component) {
                 clearOrderCity: () => dispatch(clearOrderCity()),
                 clearOrderPoint: () => dispatch(clearOrderPoint())
             });
+        case 'Map':
+            return dispatch => ({
+                setOrderCity: city => dispatch(setOrderCity(city)),
+                setOrderPoint: point => dispatch(setOrderPoint(point)),
+                clearOrderPoint: () => dispatch(clearOrderPoint())
+            });
         default:
             return null;
     }
