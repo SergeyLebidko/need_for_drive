@@ -218,10 +218,40 @@ export function setPointCoords(pointCoords) {
     }
 }
 
-// Функция - инициализатор объекта заказа
+// Создатель действия для инициализации заказа
 export function initOrder(order) {
     return {
         type: act.INIT_ORDER,
         order
+    }
+}
+
+// Создатель действия для установки города в заказе
+export function setOrderCity(city){
+    return {
+        type: act.SET_ORDER_CITY,
+        city
+    }
+}
+
+// Создатель действия для установки местоположения (point) в заказе
+export function setOrderPoint(point){
+    return {
+        type: act.SET_ORDER_POINT,
+        point
+    }
+}
+
+// Создатель действия для удаления города из заказа
+export function clearOrderCity(){
+    return {
+        type: act.CLEAR_ORDER_CITY
+    }
+}
+
+// Создатель действия для удаления местоположения (point) из заказа
+export function clearOrderPoint(){
+    return {
+        type: act.CLEAR_ORDER_POINT
     }
 }

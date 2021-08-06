@@ -133,6 +133,28 @@ export function order(state = null, action) {
     switch (action.type) {
         case act.INIT_ORDER:
             return action.order;
+        case act.SET_ORDER_CITY: {
+            let _order = {...state}
+            let {id, name} = action.city;
+            _order.cityId = {id, name}
+            return _order;
+        }
+        case act.SET_ORDER_POINT: {
+            let _order = {...state}
+            let {id, address, name} = action.point;
+            _order.pointId = {id, address, name}
+            return _order
+        }
+        case act.CLEAR_ORDER_CITY: {
+            let _order = {...state}
+            delete order.cityId;
+            return _order;
+        }
+        case act.CLEAR_ORDER_POINT: {
+            let _order = {...state}
+            delete _order.pointId;
+            return _order;
+        }
         default:
             return state;
     }

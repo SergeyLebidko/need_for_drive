@@ -14,3 +14,7 @@ export const SET_OPTION_LIST = 'set_option_list';
 export const SHOW_MODAL = 'show_modal';
 export const HIDE_MODAL = 'hide_modal';
 export const INIT_ORDER = 'init_order';
+export const SET_ORDER_CITY = 'set_order_city';
+export const CLEAR_ORDER_CITY = 'clear_order_city';
+export const SET_ORDER_POINT = 'set_order_point';
+export const CLEAR_ORDER_POINT = 'clear_order_point';
