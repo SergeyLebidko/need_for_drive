@@ -144,6 +144,9 @@ export function loadOrderCreatorData() {
         dispatch(setRateList(RATE_LIST));
         dispatch(setOptionList(OPTION_LIST));
 
+        // Инициализируем заказ как пустой объект
+        dispatch(initOrder({}));
+
         // Загружаем списки городов и точек авто
         let _cityList = await loadCityList();
         let _pointList = await loadPointList();
