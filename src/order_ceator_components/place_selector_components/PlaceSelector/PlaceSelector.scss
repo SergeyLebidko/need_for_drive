@@ -1,14 +1,14 @@
 @import '../../../styles/vars';
 @import '../SelectorItem/SelectorItem';
 
-.place_form {
+.place_selector {
   .selector_item {
     margin: ($step * 2) 0;
   }
 }
 
 @media (min-width: $desktop-min-start) {
-  .place_form {
+  .place_selector {
     display: table;
     align-self: flex-start;
   }

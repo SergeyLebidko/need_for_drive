@@ -51,6 +51,12 @@ function stateMapsFactory(component) {
             return state => ({
                 hasModalShow: state.hasModalShow
             });
+        case 'PlaceSelector':
+            return state => ({
+                order: state.order,
+                cityList: state.cityList,
+                pointList: state.pointList
+            });
         default:
             return null;
     }
