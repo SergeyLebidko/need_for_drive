@@ -82,11 +82,11 @@ export function optionList(state = [], action) {
     }
 }
 
-export function hasOrderConfirmModalShow(state = false, action) {
+export function hasModalShow(state = false, action) {
     switch (action.type) {
-        case act.SHOW_ORDER_CONFIRM_MODAL:
+        case act.SHOW_MODAL:
             return true;
-        case act.HIDE_ORDER_CONFIRM_MODAL:
+        case act.HIDE_MODAL:
             return false;
         default:
             return state;

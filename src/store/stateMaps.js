@@ -25,8 +25,9 @@ function stateMapsFactory(component) {
                 tabItemsData: state.tabItemsData
             });
         case 'OrderCreator':
+        case 'OrderViewer':
             return state => ({
-                hasOrderConfirmModalShow: state.hasOrderConfirmModalShow
+                hasModalShow: state.hasModalShow
             });
         case 'ModelTab':
             return state => ({
@@ -38,6 +39,10 @@ function stateMapsFactory(component) {
                 colorList: state.colorList,
                 rateList: state.rateList,
                 optionList: state.optionList
+            });
+        case 'Modal':
+            return state => ({
+                hasModalShow: state.hasModalShow
             });
         default:
             return null;

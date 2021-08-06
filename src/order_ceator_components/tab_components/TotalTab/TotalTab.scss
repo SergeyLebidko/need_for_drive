@@ -9,6 +9,12 @@
     }
   }
 
+  &__confirm_caption {
+    display: inline-block;
+    margin-bottom: $step * 2;
+    font-size: 1.6em;
+  }
+
   &__model_field {
     font-size: 1.4em;
   }
