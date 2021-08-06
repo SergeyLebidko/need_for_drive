@@ -10,7 +10,6 @@ function SelectorItem({caption, placeholder, items, defaultItem, handleSelect, s
     let [selectedPopupIndex, setSelectedPopupIndex] = useState(null);
 
     let selectorRef = useRef(null);
-    let popupRef = useRef(null);
 
     let inputId = getRandomString();
 
@@ -58,18 +57,22 @@ function SelectorItem({caption, placeholder, items, defaultItem, handleSelect, s
     // Обработчик нажатия кнопок в поле ввода
     let handleInputKeyDown = event => {
         if (popupItems.length === 0) return;
+
+        // Enter
         if (event.keyCode === 13) {
             setInputValue(popupItems[selectedPopupIndex][searchFieldName]);
             setPopupItems([]);
             handleSelect(popupItems[selectedPopupIndex]);
         }
+
+        // Стрелка вниз
         if (event.keyCode === 40) {
-            setSelectedPopupIndex(oldIndex => oldIndex === (popupItems.length - 1) ? oldIndex : oldIndex + 1);
-            popupRef.current.scrollTop += 16;
+            setSelectedPopupIndex(oldIndex => oldIndex === (popupItems.length - 1) ? 0 : oldIndex + 1);
         }
+
+        // Стрелка вверх
         if (event.keyCode === 38) {
-            setSelectedPopupIndex(oldIndex => oldIndex === 0 ? oldIndex : oldIndex - 1);
-            popupRef.current.scrollTop -= 16;
+            setSelectedPopupIndex(oldIndex => oldIndex === 0 ? (popupItems.length - 1) : oldIndex - 1);
         }
     }
 
@@ -103,7 +106,7 @@ function SelectorItem({caption, placeholder, items, defaultItem, handleSelect, s
                 />
                 <span className="selector_item__clear_button" onClick={handleClearValue}>&#215;</span>
                 {popupItems.length > 0 &&
-                <ul className="selector_item__popup__block" ref={popupRef}>
+                <ul className="selector_item__popup__block">
                     {popupItems.map(
                         (item, index) =>
                             <PopupItem
