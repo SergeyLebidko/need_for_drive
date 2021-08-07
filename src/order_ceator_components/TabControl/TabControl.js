@@ -16,16 +16,12 @@ import './TabControl.scss';
 function TabControl({order, showModal}) {
     let [mode, setMode] = useState(LOCATION_MODE);
 
-    let toModelTabAction = () => {
-        if (hasSelectedLocation(order)) setMode(MODEL_MODE);
-    }
-
-    let toExtraTabAction = () => {
-        if (hasSelectedModel(order)) setMode(EXTRA_MODE);
-    }
-
-    let toTotalTabAction = () => {
-        if(hasSelectedExtra(order)) setMode(TOTAL_MODE);
+    let getActionButtonProps = type => {
+        if (type === TO_MODEL_TAB_ACTION && hasSelectedLocation(order)) return () => setMode(MODEL_MODE);
+        if (type === TO_EXTRA_TAB_ACTION && hasSelectedModel(order)) return () => setMode(EXTRA_MODE);
+        if (type === TO_TOTAL_TAB_ACTION && hasSelectedExtra(order)) return () => setMode(TOTAL_MODE);
+        if (type === EXECUTE_ACTION) return showModal;
+        return null;
     }
 
     const TAB_SELECTOR = {
@@ -37,10 +33,10 @@ function TabControl({order, showModal}) {
     let TabComponent = TAB_SELECTOR[mode];
 
     const BUTTON_COMPONENT_SELECTOR = {
-        [LOCATION_MODE]: <OrderDetailsActionButton type={TO_MODEL_TAB_ACTION} action={toModelTabAction} hasEnabled={hasSelectedLocation(order)}/>,
-        [MODEL_MODE]: <OrderDetailsActionButton type={TO_EXTRA_TAB_ACTION} action={toExtraTabAction} hasEnabled={hasSelectedModel(order)}/>,
-        [EXTRA_MODE]: <OrderDetailsActionButton type={TO_TOTAL_TAB_ACTION} action={toTotalTabAction} hasEnabled={hasSelectedExtra(order)}/>,
-        [TOTAL_MODE]: <OrderDetailsActionButton type={EXECUTE_ACTION} action={showModal}/>
+        [LOCATION_MODE]: <OrderDetailsActionButton type={TO_MODEL_TAB_ACTION} action={getActionButtonProps(TO_MODEL_TAB_ACTION)}/>,
+        [MODEL_MODE]: <OrderDetailsActionButton type={TO_EXTRA_TAB_ACTION} action={getActionButtonProps(TO_EXTRA_TAB_ACTION)}/>,
+        [EXTRA_MODE]: <OrderDetailsActionButton type={TO_TOTAL_TAB_ACTION} action={getActionButtonProps(TO_TOTAL_TAB_ACTION)}/>,
+        [TOTAL_MODE]: <OrderDetailsActionButton type={EXECUTE_ACTION} action={getActionButtonProps(EXECUTE_ACTION)}/>
     }
     let orderDetailsActionButton = BUTTON_COMPONENT_SELECTOR[mode];
 

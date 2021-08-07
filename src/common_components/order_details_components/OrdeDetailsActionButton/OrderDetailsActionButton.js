@@ -9,7 +9,7 @@ export const TO_TOTAL_TAB_ACTION = 'to_total_tab_action';
 export const EXECUTE_ACTION = 'execute_action';
 export const CANCEL_ACTION = 'cancel_action';
 
-function OrderDetailsActionButton({type, hasEnabled, action}) {
+function OrderDetailsActionButton({type, action}) {
     const CAPTION_SELECTOR = {
         [TO_MODEL_TAB_ACTION]: 'Выбрать модель',
         [TO_EXTRA_TAB_ACTION]: 'Дополнительно',
@@ -23,9 +23,9 @@ function OrderDetailsActionButton({type, hasEnabled, action}) {
         'button',
         'button_main_round_border',
         {
-            'button_main_accent': type !== CANCEL_ACTION && hasEnabled,
-            'button_dark_red': type === CANCEL_ACTION && hasEnabled,
-            'button_gray_light': !hasEnabled
+            'button_main_accent': type !== CANCEL_ACTION && !!action,
+            'button_dark_red': type === CANCEL_ACTION && !!action,
+            'button_gray_light': !action
         });
 
     return (
@@ -36,13 +36,11 @@ function OrderDetailsActionButton({type, hasEnabled, action}) {
 }
 
 OrderDetailsActionButton.defaultProps = {
-    setMode: null,
-    hasEnabled: true
+    action: null
 }
 
 OrderDetailsActionButton.propTypes = {
     type: PropTypes.string,
-    hasEnabled: PropTypes.bool,
     action: PropTypes.func
 }
 
