@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import GoogleMapReact from 'google-map-react';
-import MapLabel from '../MapLabel/MapLabel';
+import MapLabel, {CITY_LABEL, POINT_LABEL} from '../MapLabel/MapLabel';
 import {createStoreConnectedComponent} from '../../../store/connector';
 import './Map.scss';
 
@@ -57,6 +57,7 @@ function Map({order, cityCoords, pointCoords, cityList, pointList, setOrderCity,
                                 key={city.id}
                                 lat={getCityCoords(city).lat}
                                 lng={getCityCoords(city).lng}
+                                type={CITY_LABEL}
                                 handleClick={() => handleCityLabelClick(city)}
                             />
                     )}
@@ -66,6 +67,7 @@ function Map({order, cityCoords, pointCoords, cityList, pointList, setOrderCity,
                                 key={point.id}
                                 lat={getPointCoords(point).lat}
                                 lng={getPointCoords(point).lng}
+                                type={POINT_LABEL}
                                 handleClick={() => handlePointLabelClick(point)}
                             />
                     )}
