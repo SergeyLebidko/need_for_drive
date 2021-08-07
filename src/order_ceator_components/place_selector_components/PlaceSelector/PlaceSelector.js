@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
 import SelectorItem from '../SelectorItem/SelectorItem';
 import {createStoreConnectedComponent} from '../../../store/connector';
@@ -9,15 +9,22 @@ function PlaceSelector({order, cityList, pointList, setOrderCity, setOrderPoint,
 
     let {cityId: selectedCity, pointId: selectedPoint} = order;
 
+    // Учитываем, что изменение выбранного города может произойти и от компонента карты
+    useEffect(() => {
+        if (selectedCity) {
+            setPointListToSelector(pointList.filter(point => point.cityId.id === selectedCity.id));
+        } else {
+            setPointListToSelector([]);
+        }
+    }, [selectedCity]);
+
     let handleCitySelect = city => {
         if (city) {
-            setPointListToSelector(pointList.filter(point => point.cityId.id === city.id));
             setOrderCity(city);
             clearOrderPoint();
         } else {
             clearOrderCity();
             clearOrderPoint();
-            setPointListToSelector([]);
         }
     }
 

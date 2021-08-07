@@ -6,7 +6,7 @@ import {createStoreConnectedComponent} from '../../../store/connector';
 import './Map.scss';
 
 const BIG_ZOOM = 14
-const SMALL_ZOOM = 10
+const SMALL_ZOOM = 11
 
 function Map({order, cityCoords, pointCoords, cityList, pointList, setOrderCity, setOrderPoint, clearOrderPoint}) {
     let {cityId: selectedCity, pointId: selectedPoint} = order;
