@@ -41,11 +41,14 @@
   .order_details_viewer {
     border-left: 1px solid $gray-light;
     padding-left: $step * 2;
+    width: $step * 40;
   }
 }
 
 @media (min-width: $desktop-min-start) {
   .order_details_viewer {
+    width: $step * 50;
+
     &__parameter_list {
       font-size: 1em;
     }
