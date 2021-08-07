@@ -3,28 +3,13 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import '../../../styles/vars.scss';
 
-export const TO_MODEL_TAB_ACTION = 'to_model_tab_action';
-export const TO_EXTRA_TAB_ACTION = 'to_extra_tab_action';
-export const TO_TOTAL_TAB_ACTION = 'to_total_tab_action';
-export const EXECUTE_ACTION = 'execute_action';
-export const CANCEL_ACTION = 'cancel_action';
-
-function OrderDetailsActionButton({type, action}) {
-    const CAPTION_SELECTOR = {
-        [TO_MODEL_TAB_ACTION]: 'Выбрать модель',
-        [TO_EXTRA_TAB_ACTION]: 'Дополнительно',
-        [TO_TOTAL_TAB_ACTION]: 'Итого',
-        [EXECUTE_ACTION]: 'Заказать',
-        [CANCEL_ACTION]: 'Отменить'
-    }
-    let caption = CAPTION_SELECTOR[type];
-
+function OrderDetailsActionButton({caption, hasDifferentColor, action}) {
     let buttonClassNames = classNames(
         'button',
         'button_main_round_border',
         {
-            'button_main_accent': type !== CANCEL_ACTION && !!action,
-            'button_dark_red': type === CANCEL_ACTION && !!action,
+            'button_main_accent': !hasDifferentColor && !!action,
+            'button_dark_red': hasDifferentColor && !!action,
             'button_gray_light': !action
         });
 
@@ -36,11 +21,13 @@ function OrderDetailsActionButton({type, action}) {
 }
 
 OrderDetailsActionButton.defaultProps = {
-    action: null
+    action: null,
+    hasDifferentColor: false
 }
 
 OrderDetailsActionButton.propTypes = {
-    type: PropTypes.string,
+    caption: PropTypes.string,
+    hasDifferentColor: PropTypes.bool,
     action: PropTypes.func
 }
 

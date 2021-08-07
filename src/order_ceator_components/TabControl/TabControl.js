@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import OrderDetailsViewer from '../../common_components/order_details_components/OrderDetailsViewer/OrderDetailsViewer';
-import OrderDetailsActionButton, {TO_MODEL_TAB_ACTION, TO_EXTRA_TAB_ACTION, TO_TOTAL_TAB_ACTION, EXECUTE_ACTION}
+import OrderDetailsActionButton
     from '../../common_components/order_details_components/OrdeDetailsActionButton/OrderDetailsActionButton';
 import LocationTab from '../tab_components/LocationTab/LocationTab';
 import ModelTab from '../tab_components/ModelTab/ModelTab';
@@ -16,14 +16,6 @@ import './TabControl.scss';
 function TabControl({order, showModal}) {
     let [mode, setMode] = useState(LOCATION_MODE);
 
-    let getActionButtonProps = type => {
-        if (type === TO_MODEL_TAB_ACTION && hasSelectedLocation(order)) return () => setMode(MODEL_MODE);
-        if (type === TO_EXTRA_TAB_ACTION && hasSelectedModel(order)) return () => setMode(EXTRA_MODE);
-        if (type === TO_TOTAL_TAB_ACTION && hasSelectedExtra(order)) return () => setMode(TOTAL_MODE);
-        if (type === EXECUTE_ACTION) return showModal;
-        return null;
-    }
-
     const TAB_SELECTOR = {
         [LOCATION_MODE]: LocationTab,
         [MODEL_MODE]: ModelTab,
@@ -32,13 +24,24 @@ function TabControl({order, showModal}) {
     }
     let TabComponent = TAB_SELECTOR[mode];
 
-    const BUTTON_COMPONENT_SELECTOR = {
-        [LOCATION_MODE]: <OrderDetailsActionButton type={TO_MODEL_TAB_ACTION} action={getActionButtonProps(TO_MODEL_TAB_ACTION)}/>,
-        [MODEL_MODE]: <OrderDetailsActionButton type={TO_EXTRA_TAB_ACTION} action={getActionButtonProps(TO_EXTRA_TAB_ACTION)}/>,
-        [EXTRA_MODE]: <OrderDetailsActionButton type={TO_TOTAL_TAB_ACTION} action={getActionButtonProps(TO_TOTAL_TAB_ACTION)}/>,
-        [TOTAL_MODE]: <OrderDetailsActionButton type={EXECUTE_ACTION} action={getActionButtonProps(EXECUTE_ACTION)}/>
+    const BUTTON_PROPS_SELECTOR = {
+        [LOCATION_MODE]: {
+            caption: 'Выбрать модель',
+            action: hasSelectedLocation(order) && (() => setMode(MODEL_MODE))
+        },
+        [MODEL_MODE]: {
+            caption: 'Дополнительно',
+            action: hasSelectedModel(order) && (() => setMode(EXTRA_MODE))
+        },
+        [EXTRA_MODE]: {
+            caption: 'Итого',
+            action: hasSelectedExtra(order) && (() => setMode(TOTAL_MODE))
+        },
+        [TOTAL_MODE]: {
+            caption: 'Заказать',
+            action: showModal
+        }
     }
-    let orderDetailsActionButton = BUTTON_COMPONENT_SELECTOR[mode];
 
     return (
         <div className="tab_control">
@@ -46,7 +49,7 @@ function TabControl({order, showModal}) {
             <div className="tab_control__content_wrapper">
                 <div className="tab_control__content">
                     <TabComponent/>
-                    <OrderDetailsViewer button={orderDetailsActionButton}/>
+                    <OrderDetailsViewer button={<OrderDetailsActionButton {...BUTTON_PROPS_SELECTOR[mode]}/>}/>
                 </div>
             </div>
         </div>
