@@ -19,7 +19,6 @@ function OrderDetailsActionButton({type, hasEnabled, action}) {
     }
     let caption = CAPTION_SELECTOR[type];
 
-    // TODO При реализации функциональности добавить выбор класса для случая недоступности действия кнопки
     let buttonClassNames = classNames(
         'button',
         'button_main_round_border',
