@@ -20,14 +20,13 @@ function OrderDetailsViewer({order, button}) {
             <div className="order_details_viewer__content_block">
                 <header className="order_details_viewer__header">Ваш заказ</header>
                 <ul className="order_details_viewer__parameter_list">
-                    <ViewerParameter parameterName="Пункт выдачи" parameterValue="Ульяновск, Нариманова 42"/>
-                    <ViewerParameter parameterName="Модель" parameterValue="Huyndai, i30 N"/>
-                    <ViewerParameter parameterName="Цвет" parameterValue="Голубой"/>
-                    <ViewerParameter parameterName="Длительность аренды" parameterValue="1д 2ч"/>
-                    <ViewerParameter parameterName="Тариф" parameterValue="На сутки"/>
-                    <ViewerParameter parameterName="Полный бак" parameterValue="Да"/>
-                    <ViewerParameter parameterName="Детские кресло" parameterValue="Да"/>
-                    <ViewerParameter parameterName="Правый руль" parameterValue="Да"/>
+                    {(order.cityId && order.pointId) &&
+                        <ViewerParameter
+                            parameterName="Пункт выдачи"
+                            parameterValue={`${order.cityId.name}, ${order.pointId.address}`}
+                        />
+                    }
+
                 </ul>
                 {priceString &&
                 <span className="order_details_viewer__price">
