@@ -1,4 +1,4 @@
-import React, {useCallback} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import GoogleMapReact from 'google-map-react';
 import MapLabel from '../MapLabel/MapLabel';
@@ -8,7 +8,7 @@ import './Map.scss';
 function Map({order, cityCoords, pointCoords, cityList, pointList, setOrderCity, setOrderPoint, clearOrderPoint}) {
     let {cityId: selectedCity, pointId: selectedPoint} = order;
 
-    let getCenter = useCallback(() => {
+    let getCenter = () => {
         // Если не выбран ни город ни местоположение, то центром карты станут координаты первого города
         if (!selectedCity && !selectedPoint) return cityCoords[0]
 
@@ -17,15 +17,15 @@ function Map({order, cityCoords, pointCoords, cityList, pointList, setOrderCity,
             return cityCoords.find(cityCoord => cityCoord.id === selectedCity.id);
         }
 
-        // Если выбраны и город и местоположение, то центром карты станет местоположение
+        // Если выбраны и город и местоположение, то центром карты станет местоположение пункта выдачи
         if (selectedCity && selectedPoint) {
             return pointCoords.find(pointCoord => pointCoord.id === selectedPoint.id);
         }
-    }, [cityCoords, pointCoords, selectedCity, selectedPoint]);
+    }
 
-    let getCityCoords = useCallback(city => cityCoords.find(cityCoord => cityCoord.id === city.id), [cityCoords]);
+    let getCityCoords = city => cityCoords.find(cityCoord => cityCoord.id === city.id);
 
-    let getPointCoords = useCallback(point => pointCoords.find(pointCoord => pointCoord.id === point.id), [pointCoords]);
+    let getPointCoords = point => pointCoords.find(pointCoord => pointCoord.id === point.id);
 
     let handleCityLabelClick = city => {
         setOrderCity(city);
