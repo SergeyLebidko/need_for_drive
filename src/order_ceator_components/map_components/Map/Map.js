@@ -5,6 +5,9 @@ import MapLabel from '../MapLabel/MapLabel';
 import {createStoreConnectedComponent} from '../../../store/connector';
 import './Map.scss';
 
+const BIG_ZOOM = 14
+const SMALL_ZOOM = 10
+
 function Map({order, cityCoords, pointCoords, cityList, pointList, setOrderCity, setOrderPoint, clearOrderPoint}) {
     let {cityId: selectedCity, pointId: selectedPoint} = order;
 
@@ -45,7 +48,8 @@ function Map({order, cityCoords, pointCoords, cityList, pointList, setOrderCity,
                     bootstrapURLKeys={{key: process.env.REACT_APP_GEOCODER_API_KEY}}
                     defaultCenter={cityCoords[0]}
                     center={getCenter()}
-                    defaultZoom={11}
+                    defaultZoom={SMALL_ZOOM}
+                    zoom={selectedPoint ? BIG_ZOOM : SMALL_ZOOM}
                 >
                     {cityList.map(
                         city =>
