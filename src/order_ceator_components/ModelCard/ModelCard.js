@@ -1,8 +1,8 @@
 import React from 'react';
 import propTypes from 'prop-types';
 import classNames from 'classnames';
-import {getFormattedPrice} from '../../utils';
 import './ModelCard.scss';
+import {getFormattedPrice} from "../../utils/common_utils";
 
 function ModelCard({model, hasSelected, handleClick}) {
     let cardClassNames = classNames('model_card', {

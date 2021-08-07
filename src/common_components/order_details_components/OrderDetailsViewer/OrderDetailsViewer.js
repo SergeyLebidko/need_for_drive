@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ViewerParameter from '../ViewerParameter/ViewerParameter';
-import {getFormattedPrice} from '../../../utils';
 import {createStoreConnectedComponent} from '../../../store/connector';
 import './OrderDetailsViewer.scss';
+import {getFormattedPrice} from "../../../utils/common_utils";
 
 function OrderDetailsViewer({order, button}) {
 

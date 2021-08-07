@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import {getRandomString} from '../../utils';
 import './OptionSelector.scss';
+import {getRandomString} from "../../utils/common_utils";
 
 function OptionSelector({optionList}) {
     let [checked, setChecked] = useState(Array(optionList.length).fill(false));

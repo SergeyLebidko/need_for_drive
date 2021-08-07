@@ -2,8 +2,8 @@ import React, {useState, useEffect, useRef} from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import PopupItem from '../PopupItem/PopupItem';
-import {getRandomString} from '../../../utils';
 import './SelectorItem.scss';
+import {getRandomString} from "../../../utils/common_utils";
 
 function SelectorItem({caption, placeholder, items, defaultItem, handleSelect, searchFieldName}) {
     let [inputValue, setInputValue] = useState('');

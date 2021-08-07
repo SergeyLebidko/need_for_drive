@@ -10,7 +10,7 @@ import {
     RATE_LIST,
     OPTION_LIST
 } from '../settings';
-import {loadCityList, loadPointList, loadCityCoords, loadPointCoords} from '../utils';
+import {loadCityList, loadPointList, loadCityCoords, loadPointCoords} from '../utils/fetch_utils';
 
 // Создатель действия для установки языка
 export function setLang(lang) {
