@@ -22,6 +22,7 @@ function stateMapsFactory(component) {
             });
         case 'TabTitles':
             return state => ({
+                order: state.order,
                 tabItemsData: state.tabItemsData
             });
         case 'OrderCreator':
@@ -65,6 +66,7 @@ function stateMapsFactory(component) {
                 cityList: state.cityList,
                 pointList: state.pointList
             });
+        case 'TabControl':
         case 'OrderDetailsViewer':
             return state => ({
                 order: state.order

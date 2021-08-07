@@ -2,16 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import {createStoreConnectedComponent} from '../../store/connector';
+import {hasSelectedLocation, hasSelectedModel, hasSelectedExtra} from '../../utils/order_utils';
+import {MODEL_MODE, EXTRA_MODE, TOTAL_MODE} from '../../settings';
 import './TabTitles.scss';
 
-function TabTitles({tabItemsData, mode, setMode}) {
-    let checkAccessibilityMode = () => {
-        /*
-            TODO Заменить код функции при реализации функциональности
-            Эта строка кода нужна сейчас только для тестирования верстки.
-            При реализации функциональности сервиса она должна быть заменена на код определения доступности
-            выбранного режима в зависимости от состояния формируемого пользователем заказа.
-        */
+function TabTitles({order, tabItemsData, mode, setMode}) {
+    let checkAccessibilityMode = selectedMode => {
+        if (selectedMode === MODEL_MODE) return hasSelectedLocation(order);
+        if (selectedMode === EXTRA_MODE) return hasSelectedModel(order);
+        if (selectedMode === TOTAL_MODE) return hasSelectedExtra(order);
         return true;
     }
 
@@ -50,6 +49,7 @@ function TabTitles({tabItemsData, mode, setMode}) {
 }
 
 TabTitles.propTypes = {
+    order: PropTypes.object,
     tabItemsData: PropTypes.array,
     setMode: PropTypes.func,
     mode: PropTypes.string

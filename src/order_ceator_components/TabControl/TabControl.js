@@ -10,10 +10,23 @@ import TotalTab from '../tab_components/TotalTab/TotalTab';
 import TabTitles from '../TabTitles/TabTitles';
 import {createStoreConnectedComponent} from '../../store/connector';
 import {LOCATION_MODE, MODEL_MODE, EXTRA_MODE, TOTAL_MODE} from '../../settings';
+import {hasSelectedLocation, hasSelectedModel, hasSelectedExtra} from '../../utils/order_utils';
 import './TabControl.scss';
 
-function TabControl({showModal}) {
+function TabControl({order, showModal}) {
     let [mode, setMode] = useState(LOCATION_MODE);
+
+    let toModelTabAction = () => {
+        if (hasSelectedLocation(order)) setMode(MODEL_MODE);
+    }
+
+    let toExtraTabAction = () => {
+        if (hasSelectedModel(order)) setMode(EXTRA_MODE);
+    }
+
+    let toTotalTabAction = () => {
+        if(hasSelectedExtra(order)) setMode(TOTAL_MODE);
+    }
 
     const TAB_SELECTOR = {
         [LOCATION_MODE]: LocationTab,
@@ -24,9 +37,9 @@ function TabControl({showModal}) {
     let TabComponent = TAB_SELECTOR[mode];
 
     const BUTTON_COMPONENT_SELECTOR = {
-        [LOCATION_MODE]: <OrderDetailsActionButton type={TO_MODEL_TAB_ACTION} action={() => setMode(MODEL_MODE)}/>,
-        [MODEL_MODE]: <OrderDetailsActionButton type={TO_EXTRA_TAB_ACTION} action={() => setMode(EXTRA_MODE)}/>,
-        [EXTRA_MODE]: <OrderDetailsActionButton type={TO_TOTAL_TAB_ACTION} action={() => setMode(TOTAL_MODE)}/>,
+        [LOCATION_MODE]: <OrderDetailsActionButton type={TO_MODEL_TAB_ACTION} action={toModelTabAction} hasEnabled={hasSelectedLocation(order)}/>,
+        [MODEL_MODE]: <OrderDetailsActionButton type={TO_EXTRA_TAB_ACTION} action={toExtraTabAction} hasEnabled={hasSelectedModel(order)}/>,
+        [EXTRA_MODE]: <OrderDetailsActionButton type={TO_TOTAL_TAB_ACTION} action={toTotalTabAction} hasEnabled={hasSelectedExtra(order)}/>,
         [TOTAL_MODE]: <OrderDetailsActionButton type={EXECUTE_ACTION} action={showModal}/>
     }
     let orderDetailsActionButton = BUTTON_COMPONENT_SELECTOR[mode];
@@ -45,6 +58,7 @@ function TabControl({showModal}) {
 }
 
 TabControl.propTypes = {
+    order: PropTypes.object,
     showModal: PropTypes.func
 }
 
