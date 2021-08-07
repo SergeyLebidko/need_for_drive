@@ -27,15 +27,15 @@ function TabControl({order, showModal}) {
     const BUTTON_PROPS_SELECTOR = {
         [LOCATION_MODE]: {
             caption: 'Выбрать модель',
-            action: hasSelectedLocation(order) && (() => setMode(MODEL_MODE))
+            action: hasSelectedLocation(order) ? (() => setMode(MODEL_MODE)) : null
         },
         [MODEL_MODE]: {
             caption: 'Дополнительно',
-            action: hasSelectedModel(order) && (() => setMode(EXTRA_MODE))
+            action: hasSelectedModel(order) ? (() => setMode(EXTRA_MODE)) : null
         },
         [EXTRA_MODE]: {
             caption: 'Итого',
-            action: hasSelectedExtra(order) && (() => setMode(TOTAL_MODE))
+            action: hasSelectedExtra(order) ? (() => setMode(TOTAL_MODE)) : null
         },
         [TOTAL_MODE]: {
             caption: 'Заказать',

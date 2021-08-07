@@ -4,6 +4,10 @@ import classNames from 'classnames';
 import '../../../styles/vars.scss';
 
 function OrderDetailsActionButton({caption, hasDifferentColor, action}) {
+    let handleClick = () => {
+        if (action) action();
+    }
+
     let buttonClassNames = classNames(
         'button',
         'button_main_round_border',
@@ -14,7 +18,7 @@ function OrderDetailsActionButton({caption, hasDifferentColor, action}) {
         });
 
     return (
-        <button className={buttonClassNames} onClick={action}>
+        <button className={buttonClassNames} onClick={handleClick}>
             {caption}
         </button>
     );
