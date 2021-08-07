@@ -65,6 +65,10 @@ function stateMapsFactory(component) {
                 cityList: state.cityList,
                 pointList: state.pointList
             });
+        case 'OrderDetailsViewer':
+            return state => ({
+                order: state.order
+            });
         default:
             return null;
     }
