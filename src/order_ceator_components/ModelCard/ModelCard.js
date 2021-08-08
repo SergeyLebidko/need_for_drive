@@ -1,8 +1,9 @@
 import React from 'react';
 import propTypes from 'prop-types';
 import classNames from 'classnames';
+import {getFormattedPrice} from '../../utils/common_utils';
+import {DOMEN} from '../../urls';
 import './ModelCard.scss';
-import {getFormattedPrice} from "../../utils/common_utils";
 
 function ModelCard({model, hasSelected, handleClick}) {
     let cardClassNames = classNames('model_card', {
@@ -12,23 +13,21 @@ function ModelCard({model, hasSelected, handleClick}) {
     return (
         <div className={cardClassNames} onClick={() => handleClick(model)}>
             <span className="model_card__title">
-                {model.title}
+                {model.name}
             </span>
             <span className="model_card__price">
-                {getFormattedPrice(model.costStart)} - {getFormattedPrice(model.costEnd)} &#8381;
+                {getFormattedPrice(model.priceMin)} - {getFormattedPrice(model.priceMax)} &#8381;
             </span>
-            <img src={model.file} className="model_card__photo" alt={model.title}/>
+            <img
+                src={model.thumbnail.path[0] === '/' ? `${DOMEN}${model.thumbnail.path}` : model.thumbnail.path}
+                className="model_card__photo" alt={model.title}
+            />
         </div>
     );
 }
 
 ModelCard.propTypes = {
-    model: propTypes.shape({
-        title: propTypes.string,
-        costStart: propTypes.number,
-        costEnd: propTypes.number,
-        file: propTypes.string
-    }),
+    model: propTypes.object,
     hasSelected: propTypes.bool,
     handleClick: propTypes.func
 }
