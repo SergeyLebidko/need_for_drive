@@ -13,7 +13,7 @@ function ModelSelector({modelList}) {
             {modelList.map(
                 model =>
                     <ModelCard
-                        key={model.title}
+                        key={model.id}
                         model={model}
                         hasSelected={selectedModel === model}
                         handleClick={handleCardClick}

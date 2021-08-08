@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import propTypes from 'prop-types';
 import classNames from 'classnames';
 import {getFormattedPrice} from '../../utils/common_utils';
@@ -6,6 +6,10 @@ import {DOMEN} from '../../urls';
 import './ModelCard.scss';
 
 function ModelCard({model, hasSelected, handleClick}) {
+    let [hasCarImage, setHasCarImage] = useState(true);
+
+    let handleErrorImageLoad = () => setHasCarImage(false);
+
     let cardClassNames = classNames('model_card', {
         'selected_card': hasSelected
     });
@@ -18,10 +22,16 @@ function ModelCard({model, hasSelected, handleClick}) {
             <span className="model_card__price">
                 {getFormattedPrice(model.priceMin)} - {getFormattedPrice(model.priceMax)} &#8381;
             </span>
-            <img
-                src={model.thumbnail.path[0] === '/' ? `${DOMEN}${model.thumbnail.path}` : model.thumbnail.path}
-                className="model_card__photo" alt={model.title}
-            />
+            {hasCarImage ?
+                <img
+                    src={model.thumbnail.path[0] === '/' ? `${DOMEN}${model.thumbnail.path}` : model.thumbnail.path}
+                    className="model_card__photo"
+                    alt={model.name}
+                    onError={handleErrorImageLoad}
+                />
+                :
+                <div className="model_card__no_photo">Нет фото...</div>
+            }
         </div>
     );
 }
