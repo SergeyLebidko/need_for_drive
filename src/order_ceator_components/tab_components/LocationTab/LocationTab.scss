@@ -6,28 +6,8 @@
   flex-direction: column;
   padding: ($step * 2) 0 ($step * 2) 0;
 
-  .place_form {
+  .place_selector {
     margin: 0 0 ($step * 4) 0;
-  }
-
-  &__map_label {
-    margin-bottom: $step * 2;
-    font-weight: 300;
-  }
-
-  // TODO Удалить или изменить этот стиль при реализации карты
-  &__map {
-    width: 100%;
-    border: 1px solid $gray-light;
-  }
-}
-
-// TODO Удалить или изменить этот медиазапрос при реализации карты
-@media (min-width: $desktop-start) {
-  .location_tab {
-    &__map {
-      width: 65%;
-    }
   }
 }
 

@@ -2,26 +2,25 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import {createStoreConnectedComponent} from '../../store/connector';
+import {hasSelectedLocation, hasSelectedModel, hasSelectedExtra} from '../../utils/order_utils';
+import {LOCATION_MODE, MODEL_MODE, EXTRA_MODE, TOTAL_MODE} from '../../settings';
 import './TabTitles.scss';
 
-function TabTitles({tabItemsData, mode, setMode}) {
-    let checkAccessibilityMode = () => {
-        /*
-            TODO Заменить код функции при реализации функциональности
-            Эта строка кода нужна сейчас только для тестирования верстки.
-            При реализации функциональности сервиса она должна быть заменена на код определения доступности
-            выбранного режима в зависимости от состояния формируемого пользователем заказа.
-        */
-        return true;
+function TabTitles({order, tabItemsData, mode, setMode}) {
+    const MODE_CHECKER = {
+        [LOCATION_MODE]: true,
+        [MODEL_MODE]: hasSelectedLocation(order),
+        [EXTRA_MODE]: hasSelectedModel(order),
+        [TOTAL_MODE]: hasSelectedExtra(order)
     }
 
     let handleChangeMode = selectedMode => {
-        if (!checkAccessibilityMode(selectedMode)) return;
+        if (!MODE_CHECKER[selectedMode]) return;
         setMode(selectedMode);
     }
 
     let getItemClassNames = boundMode => {
-        let hasModeAvailable = checkAccessibilityMode(boundMode);
+        let hasModeAvailable = MODE_CHECKER[boundMode];
         return classNames({
             'disabled_title': !hasModeAvailable,
             'available_title': hasModeAvailable && boundMode !== mode,
@@ -50,6 +49,7 @@ function TabTitles({tabItemsData, mode, setMode}) {
 }
 
 TabTitles.propTypes = {
+    order: PropTypes.object,
     tabItemsData: PropTypes.array,
     setMode: PropTypes.func,
     mode: PropTypes.string

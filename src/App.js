@@ -4,8 +4,10 @@ import {HashRouter, Switch, Route} from 'react-router-dom';
 import MainPage from './main_page_components/MainPage/MainPage';
 import OrderCreator from './order_ceator_components/OrderCreator/OrderCreator';
 import OrderViewer from './order_viewer_components/OrderViewer/OrderViewer';
+import NoMatch from './common_components/NoMatch/NoMatch';
 import {createStoreConnectedComponent} from './store/connector';
 import {RUS, ENG, LS_LANG_KEY} from './settings';
+import 'dotenv';
 
 function App({lang, setLang, defineCity}) {
 
@@ -25,6 +27,7 @@ function App({lang, setLang, defineCity}) {
                 <Route exact path="/" component={MainPage}/>
                 <Route path="/order/:orderId" component={OrderViewer}/>
                 <Route path="/order" component={OrderCreator}/>
+                <Route path="*" component={NoMatch}/>
             </Switch>
         </HashRouter>
     );

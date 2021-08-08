@@ -1,5 +1,16 @@
 import * as act from './actions';
-import {GEO_API_KEY, GEO_API_URL, RUS, ENG} from '../settings';
+import {
+    RUS,
+    ENG,
+    GEO_API_URL,
+    TAB_ITEMS_DATA,
+    CATEGORY_LIST,
+    MODEL_LIST,
+    COLOR_LIST,
+    RATE_LIST,
+    OPTION_LIST
+} from '../settings';
+import {loadCityList, loadPointList, loadCityCoords, loadPointCoords} from '../utils/fetch_utils';
 
 // Создатель действия для установки языка
 export function setLang(lang) {
@@ -20,7 +31,7 @@ export function loadCity(lang) {
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json',
-                'Authorization': 'Token ' + GEO_API_KEY
+                'Authorization': 'Token ' + process.env.REACT_APP_DADATA_API_KEY
             }
         }
 
@@ -93,6 +104,7 @@ export function setColorList(colorList) {
     }
 }
 
+// Создатель действия для установки списка тарифов
 export function setRateList(rateList) {
     return {
         type: act.SET_RATE_LIST,
@@ -100,6 +112,7 @@ export function setRateList(rateList) {
     }
 }
 
+// Создатель действия для установки списка доступных дополнительных опций
 export function setOptionList(optionList) {
     return {
         type: act.SET_OPTION_LIST,
@@ -107,14 +120,138 @@ export function setOptionList(optionList) {
     }
 }
 
+// Функция для отображения модального окна
 export function showModal() {
     return {
         type: act.SHOW_MODAL
     }
 }
 
+// Функция для скрытия модального окна
 export function hideModal() {
     return {
         type: act.HIDE_MODAL
+    }
+}
+
+// Функция инициализирует все данные, необходимые для страницы создания заказа
+export function loadOrderCreatorData() {
+    return async dispatch => {
+        dispatch(setTabItemsData(TAB_ITEMS_DATA));
+        dispatch(setCategoryList(CATEGORY_LIST));
+        dispatch(setModelList(MODEL_LIST));
+        dispatch(setColorList(COLOR_LIST));
+        dispatch(setRateList(RATE_LIST));
+        dispatch(setOptionList(OPTION_LIST));
+
+        // Инициализируем заказ как пустой объект
+        dispatch(initOrder({}));
+
+        // Загружаем списки городов и точек авто
+        let cityList = await loadCityList();
+        let pointList = await loadPointList();
+
+        // Отсекаем города, не имеющие поинтов
+        cityList = cityList.filter(city => {
+            let point = pointList.find(point => point.cityId && point.cityId.id === city.id);
+            return !!point;
+        });
+
+        // Отсекаем поинты, не привязанные ни к одному городу
+        pointList = pointList.filter(point => {
+            let city = cityList.find(city => point.cityId && point.cityId.id === city.id);
+            return !!city;
+        });
+
+        let coords;
+
+        // Создаем список координат городов
+        let cityCoords = [];
+        for (let city of cityList){
+            coords = await loadCityCoords(city);
+            cityCoords.push(coords);
+        }
+
+        // Создаем список координат поинтов
+        let pointCoords = [];
+        for (let point of pointList){
+            coords = await loadPointCoords(point, cityList);
+            pointCoords.push(coords);
+        }
+
+        dispatch(setCityList(cityList));
+        dispatch(setPointList(pointList));
+        dispatch(setCityCoords(cityCoords));
+        dispatch(setPointCoords(pointCoords));
+    }
+}
+
+// Создатель действия для сохранения списка городов
+export function setCityList(cityList){
+    return {
+        type: act.SET_CITY_LIST,
+        cityList
+    }
+}
+
+// Создатель действия для сохранения списка местоположений
+export function setPointList(pointList) {
+    return {
+        type: act.SET_POINT_LIST,
+        pointList
+    }
+}
+
+// Создатель действия для сохранения списка координат городов
+export function setCityCoords(cityCoords) {
+    return {
+        type: act.SET_CITY_COORDS,
+        cityCoords
+    }
+}
+
+// Создатель действия для сохранения списка координат местоположений
+export function setPointCoords(pointCoords) {
+    return {
+        type: act.SET_POINT_COORDS,
+        pointCoords
+    }
+}
+
+// Создатель действия для инициализации заказа
+export function initOrder(order) {
+    return {
+        type: act.INIT_ORDER,
+        order
+    }
+}
+
+// Создатель действия для установки города в заказе
+export function setOrderCity(city){
+    return {
+        type: act.SET_ORDER_CITY,
+        city
+    }
+}
+
+// Создатель действия для установки местоположения (point) в заказе
+export function setOrderPoint(point){
+    return {
+        type: act.SET_ORDER_POINT,
+        point
+    }
+}
+
+// Создатель действия для удаления города из заказа
+export function clearOrderCity(){
+    return {
+        type: act.CLEAR_ORDER_CITY
+    }
+}
+
+// Создатель действия для удаления местоположения (point) из заказа
+export function clearOrderPoint(){
+    return {
+        type: act.CLEAR_ORDER_POINT
     }
 }

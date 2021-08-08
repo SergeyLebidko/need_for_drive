@@ -22,9 +22,17 @@ function stateMapsFactory(component) {
             });
         case 'TabTitles':
             return state => ({
+                order: state.order,
                 tabItemsData: state.tabItemsData
             });
         case 'OrderCreator':
+            return state => ({
+                hasModalShow: state.hasModalShow,
+                hasOrderCreatorDataLoaded: (function () {
+                    let {cityList, pointList, cityCoords, pointCoords} = state;
+                    return cityList.length > 0 && pointList.length > 0 && cityCoords.length > 0 && pointCoords.length > 0;
+                })()
+            });
         case 'OrderViewer':
             return state => ({
                 hasModalShow: state.hasModalShow
@@ -43,6 +51,25 @@ function stateMapsFactory(component) {
         case 'Modal':
             return state => ({
                 hasModalShow: state.hasModalShow
+            });
+        case 'PlaceSelector':
+            return state => ({
+                order: state.order,
+                cityList: state.cityList,
+                pointList: state.pointList
+            });
+        case 'Map':
+            return state => ({
+                order: state.order,
+                cityCoords: state.cityCoords,
+                pointCoords: state.pointCoords,
+                cityList: state.cityList,
+                pointList: state.pointList
+            });
+        case 'TabControl':
+        case 'OrderDetailsViewer':
+            return state => ({
+                order: state.order
             });
         default:
             return null;

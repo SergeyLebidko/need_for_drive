@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import {getRandomString, capitalize} from '../../utils';
 import './RadioSelector.scss';
+import {capitalize, getRandomString} from "../../utils/common_utils";
 
 function RadioSelector({caption, itemList, onlyColumn}) {
     let [selectedCategoryIndex, setSelectedCategoryIndex] = useState(0);

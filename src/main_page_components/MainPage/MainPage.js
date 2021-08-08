@@ -4,8 +4,8 @@ import Menu from '../../common_components/menu_components/Menu/Menu';
 import Title from '../Title/Title';
 import Slider from '../slider_components/Slider/Slider';
 import {createStoreConnectedComponent} from '../../store/connector';
-import {createSliderData} from '../../utils';
 import './MainPage.scss';
+import {createSliderData} from "../../utils/slider_utils";
 
 function MainPage({lang, setSliderData}) {
     useEffect(() => setSliderData(createSliderData(lang)), [lang])
