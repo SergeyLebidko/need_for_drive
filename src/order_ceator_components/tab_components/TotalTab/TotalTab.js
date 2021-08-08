@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import car from '../../../content/images/car1.png';
+import car from '../../../content/images/car.png';
 import './TotalTab.scss';
 
 // TODO При реализации функциональности компонент будет получать объект заказа из хранилища Redux. Сейчас нужен для тестирования верстки

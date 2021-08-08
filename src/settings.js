@@ -1,12 +1,3 @@
-import car1 from './content/images/car1.png';
-import car2 from './content/images/car2.png';
-import car3 from './content/images/car3.png';
-import car4 from './content/images/car4.png';
-import car5 from './content/images/car5.png';
-import car6 from './content/images/car6.png';
-import car7 from './content/images/car7.png';
-import car8 from './content/images/car8.png';
-
 // Адрес сервиса геолокации и ключ api для него
 export const GEO_API_URL = 'https://suggestions.dadata.ru/suggestions/api/4_1/rs/iplocate/address';
 
@@ -54,62 +45,6 @@ export const TAB_ITEMS_DATA = [
   категорий будут запрашиваться с сервера и этот список должен быть удален.
 */
 export const CATEGORY_LIST = ['все модели', 'эконом+', 'Спорт', 'Супер-Эконом', 'Люкс'];
-
-/*
-  TODO Удалить при реализации функциональности.
-  Это список моделей автомобилей. Сейчас он нужен для тестирования верстки. При реализации функциональности эти данные
-  будут запрашиваться с сервера и необходимость в этом списке отпадёт.
-*/
-export const MODEL_LIST = [
-    {
-        title: 'SANTA FE',
-        costStart: 10000,
-        costEnd: 32000,
-        file: car1
-    },
-    {
-        title: 'SONATA',
-        costStart: 8000,
-        costEnd: 25000,
-        file: car2
-    },
-    {
-        title: 'CRETA',
-        costStart: 5000,
-        costEnd: 15000,
-        file: car3
-    },
-    {
-        title: 'TESLA CYBERTRACK',
-        costStart: 15000,
-        costEnd: 40000,
-        file: car4
-    },
-    {
-        title: 'TIGUAN',
-        costStart: 11000,
-        costEnd: 20000,
-        file: car5
-    },
-    {
-        title: 'CAYENNE',
-        costStart: 25000,
-        costEnd: 50000,
-        file: car6
-    },
-    {
-        title: 'QASHQAI',
-        costStart: 15000,
-        costEnd: 35500,
-        file: car7
-    },
-    {
-        title: 'X-TRAIL',
-        costStart: 17300,
-        costEnd: 28250,
-        file: car8
-    }
-]
 
 /*
   TODO Удалить при реализации функциональности.

@@ -5,12 +5,11 @@ import {
     GEO_API_URL,
     TAB_ITEMS_DATA,
     CATEGORY_LIST,
-    MODEL_LIST,
     COLOR_LIST,
     RATE_LIST,
     OPTION_LIST
 } from '../settings';
-import {loadCityList, loadPointList, loadCityCoords, loadPointCoords} from '../utils/fetch_utils';
+import {loadCityList, loadPointList, loadCityCoords, loadPointCoords, loadModelList} from '../utils/fetch_utils';
 
 // Создатель действия для установки языка
 export function setLang(lang) {
@@ -139,7 +138,6 @@ export function loadOrderCreatorData() {
     return async dispatch => {
         dispatch(setTabItemsData(TAB_ITEMS_DATA));
         dispatch(setCategoryList(CATEGORY_LIST));
-        dispatch(setModelList(MODEL_LIST));
         dispatch(setColorList(COLOR_LIST));
         dispatch(setRateList(RATE_LIST));
         dispatch(setOptionList(OPTION_LIST));
@@ -183,6 +181,10 @@ export function loadOrderCreatorData() {
         dispatch(setPointList(pointList));
         dispatch(setCityCoords(cityCoords));
         dispatch(setPointCoords(pointCoords));
+
+        // Загружаем список автомобилей
+        let modelList = await loadModelList();
+        dispatch(setModelList(modelList));
     }
 }
 
