@@ -6,3 +6,4 @@ export const DEFAULT_REQUEST_HEADERS = {
 
 export const CITY_LIST_URL = `${BASE}/city`;
 export const POINT_LIST_URL = `${BASE}/point`;
+export const CAR_LIST_URL = `${BASE}/car`;
