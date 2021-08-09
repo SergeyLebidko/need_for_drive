@@ -1,4 +1,4 @@
-import {CITY_LIST_URL, DEFAULT_REQUEST_HEADERS, POINT_LIST_URL, CAR_LIST_URL} from '../urls';
+import {CITY_LIST_URL, DEFAULT_REQUEST_HEADERS, POINT_LIST_URL, CAR_LIST_URL, CATEGORY_LIST_URL} from '../urls';
 import Geocode from 'react-geocode';
 
 Geocode.setApiKey(process.env.REACT_APP_GEOCODER_API_KEY);
@@ -34,4 +34,8 @@ export async function loadPointCoords(point, cityList) {
 
 export async function loadModelList() {
     return loadData(CAR_LIST_URL);
+}
+
+export async function loadCategoryList() {
+    return loadData(CATEGORY_LIST_URL);
 }

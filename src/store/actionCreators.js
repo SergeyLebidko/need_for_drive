@@ -4,12 +4,18 @@ import {
     ENG,
     GEO_API_URL,
     TAB_ITEMS_DATA,
-    CATEGORY_LIST,
     COLOR_LIST,
     RATE_LIST,
     OPTION_LIST
 } from '../settings';
-import {loadCityList, loadPointList, loadCityCoords, loadPointCoords, loadModelList} from '../utils/fetch_utils';
+import {
+    loadCityList,
+    loadPointList,
+    loadCityCoords,
+    loadPointCoords,
+    loadModelList,
+    loadCategoryList
+} from '../utils/fetch_utils';
 
 // Создатель действия для установки языка
 export function setLang(lang) {
@@ -137,7 +143,6 @@ export function hideModal() {
 export function loadOrderCreatorData() {
     return async dispatch => {
         dispatch(setTabItemsData(TAB_ITEMS_DATA));
-        dispatch(setCategoryList(CATEGORY_LIST));
         dispatch(setColorList(COLOR_LIST));
         dispatch(setRateList(RATE_LIST));
         dispatch(setOptionList(OPTION_LIST));
@@ -165,14 +170,14 @@ export function loadOrderCreatorData() {
 
         // Создаем список координат городов
         let cityCoords = [];
-        for (let city of cityList){
+        for (let city of cityList) {
             coords = await loadCityCoords(city);
             cityCoords.push(coords);
         }
 
         // Создаем список координат поинтов
         let pointCoords = [];
-        for (let point of pointList){
+        for (let point of pointList) {
             coords = await loadPointCoords(point, cityList);
             pointCoords.push(coords);
         }
@@ -185,11 +190,15 @@ export function loadOrderCreatorData() {
         // Загружаем список автомобилей
         let modelList = await loadModelList();
         dispatch(setModelList(modelList));
+
+        // Загружаем список категорий авто
+        let categoryList = await loadCategoryList();
+        dispatch(setCategoryList(categoryList));
     }
 }
 
 // Создатель действия для сохранения списка городов
-export function setCityList(cityList){
+export function setCityList(cityList) {
     return {
         type: act.SET_CITY_LIST,
         cityList
@@ -229,7 +238,7 @@ export function initOrder(order) {
 }
 
 // Создатель действия для установки города в заказе
-export function setOrderCity(city){
+export function setOrderCity(city) {
     return {
         type: act.SET_ORDER_CITY,
         city
@@ -237,7 +246,7 @@ export function setOrderCity(city){
 }
 
 // Создатель действия для установки местоположения (point) в заказе
-export function setOrderPoint(point){
+export function setOrderPoint(point) {
     return {
         type: act.SET_ORDER_POINT,
         point
@@ -245,14 +254,14 @@ export function setOrderPoint(point){
 }
 
 // Создатель действия для удаления города из заказа
-export function clearOrderCity(){
+export function clearOrderCity() {
     return {
         type: act.CLEAR_ORDER_CITY
     }
 }
 
 // Создатель действия для удаления местоположения (point) из заказа
-export function clearOrderPoint(){
+export function clearOrderPoint() {
     return {
         type: act.CLEAR_ORDER_POINT
     }

@@ -9,9 +9,9 @@ import './ExtraTab.scss';
 function ExtraTab({colorList, rateList, optionList}) {
     return (
         <div className="extra_tab">
-            <RadioSelector itemList={colorList}/>
+            <RadioSelector items={colorList}/>
             <DateSelector/>
-            <RadioSelector caption="Тариф" itemList={rateList} onlyColumn/>
+            <RadioSelector caption="Тариф" items={rateList} onlyColumn/>
             <OptionSelector optionList={optionList}/>
         </div>
     )

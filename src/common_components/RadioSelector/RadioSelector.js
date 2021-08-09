@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import './RadioSelector.scss';
 import {capitalize, getRandomString} from "../../utils/common_utils";
 
-function RadioSelector({caption, itemList, onlyColumn}) {
+function RadioSelector({caption, items, onlyColumn}) {
     let [selectedCategoryIndex, setSelectedCategoryIndex] = useState(0);
 
     let getTitleClassNames = index => classNames('radio_selector__title', {
@@ -22,7 +22,7 @@ function RadioSelector({caption, itemList, onlyColumn}) {
         <div className="radio_selector">
             {caption && <h1 className="radio_selector__caption">{caption}</h1>}
             <ul className={itemsContainerClassNames}>
-                {itemList.map(
+                {items.map(
                     (item, index) => {
                         let radioId = getRandomString('alphabetic');
                         return (
@@ -33,7 +33,7 @@ function RadioSelector({caption, itemList, onlyColumn}) {
                                     onClick={() => handleClick(index)}
                                     htmlFor={radioId}
                                 >
-                                    {capitalize(item)}
+                                    {capitalize(item.name)}
                                 </label>
                             </li>
                         )
@@ -51,7 +51,7 @@ RadioSelector.defaultProps = {
 
 RadioSelector.propTypes = {
     caption: PropTypes.string,
-    itemList: PropTypes.array,
+    items: PropTypes.array,
     onlyColumn: PropTypes.bool
 }
 

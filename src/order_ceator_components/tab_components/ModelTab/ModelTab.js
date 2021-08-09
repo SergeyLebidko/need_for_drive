@@ -8,7 +8,7 @@ import './ModelTab.scss';
 function ModelTab({categoryList, modelList}) {
     return (
         <div className="model_tab">
-            <RadioSelector itemList={categoryList}/>
+            <RadioSelector items={categoryList}/>
             <ModelSelector modelList={modelList}/>
         </div>
     )
