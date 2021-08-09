@@ -270,3 +270,11 @@ export function clearOrderPoint() {
         type: act.CLEAR_ORDER_POINT
     }
 }
+
+// Создатель действия для установки модели авто в заказе
+export function setOrderModel(model) {
+    return {
+        type: act.SET_ORDER_MODEL,
+        model
+    }
+}

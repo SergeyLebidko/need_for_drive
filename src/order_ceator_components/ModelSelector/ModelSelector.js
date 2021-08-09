@@ -1,12 +1,16 @@
 import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import ModelCard from '../ModelCard/ModelCard';
+import {createStoreConnectedComponent} from '../../store/connector';
 import './ModelSelector.scss';
 
-function ModelSelector({modelList}) {
+function ModelSelector({modelList, setOrderModel}) {
     let [selectedModel, setSelectedModel] = useState(null);
 
-    let handleCardClick = model => setSelectedModel(model);
+    let handleCardClick = model => {
+        setSelectedModel(model);
+        setOrderModel(model);
+    };
 
     return (
         <div className="model_selector">
@@ -24,7 +28,8 @@ function ModelSelector({modelList}) {
 }
 
 ModelSelector.propTypes = {
-    modelList: PropTypes.array
+    modelList: PropTypes.array,
+    setOrderModel: PropTypes.func
 }
 
-export default (ModelSelector);
+export default createStoreConnectedComponent('ModelSelector')(ModelSelector);
