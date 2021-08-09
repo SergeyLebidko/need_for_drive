@@ -74,6 +74,7 @@ function stateMapsFactory(component) {
                 pointList: state.pointList
             });
         case 'TabControl':
+        case 'LocationTab':
         case 'OrderDetailsViewer':
         case 'ModelSelector':
             return state => ({

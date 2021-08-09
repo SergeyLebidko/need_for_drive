@@ -46,19 +46,21 @@ function dispatchMapsFactory(component) {
                 setOrderCity: city => dispatch(setOrderCity(city)),
                 setOrderPoint: point => dispatch(setOrderPoint(point)),
                 clearOrderCity: () => dispatch(clearOrderCity()),
-                clearOrderPoint: () => dispatch(clearOrderPoint()),
-                clearOrderModel: () => dispatch(clearOrderModel())
+                clearOrderPoint: () => dispatch(clearOrderPoint())
             });
         case 'Map':
             return dispatch => ({
                 setOrderCity: city => dispatch(setOrderCity(city)),
                 setOrderPoint: point => dispatch(setOrderPoint(point)),
-                clearOrderPoint: () => dispatch(clearOrderPoint()),
-                clearOrderModel: () => dispatch(clearOrderModel())
+                clearOrderPoint: () => dispatch(clearOrderPoint())
             });
         case 'ModelSelector':
             return dispatch => ({
                 setOrderModel: model => dispatch(setOrderModel(model))
+            });
+        case 'LocationTab':
+            return dispatch => ({
+                clearOrderModel: () => dispatch(clearOrderModel())
             });
         default:
             return null;
