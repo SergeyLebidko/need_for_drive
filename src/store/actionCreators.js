@@ -278,3 +278,10 @@ export function setOrderModel(model) {
         model
     }
 }
+
+// Создатель действия для удаления модели авто из заказа
+export function clearOrderModel() {
+    return {
+        type: act.CLEAR_ORDER_MODEL
+    }
+}

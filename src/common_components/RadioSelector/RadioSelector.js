@@ -29,7 +29,7 @@ function RadioSelector({caption, items, onlyColumn, handleSelect}) {
                     (item, index) => {
                         let radioId = getRandomString('alphabetic');
                         return (
-                            <li key={item} className="radio_selector__item">
+                            <li key={item.name} className="radio_selector__item">
                                 <input type="radio" name={`radio_selector_${radioGroupName}`} id={radioId}/>
                                 <label
                                     className={getTitleClassNames(index)}

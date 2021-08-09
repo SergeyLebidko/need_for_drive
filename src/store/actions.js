@@ -19,3 +19,4 @@ export const CLEAR_ORDER_CITY = 'clear_order_city';
 export const SET_ORDER_POINT = 'set_order_point';
 export const CLEAR_ORDER_POINT = 'clear_order_point';
 export const SET_ORDER_MODEL = 'set_order_model';
+export const CLEAR_ORDER_MODEL = 'clear_order_model';

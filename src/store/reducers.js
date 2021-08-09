@@ -163,6 +163,11 @@ export function order(state = null, action) {
             _order.carId = _model;
             return _order;
         }
+        case act.CLEAR_ORDER_MODEL: {
+            let _order = {...state};
+            delete _order.carId;
+            return _order;
+        }
         default:
             return state;
     }

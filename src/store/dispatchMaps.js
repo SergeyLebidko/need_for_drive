@@ -9,7 +9,8 @@ import {
     setOrderPoint,
     clearOrderCity,
     clearOrderPoint,
-    setOrderModel
+    setOrderModel,
+    clearOrderModel
 } from './actionCreators';
 
 function dispatchMapsFactory(component) {
@@ -45,13 +46,15 @@ function dispatchMapsFactory(component) {
                 setOrderCity: city => dispatch(setOrderCity(city)),
                 setOrderPoint: point => dispatch(setOrderPoint(point)),
                 clearOrderCity: () => dispatch(clearOrderCity()),
-                clearOrderPoint: () => dispatch(clearOrderPoint())
+                clearOrderPoint: () => dispatch(clearOrderPoint()),
+                clearOrderModel: () => dispatch(clearOrderModel())
             });
         case 'Map':
             return dispatch => ({
                 setOrderCity: city => dispatch(setOrderCity(city)),
                 setOrderPoint: point => dispatch(setOrderPoint(point)),
-                clearOrderPoint: () => dispatch(clearOrderPoint())
+                clearOrderPoint: () => dispatch(clearOrderPoint()),
+                clearOrderModel: () => dispatch(clearOrderModel())
             });
         case 'ModelSelector':
             return dispatch => ({
