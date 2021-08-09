@@ -75,6 +75,7 @@ function stateMapsFactory(component) {
             });
         case 'TabControl':
         case 'OrderDetailsViewer':
+        case 'ModelSelector':
             return state => ({
                 order: state.order
             });

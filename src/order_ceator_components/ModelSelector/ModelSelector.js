@@ -4,8 +4,8 @@ import ModelCard from '../ModelCard/ModelCard';
 import {createStoreConnectedComponent} from '../../store/connector';
 import './ModelSelector.scss';
 
-function ModelSelector({modelList, setOrderModel}) {
-    let [selectedModel, setSelectedModel] = useState(null);
+function ModelSelector({modelList, order, setOrderModel}) {
+    let [selectedModel, setSelectedModel] = useState(order.carId ? order.carId : null);
 
     let handleCardClick = model => {
         setSelectedModel(model);
@@ -19,7 +19,7 @@ function ModelSelector({modelList, setOrderModel}) {
                     <ModelCard
                         key={model.id}
                         model={model}
-                        hasSelected={selectedModel === model}
+                        hasSelected={selectedModel && (selectedModel.id === model.id)}
                         handleClick={handleCardClick}
                     />
             )}
@@ -29,6 +29,7 @@ function ModelSelector({modelList, setOrderModel}) {
 
 ModelSelector.propTypes = {
     modelList: PropTypes.array,
+    order: PropTypes.object,
     setOrderModel: PropTypes.func
 }
 
