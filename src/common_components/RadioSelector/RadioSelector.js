@@ -59,4 +59,4 @@ RadioSelector.propTypes = {
     handleSelect: PropTypes.func
 }
 
-export default (RadioSelector);
+export default RadioSelector;

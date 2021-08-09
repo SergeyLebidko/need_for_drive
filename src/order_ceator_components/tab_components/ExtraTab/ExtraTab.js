@@ -7,11 +7,12 @@ import {createStoreConnectedComponent} from '../../../store/connector';
 import './ExtraTab.scss';
 
 function ExtraTab({colorList, rateList, optionList}) {
+    // TODO При реализации функциональности компонента заменить фиктивные функции handleSelect
     return (
         <div className="extra_tab">
-            <RadioSelector items={colorList}/>
+            <RadioSelector items={colorList} handleSelect={()=>{}}/>
             <DateSelector/>
-            <RadioSelector caption="Тариф" items={rateList} onlyColumn/>
+            <RadioSelector caption="Тариф" items={rateList} handleSelect={()=>{}} onlyColumn/>
             <OptionSelector optionList={optionList}/>
         </div>
     )
