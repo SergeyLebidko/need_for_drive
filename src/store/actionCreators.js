@@ -191,8 +191,12 @@ export function loadOrderCreatorData() {
         let modelList = await loadModelList();
         dispatch(setModelList(modelList));
 
-        // Загружаем список категорий авто
+        // Загружаем список категорий авто и отбрасываем категории, для которых нет ни одного автомобиля
         let categoryList = await loadCategoryList();
+        categoryList = categoryList.filter(
+            category => !!modelList.find(model => model.categoryId ? model.categoryId.id === category.id : false)
+        );
+
         dispatch(setCategoryList(categoryList));
     }
 }
