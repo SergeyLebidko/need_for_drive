@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import './RadioSelector.scss';
 import {capitalize, getRandomString} from "../../utils/common_utils";
 
-function RadioSelector({caption, items, onlyColumn}) {
+function RadioSelector({caption, items, onlyColumn, handleSelect}) {
     let [selectedCategoryIndex, setSelectedCategoryIndex] = useState(0);
 
     let getTitleClassNames = index => classNames('radio_selector__title', {
@@ -12,7 +12,10 @@ function RadioSelector({caption, items, onlyColumn}) {
         'not_checked_title': index !== selectedCategoryIndex
     });
 
-    let handleClick = index => setSelectedCategoryIndex(index);
+    let handleClick = index => {
+        setSelectedCategoryIndex(index);
+        handleSelect(items[index]);
+    };
 
     let radioGroupName = getRandomString();
 
@@ -52,7 +55,8 @@ RadioSelector.defaultProps = {
 RadioSelector.propTypes = {
     caption: PropTypes.string,
     items: PropTypes.array,
-    onlyColumn: PropTypes.bool
+    onlyColumn: PropTypes.bool,
+    handleSelect: PropTypes.func
 }
 
 export default (RadioSelector);
