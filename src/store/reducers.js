@@ -168,6 +168,16 @@ export function order(state = null, action) {
             delete _order.carId;
             return _order;
         }
+        case act.SET_ORDER_COLOR: {
+            let _order = {...state};
+            _order.color = action.color;
+            return _order;
+        }
+        case act.CLEAR_ORDER_COLOR: {
+            let _order = {...state};
+            delete _order.color;
+            return _order;
+        }
         default:
             return state;
     }
