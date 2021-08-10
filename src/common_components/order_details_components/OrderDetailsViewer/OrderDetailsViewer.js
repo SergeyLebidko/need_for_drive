@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ViewerParameter from '../ViewerParameter/ViewerParameter';
+import {getFormattedPrice, capitalize} from '../../../utils/common_utils';
 import {createStoreConnectedComponent} from '../../../store/connector';
 import './OrderDetailsViewer.scss';
-import {getFormattedPrice} from "../../../utils/common_utils";
 
 function OrderDetailsViewer({order, button}) {
 
@@ -30,6 +30,12 @@ function OrderDetailsViewer({order, button}) {
                     <ViewerParameter
                         parameterName="Модель"
                         parameterValue={`${order.carId.name}`}
+                    />
+                    }
+                    {order.color &&
+                    <ViewerParameter
+                        parameterName="Цвет"
+                        parameterValue={capitalize(order.color)}
                     />
                     }
                 </ul>
