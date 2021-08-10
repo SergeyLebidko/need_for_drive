@@ -20,3 +20,5 @@ export const SET_ORDER_POINT = 'set_order_point';
 export const CLEAR_ORDER_POINT = 'clear_order_point';
 export const SET_ORDER_MODEL = 'set_order_model';
 export const CLEAR_ORDER_MODEL = 'clear_order_model';
+export const SET_ORDER_COLOR = 'set_order_color';
+export const CLEAR_ORDER_COLOR = 'clear_order_color';
