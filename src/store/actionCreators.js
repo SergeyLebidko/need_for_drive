@@ -285,3 +285,18 @@ export function clearOrderModel() {
         type: act.CLEAR_ORDER_MODEL
     }
 }
+
+// Создатель действия для установки выбранного цвета авто
+export function setOrderColor(color){
+    return {
+        type: act.SET_ORDER_COLOR,
+        color
+    }
+}
+
+// Создатель действия для удаления цвета авто из заказа
+export function clearOrderColor(){
+    return {
+        type: act.CLEAR_ORDER_COLOR
+    }
+}
