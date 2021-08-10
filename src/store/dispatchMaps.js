@@ -58,7 +58,8 @@ function dispatchMapsFactory(component) {
             });
         case 'ModelSelector':
             return dispatch => ({
-                setOrderModel: model => dispatch(setOrderModel(model))
+                setOrderModel: model => dispatch(setOrderModel(model)),
+                clearOrderColor: () => dispatch(clearOrderColor())
             });
         case 'LocationTab':
             return dispatch => ({
