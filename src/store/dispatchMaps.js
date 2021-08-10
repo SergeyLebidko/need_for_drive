@@ -10,7 +10,9 @@ import {
     clearOrderCity,
     clearOrderPoint,
     setOrderModel,
-    clearOrderModel
+    clearOrderModel,
+    setOrderColor,
+    clearOrderColor
 } from './actionCreators';
 
 function dispatchMapsFactory(component) {
@@ -61,6 +63,11 @@ function dispatchMapsFactory(component) {
         case 'LocationTab':
             return dispatch => ({
                 clearOrderModel: () => dispatch(clearOrderModel())
+            });
+        case 'ExtraTab':
+            return dispatch => ({
+                setOrderColor: color => dispatch(setOrderColor(color)),
+                clearOrderColor: () => dispatch(clearOrderColor())
             });
         default:
             return null;
