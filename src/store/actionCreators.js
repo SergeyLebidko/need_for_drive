@@ -4,7 +4,6 @@ import {
     ENG,
     GEO_API_URL,
     TAB_ITEMS_DATA,
-    COLOR_LIST,
     RATE_LIST,
     OPTION_LIST
 } from '../settings';
@@ -96,19 +95,6 @@ export function setModelList(modelList) {
     }
 }
 
-/*
-  Создатель действия для установки списка цветов выбранного автомобиля.
-  TODO При реализации логики, рассмотреть необходимость удаления или сохранения этой функции.
-  Возможно, данные списка цветов будет рациональнее получать из объекта, соответствующего выбранному автомобилю. Сейчас
-  этот код нужен для тестирования верстки.
-*/
-export function setColorList(colorList) {
-    return {
-        type: act.SET_COLOR_LIST,
-        colorList
-    }
-}
-
 // Создатель действия для установки списка тарифов
 export function setRateList(rateList) {
     return {
@@ -143,7 +129,6 @@ export function hideModal() {
 export function loadOrderCreatorData() {
     return async dispatch => {
         dispatch(setTabItemsData(TAB_ITEMS_DATA));
-        dispatch(setColorList(COLOR_LIST));
         dispatch(setRateList(RATE_LIST));
         dispatch(setOptionList(OPTION_LIST));
 
