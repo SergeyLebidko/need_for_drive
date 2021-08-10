@@ -1,15 +1,28 @@
 @import '../../styles/vars';
+@import '../../styles/buttons';
 
 .model_selector {
-  display: flex;
-  flex-direction: column;
+
+  &__model_list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__more_control {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: $step * 2;
+  }
 }
 
 @media (min-width: $desktop-min-start) {
   .model_selector {
-    width: 95%;
-    flex-direction: row;
-    flex-wrap: wrap;
+    &__model_list {
+      width: 95%;
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
   }
 }
 

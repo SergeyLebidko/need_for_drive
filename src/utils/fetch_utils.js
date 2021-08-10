@@ -1,20 +1,22 @@
-import {CITY_LIST_URL, DEFAULT_REQUEST_HEADERS, POINT_LIST_URL} from '../urls';
+import {CITY_LIST_URL, DEFAULT_REQUEST_HEADERS, POINT_LIST_URL, CAR_LIST_URL, CATEGORY_LIST_URL} from '../urls';
 import Geocode from 'react-geocode';
 
 Geocode.setApiKey(process.env.REACT_APP_GEOCODER_API_KEY);
 Geocode.setLanguage('ru');
 Geocode.setRegion('ru');
 
-export async function loadCityList() {
-    return fetch(CITY_LIST_URL, {headers: DEFAULT_REQUEST_HEADERS})
+async function loadData(url) {
+    return fetch(url, {headers: DEFAULT_REQUEST_HEADERS})
         .then(response => response.json())
         .then(json => json.data);
 }
 
+export async function loadCityList() {
+    return loadData(CITY_LIST_URL);
+}
+
 export async function loadPointList() {
-    return fetch(POINT_LIST_URL, {headers: DEFAULT_REQUEST_HEADERS})
-        .then(response => response.json())
-        .then(json => json.data);
+    return loadData(POINT_LIST_URL);
 }
 
 export async function loadCityCoords(city) {
@@ -28,4 +30,12 @@ export async function loadPointCoords(point, cityList) {
     let geoData = await Geocode.fromAddress(cityOfPoint.name + ' ' + point.address);
     let {lat, lng} = geoData.results[0].geometry.location;
     return {id: point.id, lat, lng};
+}
+
+export async function loadModelList() {
+    return loadData(CAR_LIST_URL);
+}
+
+export async function loadCategoryList() {
+    return loadData(CATEGORY_LIST_URL);
 }

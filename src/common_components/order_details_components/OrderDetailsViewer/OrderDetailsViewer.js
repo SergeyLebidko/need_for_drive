@@ -21,12 +21,17 @@ function OrderDetailsViewer({order, button}) {
                 <header className="order_details_viewer__header">Ваш заказ</header>
                 <ul className="order_details_viewer__parameter_list">
                     {(order.cityId && order.pointId) &&
-                        <ViewerParameter
-                            parameterName="Пункт выдачи"
-                            parameterValue={`${order.cityId.name}, ${order.pointId.address}`}
-                        />
+                    <ViewerParameter
+                        parameterName="Пункт выдачи"
+                        parameterValue={`${order.cityId.name}, ${order.pointId.address}`}
+                    />
                     }
-
+                    {order.carId &&
+                    <ViewerParameter
+                        parameterName="Модель"
+                        parameterValue={`${order.carId.name}`}
+                    />
+                    }
                 </ul>
                 {priceString &&
                 <span className="order_details_viewer__price">

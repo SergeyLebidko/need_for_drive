@@ -29,8 +29,15 @@ function stateMapsFactory(component) {
             return state => ({
                 hasModalShow: state.hasModalShow,
                 hasOrderCreatorDataLoaded: (function () {
-                    let {cityList, pointList, cityCoords, pointCoords} = state;
-                    return cityList.length > 0 && pointList.length > 0 && cityCoords.length > 0 && pointCoords.length > 0;
+                    let {cityList, pointList, cityCoords, pointCoords, modelList, categoryList} = state;
+                    return (
+                        cityList.length > 0 &&
+                        pointList.length > 0 &&
+                        cityCoords.length > 0 &&
+                        pointCoords.length > 0 &&
+                        modelList.length > 0 &&
+                        categoryList.length > 0
+                    );
                 })()
             });
         case 'OrderViewer':
@@ -67,7 +74,9 @@ function stateMapsFactory(component) {
                 pointList: state.pointList
             });
         case 'TabControl':
+        case 'LocationTab':
         case 'OrderDetailsViewer':
+        case 'ModelSelector':
             return state => ({
                 order: state.order
             });

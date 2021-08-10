@@ -155,6 +155,19 @@ export function order(state = null, action) {
             delete _order.pointId;
             return _order;
         }
+        case act.SET_ORDER_MODEL: {
+            let _order = {...state};
+            let _model = {...action.model};
+            delete _model.createdAt;
+            delete _model.updatedAt;
+            _order.carId = _model;
+            return _order;
+        }
+        case act.CLEAR_ORDER_MODEL: {
+            let _order = {...state};
+            delete _order.carId;
+            return _order;
+        }
         default:
             return state;
     }

@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import './RadioSelector.scss';
 import {capitalize, getRandomString} from "../../utils/common_utils";
 
-function RadioSelector({caption, itemList, onlyColumn}) {
+function RadioSelector({caption, items, onlyColumn, handleSelect}) {
     let [selectedCategoryIndex, setSelectedCategoryIndex] = useState(0);
 
     let getTitleClassNames = index => classNames('radio_selector__title', {
@@ -12,7 +12,10 @@ function RadioSelector({caption, itemList, onlyColumn}) {
         'not_checked_title': index !== selectedCategoryIndex
     });
 
-    let handleClick = index => setSelectedCategoryIndex(index);
+    let handleClick = index => {
+        setSelectedCategoryIndex(index);
+        handleSelect(items[index]);
+    };
 
     let radioGroupName = getRandomString();
 
@@ -22,18 +25,18 @@ function RadioSelector({caption, itemList, onlyColumn}) {
         <div className="radio_selector">
             {caption && <h1 className="radio_selector__caption">{caption}</h1>}
             <ul className={itemsContainerClassNames}>
-                {itemList.map(
+                {items.map(
                     (item, index) => {
                         let radioId = getRandomString('alphabetic');
                         return (
-                            <li key={item} className="radio_selector__item">
+                            <li key={item.name} className="radio_selector__item">
                                 <input type="radio" name={`radio_selector_${radioGroupName}`} id={radioId}/>
                                 <label
                                     className={getTitleClassNames(index)}
                                     onClick={() => handleClick(index)}
                                     htmlFor={radioId}
                                 >
-                                    {capitalize(item)}
+                                    {capitalize(item.name)}
                                 </label>
                             </li>
                         )
@@ -51,8 +54,9 @@ RadioSelector.defaultProps = {
 
 RadioSelector.propTypes = {
     caption: PropTypes.string,
-    itemList: PropTypes.array,
-    onlyColumn: PropTypes.bool
+    items: PropTypes.array,
+    onlyColumn: PropTypes.bool,
+    handleSelect: PropTypes.func
 }
 
-export default (RadioSelector);
+export default RadioSelector;
