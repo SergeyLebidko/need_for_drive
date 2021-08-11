@@ -4,7 +4,6 @@ import {
     ENG,
     GEO_API_URL,
     TAB_ITEMS_DATA,
-    RATE_LIST,
     OPTION_LIST
 } from '../settings';
 import {
@@ -129,8 +128,8 @@ export function hideModal() {
 // Функция инициализирует все данные, необходимые для страницы создания заказа
 export function loadOrderCreatorData() {
     return async dispatch => {
+        // Инициализируем данные с именами вкладок
         dispatch(setTabItemsData(TAB_ITEMS_DATA));
-        dispatch(setRateList(RATE_LIST));
 
         // Инициализируем заказ как пустой объект
         dispatch(initOrder({}));
