@@ -121,33 +121,30 @@ export function pointCoords(state = [], action) {
 }
 
 export function order(state = null, action) {
+    let _order;
+    if (state) _order = {...state};
     switch (action.type) {
         case act.INIT_ORDER:
             return action.order;
         case act.SET_ORDER_CITY: {
-            let _order = {...state}
             let {id, name} = action.city;
             _order.cityId = {id, name}
             return _order;
         }
         case act.SET_ORDER_POINT: {
-            let _order = {...state}
             let {id, address, name} = action.point;
             _order.pointId = {id, address, name}
             return _order
         }
         case act.CLEAR_ORDER_CITY: {
-            let _order = {...state}
             delete _order.cityId;
             return _order;
         }
         case act.CLEAR_ORDER_POINT: {
-            let _order = {...state}
             delete _order.pointId;
             return _order;
         }
         case act.SET_ORDER_MODEL: {
-            let _order = {...state};
             let _model = {...action.model};
             delete _model.createdAt;
             delete _model.updatedAt;
@@ -155,32 +152,26 @@ export function order(state = null, action) {
             return _order;
         }
         case act.CLEAR_ORDER_MODEL: {
-            let _order = {...state};
             delete _order.carId;
             return _order;
         }
         case act.SET_ORDER_COLOR: {
-            let _order = {...state};
             _order.color = action.color;
             return _order;
         }
         case act.CLEAR_ORDER_COLOR: {
-            let _order = {...state};
             delete _order.color;
             return _order;
         }
         case act.SET_ORDER_OPTIONS: {
-            let _order = {...state};
             action.options.forEach(option => _order[option.field] = option.value);
             return _order;
         }
         case act.CLEAR_ORDER_OPTIONS: {
-            let _order = {...state};
             action.options.forEach(option => delete _order[option.field]);
             return _order;
         }
         case act.SET_ORDER_RATE: {
-            let _order = {...state};
             let _rate = action.rate;
             delete _rate.updatedAt;
             delete _rate.createdAt;
@@ -188,27 +179,22 @@ export function order(state = null, action) {
             return _order;
         }
         case act.CLEAR_ORDER_RATE: {
-            let _order = {...state};
             delete _order.rateId;
             return _order;
         }
         case act.SET_ORDER_DATE_FROM: {
-            let _order = {...state};
             _order.dateFrom = +action.date;
             return _order;
         }
         case act.CLEAR_ORDER_DATE_FROM: {
-            let _order = {...state};
             delete _order.dateFrom;
             return _order;
         }
         case act.SET_ORDER_DATE_TO: {
-            let _order = {...state};
             _order.dateTo = +action.date;
             return _order;
         }
         case act.CLEAR_ORDER_DATE_TO: {
-            let _order = {...state};
             delete _order.dateTo;
             return _order;
         }
