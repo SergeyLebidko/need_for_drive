@@ -11,23 +11,26 @@ setDefaultLocale(ru);
 const TIME_MINUTES_INTERVAL = 10;
 
 function DateSelector({order, setOrderDateFrom, setOrderDateTo, clearOrderDateFrom, clearOrderDateTo}) {
-    let [dateFrom, setDateFrom] = useState(order.dateFrom && order.dateFrom);
-    let [dateTo, setDateTo] = useState(order.dateTo && order.dateTo);
+    let [dateFrom, setDateFrom] = useState(order.dateFrom || null);
+    let [dateTo, setDateTo] = useState(order.dateTo || null);
 
-    let getCorrectedDate = date => {
+    function getCorrectedDate(date, resetToMidnight = false) {
         let _date = date;
-        _date.setSeconds(0);
         _date.setMilliseconds(0);
+        _date.setSeconds(0);
+        if (resetToMidnight) {
+            _date.setMinutes(0);
+            _date.setHours(0);
+        }
         return _date;
     }
 
-    // TODO При реализации функциональности добавить код отсечения дат и времени, меньших текущего
+    // Фильтр, отсекающий даты, меньше нынешней
+    let dateFromFilter = value => (+value) >= +getCorrectedDate(new Date(), true);
 
-    /*
-      TODO При реализации функциональности добавить дополнительные проверки в обработчик
-      Необходимо добавить проверку выбора даты/времени, которая бы не давала изменить время начала аренды так чтобы
-      оно стало больше времени окончания аренды при одинаковых датах
-    */
+    // Фильтр, отсекающий время меньше текущего
+    let timeFromFilter = value => (+value) >= Date.now();
+
     let handleChangeDateFrom = date => {
         setDateFrom(date);
         if (date) {
@@ -37,11 +40,6 @@ function DateSelector({order, setOrderDateFrom, setOrderDateTo, clearOrderDateFr
         clearOrderDateFrom();
     };
 
-    /*
-      TODO При реализации функциональности добавить дополнительные проверки в обработчик
-      Необходимо добавить проверку выбора даты/времени, которая бы не давала изменить время окончания аренды так, чтобы
-      оно стало меньше времени начала аренды при одинаковых датах
-    */
     let handleChangeDateTo = date => {
         setDateTo(date);
         if (date) {
@@ -74,6 +72,8 @@ function DateSelector({order, setOrderDateFrom, setOrderDateTo, clearOrderDateFr
                             selected={dateFrom}
                             onChange={handleChangeDateFrom}
                             startDate={dateFrom}
+                            filterDate={dateFromFilter}
+                            filterTime={timeFromFilter}
                             endDate={dateTo}
                             maxDate={dateTo}
                         />
