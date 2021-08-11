@@ -50,6 +50,12 @@ function OrderDetailsViewer({order, button, optionList}) {
                                 parameterValue="Да"
                             />
                     )}
+                    {order.rateId &&
+                    <ViewerParameter
+                        parameterName="Тариф"
+                        parameterValue={order.rateId.rateTypeId.name}
+                    />
+                    }
                 </ul>
                 {priceString &&
                 <span className="order_details_viewer__price">
