@@ -8,14 +8,30 @@ import './ExtraTab.scss';
 
 const ALL_COLORS_ID = 'all_colors';
 
-function ExtraTab({order, setOrderColor, clearOrderColor, rateList}) {
-    let {carId: {colors}} = order;
+function ExtraTab({order, rateList, setOrderColor, clearOrderColor, setOrderRate}) {
+    let {carId: {colors}, color, rateId} = order;
 
+    // Формируем данные для селектора цветов
     let colorsForSelector;
+    let defaultColorIndex = 0;
     if (colors && colors.length > 0) {
         colorsForSelector = [{id: ALL_COLORS_ID, name: 'Любой'}];
-        colors.forEach(color => colorsForSelector.push({name: color}));
+        colors.forEach((_color, index) => {
+            colorsForSelector.push({name: _color});
+            if (_color === color) defaultColorIndex = index + 1;
+        });
     }
+
+    // Формируем данные для селектора тарифов
+    let ratesForSelector = [];
+    let defaultRateIndex = -1;
+    rateList.forEach((rate, index) => {
+        ratesForSelector.push({
+            name: `${rate.rateTypeId.name}, ${rate.price}р/${rate.rateTypeId.unit}`,
+            rate
+        });
+        if (rateId && rateId.id === rate.id) defaultRateIndex = index;
+    });
 
     let handleColorSelect = selectedColor => {
         if (selectedColor.id === ALL_COLORS_ID) {
@@ -25,12 +41,27 @@ function ExtraTab({order, setOrderColor, clearOrderColor, rateList}) {
         setOrderColor(selectedColor.name);
     }
 
-    // TODO При реализации функциональности компонента заменить фиктивные функции handleSelect
+    let handleRateSelect = selectedRate => setOrderRate(selectedRate.rate);
+
     return (
         <div className="extra_tab">
-            {colorsForSelector && <RadioSelector items={colorsForSelector} handleSelect={handleColorSelect}/>}
+            {colorsForSelector &&
+            <RadioSelector
+                items={colorsForSelector}
+                handleSelect={handleColorSelect}
+                defaultSelectedIndex={defaultColorIndex}
+            />
+            }
             <DateSelector/>
-            <RadioSelector caption="Тариф" items={rateList} handleSelect={() => {}} onlyColumn/>
+            {ratesForSelector.length > 0 &&
+            <RadioSelector
+                caption="Тариф"
+                items={ratesForSelector}
+                handleSelect={handleRateSelect}
+                defaultSelectedIndex={defaultRateIndex}
+                onlyColumn
+            />
+            }
             <OptionSelector/>
         </div>
     )
@@ -38,9 +69,10 @@ function ExtraTab({order, setOrderColor, clearOrderColor, rateList}) {
 
 ExtraTab.propTypes = {
     order: PropTypes.object,
+    rateList: PropTypes.array,
     setOrderColor: PropTypes.func,
     clearOrderColor: PropTypes.func,
-    rateList: PropTypes.array
+    setOrderRate: PropTypes.func
 }
 
 export default createStoreConnectedComponent('ExtraTab')(ExtraTab);
