@@ -9,7 +9,9 @@ import './ExtraTab.scss';
 const ALL_COLORS_ID = 'all_colors';
 
 function ExtraTab({order, rateList, setOrderColor, clearOrderColor, setOrderRate}) {
-    let {carId: {colors}, color, rateId} = order;
+    let colors;
+    let {carId, color, rateId} = order;
+    if (carId) colors = carId.colors;
 
     // Формируем данные для селектора цветов
     let colorsForSelector;
