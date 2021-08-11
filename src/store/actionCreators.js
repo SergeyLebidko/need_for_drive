@@ -278,7 +278,7 @@ export function clearOrderModel() {
 }
 
 // Создатель действия для установки выбранного цвета авто
-export function setOrderColor(color){
+export function setOrderColor(color) {
     return {
         type: act.SET_ORDER_COLOR,
         color
@@ -286,14 +286,14 @@ export function setOrderColor(color){
 }
 
 // Создатель действия для удаления цвета авто из заказа
-export function clearOrderColor(){
+export function clearOrderColor() {
     return {
         type: act.CLEAR_ORDER_COLOR
     }
 }
 
 // Создатель действия для установки дополнительных опций заказа
-export function setOrderOptions(options){
+export function setOrderOptions(options) {
     return {
         type: act.SET_ORDER_OPTIONS,
         options
@@ -301,9 +301,24 @@ export function setOrderOptions(options){
 }
 
 // Создатель действия для удаления дополнительных опций из заказа
-export function clearOrderOptions(options){
+export function clearOrderOptions(options) {
     return {
         type: act.CLEAR_ORDER_OPTIONS,
         options
+    }
+}
+
+// Создатель действия для установки тарифа в заказе
+export function setOrderRate(rate) {
+    return {
+        type: act.SET_ORDER_RATE,
+        rate
+    }
+}
+
+// Создатель действия для удаления информации о тарифе из заказа
+export function clearOrderRate() {
+    return {
+        type: act.CLEAR_ORDER_RATE
     }
 }

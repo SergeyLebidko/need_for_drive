@@ -179,6 +179,19 @@ export function order(state = null, action) {
             action.options.forEach(option => delete _order[option.field]);
             return _order;
         }
+        case act.SET_ORDER_RATE: {
+            let _order = {...state};
+            let _rate = action.rate;
+            delete _rate.updatedAt;
+            delete _rate.createdAt;
+            _order.rateId = _rate;
+            return _order;
+        }
+        case act.CLEAR_ORDER_RATE: {
+            let _order = {...state};
+            delete _order.rateId;
+            return _order;
+        }
         default:
             return state;
     }
