@@ -16,7 +16,11 @@ import {
     setOrderOptions,
     clearOrderOptions,
     setOrderRate,
-    clearOrderRate
+    clearOrderRate,
+    setOrderDateFrom,
+    clearOrderDateFrom,
+    setOrderDateTo,
+    clearOrderDateTo
 } from './actionCreators';
 
 function dispatchMapsFactory(component) {
@@ -83,7 +87,14 @@ function dispatchMapsFactory(component) {
         case 'OptionSelector':
             return dispatch => ({
                 setOrderOptions: options => dispatch(setOrderOptions(options))
-            })
+            });
+        case 'DateSelector':
+            return dispatch => ({
+                setOrderDateFrom: date => dispatch(setOrderDateFrom(date)),
+                setOrderDateTo: date => dispatch(setOrderDateTo(date)),
+                clearOrderDateFrom: () => dispatch(clearOrderDateFrom()),
+                clearOrderDateTo: () => dispatch(clearOrderDateTo())
+            });
         default:
             return null;
     }

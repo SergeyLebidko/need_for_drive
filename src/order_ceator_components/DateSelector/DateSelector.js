@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
+import PropTypes from 'prop-types';
 import ru from 'date-fns/locale/ru';
 import DatePicker, {setDefaultLocale} from 'react-datepicker';
+import {createStoreConnectedComponent} from '../../store/connector';
 import 'react-datepicker/dist/react-datepicker.css';
 import './DateSelector.scss';
 
@@ -8,9 +10,9 @@ setDefaultLocale(ru);
 
 const TIME_MINUTES_INTERVAL = 10;
 
-function DateSelector() {
-    let [startDate, setStartDate] = useState(null);
-    let [endDate, setEndDate] = useState(null);
+function DateSelector({order, setOrderDateFrom, setOrderDateTo, clearOrderDateFrom, clearOrderDateTo}) {
+    let [dateFrom, setDateFrom] = useState(order.dateFrom && +order.dateFrom);
+    let [dateTo, setDateTo] = useState(order.dateTo && +order.dateTo);
 
     // TODO При реализации функциональности добавить код отсечения дат и времени, меньших текущего
 
@@ -19,14 +21,28 @@ function DateSelector() {
       Необходимо добавить проверку выбора даты/времени, которая бы не давала изменить время начала аренды так чтобы
       оно стало больше времени окончания аренды при одинаковых датах
     */
-    let handleChangeStartDate = date => setStartDate(date);
+    let handleChangeDateFrom = date => {
+        setDateFrom(date);
+        if (date) {
+            setOrderDateFrom(date);
+            return;
+        }
+        clearOrderDateFrom();
+    };
 
     /*
       TODO При реализации функциональности добавить дополнительные проверки в обработчик
       Необходимо добавить проверку выбора даты/времени, которая бы не давала изменить время окончания аренды так, чтобы
       оно стало меньше времени начала аренды при одинаковых датах
     */
-    let handleChangeEndDate = date => setEndDate(date);
+    let handleChangeDateTo = date => {
+        setDateTo(date);
+        if (date) {
+            setOrderDateTo(date);
+            return;
+        }
+        clearOrderDateTo();
+    };
 
     const commonDatePickerProps = {
         showTimeSelect: true,
@@ -48,11 +64,11 @@ function DateSelector() {
                     <div className="date_selector__cell">
                         <DatePicker
                             {...commonDatePickerProps}
-                            selected={startDate}
-                            onChange={handleChangeStartDate}
-                            startDate={startDate}
-                            endDate={endDate}
-                            maxDate={endDate}
+                            selected={dateFrom}
+                            onChange={handleChangeDateFrom}
+                            startDate={dateFrom}
+                            endDate={dateTo}
+                            maxDate={dateTo}
                         />
                     </div>
                 </div>
@@ -63,11 +79,11 @@ function DateSelector() {
                     <div className="date_selector__cell">
                         <DatePicker
                             {...commonDatePickerProps}
-                            selected={endDate}
-                            onChange={handleChangeEndDate}
-                            startDate={startDate}
-                            endDate={endDate}
-                            minDate={startDate}
+                            selected={dateTo}
+                            onChange={handleChangeDateTo}
+                            startDate={dateFrom}
+                            endDate={dateTo}
+                            minDate={dateFrom}
                         />
                     </div>
                 </div>
@@ -76,4 +92,12 @@ function DateSelector() {
     )
 }
 
-export default DateSelector;
+DateSelector.propTypes = {
+    order: PropTypes.object,
+    setOrderDateFrom: PropTypes.func,
+    setOrderDateTo: PropTypes.func,
+    clearOrderDateFrom: PropTypes.func,
+    clearOrderDateTo: PropTypes.func
+}
+
+export default createStoreConnectedComponent('DateSelector')(DateSelector);

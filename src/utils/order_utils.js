@@ -9,3 +9,7 @@ export function hasSelectedModel(order){
 export function hasSelectedExtra(order){
     return ('dateFrom' in order) && ('dateTo' in order) && ('price' in order);
 }
+
+export function getDuration(dateFrom, dateTo){
+    return dateTo - dateFrom;
+}

@@ -84,6 +84,10 @@ function stateMapsFactory(component) {
                 order: state.order,
                 optionList: state.optionList
             });
+        case 'DateSelector':
+            return state => ({
+                order: state.order
+            });
         default:
             return null;
     }
