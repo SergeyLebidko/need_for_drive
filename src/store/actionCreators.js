@@ -13,7 +13,8 @@ import {
     loadCityCoords,
     loadPointCoords,
     loadModelList,
-    loadCategoryList
+    loadCategoryList,
+    loadRateList
 } from '../utils/fetch_utils';
 
 // Создатель действия для установки языка
@@ -181,6 +182,10 @@ export function loadOrderCreatorData() {
             category => !!modelList.find(model => model.categoryId ? model.categoryId.id === category.id : false)
         );
         dispatch(setCategoryList(categoryList));
+
+        // Загружаем список тарифов
+        let rateList = await loadRateList();
+        dispatch(setRateList(rateList));
 
         // Инициализируем список дополнительных опций
         dispatch(setOptionList(OPTION_LIST));
