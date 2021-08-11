@@ -15,7 +15,8 @@ import {
     clearOrderColor,
     setOrderOptions,
     clearOrderOptions,
-    setOrderRate
+    setOrderRate,
+    clearOrderRate
 } from './actionCreators';
 
 function dispatchMapsFactory(component) {
@@ -64,6 +65,7 @@ function dispatchMapsFactory(component) {
                 setOrderModel: model => dispatch(setOrderModel(model)),
                 clearOrderColor: () => dispatch(clearOrderColor()),
                 clearOrderOptions: options => dispatch(clearOrderOptions(options)),
+                clearOrderRate: () => dispatch(clearOrderRate())
             });
         case 'LocationTab':
             return dispatch => ({
