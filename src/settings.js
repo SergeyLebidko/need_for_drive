@@ -46,4 +46,23 @@ export const TAB_ITEMS_DATA = [
 */
 export const RATE_LIST = [{name: 'поминутно. 7 руб./мин.'}, {name: 'суточный. 1000 руб./сут.'}, {name: 'недельный. 6999 руб.'}];
 
-export const OPTION_LIST = ['Полный бак, 500 р.', 'Детское кресло, 200 р.', 'Правый руль, 1600 р.'];
+export const OPTION_LIST = [
+    {
+        name: `Полный бак, ${this.price} р.`,
+        field: 'isFullTank',
+        price: 500,
+        defaultValue: false
+    },
+    {
+        name: `Детское кресло, ${this.price} р.`,
+        field: 'isNeedChildChair',
+        price: 200,
+        defaultValue: false
+    },
+    {
+        name: `Правый руль, ${this.price} р.`,
+        field: `isRightWheel`,
+        price: 1600,
+        defaultValue: false
+    }
+];
