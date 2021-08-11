@@ -29,14 +29,15 @@ function stateMapsFactory(component) {
             return state => ({
                 hasModalShow: state.hasModalShow,
                 hasOrderCreatorDataLoaded: (function () {
-                    let {cityList, pointList, cityCoords, pointCoords, modelList, categoryList} = state;
+                    let {cityList, pointList, cityCoords, pointCoords, modelList, categoryList, rateList} = state;
                     return (
                         cityList.length > 0 &&
                         pointList.length > 0 &&
                         cityCoords.length > 0 &&
                         pointCoords.length > 0 &&
                         modelList.length > 0 &&
-                        categoryList.length > 0
+                        categoryList.length > 0 &&
+                        rateList.length > 0
                     );
                 })()
             });
