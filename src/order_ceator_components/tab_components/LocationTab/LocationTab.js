@@ -5,7 +5,18 @@ import Map from '../../map_components/Map/Map';
 import {createStoreConnectedComponent} from '../../../store/connector';
 import './LocationTab.scss';
 
-function LocationTab({order, optionList, clearOrderModel, clearOrderColor, clearOrderOptions, clearOrderRate}) {
+function LocationTab(props) {
+    let {
+        order,
+        optionList,
+        clearOrderModel,
+        clearOrderColor,
+        clearOrderOptions,
+        clearOrderRate,
+        clearOrderDateFrom,
+        clearOrderDateTo
+    } = props;
+
     let {cityId: selectedCity, pointId: selectedPoint} = order;
     let isFirstRender = useRef(true);
 
@@ -20,7 +31,8 @@ function LocationTab({order, optionList, clearOrderModel, clearOrderColor, clear
         clearOrderColor();
         clearOrderOptions(optionList);
         clearOrderRate();
-        // TODO Вставить функцию сброса дат
+        clearOrderDateFrom();
+        clearOrderDateTo();
     }, [selectedCity, selectedPoint]);
 
     return (
@@ -37,7 +49,9 @@ LocationTab.propTypes = {
     clearOrderModel: PropTypes.func,
     clearOrderColor: PropTypes.func,
     clearOrderOptions: PropTypes.func,
-    clearOrderRate: PropTypes.func
+    clearOrderRate: PropTypes.func,
+    clearOrderDateFrom: PropTypes.func,
+    clearOrderDateTo: PropTypes.func
 }
 
 export default createStoreConnectedComponent('LocationTab')(LocationTab);

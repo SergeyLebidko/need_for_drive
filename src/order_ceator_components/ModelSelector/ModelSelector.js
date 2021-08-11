@@ -6,7 +6,19 @@ import './ModelSelector.scss';
 
 const SHOW_LIMIT = 10;
 
-function ModelSelector({order, modelList, optionList, setOrderModel, clearOrderColor, clearOrderOptions, clearOrderRate}) {
+function ModelSelector(props) {
+    let {
+        order,
+        modelList,
+        optionList,
+        setOrderModel,
+        clearOrderColor,
+        clearOrderOptions,
+        clearOrderRate,
+        clearOrderDateFrom,
+        clearOrderDateTo
+    } = props;
+
     let [selectedModel, setSelectedModel] = useState(order.carId ? order.carId : null);
     let [currentShowLimit, setCurrentShowLimit] = useState(SHOW_LIMIT);
 
@@ -22,7 +34,8 @@ function ModelSelector({order, modelList, optionList, setOrderModel, clearOrderC
         clearOrderColor();
         clearOrderOptions(optionList);
         clearOrderRate();
-        // TODO Вставить функцию сброса дат
+        clearOrderDateFrom();
+        clearOrderDateTo();
     };
 
     let handleMoreButtonClick = () => setCurrentShowLimit(oldLimit => oldLimit + SHOW_LIMIT);
@@ -63,7 +76,9 @@ ModelSelector.propTypes = {
     setOrderModel: PropTypes.func,
     clearOrderColor: PropTypes.func,
     clearOrderOptions: PropTypes.func,
-    clearOrderRate: PropTypes.func
+    clearOrderRate: PropTypes.func,
+    clearOrderDateFrom: PropTypes.func,
+    clearOrderDateTo: PropTypes.func
 }
 
 export default createStoreConnectedComponent('ModelSelector')(ModelSelector);

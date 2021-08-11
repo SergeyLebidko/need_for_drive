@@ -69,14 +69,18 @@ function dispatchMapsFactory(component) {
                 setOrderModel: model => dispatch(setOrderModel(model)),
                 clearOrderColor: () => dispatch(clearOrderColor()),
                 clearOrderOptions: options => dispatch(clearOrderOptions(options)),
-                clearOrderRate: () => dispatch(clearOrderRate())
+                clearOrderRate: () => dispatch(clearOrderRate()),
+                clearOrderDateFrom: () => dispatch(clearOrderDateFrom()),
+                clearOrderDateTo: () => dispatch(clearOrderDateTo())
             });
         case 'LocationTab':
             return dispatch => ({
                 clearOrderModel: () => dispatch(clearOrderModel()),
                 clearOrderColor: () => dispatch(clearOrderColor()),
                 clearOrderOptions: options => dispatch(clearOrderOptions(options)),
-                clearOrderRate: () => dispatch(clearOrderRate())
+                clearOrderRate: () => dispatch(clearOrderRate()),
+                clearOrderDateFrom: () => dispatch(clearOrderDateFrom()),
+                clearOrderDateTo: () => dispatch(clearOrderDateTo())
             });
         case 'ExtraTab':
             return dispatch => ({
