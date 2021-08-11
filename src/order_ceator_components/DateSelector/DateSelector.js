@@ -11,8 +11,8 @@ setDefaultLocale(ru);
 const TIME_MINUTES_INTERVAL = 10;
 
 function DateSelector({order, setOrderDateFrom, setOrderDateTo, clearOrderDateFrom, clearOrderDateTo}) {
-    let [dateFrom, setDateFrom] = useState(order.dateFrom && +order.dateFrom);
-    let [dateTo, setDateTo] = useState(order.dateTo && +order.dateTo);
+    let [dateFrom, setDateFrom] = useState(order.dateFrom && order.dateFrom);
+    let [dateTo, setDateTo] = useState(order.dateTo && order.dateTo);
 
     // TODO При реализации функциональности добавить код отсечения дат и времени, меньших текущего
 
@@ -24,7 +24,10 @@ function DateSelector({order, setOrderDateFrom, setOrderDateTo, clearOrderDateFr
     let handleChangeDateFrom = date => {
         setDateFrom(date);
         if (date) {
-            setOrderDateFrom(date);
+            let _date = date;
+            _date.setSeconds(0);
+            _date.setMilliseconds(0);
+            setOrderDateFrom(_date);
             return;
         }
         clearOrderDateFrom();
@@ -38,7 +41,10 @@ function DateSelector({order, setOrderDateFrom, setOrderDateTo, clearOrderDateFr
     let handleChangeDateTo = date => {
         setDateTo(date);
         if (date) {
-            setOrderDateTo(date);
+            let _date = date;
+            _date.setSeconds(0);
+            _date.setMilliseconds(0);
+            setOrderDateTo(_date);
             return;
         }
         clearOrderDateTo();

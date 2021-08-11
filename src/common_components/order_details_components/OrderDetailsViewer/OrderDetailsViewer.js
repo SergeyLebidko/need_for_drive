@@ -18,7 +18,18 @@ function OrderDetailsViewer({order, button, optionList}) {
     let options = [];
     optionList.forEach(option => {
         if (order[option.field]) options.push(option.name);
-    })
+    });
+
+    let duration;
+    if (order.dateFrom && order.dateTo) {
+        duration = '';
+        let {weekCount, dayCount, hourCount, minCount} = getDuration(order.dateFrom, order.dateTo);
+        if (weekCount) duration += `${weekCount}нед`;
+        if (dayCount) duration += ` ${dayCount}д`;
+        if (hourCount) duration += ` ${hourCount}ч`;
+        if (minCount) duration += ` ${minCount}мин`;
+        duration = duration.trim();
+    }
 
     return (
         <div className="order_details_viewer">
@@ -57,10 +68,10 @@ function OrderDetailsViewer({order, button, optionList}) {
                         parameterValue={order.rateId.rateTypeId.name}
                     />
                     }
-                    {(order.dateFrom && order.dateTo) &&
+                    {duration &&
                     <ViewerParameter
                         parameterName="Длительность аренды"
-                        parameterValue={getDuration(order.dateFrom, order.dateTo)}
+                        parameterValue={duration}
                     />
                     }
                 </ul>
