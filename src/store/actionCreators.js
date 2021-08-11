@@ -130,7 +130,6 @@ export function loadOrderCreatorData() {
     return async dispatch => {
         dispatch(setTabItemsData(TAB_ITEMS_DATA));
         dispatch(setRateList(RATE_LIST));
-        dispatch(setOptionList(OPTION_LIST));
 
         // Инициализируем заказ как пустой объект
         dispatch(initOrder({}));
@@ -181,8 +180,10 @@ export function loadOrderCreatorData() {
         categoryList = categoryList.filter(
             category => !!modelList.find(model => model.categoryId ? model.categoryId.id === category.id : false)
         );
-
         dispatch(setCategoryList(categoryList));
+
+        // Инициализируем список дополнительных опций
+        dispatch(setOptionList(OPTION_LIST));
     }
 }
 
