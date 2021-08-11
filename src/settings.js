@@ -48,21 +48,27 @@ export const RATE_LIST = [{name: 'поминутно. 7 руб./мин.'}, {name
 
 export const OPTION_LIST = [
     {
-        name: `Полный бак, ${this.price} р.`,
-        field: 'isFullTank',
         price: 500,
+        get name() {
+            return `Полный бак, ${this.price} р.`;
+        },
+        field: 'isFullTank',
         value: false
     },
     {
-        name: `Детское кресло, ${this.price} р.`,
-        field: 'isNeedChildChair',
         price: 200,
+        get name() {
+            return `Детское кресло, ${this.price} р.`;
+        },
+        field: 'isNeedChildChair',
         value: false
     },
     {
-        name: `Правый руль, ${this.price} р.`,
-        field: `isRightWheel`,
         price: 1600,
+        get name() {
+            return `Правый руль, ${this.price} р.`;
+        },
+        field: `isRightWheel`,
         value: false
     }
 ];
