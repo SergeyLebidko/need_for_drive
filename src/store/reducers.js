@@ -55,15 +55,6 @@ export function modelList(state = [], action) {
     }
 }
 
-export function colorList(state = [], action) {
-    switch (action.type) {
-        case act.SET_COLOR_LIST:
-            return action.colorList;
-        default:
-            return state;
-    }
-}
-
 export function rateList(state = [], action) {
     switch (action.type) {
         case act.SET_RATE_LIST:

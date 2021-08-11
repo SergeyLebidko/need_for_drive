@@ -8,7 +8,6 @@ export const SET_CITY_COORDS = 'set_city_coords';
 export const SET_POINT_COORDS = 'set_point_coords';
 export const SET_CATEGORY_LIST = 'set_category_list';
 export const SET_MODEL_LIST = 'set_model_list';
-export const SET_COLOR_LIST = 'set_color_list';
 export const SET_RATE_LIST = 'set_rate_list';
 export const SET_OPTION_LIST = 'set_option_list';
 export const SHOW_MODAL = 'show_modal';
