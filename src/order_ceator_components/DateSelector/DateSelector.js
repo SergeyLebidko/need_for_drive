@@ -14,6 +14,13 @@ function DateSelector({order, setOrderDateFrom, setOrderDateTo, clearOrderDateFr
     let [dateFrom, setDateFrom] = useState(order.dateFrom && order.dateFrom);
     let [dateTo, setDateTo] = useState(order.dateTo && order.dateTo);
 
+    let getCorrectedDate = date => {
+        let _date = date;
+        _date.setSeconds(0);
+        _date.setMilliseconds(0);
+        return _date;
+    }
+
     // TODO При реализации функциональности добавить код отсечения дат и времени, меньших текущего
 
     /*
@@ -24,10 +31,7 @@ function DateSelector({order, setOrderDateFrom, setOrderDateTo, clearOrderDateFr
     let handleChangeDateFrom = date => {
         setDateFrom(date);
         if (date) {
-            let _date = date;
-            _date.setSeconds(0);
-            _date.setMilliseconds(0);
-            setOrderDateFrom(_date);
+            setOrderDateFrom(getCorrectedDate(date));
             return;
         }
         clearOrderDateFrom();
@@ -41,10 +45,7 @@ function DateSelector({order, setOrderDateFrom, setOrderDateTo, clearOrderDateFr
     let handleChangeDateTo = date => {
         setDateTo(date);
         if (date) {
-            let _date = date;
-            _date.setSeconds(0);
-            _date.setMilliseconds(0);
-            setOrderDateTo(_date);
+            setOrderDateTo(getCorrectedDate(date));
             return;
         }
         clearOrderDateTo();
