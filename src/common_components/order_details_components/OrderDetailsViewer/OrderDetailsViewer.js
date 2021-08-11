@@ -5,8 +5,7 @@ import {getFormattedPrice, capitalize} from '../../../utils/common_utils';
 import {createStoreConnectedComponent} from '../../../store/connector';
 import './OrderDetailsViewer.scss';
 
-function OrderDetailsViewer({order, button}) {
-
+function OrderDetailsViewer({order, button, optionList}) {
     // Учитываем, что цена заказа может отсутствовать либо быть выражена диапазоном чисел
     let priceString;
     if ('price' in order) {
@@ -14,6 +13,11 @@ function OrderDetailsViewer({order, button}) {
     } else if ('cardId' in order) {
         priceString = `Цена: от ${getFormattedPrice(order.price.priceMin)} до ${getFormattedPrice(order.price.priceMax)}`;
     }
+
+    let options = [];
+    optionList.forEach(option => {
+        if (order[option.field]) options.push(option.name);
+    })
 
     return (
         <div className="order_details_viewer">
@@ -38,6 +42,14 @@ function OrderDetailsViewer({order, button}) {
                         parameterValue={capitalize(order.color)}
                     />
                     }
+                    {options.map(
+                        option =>
+                            <ViewerParameter
+                                key={option}
+                                parameterName={option}
+                                parameterValue="Да"
+                            />
+                    )}
                 </ul>
                 {priceString &&
                 <span className="order_details_viewer__price">
@@ -52,7 +64,8 @@ function OrderDetailsViewer({order, button}) {
 
 OrderDetailsViewer.propTypes = {
     order: PropTypes.object,
-    button: PropTypes.element
+    button: PropTypes.element,
+    optionList: PropTypes.array
 }
 
 export default createStoreConnectedComponent('OrderDetailsViewer')(OrderDetailsViewer);

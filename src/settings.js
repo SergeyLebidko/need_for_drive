@@ -49,25 +49,19 @@ export const RATE_LIST = [{name: 'поминутно. 7 руб./мин.'}, {name
 export const OPTION_LIST = [
     {
         price: 500,
-        get name() {
-            return `Полный бак, ${this.price} р.`;
-        },
+        name: 'Полный бак',
         field: 'isFullTank',
         value: false
     },
     {
         price: 200,
-        get name() {
-            return `Детское кресло, ${this.price} р.`;
-        },
+        name: 'Детское кресло',
         field: 'isNeedChildChair',
         value: false
     },
     {
         price: 1600,
-        get name() {
-            return `Правый руль, ${this.price} р.`;
-        },
+        name: 'Правый руль',
         field: `isRightWheel`,
         value: false
     }

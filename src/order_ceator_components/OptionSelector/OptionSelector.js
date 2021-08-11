@@ -51,7 +51,7 @@ function OptionSelector({order, optionList, setOrderOptions}) {
                                 <input type="checkbox" id={inputId}/>
                                 <label className={optionClassNames} onClick={() => handleChange(option)}
                                        htmlFor={inputId}>
-                                    {option.name}
+                                    {`${option.name}, ${option.price}`} &#8381;
                                 </label>
                             </li>
                         )
