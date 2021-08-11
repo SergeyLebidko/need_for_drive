@@ -69,7 +69,10 @@ function dispatchMapsFactory(component) {
             });
         case 'LocationTab':
             return dispatch => ({
-                clearOrderModel: () => dispatch(clearOrderModel())
+                clearOrderModel: () => dispatch(clearOrderModel()),
+                clearOrderColor: () => dispatch(clearOrderColor()),
+                clearOrderOptions: options => dispatch(clearOrderOptions(options)),
+                clearOrderRate: () => dispatch(clearOrderRate())
             });
         case 'ExtraTab':
             return dispatch => ({
