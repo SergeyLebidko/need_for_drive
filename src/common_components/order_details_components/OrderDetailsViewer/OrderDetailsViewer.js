@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import ViewerParameter from '../ViewerParameter/ViewerParameter';
 import {getFormattedPrice, capitalize} from '../../../utils/common_utils';
 import {createStoreConnectedComponent} from '../../../store/connector';
+import {getDuration} from '../../../utils/order_utils';
 import './OrderDetailsViewer.scss';
 
 function OrderDetailsViewer({order, button, optionList}) {
@@ -54,6 +55,12 @@ function OrderDetailsViewer({order, button, optionList}) {
                     <ViewerParameter
                         parameterName="Тариф"
                         parameterValue={order.rateId.rateTypeId.name}
+                    />
+                    }
+                    {(order.dateFrom && order.dateTo) &&
+                    <ViewerParameter
+                        parameterName="Длительность аренды"
+                        parameterValue={getDuration(order.dateFrom, order.dateTo)}
                     />
                     }
                 </ul>
