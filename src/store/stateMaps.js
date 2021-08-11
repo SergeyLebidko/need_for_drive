@@ -74,10 +74,10 @@ function stateMapsFactory(component) {
             });
         case 'TabControl':
         case 'LocationTab':
-        case 'ModelSelector':
             return state => ({
                 order: state.order
             });
+        case 'ModelSelector':
         case 'OrderDetailsViewer':
         case 'OptionSelector':
             return state => ({

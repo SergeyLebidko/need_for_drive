@@ -6,7 +6,7 @@ import './ModelSelector.scss';
 
 const SHOW_LIMIT = 10;
 
-function ModelSelector({order, modelList, setOrderModel, clearOrderColor}) {
+function ModelSelector({order, modelList, optionList, setOrderModel, clearOrderColor, clearOrderOptions}) {
     let [selectedModel, setSelectedModel] = useState(order.carId ? order.carId : null);
     let [currentShowLimit, setCurrentShowLimit] = useState(SHOW_LIMIT);
 
@@ -17,9 +17,11 @@ function ModelSelector({order, modelList, setOrderModel, clearOrderColor}) {
     let handleCardClick = model => {
         setSelectedModel(model);
         setOrderModel(model);
+
         // При изменении выбранной модели - сбрасываем данные вкладки с дополнительными параметрами
         clearOrderColor();
-        // TODO Вставить функции сброса других дополнительных параметров
+        clearOrderOptions(optionList);
+        // TODO Вставить функции сброса дат и тарифа
     };
 
     let handleMoreButtonClick = () => setCurrentShowLimit(oldLimit => oldLimit + SHOW_LIMIT);
@@ -54,10 +56,12 @@ function ModelSelector({order, modelList, setOrderModel, clearOrderColor}) {
 }
 
 ModelSelector.propTypes = {
-    modelList: PropTypes.array,
     order: PropTypes.object,
+    modelList: PropTypes.array,
+    optionList: PropTypes.array,
     setOrderModel: PropTypes.func,
-    clearOrderColor: PropTypes.func
+    clearOrderColor: PropTypes.func,
+    clearOrderOptions: PropTypes.func
 }
 
 export default createStoreConnectedComponent('ModelSelector')(ModelSelector);
