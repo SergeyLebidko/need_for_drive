@@ -25,3 +25,7 @@ export const SET_ORDER_OPTIONS = 'set_order_options';
 export const CLEAR_ORDER_OPTIONS = 'clear_order_options';
 export const SET_ORDER_RATE = 'set_order_rate';
 export const CLEAR_ORDER_RATE = 'clear_order_rate';
+export const SET_ORDER_DATE_FROM = 'set_order_date_from';
+export const CLEAR_ORDER_DATE_FROM = 'clear_order_date_from';
+export const SET_ORDER_DATE_TO = 'set_order_date_to';
+export const CLEAR_ORDER_DATE_TO = 'clear_order_date_to';

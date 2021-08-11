@@ -192,6 +192,26 @@ export function order(state = null, action) {
             delete _order.rateId;
             return _order;
         }
+        case act.SET_ORDER_DATE_FROM: {
+            let _order = {...state};
+            _order.dateFrom = +action.date;
+            return _order;
+        }
+        case act.CLEAR_ORDER_DATE_FROM: {
+            let _order = {...state};
+            delete _order.dateFrom;
+            return _order;
+        }
+        case act.SET_ORDER_DATE_TO: {
+            let _order = {...state};
+            _order.dateTo = +action.date;
+            return _order;
+        }
+        case act.CLEAR_ORDER_DATE_TO: {
+            let _order = {...state};
+            delete _order.dateTo;
+            return _order;
+        }
         default:
             return state;
     }

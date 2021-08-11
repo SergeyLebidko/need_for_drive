@@ -322,3 +322,33 @@ export function clearOrderRate() {
         type: act.CLEAR_ORDER_RATE
     }
 }
+
+// Создатель действия для установки даты и времени начала аренды
+export function setOrderDateFrom(date) {
+    return {
+        type: act.SET_ORDER_DATE_FROM,
+        date
+    }
+}
+
+// Создатель действия для удаления даты и времени начала аренды
+export function clearOrderDateFrom() {
+    return {
+        type: act.CLEAR_ORDER_DATE_FROM
+    }
+}
+
+// Создатель действия для установки дата и времени окончания аренды
+export function setOrderDateTo(date) {
+    return {
+        type: act.SET_ORDER_DATE_TO,
+        date
+    }
+}
+
+// Создатель действия для удаления даты и времени окончания аренды
+export function clearOrderDateTo() {
+    return {
+        type: act.CLEAR_ORDER_DATE_TO
+    }
+}
