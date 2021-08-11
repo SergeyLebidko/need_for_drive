@@ -8,7 +8,7 @@ import './ExtraTab.scss';
 
 const ALL_COLORS_ID = 'all_colors';
 
-function ExtraTab({order, setOrderColor, clearOrderColor, rateList, optionList}) {
+function ExtraTab({order, setOrderColor, clearOrderColor, rateList}) {
     let {carId: {colors}} = order;
 
     let colorsForSelector;
@@ -31,7 +31,7 @@ function ExtraTab({order, setOrderColor, clearOrderColor, rateList, optionList})
             {colorsForSelector && <RadioSelector items={colorsForSelector} handleSelect={handleColorSelect}/>}
             <DateSelector/>
             <RadioSelector caption="Тариф" items={rateList} handleSelect={() => {}} onlyColumn/>
-            <OptionSelector optionList={optionList}/>
+            <OptionSelector/>
         </div>
     )
 }
@@ -40,8 +40,7 @@ ExtraTab.propTypes = {
     order: PropTypes.object,
     setOrderColor: PropTypes.func,
     clearOrderColor: PropTypes.func,
-    rateList: PropTypes.array,
-    optionList: PropTypes.array
+    rateList: PropTypes.array
 }
 
 export default createStoreConnectedComponent('ExtraTab')(ExtraTab);

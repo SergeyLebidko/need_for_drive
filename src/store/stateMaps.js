@@ -52,8 +52,7 @@ function stateMapsFactory(component) {
         case 'ExtraTab':
             return state => ({
                 order: state.order,
-                rateList: state.rateList,
-                optionList: state.optionList
+                rateList: state.rateList
             });
         case 'Modal':
             return state => ({
@@ -79,6 +78,11 @@ function stateMapsFactory(component) {
         case 'ModelSelector':
             return state => ({
                 order: state.order
+            });
+        case 'OptionSelector':
+            return state => ({
+                order: state.order,
+                optionList: state.optionList
             });
         default:
             return null;
