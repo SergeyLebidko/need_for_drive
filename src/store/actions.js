@@ -22,3 +22,5 @@ export const SET_ORDER_MODEL = 'set_order_model';
 export const CLEAR_ORDER_MODEL = 'clear_order_model';
 export const SET_ORDER_COLOR = 'set_order_color';
 export const CLEAR_ORDER_COLOR = 'clear_order_color';
+export const SET_ORDER_OPTIONS = 'set_order_options';
+export const CLEAR_ORDER_OPTIONS = 'clear_order_options';

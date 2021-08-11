@@ -285,3 +285,19 @@ export function clearOrderColor(){
         type: act.CLEAR_ORDER_COLOR
     }
 }
+
+// Создатель действия для установки дополнительных опций заказа
+export function setOrderOptions(options){
+    return {
+        type: act.SET_ORDER_OPTIONS,
+        options
+    }
+}
+
+// Создатель действия для удаления дополнительных опций из заказа
+export function clearOrderOptions(options){
+    return {
+        type: act.CLEAR_ORDER_OPTIONS,
+        options
+    }
+}

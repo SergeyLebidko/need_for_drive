@@ -178,6 +178,16 @@ export function order(state = null, action) {
             delete _order.color;
             return _order;
         }
+        case act.SET_ORDER_OPTIONS: {
+            let _order = {...state};
+            action.options.forEach(option => _order[option.field] = option.value);
+            return _order;
+        }
+        case act.CLEAR_ORDER_OPTIONS: {
+            let _order = {...state};
+            action.options.forEach(option => delete _order[option.field]);
+            return _order;
+        }
         default:
             return state;
     }
