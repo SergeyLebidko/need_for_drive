@@ -351,3 +351,18 @@ export function clearOrderDateTo() {
         type: act.CLEAR_ORDER_DATE_TO
     }
 }
+
+// Создатель действия для установки цены заказа
+export function setOrderPrice(price){
+    return {
+        type: act.SET_ORDER_PRICE,
+        price
+    }
+}
+
+// Создатель действия для удаления цены заказа
+export function clearOrderPrice(){
+    return {
+        type: act.CLEAR_ORDER_PRICE
+    }
+}

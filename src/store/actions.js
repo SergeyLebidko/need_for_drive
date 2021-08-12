@@ -29,3 +29,5 @@ export const SET_ORDER_DATE_FROM = 'set_order_date_from';
 export const CLEAR_ORDER_DATE_FROM = 'clear_order_date_from';
 export const SET_ORDER_DATE_TO = 'set_order_date_to';
 export const CLEAR_ORDER_DATE_TO = 'clear_order_date_to';
+export const SET_ORDER_PRICE = 'set_order_price';
+export const CLEAR_ORDER_PRICE = 'clear_order_price';

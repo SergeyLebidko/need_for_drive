@@ -31,3 +31,7 @@ export function getDuration(dateFrom, dateTo) {
 
     return {weekCount, dayCount, hourCount, minCount};
 }
+
+// export function getPrice(order){
+//
+// }

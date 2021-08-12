@@ -198,6 +198,14 @@ export function order(state = null, action) {
             delete _order.dateTo;
             return _order;
         }
+        case act.SET_ORDER_PRICE: {
+            _order.price = action.price;
+            return _order;
+        }
+        case act.CLEAR_ORDER_PRICE: {
+            delete _order.price;
+            return _order;
+        }
         default:
             return state;
     }
