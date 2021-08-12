@@ -5,19 +5,7 @@ import Map from '../../map_components/Map/Map';
 import {createStoreConnectedComponent} from '../../../store/connector';
 import './LocationTab.scss';
 
-function LocationTab(props) {
-    let {
-        order,
-        optionList,
-        clearOrderModel,
-        clearOrderColor,
-        clearOrderOptions,
-        clearOrderRate,
-        clearOrderDateFrom,
-        clearOrderDateTo,
-        clearOrderPrice
-    } = props;
-
+function LocationTab({order, clearTabsAfterLocation}) {
     let {cityId: selectedCity, pointId: selectedPoint} = order;
     let isFirstRender = useRef(true);
 
@@ -27,14 +15,7 @@ function LocationTab(props) {
             isFirstRender.current = false;
             return;
         }
-
-        clearOrderModel();
-        clearOrderColor();
-        clearOrderOptions(optionList);
-        clearOrderRate();
-        clearOrderDateFrom();
-        clearOrderDateTo();
-        clearOrderPrice();
+        clearTabsAfterLocation();
     }, [selectedCity, selectedPoint]);
 
     return (
@@ -47,14 +28,7 @@ function LocationTab(props) {
 
 LocationTab.propTypes = {
     order: PropTypes.object,
-    optionList: PropTypes.array,
-    clearOrderModel: PropTypes.func,
-    clearOrderColor: PropTypes.func,
-    clearOrderOptions: PropTypes.func,
-    clearOrderRate: PropTypes.func,
-    clearOrderDateFrom: PropTypes.func,
-    clearOrderDateTo: PropTypes.func,
-    clearOrderPrice: PropTypes.func
+    clearTabsAfterLocation: PropTypes.func
 }
 
 export default createStoreConnectedComponent('LocationTab')(LocationTab);

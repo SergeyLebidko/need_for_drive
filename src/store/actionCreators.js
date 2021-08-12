@@ -191,6 +191,26 @@ export function loadOrderCreatorData() {
     }
 }
 
+// Создатель действия для очистки данных всех вкладок после вкладки Местоположение
+export function clearTabsAfterLocation(){
+    return dispatch => {
+        dispatch(clearOrderModel());
+        dispatch(clearTabsAfterModel());
+    }
+}
+
+// Создатель действия для очистки данных всех после вкладки выбора модели
+export function clearTabsAfterModel() {
+    return dispatch => {
+        dispatch(clearOrderColor());
+        dispatch(clearOrderOptions(OPTION_LIST));
+        dispatch(clearOrderRate());
+        dispatch(clearOrderDateFrom());
+        dispatch(clearOrderDateTo());
+        dispatch(clearOrderPrice());
+    }
+}
+
 // Создатель действия для сохранения списка городов
 export function setCityList(cityList) {
     return {

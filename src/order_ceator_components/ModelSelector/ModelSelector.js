@@ -6,20 +6,7 @@ import './ModelSelector.scss';
 
 const SHOW_LIMIT = 10;
 
-function ModelSelector(props) {
-    let {
-        order,
-        modelList,
-        optionList,
-        setOrderModel,
-        clearOrderColor,
-        clearOrderOptions,
-        clearOrderRate,
-        clearOrderDateFrom,
-        clearOrderDateTo,
-        clearOrderPrice
-    } = props;
-
+function ModelSelector({order, modelList, setOrderModel, clearTabsAfterModel}) {
     let [selectedModel, setSelectedModel] = useState(order.carId ? order.carId : null);
     let [currentShowLimit, setCurrentShowLimit] = useState(SHOW_LIMIT);
 
@@ -31,13 +18,8 @@ function ModelSelector(props) {
         setSelectedModel(model);
         setOrderModel(model);
 
-        // При изменении выбранной модели - сбрасываем данные вкладки с дополнительными параметрами
-        clearOrderColor();
-        clearOrderOptions(optionList);
-        clearOrderRate();
-        clearOrderDateFrom();
-        clearOrderDateTo();
-        clearOrderPrice();
+        // При изменении выбранной модели - сбрасываем данные последующих вкладок
+        clearTabsAfterModel();
     };
 
     let handleMoreButtonClick = () => setCurrentShowLimit(oldLimit => oldLimit + SHOW_LIMIT);
@@ -74,14 +56,8 @@ function ModelSelector(props) {
 ModelSelector.propTypes = {
     order: PropTypes.object,
     modelList: PropTypes.array,
-    optionList: PropTypes.array,
     setOrderModel: PropTypes.func,
-    clearOrderColor: PropTypes.func,
-    clearOrderOptions: PropTypes.func,
-    clearOrderRate: PropTypes.func,
-    clearOrderDateFrom: PropTypes.func,
-    clearOrderDateTo: PropTypes.func,
-    clearOrderPrice: PropTypes.func
+    clearTabsAfterModel: PropTypes.func
 }
 
 export default createStoreConnectedComponent('ModelSelector')(ModelSelector);

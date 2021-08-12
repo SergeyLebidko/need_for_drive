@@ -10,19 +10,16 @@ import {
     clearOrderCity,
     clearOrderPoint,
     setOrderModel,
-    clearOrderModel,
     setOrderColor,
     clearOrderColor,
     setOrderOptions,
-    clearOrderOptions,
     setOrderRate,
-    clearOrderRate,
     setOrderDateFrom,
     clearOrderDateFrom,
     setOrderDateTo,
     clearOrderDateTo,
     setOrderPrice,
-    clearOrderPrice
+    clearOrderPrice, clearTabsAfterLocation, clearTabsAfterModel
 } from './actionCreators';
 
 function dispatchMapsFactory(component) {
@@ -69,22 +66,11 @@ function dispatchMapsFactory(component) {
         case 'ModelSelector':
             return dispatch => ({
                 setOrderModel: model => dispatch(setOrderModel(model)),
-                clearOrderColor: () => dispatch(clearOrderColor()),
-                clearOrderOptions: options => dispatch(clearOrderOptions(options)),
-                clearOrderRate: () => dispatch(clearOrderRate()),
-                clearOrderDateFrom: () => dispatch(clearOrderDateFrom()),
-                clearOrderDateTo: () => dispatch(clearOrderDateTo()),
-                clearOrderPrice: () => dispatch(clearOrderPrice())
+                clearTabsAfterModel: () => dispatch(clearTabsAfterModel())
             });
         case 'LocationTab':
             return dispatch => ({
-                clearOrderModel: () => dispatch(clearOrderModel()),
-                clearOrderColor: () => dispatch(clearOrderColor()),
-                clearOrderOptions: options => dispatch(clearOrderOptions(options)),
-                clearOrderRate: () => dispatch(clearOrderRate()),
-                clearOrderDateFrom: () => dispatch(clearOrderDateFrom()),
-                clearOrderDateTo: () => dispatch(clearOrderDateTo()),
-                clearOrderPrice: () => dispatch(clearOrderPrice())
+                clearTabsAfterLocation: () => dispatch(clearTabsAfterLocation())
             });
         case 'ExtraTab':
             return dispatch => ({

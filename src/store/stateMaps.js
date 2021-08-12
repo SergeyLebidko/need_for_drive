@@ -77,7 +77,6 @@ function stateMapsFactory(component) {
             return state => ({
                 order: state.order
             });
-        case 'LocationTab':
         case 'ModelSelector':
         case 'OrderDetailsViewer':
         case 'OptionSelector':
@@ -85,6 +84,7 @@ function stateMapsFactory(component) {
                 order: state.order,
                 optionList: state.optionList
             });
+        case 'LocationTab':
         case 'DateSelector':
             return state => ({
                 order: state.order
