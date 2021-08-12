@@ -37,6 +37,10 @@
   }
 }
 
+.incorrect_price {
+  color: $gray;
+}
+
 @media (min-width: $tablet-start) {
   .order_details_viewer {
     border-left: 1px solid $gray-light;

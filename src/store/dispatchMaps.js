@@ -73,7 +73,8 @@ function dispatchMapsFactory(component) {
                 clearOrderOptions: options => dispatch(clearOrderOptions(options)),
                 clearOrderRate: () => dispatch(clearOrderRate()),
                 clearOrderDateFrom: () => dispatch(clearOrderDateFrom()),
-                clearOrderDateTo: () => dispatch(clearOrderDateTo())
+                clearOrderDateTo: () => dispatch(clearOrderDateTo()),
+                clearOrderPrice: () => dispatch(clearOrderPrice())
             });
         case 'LocationTab':
             return dispatch => ({
@@ -82,7 +83,8 @@ function dispatchMapsFactory(component) {
                 clearOrderOptions: options => dispatch(clearOrderOptions(options)),
                 clearOrderRate: () => dispatch(clearOrderRate()),
                 clearOrderDateFrom: () => dispatch(clearOrderDateFrom()),
-                clearOrderDateTo: () => dispatch(clearOrderDateTo())
+                clearOrderDateTo: () => dispatch(clearOrderDateTo()),
+                clearOrderPrice: () => dispatch(clearOrderPrice())
             });
         case 'ExtraTab':
             return dispatch => ({

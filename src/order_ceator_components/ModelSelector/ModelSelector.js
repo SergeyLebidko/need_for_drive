@@ -16,7 +16,8 @@ function ModelSelector(props) {
         clearOrderOptions,
         clearOrderRate,
         clearOrderDateFrom,
-        clearOrderDateTo
+        clearOrderDateTo,
+        clearOrderPrice
     } = props;
 
     let [selectedModel, setSelectedModel] = useState(order.carId ? order.carId : null);
@@ -36,6 +37,7 @@ function ModelSelector(props) {
         clearOrderRate();
         clearOrderDateFrom();
         clearOrderDateTo();
+        clearOrderPrice();
     };
 
     let handleMoreButtonClick = () => setCurrentShowLimit(oldLimit => oldLimit + SHOW_LIMIT);
@@ -78,7 +80,8 @@ ModelSelector.propTypes = {
     clearOrderOptions: PropTypes.func,
     clearOrderRate: PropTypes.func,
     clearOrderDateFrom: PropTypes.func,
-    clearOrderDateTo: PropTypes.func
+    clearOrderDateTo: PropTypes.func,
+    clearOrderPrice: PropTypes.func
 }
 
 export default createStoreConnectedComponent('ModelSelector')(ModelSelector);

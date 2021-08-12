@@ -14,7 +14,8 @@ function LocationTab(props) {
         clearOrderOptions,
         clearOrderRate,
         clearOrderDateFrom,
-        clearOrderDateTo
+        clearOrderDateTo,
+        clearOrderPrice
     } = props;
 
     let {cityId: selectedCity, pointId: selectedPoint} = order;
@@ -33,6 +34,7 @@ function LocationTab(props) {
         clearOrderRate();
         clearOrderDateFrom();
         clearOrderDateTo();
+        clearOrderPrice();
     }, [selectedCity, selectedPoint]);
 
     return (
@@ -51,7 +53,8 @@ LocationTab.propTypes = {
     clearOrderOptions: PropTypes.func,
     clearOrderRate: PropTypes.func,
     clearOrderDateFrom: PropTypes.func,
-    clearOrderDateTo: PropTypes.func
+    clearOrderDateTo: PropTypes.func,
+    clearOrderPrice: PropTypes.func
 }
 
 export default createStoreConnectedComponent('LocationTab')(LocationTab);
