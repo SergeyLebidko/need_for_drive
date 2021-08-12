@@ -9,7 +9,7 @@ export function hasSelectedModel(order) {
 }
 
 export function hasSelectedExtra(order) {
-    return ('dateFrom' in order) && ('dateTo' in order) && ('price' in order);
+    return ('price' in order) && order.price >= order.carId.priceMin && order.price <= order.carId.priceMax;
 }
 
 export function getDuration(dateFrom, dateTo) {
