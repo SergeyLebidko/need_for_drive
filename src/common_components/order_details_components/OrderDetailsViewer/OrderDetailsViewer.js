@@ -7,7 +7,6 @@ import {getDuration} from '../../../utils/order_utils';
 import './OrderDetailsViewer.scss';
 
 function OrderDetailsViewer({order, button, optionList}) {
-    // Учитываем, что цена заказа может отсутствовать либо быть выражена диапазоном чисел
     let priceString;
     let priceBlockClasses = 'order_details_viewer__price';
     let {carId} = order;
