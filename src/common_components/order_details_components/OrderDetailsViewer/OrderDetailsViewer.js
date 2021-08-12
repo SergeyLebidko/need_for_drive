@@ -10,26 +10,17 @@ function OrderDetailsViewer({order, button, optionList}) {
     // Учитываем, что цена заказа может отсутствовать либо быть выражена диапазоном чисел
     let priceString;
     let priceBlockClasses = 'order_details_viewer__price';
-    // if ('price' in order) {
-    //     priceString = `Цена: ${getFormattedPrice(order.price)}`;
-    //     priceString += (order.price < order.carId.priceMin ? ` меньше минимальной (${order.carId.priceMin})` : '');
-    //     priceString += (order.price > order.carId.priceMax ? ` больше максимальной (${order.carId.priceMax})` : '');
-    //     priceBlockClasses += ((order.price < order.carId.priceMin || order.price > order.carId.priceMax) ? ' incorrect_price' : '');
-    // } else if ('carId' in order) {
-    //     priceString = `Цена: от ${getFormattedPrice(order.carId.priceMin)} до ${getFormattedPrice(order.carId.priceMax)}`;
-    // }
-
     let {carId} = order;
     if (carId) {
         let {priceMin, priceMax} = carId;
         if ('price' in order) {
             let {price} = order;
-            priceString = `Цена: ${getFormattedPrice(order.price)}`;
-            priceString += (price < priceMin ? ` меньше минимальной (${priceMin})` : '');
-            priceString += (price > priceMax ? ` больше максимальной (${priceMax})` : '');
+            priceString = `Цена: ${getFormattedPrice(order.price)}р.`;
+            priceString += (price < priceMin ? ` меньше минимальной (${priceMin}р.)` : '');
+            priceString += (price > priceMax ? ` больше максимальной (${priceMax}р.)` : '');
             priceBlockClasses += ((price < priceMin || price > priceMax) ? ' incorrect_price' : '');
         } else {
-            priceString = `Цена: от ${getFormattedPrice(priceMin)} до ${getFormattedPrice(priceMax)}`;
+            priceString = `Цена: от ${getFormattedPrice(priceMin)} до ${getFormattedPrice(priceMax)}р.`;
         }
     }
 
@@ -95,7 +86,7 @@ function OrderDetailsViewer({order, button, optionList}) {
                 </ul>
                 {priceString &&
                 <span className={priceBlockClasses}>
-                    {priceString} &#8381;
+                    {priceString}
                 </span>
                 }
                 {button}
