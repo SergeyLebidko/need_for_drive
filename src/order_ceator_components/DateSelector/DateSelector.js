@@ -66,7 +66,7 @@ function DateSelector({order, setOrderDateFrom, setOrderDateTo, clearOrderDateFr
             return +(new Date(year, mon, day, value.getHours(), value.getMinutes())) >= +limit;
         }
 
-        return +shortCorrectDate(value) > +limit;
+        return +shortCorrectDate(value) >= +limit;
     }
 
     let handleChangeDateFrom = date => {
