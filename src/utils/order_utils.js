@@ -34,8 +34,8 @@ export function getDuration(dateFrom, dateTo) {
     return {weekCount, dayCount, hourCount, minCount};
 }
 
-// Функция, вычисляющая стоимость заказа. Если в заказе указаны не все нужные для вычисления стоимости данные - возвращает null
 export function calcOrderPrice(order) {
+    // Проверяем наличие всех необходимых для вычисления стоимости заказа данных. Если чего-то не хватает - возвращаем null
     if (!order) return null;
 
     let {rateId, dateFrom, dateTo} = order;
@@ -56,11 +56,15 @@ export function calcOrderPrice(order) {
     let {price} = order.rateId;
     let {id} = order.rateId.rateTypeId;
 
-    let result;
-    if (id === MIN_RATE_ID) result = totalMinutes * price;
-    if (id === DAY_RATE_ID) result = Math.floor(totalMinutes * (price / dayMinutes));
-    if (id === WEEK_RATE_ID || id === MONTH_RATE_ID) result = Math.floor(totalMinutes * (price / weekMinutes));
+    const RATE_SELECTOR = {
+        [MIN_RATE_ID]: totalMinutes * price,
+        [DAY_RATE_ID]: Math.floor(totalMinutes * (price / dayMinutes)),
+        [WEEK_RATE_ID]: Math.floor(totalMinutes * (price / weekMinutes)),
+        [MONTH_RATE_ID]: Math.floor(totalMinutes * (price / (30 * dayMinutes)))
+    }
+    let result = RATE_SELECTOR[id];
 
+    // Учитываем стоимость дополнительных опций
     OPTION_LIST.forEach(option => {
         let optionValue = order[option.field];
         if (optionValue) result += option.price
