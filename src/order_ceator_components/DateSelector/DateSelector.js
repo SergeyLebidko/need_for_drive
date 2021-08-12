@@ -14,8 +14,11 @@ function DateSelector({order, setOrderDateFrom, setOrderDateTo, clearOrderDateFr
     let [dateFrom, setDateFrom] = useState(order.dateFrom || null);
     let [dateTo, setDateTo] = useState(order.dateTo || null);
 
+    let extract = date => [date.getFullYear(), date.getMonth(), date.getDate(), date.getHours(), date.getMinutes()];
+
     let shortCorrectDate = date => {
-        return new Date(date.getFullYear(), date.getMonth(), date.getDate(), date.getHours(), date.getMinutes());
+        let [year, mon, day, hour, min] = extract(date);
+        return new Date(year, mon, day, hour, min);
     };
 
     let fullCorrectDate = date => {
@@ -63,6 +66,8 @@ function DateSelector({order, setOrderDateFrom, setOrderDateTo, clearOrderDateFr
         }
         setDateFrom(_date);
         setOrderDateFrom(_date);
+        setDateTo(null);
+        clearOrderDateTo();
     };
 
     let handleChangeDateTo = date => {
