@@ -35,15 +35,16 @@ function DateSelector({order, setOrderDateFrom, setOrderDateTo, clearOrderDateFr
     // Фильтр для поля from, отсекающий время меньше текущего
     let timeFromFilter = value => +value >= +shortCorrectDate(new Date());
 
-    // Фильтра для поля to, отсекающий дату меньше даты в поле from
-    let dateToFilter = value => +value >= +fullCorrectDate(dateFrom);
-
     // Фильтр для поля to, отсекающий время меньше времени в поле from
     let timeToFilter = value => {
+        let _dateFrom = new Date(dateFrom.getFullYear(), dateFrom.getMonth(), dateFrom.getDate(), dateFrom.getHours(), dateFrom.getMinutes());
+        _dateFrom.setMinutes(_dateFrom.getMinutes() + TIME_MINUTES_INTERVAL);
+
         if (+fullCorrectDate(value) === +fullCorrectDate(new Date())) {
-            return +(new Date(dateFrom.getFullYear(), dateFrom.getMonth(), dateFrom.getDate(), value.getHours(), value.getMinutes())) >= +dateFrom;
+            return +(new Date(dateFrom.getFullYear(), dateFrom.getMonth(), dateFrom.getDate(), value.getHours(), value.getMinutes())) >= +_dateFrom;
         }
-        return +shortCorrectDate(value) > +dateFrom;
+
+        return +shortCorrectDate(value) > +_dateFrom;
     }
 
     let handleChangeDateFrom = date => {
@@ -65,12 +66,14 @@ function DateSelector({order, setOrderDateFrom, setOrderDateTo, clearOrderDateFr
     };
 
     let handleChangeDateTo = date => {
-        setDateTo(date);
         if (!date) {
+            setDateTo(null);
             clearOrderDateTo();
             return;
         }
-        setOrderDateTo(date);
+        let _date = shortCorrectDate(date);
+        setDateTo(_date);
+        setOrderDateTo(_date);
     };
 
     const commonDatePickerProps = {
@@ -115,7 +118,6 @@ function DateSelector({order, setOrderDateFrom, setOrderDateTo, clearOrderDateFr
                             startDate={dateFrom}
                             endDate={dateTo}
                             minDate={dateFrom}
-                            filterDate={dateToFilter}
                             filterTime={timeToFilter}
                             disabled={!dateFrom}
                             placeholderText={dateFrom ? '' : 'Выберите дату начала'}
