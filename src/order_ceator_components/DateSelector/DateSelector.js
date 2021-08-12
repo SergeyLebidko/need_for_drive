@@ -77,6 +77,12 @@ function DateSelector({order, setOrderDateFrom, setOrderDateTo, clearOrderDateFr
             return;
         }
         let _date = shortCorrectDate(date);
+        if (+_date < +shortCorrectDate(dateFrom)) {
+            let [year, mon, day, hour, min] = extract(dateFrom);
+            let _dateFrom = new Date(year, mon, day, hour, min);
+            _dateFrom.setMinutes(_dateFrom.getMinutes() + TIME_MINUTES_INTERVAL);
+            _date = _dateFrom;
+        }
         setDateTo(_date);
         setOrderDateTo(_date);
     };
