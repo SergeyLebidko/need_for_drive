@@ -8,49 +8,69 @@ import './DateSelector.scss';
 
 setDefaultLocale(ru);
 
-const TIME_MINUTES_INTERVAL = 10;
+const TIME_MINUTES_INTERVAL = 30;
 
 function DateSelector({order, setOrderDateFrom, setOrderDateTo, clearOrderDateFrom, clearOrderDateTo}) {
     let [dateFrom, setDateFrom] = useState(order.dateFrom || null);
     let [dateTo, setDateTo] = useState(order.dateTo || null);
 
-    function shortCorrectDate(date) {
-        let _date = date;
-        _date.setMilliseconds(0);
-        _date.setSeconds(0);
-        return _date;
+    let shortCorrectDate = date => {
+        return new Date(date.getFullYear(), date.getMonth(), date.getDate(), date.getHours(), date.getMinutes());
+    };
+
+    let fullCorrectDate = date => {
+        return new Date(date.getFullYear(), date.getMonth(), date.getDate());
     }
 
-    function fullCorrectDate(date) {
-        let _date = shortCorrectDate(date);
-        _date.setMinutes(0);
-        _date.setHours(0);
-        return _date;
+    function getNormalizedDate() {
+        let now = shortCorrectDate(new Date());
+        let result = fullCorrectDate(new Date());
+        while (+result < +now) result.setMinutes(result.getMinutes() + TIME_MINUTES_INTERVAL);
+        return result;
     }
 
+    // Фильтр для поля from, отсекающий даты, меньше нынешней
+    let dateFromFilter = value => +value >= +fullCorrectDate(new Date());
 
-    // Фильтр, отсекающий даты, меньше нынешней
-    let dateFromFilter = value => (+value) >= +fullCorrectDate(new Date());
+    // Фильтр для поля from, отсекающий время меньше текущего
+    let timeFromFilter = value => +value >= +shortCorrectDate(new Date());
 
-    // Фильтр, отсекающий время меньше текущего
-    let timeFromFilter = value => (+value) >= Date.now();
+    // Фильтра для поля to, отсекающий дату меньше даты в поле from
+    let dateToFilter = value => +value >= +fullCorrectDate(dateFrom);
+
+    // Фильтр для поля to, отсекающий время меньше времени в поле from
+    let timeToFilter = value => {
+        if (+fullCorrectDate(value) === +fullCorrectDate(new Date())) {
+            return +(new Date(dateFrom.getFullYear(), dateFrom.getMonth(), dateFrom.getDate(), value.getHours(), value.getMinutes())) >= +dateFrom;
+        }
+        return +shortCorrectDate(value) > +dateFrom;
+    }
 
     let handleChangeDateFrom = date => {
-        setDateFrom(date);
-        if (date) {
-            setOrderDateFrom(shortCorrectDate(date));
+        if (!date) {
+            setDateFrom(null);
+            setDateTo(null);
+            clearOrderDateFrom();
+            clearOrderDateTo();
             return;
         }
-        clearOrderDateFrom();
+        let _date;
+        if (+date < +shortCorrectDate(new Date())) {
+            _date = getNormalizedDate();
+        } else {
+            _date = shortCorrectDate(date);
+        }
+        setDateFrom(_date);
+        setOrderDateFrom(_date);
     };
 
     let handleChangeDateTo = date => {
         setDateTo(date);
-        if (date) {
-            setOrderDateTo(shortCorrectDate(date));
+        if (!date) {
+            clearOrderDateTo();
             return;
         }
-        clearOrderDateTo();
+        setOrderDateTo(date);
     };
 
     const commonDatePickerProps = {
@@ -95,6 +115,10 @@ function DateSelector({order, setOrderDateFrom, setOrderDateTo, clearOrderDateFr
                             startDate={dateFrom}
                             endDate={dateTo}
                             minDate={dateFrom}
+                            filterDate={dateToFilter}
+                            filterTime={timeToFilter}
+                            disabled={!dateFrom}
+                            placeholderText={dateFrom ? '' : 'Выберите дату начала'}
                         />
                     </div>
                 </div>
