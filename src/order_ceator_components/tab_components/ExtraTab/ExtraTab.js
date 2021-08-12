@@ -17,8 +17,12 @@ function ExtraTab({order, rateList, setOrderColor, clearOrderColor, setOrderRate
     useEffect(() => {
         let nextPrice = calcOrderPrice(order);
 
+        // Так как может сложиться ситуация, при которой цена заказа равна 0 - используем явную проверку на неравенство с null
         if ('price' in order) {
+
+            // Предотвращаем зацикливание, если изменились параметры заказа не влияющие на его стоимость
             if (order.price === nextPrice) return;
+
             if (nextPrice !== null) {
                 setOrderPrice(nextPrice)
             } else {
