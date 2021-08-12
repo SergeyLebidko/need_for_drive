@@ -14,19 +14,23 @@ function DateSelector({order, setOrderDateFrom, setOrderDateTo, clearOrderDateFr
     let [dateFrom, setDateFrom] = useState(order.dateFrom || null);
     let [dateTo, setDateTo] = useState(order.dateTo || null);
 
-    function getCorrectedDate(date, resetToMidnight = false) {
+    function shortCorrectDate(date) {
         let _date = date;
         _date.setMilliseconds(0);
         _date.setSeconds(0);
-        if (resetToMidnight) {
-            _date.setMinutes(0);
-            _date.setHours(0);
-        }
         return _date;
     }
 
+    function fullCorrectDate(date) {
+        let _date = shortCorrectDate(date);
+        _date.setMinutes(0);
+        _date.setHours(0);
+        return _date;
+    }
+
+
     // Фильтр, отсекающий даты, меньше нынешней
-    let dateFromFilter = value => (+value) >= +getCorrectedDate(new Date(), true);
+    let dateFromFilter = value => (+value) >= +fullCorrectDate(new Date());
 
     // Фильтр, отсекающий время меньше текущего
     let timeFromFilter = value => (+value) >= Date.now();
@@ -34,7 +38,7 @@ function DateSelector({order, setOrderDateFrom, setOrderDateTo, clearOrderDateFr
     let handleChangeDateFrom = date => {
         setDateFrom(date);
         if (date) {
-            setOrderDateFrom(getCorrectedDate(date));
+            setOrderDateFrom(shortCorrectDate(date));
             return;
         }
         clearOrderDateFrom();
@@ -43,7 +47,7 @@ function DateSelector({order, setOrderDateFrom, setOrderDateTo, clearOrderDateFr
     let handleChangeDateTo = date => {
         setDateTo(date);
         if (date) {
-            setOrderDateTo(getCorrectedDate(date));
+            setOrderDateTo(shortCorrectDate(date));
             return;
         }
         clearOrderDateTo();
