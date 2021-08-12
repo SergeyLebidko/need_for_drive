@@ -20,7 +20,9 @@ import {
     setOrderDateFrom,
     clearOrderDateFrom,
     setOrderDateTo,
-    clearOrderDateTo
+    clearOrderDateTo,
+    setOrderPrice,
+    clearOrderPrice
 } from './actionCreators';
 
 function dispatchMapsFactory(component) {
@@ -86,7 +88,9 @@ function dispatchMapsFactory(component) {
             return dispatch => ({
                 setOrderColor: color => dispatch(setOrderColor(color)),
                 clearOrderColor: () => dispatch(clearOrderColor()),
-                setOrderRate: rate => dispatch(setOrderRate(rate))
+                setOrderRate: rate => dispatch(setOrderRate(rate)),
+                setOrderPrice: price => dispatch(setOrderPrice(price)),
+                clearOrderPrice: () => dispatch(clearOrderPrice())
             });
         case 'OptionSelector':
             return dispatch => ({

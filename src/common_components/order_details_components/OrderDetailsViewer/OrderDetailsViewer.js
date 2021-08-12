@@ -10,9 +10,9 @@ function OrderDetailsViewer({order, button, optionList}) {
     // Учитываем, что цена заказа может отсутствовать либо быть выражена диапазоном чисел
     let priceString;
     if ('price' in order) {
-        priceString = `Цена: {getFormattedPrice(order.price)}`;
-    } else if ('cardId' in order) {
-        priceString = `Цена: от ${getFormattedPrice(order.price.priceMin)} до ${getFormattedPrice(order.price.priceMax)}`;
+        priceString = `Цена: ${getFormattedPrice(order.price)}`;
+    } else if ('carId' in order) {
+        priceString = `Цена: от ${getFormattedPrice(order.carId.priceMin)} до ${getFormattedPrice(order.carId.priceMax)}`;
     }
 
     let options = [];

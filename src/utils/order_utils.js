@@ -1,3 +1,5 @@
+import {OPTION_LIST, MIN_RATE_ID, DAY_RATE_ID, WEEK_RATE_ID, MONTH_RATE_ID} from '../settings';
+
 export function hasSelectedLocation(order) {
     return ('cityId' in order) && ('pointId' in order);
 }
@@ -32,6 +34,37 @@ export function getDuration(dateFrom, dateTo) {
     return {weekCount, dayCount, hourCount, minCount};
 }
 
-// export function getPrice(order){
-//
-// }
+// Функция, вычисляющая стоимость заказа. Если в заказе указаны не все нужные для вычисления стоимости данные - возвращает null
+export function calcOrderPrice(order) {
+    if (!order) return null;
+
+    let {rateId, dateFrom, dateTo} = order;
+    if (!rateId || !dateFrom || !dateTo) return null;
+
+    for (let option of OPTION_LIST) {
+        if (order[option.field] === undefined) return null;
+    }
+
+    // Количество минут в неделе, дне, часе
+    let weekMinutes = 60 * 24 * 7;
+    let dayMinutes = 60 * 24;
+    let hourMinutes = 60;
+
+    let {weekCount, dayCount, hourCount, minCount} = getDuration(dateFrom, dateTo);
+    let totalMinutes = (weekCount * weekMinutes) + (dayCount * dayMinutes) + (hourCount * hourMinutes) + minCount;
+
+    let {price} = order.rateId;
+    let {id} = order.rateId.rateTypeId;
+
+    let result;
+    if (id === MIN_RATE_ID) result = totalMinutes * price;
+    if (id === DAY_RATE_ID) result = Math.floor(totalMinutes * (price / dayMinutes));
+    if (id === WEEK_RATE_ID || id === MONTH_RATE_ID) result = Math.floor(totalMinutes * (price / weekMinutes));
+
+    OPTION_LIST.forEach(option => {
+        let optionValue = order[option.field];
+        if (optionValue) result += option.price
+    });
+
+    return result;
+}

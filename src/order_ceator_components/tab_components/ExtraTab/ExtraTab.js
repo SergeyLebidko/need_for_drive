@@ -1,17 +1,33 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
 import RadioSelector from '../../../common_components/RadioSelector/RadioSelector';
 import DateSelector from '../../DateSelector/DateSelector';
 import OptionSelector from '../../OptionSelector/OptionSelector';
 import {createStoreConnectedComponent} from '../../../store/connector';
+import {calcOrderPrice} from '../../../utils/order_utils';
 import './ExtraTab.scss';
 
 const ALL_COLORS_ID = 'all_colors';
 
-function ExtraTab({order, rateList, setOrderColor, clearOrderColor, setOrderRate}) {
+function ExtraTab({order, rateList, setOrderColor, clearOrderColor, setOrderRate, setOrderPrice, clearOrderPrice}) {
     let colors;
     let {carId, color, rateId} = order;
     if (carId) colors = carId.colors;
+
+    useEffect(() => {
+        let nextPrice = calcOrderPrice(order);
+
+        if ('price' in order) {
+            if (order.price === nextPrice) return;
+            if (nextPrice !== null) {
+                setOrderPrice(nextPrice)
+            } else {
+                clearOrderPrice();
+            }
+        } else {
+            if (nextPrice !== null) setOrderPrice(nextPrice);
+        }
+    }, [order]);
 
     // Формируем данные для селектора цветов
     let colorsForSelector;
@@ -74,7 +90,9 @@ ExtraTab.propTypes = {
     rateList: PropTypes.array,
     setOrderColor: PropTypes.func,
     clearOrderColor: PropTypes.func,
-    setOrderRate: PropTypes.func
+    setOrderRate: PropTypes.func,
+    setOrderPrice: PropTypes.func,
+    clearOrderPrice: PropTypes.func
 }
 
 export default createStoreConnectedComponent('ExtraTab')(ExtraTab);

@@ -59,3 +59,9 @@ export const OPTION_LIST = [
         value: false
     }
 ];
+
+// Идентификаторы тарифов
+export const MIN_RATE_ID = '5e26a07f099b810b946c5d82';
+export const DAY_RATE_ID = '5e26a082099b810b946c5d83';
+export const WEEK_RATE_ID = '60b9437e2aed9a0b9b7ed337';
+export const MONTH_RATE_ID = '6114e4182aed9a0b9b850843';
