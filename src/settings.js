@@ -66,5 +66,9 @@ export const DAY_RATE_ID = '5e26a082099b810b946c5d83';
 export const WEEK_RATE_ID = '60b9437e2aed9a0b9b7ed337';
 export const MONTH_RATE_ID = '6114e4182aed9a0b9b850843';
 
-// Идентификатор статуса для нового заказа
+// Идентификатор статусов заказов
 export const NEW_ORDER_STATUS_ID = '5e26a191099b810b946c5d89';
+export const CONFIRMED_ORDER_STATUS_ID = '5e26a1f0099b810b946c5d8b';
+export const CANCELED_ORDER_STATUS_ID = '5e26a1f5099b810b946c5d8c';
+export const TEMP_ORDER_STATUS_ID = '6114e4502aed9a0b9b850846';
+export const TEST_ORDER_STATUS_ID = '6114e4792aed9a0b9b850847';
