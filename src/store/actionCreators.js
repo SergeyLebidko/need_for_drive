@@ -407,3 +407,11 @@ export function setOrderStatus(status){
         status
     }
 }
+
+// Создатель действия для отправки заказа
+export function sendOrder(order){
+    return () => {
+        console.log('Будем отправлять', order);
+        return 'Тестовая срока из создателя действия';
+    }
+}

@@ -27,6 +27,7 @@ function stateMapsFactory(component) {
             });
         case 'OrderCreator':
             return state => ({
+                order: state.order,
                 hasModalShow: state.hasModalShow,
                 hasOrderCreatorDataLoaded: (function () {
                     let {
