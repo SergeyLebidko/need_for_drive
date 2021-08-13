@@ -418,7 +418,7 @@ export function sendOrder() {
         let newStatus = statusList.find(status => status.id === NEW_ORDER_STATUS_ID);
         dispatch(setOrderStatus(newStatus));
 
-        // Отправляем заказ и возвращаем его идентификатор
+        // Отправляем заказ и возвращаем вызывающему коду его идентификатор
         let order = getState().order;
         let createdOrder = await sendNewOrder(order);
         return createdOrder.id;
