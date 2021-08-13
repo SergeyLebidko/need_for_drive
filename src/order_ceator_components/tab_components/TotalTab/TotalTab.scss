@@ -4,8 +4,8 @@
   padding: ($step * 2) 0 ($step * 2) 0;
 
   &__details_block {
-    li:last-child {
-      margin-top: $step * 0.5;
+    li + li {
+      margin-top: $step;
     }
   }
 

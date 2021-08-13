@@ -1,10 +1,22 @@
-import React from 'react';
+import React, {useState} from 'react';
 import PropTypes from 'prop-types';
-import car from '../../../content/images/car.png';
+import {createStoreConnectedComponent} from '../../../store/connector';
+import {extractDateParts} from '../../../utils/common_utils';
+import {DOMEN} from '../../../urls';
 import './TotalTab.scss';
 
-// TODO При реализации функциональности компонент будет получать объект заказа из хранилища Redux. Сейчас нужен для тестирования верстки
 function TotalTab({order}) {
+    let [hasPhoto, setHasPhoto] = useState(true);
+
+    let {carId: {name, number, tank, thumbnail: {path}}, dateFrom} = order;
+
+    let format = value => ('0' + value).slice(-2);
+
+    let getFormattedDate = timestamp => {
+        let [year, mon, day, hour, min] = extractDateParts(new Date(timestamp));
+        return `${format(day)}.${format(mon)}.${year} ${format(hour)}:${format(min)}`;
+    }
+
     return (
         <div className="total_tab">
             <ul className="total_tab__details_block">
@@ -14,41 +26,41 @@ function TotalTab({order}) {
                 </li>
                 }
                 <li>
-                    <span className="total_tab__model_field">Hyundai, i30 N</span>
+                    <span className="total_tab__model_field">{name}</span>
                 </li>
                 <li>
-                    <span className="total_tab__auto_number_field">K 761 HA 73</span>
+                    {number && <span className="total_tab__auto_number_field">{number}</span>}
                 </li>
                 <li>
-                    <span className="total_tab__gas_caption">
-                        Топливо
-                    </span>
-                    <span className="total_tab__gas_value">
-                        100%
-                    </span>
+                    {tank &&
+                    <>
+                        <span className="total_tab__gas_caption">
+                            Топливо
+                        </span>
+                        <span className="total_tab__gas_value">
+                            {tank}%
+                        </span>
+                    </>
+                    }
                 </li>
                 <li>
                     <span className="total_tab__available_caption">
                         Доступна с
                     </span>
                     <span className="total_tab__available_value">
-                        01.08.2021 12:00
+                        {getFormattedDate(dateFrom)}
                     </span>
                 </li>
             </ul>
             <div className="total_tab__photo_block">
-                <img src={car}/>
+                {hasPhoto && <img src={path[0] === '/' ? `${DOMEN}${path}` : path} onError={() => setHasPhoto(false)}/>}
             </div>
         </div>
     )
-}
-
-TotalTab.defaultProps = {
-    order: {}
 }
 
 TotalTab.propTypes = {
     order: PropTypes.object
 }
 
-export default TotalTab;
+export default createStoreConnectedComponent('TotalTab')(TotalTab);
