@@ -73,6 +73,15 @@ export function optionList(state = [], action) {
     }
 }
 
+export function statusList(state = [], action) {
+    switch (action.type) {
+        case act.SET_STATUS_LIST:
+            return action.statusList;
+        default:
+            return state;
+    }
+}
+
 export function hasModalShow(state = false, action) {
     switch (action.type) {
         case act.SHOW_MODAL:
@@ -204,6 +213,10 @@ export function order(state = null, action) {
         }
         case act.CLEAR_ORDER_PRICE: {
             delete _order.price;
+            return _order;
+        }
+        case act.SET_ORDER_STATUS: {
+            _order.orderStatusId = action.status;
             return _order;
         }
         default:

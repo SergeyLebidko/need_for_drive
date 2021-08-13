@@ -10,3 +10,4 @@ export const POINT_LIST_URL = `${BASE}/point`;
 export const CAR_LIST_URL = `${BASE}/car`;
 export const CATEGORY_LIST_URL = `${BASE}/category`;
 export const RATE_LIST_URL = `${BASE}/rate`;
+export const STATUS_LIST_URL = `${BASE}/orderStatus`;

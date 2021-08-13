@@ -13,7 +13,8 @@ import {
     loadPointCoords,
     loadModelList,
     loadCategoryList,
-    loadRateList
+    loadRateList,
+    loadStatusList
 } from '../utils/fetch_utils';
 
 // Создатель действия для установки языка
@@ -111,6 +112,14 @@ export function setOptionList(optionList) {
     }
 }
 
+// Создатель действия для установки списка статусов заказов
+export function setStatusList(statusList) {
+    return {
+        type: act.SET_STATUS_LIST,
+        statusList
+    }
+}
+
 // Функция для отображения модального окна
 export function showModal() {
     return {
@@ -188,6 +197,10 @@ export function loadOrderCreatorData() {
 
         // Инициализируем список дополнительных опций
         dispatch(setOptionList(OPTION_LIST));
+
+        // Загружаем список возможных статусов заказов
+        let statusList = await loadStatusList();
+        dispatch(setStatusList(statusList));
     }
 }
 
@@ -384,5 +397,13 @@ export function setOrderPrice(price){
 export function clearOrderPrice(){
     return {
         type: act.CLEAR_ORDER_PRICE
+    }
+}
+
+// Создатель действия для установки статуса заказа
+export function setOrderStatus(status){
+    return {
+        type: act.SET_ORDER_STATUS,
+        status
     }
 }

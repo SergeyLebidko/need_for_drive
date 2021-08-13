@@ -4,7 +4,8 @@ import {
     POINT_LIST_URL,
     CAR_LIST_URL,
     CATEGORY_LIST_URL,
-    RATE_LIST_URL
+    RATE_LIST_URL,
+    STATUS_LIST_URL
 } from '../urls';
 import Geocode from 'react-geocode';
 
@@ -50,4 +51,8 @@ export async function loadCategoryList() {
 
 export function loadRateList() {
     return loadData(RATE_LIST_URL);
+}
+
+export async function loadStatusList() {
+    return loadData(STATUS_LIST_URL);
 }
