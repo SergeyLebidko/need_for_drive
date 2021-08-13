@@ -8,10 +8,13 @@ import Preloader from '../../common_components/Preloader/Preloader';
 import {createStoreConnectedComponent} from '../../store/connector';
 import './OrderCreator.scss';
 
-function OrderCreator({sendOrder, loadOrderCreatorData, hasOrderCreatorDataLoaded, hasModalShow, history}) {
+function OrderCreator({sendOrder, clearOrder, loadOrderCreatorData, hasOrderCreatorDataLoaded, hasModalShow, history}) {
     useEffect(() => loadOrderCreatorData(), []);
 
-    let handleOrderCreate = () => sendOrder().then(orderId => history.push(`/order/${orderId}`));
+    let handleOrderCreate = () => sendOrder().then(orderId => {
+        clearOrder();
+        history.push(`/order/${orderId}`);
+    });
 
     return (
         <div className="order_creator">
@@ -33,6 +36,7 @@ function OrderCreator({sendOrder, loadOrderCreatorData, hasOrderCreatorDataLoade
 
 OrderCreator.propTypes = {
     sendOrder: PropTypes.func,
+    clearOrder: PropTypes.func,
     loadOrderCreatorData: PropTypes.func,
     hasOrderCreatorDataLoaded: PropTypes.bool,
     hasModalShow: PropTypes.bool,

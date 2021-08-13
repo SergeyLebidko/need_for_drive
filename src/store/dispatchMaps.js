@@ -22,7 +22,7 @@ import {
     clearOrderPrice,
     clearTabsAfterLocation,
     clearTabsAfterModel,
-    sendOrder
+    sendOrder, initOrder
 } from './actionCreators';
 
 function dispatchMapsFactory(component) {
@@ -43,6 +43,7 @@ function dispatchMapsFactory(component) {
         case 'OrderCreator':
             return dispatch => ({
                 sendOrder: () => dispatch(sendOrder()),
+                clearOrder: () => dispatch(initOrder({})),
                 loadOrderCreatorData: () => dispatch(loadOrderCreatorData())
             });
         case 'OrderPane':
