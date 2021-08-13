@@ -4,7 +4,8 @@ import {
     ENG,
     GEO_API_URL,
     TAB_ITEMS_DATA,
-    OPTION_LIST
+    OPTION_LIST,
+    NEW_ORDER_STATUS_ID
 } from '../settings';
 import {
     loadCityList,
@@ -205,7 +206,7 @@ export function loadOrderCreatorData() {
 }
 
 // Создатель действия для очистки данных всех вкладок после вкладки Местоположение
-export function clearTabsAfterLocation(){
+export function clearTabsAfterLocation() {
     return dispatch => {
         dispatch(clearOrderModel());
         dispatch(clearTabsAfterModel());
@@ -386,7 +387,7 @@ export function clearOrderDateTo() {
 }
 
 // Создатель действия для установки цены заказа
-export function setOrderPrice(price){
+export function setOrderPrice(price) {
     return {
         type: act.SET_ORDER_PRICE,
         price
@@ -394,14 +395,14 @@ export function setOrderPrice(price){
 }
 
 // Создатель действия для удаления цены заказа
-export function clearOrderPrice(){
+export function clearOrderPrice() {
     return {
         type: act.CLEAR_ORDER_PRICE
     }
 }
 
 // Создатель действия для установки статуса заказа
-export function setOrderStatus(status){
+export function setOrderStatus(status) {
     return {
         type: act.SET_ORDER_STATUS,
         status
@@ -409,9 +410,16 @@ export function setOrderStatus(status){
 }
 
 // Создатель действия для отправки заказа
-export function sendOrder(order){
-    return () => {
+export function sendOrder() {
+    return async (dispatch, getState) => {
+        // Перед отправкой проставляем заказу статус нового
+        let statusList = getState().statusList;
+        let newStatus = statusList.find(status => status.id === NEW_ORDER_STATUS_ID);
+        dispatch(setOrderStatus(newStatus));
+
+        let order = getState().order;
         console.log('Будем отправлять', order);
-        return 'Тестовая срока из создателя действия';
+
+        return 'ID0123456789';
     }
 }

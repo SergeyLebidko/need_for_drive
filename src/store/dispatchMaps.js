@@ -42,7 +42,7 @@ function dispatchMapsFactory(component) {
             });
         case 'OrderCreator':
             return dispatch => ({
-                sendOrder: order => dispatch(sendOrder(order)),
+                sendOrder: () => dispatch(sendOrder()),
                 loadOrderCreatorData: () => dispatch(loadOrderCreatorData())
             });
         case 'OrderPane':
