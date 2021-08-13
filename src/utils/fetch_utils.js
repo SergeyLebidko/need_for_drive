@@ -5,7 +5,8 @@ import {
     CAR_LIST_URL,
     CATEGORY_LIST_URL,
     RATE_LIST_URL,
-    STATUS_LIST_URL
+    STATUS_LIST_URL,
+    ORDER_URL
 } from '../urls';
 import Geocode from 'react-geocode';
 
@@ -55,4 +56,18 @@ export function loadRateList() {
 
 export async function loadStatusList() {
     return loadData(STATUS_LIST_URL);
+}
+
+export async function sendNewOrder(order) {
+    let options = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            ...DEFAULT_REQUEST_HEADERS
+        },
+        body: JSON.stringify(order)
+    }
+    return fetch(ORDER_URL, options)
+        .then(response => response.json())
+        .then(json => json.data);
 }

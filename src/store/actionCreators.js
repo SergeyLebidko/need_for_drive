@@ -15,7 +15,8 @@ import {
     loadModelList,
     loadCategoryList,
     loadRateList,
-    loadStatusList
+    loadStatusList,
+    sendNewOrder
 } from '../utils/fetch_utils';
 
 // Создатель действия для установки языка
@@ -417,9 +418,9 @@ export function sendOrder() {
         let newStatus = statusList.find(status => status.id === NEW_ORDER_STATUS_ID);
         dispatch(setOrderStatus(newStatus));
 
+        // Отправляем заказ и возвращаем его идентификатор
         let order = getState().order;
-        console.log('Будем отправлять', order);
-
-        return 'ID0123456789';
+        let createdOrder = await sendNewOrder(order);
+        return createdOrder.id;
     }
 }

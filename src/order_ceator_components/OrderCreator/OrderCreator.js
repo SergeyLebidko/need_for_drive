@@ -11,9 +11,6 @@ import './OrderCreator.scss';
 function OrderCreator({sendOrder, loadOrderCreatorData, hasOrderCreatorDataLoaded, hasModalShow, history}) {
     useEffect(() => loadOrderCreatorData(), []);
 
-    // TODO При реализации функциональности вставить код отправки сформированного заказа на бэкенд
-    // С целью тестирования верстки пока переводим пользователя на страницу фиктивного заказа
-    // В дальнейшем, при реализации функционала будем переключать на страницу уже сформированного заказа
     let handleOrderCreate = () => sendOrder().then(orderId => history.push(`/order/${orderId}`));
 
     return (
