@@ -55,15 +55,6 @@ export function modelList(state = [], action) {
     }
 }
 
-export function colorList(state = [], action) {
-    switch (action.type) {
-        case act.SET_COLOR_LIST:
-            return action.colorList;
-        default:
-            return state;
-    }
-}
-
 export function rateList(state = [], action) {
     switch (action.type) {
         case act.SET_RATE_LIST:
@@ -130,33 +121,30 @@ export function pointCoords(state = [], action) {
 }
 
 export function order(state = null, action) {
+    let _order;
+    if (state) _order = {...state};
     switch (action.type) {
         case act.INIT_ORDER:
             return action.order;
         case act.SET_ORDER_CITY: {
-            let _order = {...state}
             let {id, name} = action.city;
             _order.cityId = {id, name}
             return _order;
         }
         case act.SET_ORDER_POINT: {
-            let _order = {...state}
             let {id, address, name} = action.point;
             _order.pointId = {id, address, name}
             return _order
         }
         case act.CLEAR_ORDER_CITY: {
-            let _order = {...state}
             delete _order.cityId;
             return _order;
         }
         case act.CLEAR_ORDER_POINT: {
-            let _order = {...state}
             delete _order.pointId;
             return _order;
         }
         case act.SET_ORDER_MODEL: {
-            let _order = {...state};
             let _model = {...action.model};
             delete _model.createdAt;
             delete _model.updatedAt;
@@ -164,8 +152,58 @@ export function order(state = null, action) {
             return _order;
         }
         case act.CLEAR_ORDER_MODEL: {
-            let _order = {...state};
             delete _order.carId;
+            return _order;
+        }
+        case act.SET_ORDER_COLOR: {
+            _order.color = action.color;
+            return _order;
+        }
+        case act.CLEAR_ORDER_COLOR: {
+            delete _order.color;
+            return _order;
+        }
+        case act.SET_ORDER_OPTIONS: {
+            action.options.forEach(option => _order[option.field] = option.value);
+            return _order;
+        }
+        case act.CLEAR_ORDER_OPTIONS: {
+            action.options.forEach(option => delete _order[option.field]);
+            return _order;
+        }
+        case act.SET_ORDER_RATE: {
+            let _rate = action.rate;
+            delete _rate.updatedAt;
+            delete _rate.createdAt;
+            _order.rateId = _rate;
+            return _order;
+        }
+        case act.CLEAR_ORDER_RATE: {
+            delete _order.rateId;
+            return _order;
+        }
+        case act.SET_ORDER_DATE_FROM: {
+            _order.dateFrom = +action.date;
+            return _order;
+        }
+        case act.CLEAR_ORDER_DATE_FROM: {
+            delete _order.dateFrom;
+            return _order;
+        }
+        case act.SET_ORDER_DATE_TO: {
+            _order.dateTo = +action.date;
+            return _order;
+        }
+        case act.CLEAR_ORDER_DATE_TO: {
+            delete _order.dateTo;
+            return _order;
+        }
+        case act.SET_ORDER_PRICE: {
+            _order.price = action.price;
+            return _order;
+        }
+        case act.CLEAR_ORDER_PRICE: {
+            delete _order.price;
             return _order;
         }
         default:

@@ -10,7 +10,16 @@ import {
     clearOrderCity,
     clearOrderPoint,
     setOrderModel,
-    clearOrderModel
+    setOrderColor,
+    clearOrderColor,
+    setOrderOptions,
+    setOrderRate,
+    setOrderDateFrom,
+    clearOrderDateFrom,
+    setOrderDateTo,
+    clearOrderDateTo,
+    setOrderPrice,
+    clearOrderPrice, clearTabsAfterLocation, clearTabsAfterModel
 } from './actionCreators';
 
 function dispatchMapsFactory(component) {
@@ -56,11 +65,31 @@ function dispatchMapsFactory(component) {
             });
         case 'ModelSelector':
             return dispatch => ({
-                setOrderModel: model => dispatch(setOrderModel(model))
+                setOrderModel: model => dispatch(setOrderModel(model)),
+                clearTabsAfterModel: () => dispatch(clearTabsAfterModel())
             });
         case 'LocationTab':
             return dispatch => ({
-                clearOrderModel: () => dispatch(clearOrderModel())
+                clearTabsAfterLocation: () => dispatch(clearTabsAfterLocation())
+            });
+        case 'ExtraTab':
+            return dispatch => ({
+                setOrderColor: color => dispatch(setOrderColor(color)),
+                clearOrderColor: () => dispatch(clearOrderColor()),
+                setOrderRate: rate => dispatch(setOrderRate(rate)),
+                setOrderPrice: price => dispatch(setOrderPrice(price)),
+                clearOrderPrice: () => dispatch(clearOrderPrice())
+            });
+        case 'OptionSelector':
+            return dispatch => ({
+                setOrderOptions: options => dispatch(setOrderOptions(options))
+            });
+        case 'DateSelector':
+            return dispatch => ({
+                setOrderDateFrom: date => dispatch(setOrderDateFrom(date)),
+                setOrderDateTo: date => dispatch(setOrderDateTo(date)),
+                clearOrderDateFrom: () => dispatch(clearOrderDateFrom()),
+                clearOrderDateTo: () => dispatch(clearOrderDateTo())
             });
         default:
             return null;

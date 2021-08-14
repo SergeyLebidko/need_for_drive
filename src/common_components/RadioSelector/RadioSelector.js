@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import {capitalize, getRandomString} from '../../utils/common_utils';
 import './RadioSelector.scss';
-import {capitalize, getRandomString} from "../../utils/common_utils";
 
-function RadioSelector({caption, items, onlyColumn, handleSelect}) {
-    let [selectedCategoryIndex, setSelectedCategoryIndex] = useState(0);
+function RadioSelector({caption, items, onlyColumn, handleSelect, defaultSelectedIndex}) {
+    let [selectedCategoryIndex, setSelectedCategoryIndex] = useState(defaultSelectedIndex);
 
     let getTitleClassNames = index => classNames('radio_selector__title', {
         'checked_title': index === selectedCategoryIndex,
@@ -49,14 +49,16 @@ function RadioSelector({caption, items, onlyColumn, handleSelect}) {
 
 RadioSelector.defaultProps = {
     caption: null,
-    onlyColumn: false
+    onlyColumn: false,
+    defaultSelectedIndex: 0
 }
 
 RadioSelector.propTypes = {
     caption: PropTypes.string,
     items: PropTypes.array,
     onlyColumn: PropTypes.bool,
-    handleSelect: PropTypes.func
+    handleSelect: PropTypes.func,
+    defaultSelectedIndex: PropTypes.number
 }
 
 export default RadioSelector;

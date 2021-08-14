@@ -5,7 +5,7 @@ import Map from '../../map_components/Map/Map';
 import {createStoreConnectedComponent} from '../../../store/connector';
 import './LocationTab.scss';
 
-function LocationTab({order, clearOrderModel}) {
+function LocationTab({order, clearTabsAfterLocation}) {
     let {cityId: selectedCity, pointId: selectedPoint} = order;
     let isFirstRender = useRef(true);
 
@@ -15,9 +15,7 @@ function LocationTab({order, clearOrderModel}) {
             isFirstRender.current = false;
             return;
         }
-
-        clearOrderModel();
-        // TODO Вставить код сброса данных вкладки дополнительных параметров
+        clearTabsAfterLocation();
     }, [selectedCity, selectedPoint]);
 
     return (
@@ -30,7 +28,7 @@ function LocationTab({order, clearOrderModel}) {
 
 LocationTab.propTypes = {
     order: PropTypes.object,
-    clearOrderModel: PropTypes.func
+    clearTabsAfterLocation: PropTypes.func
 }
 
 export default createStoreConnectedComponent('LocationTab')(LocationTab);

@@ -1,15 +1,40 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import {getRandomString} from '../../utils/common_utils';
+import {createStoreConnectedComponent} from '../../store/connector';
 import './OptionSelector.scss';
-import {getRandomString} from "../../utils/common_utils";
 
-function OptionSelector({optionList}) {
-    let [checked, setChecked] = useState(Array(optionList.length).fill(false));
+function OptionSelector({order, optionList, setOrderOptions}) {
+    let [options, setOptions] = useState([]);
 
-    // TODO При реализации функциональности добавить к обработчику код добавления/удаления опции непосредственно в заказе
-    let handleChange = checkedIndex => {
-        setChecked(oldChecked => oldChecked.map((val, index) => index === checkedIndex ? !val : val));
+    useEffect(() => {
+        let _options = [];
+
+        optionList.forEach(option => {
+            if (order[option.field] === undefined) {
+                _options.push(option);
+                return;
+            }
+            _options.push({
+                ...option,
+                value: order[option.field]
+            });
+        });
+
+        setOptions(_options);
+    }, []);
+
+    useEffect(() => setOrderOptions(options), [options]);
+
+    let handleChange = option => {
+        setOptions(oldOptions => oldOptions.map(_option => {
+            if (_option.field !== option.field) return _option;
+            return {
+                ...option,
+                value: !option.value
+            }
+        }));
     };
 
     return (
@@ -17,15 +42,16 @@ function OptionSelector({optionList}) {
             <h1 className="option_selector__caption">Доп. услуги</h1>
             {optionList.length > 0 &&
             <ul>
-                {optionList.map(
-                    (option, index) => {
+                {options.map(
+                    option => {
                         let inputId = getRandomString();
-                        let optionClassNames = classNames('option_selector__option', {'checked_option': checked[index]})
+                        let optionClassNames = classNames('option_selector__option', {'checked_option': option.value})
                         return (
-                            <li key={option} className="option_selector__item">
+                            <li key={option.field} className="option_selector__item">
                                 <input type="checkbox" id={inputId}/>
-                                <label className={optionClassNames} onClick={() => handleChange(index)} htmlFor={inputId}>
-                                    {option}
+                                <label className={optionClassNames} onClick={() => handleChange(option)}
+                                       htmlFor={inputId}>
+                                    {`${option.name}, ${option.price}`} &#8381;
                                 </label>
                             </li>
                         )
@@ -38,7 +64,9 @@ function OptionSelector({optionList}) {
 }
 
 OptionSelector.propTypes = {
-    optionList: PropTypes.array
+    order: PropTypes.object,
+    optionList: PropTypes.array,
+    setOrderOptions: PropTypes.func
 }
 
-export default OptionSelector;
+export default createStoreConnectedComponent('OptionSelector')(OptionSelector);

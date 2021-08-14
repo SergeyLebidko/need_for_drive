@@ -1,18 +1,42 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ViewerParameter from '../ViewerParameter/ViewerParameter';
+import {getFormattedPrice, capitalize} from '../../../utils/common_utils';
 import {createStoreConnectedComponent} from '../../../store/connector';
+import {getDuration} from '../../../utils/order_utils';
 import './OrderDetailsViewer.scss';
-import {getFormattedPrice} from "../../../utils/common_utils";
 
-function OrderDetailsViewer({order, button}) {
-
-    // Учитываем, что цена заказа может отсутствовать либо быть выражена диапазоном чисел
+function OrderDetailsViewer({order, button, optionList}) {
     let priceString;
-    if ('price' in order) {
-        priceString = `Цена: {getFormattedPrice(order.price)}`;
-    } else if ('cardId' in order) {
-        priceString = `Цена: от ${getFormattedPrice(order.price.priceMin)} до ${getFormattedPrice(order.price.priceMax)}`;
+    let priceBlockClasses = 'order_details_viewer__price';
+    let {carId} = order;
+    if (carId) {
+        let {priceMin, priceMax} = carId;
+        if ('price' in order) {
+            let {price} = order;
+            priceString = `Цена: ${getFormattedPrice(order.price)}р.`;
+            priceString += (price < priceMin ? ` меньше минимальной (${priceMin}р.)` : '');
+            priceString += (price > priceMax ? ` больше максимальной (${priceMax}р.)` : '');
+            priceBlockClasses += ((price < priceMin || price > priceMax) ? ' incorrect_price' : '');
+        } else {
+            priceString = `Цена: от ${getFormattedPrice(priceMin)} до ${getFormattedPrice(priceMax)}р.`;
+        }
+    }
+
+    let options = [];
+    optionList.forEach(option => {
+        if (order[option.field]) options.push(option.name);
+    });
+
+    let duration;
+    if (order.dateFrom && order.dateTo) {
+        duration = '';
+        let {weekCount, dayCount, hourCount, minCount} = getDuration(order.dateFrom, order.dateTo);
+        if (weekCount) duration += `${weekCount}нед`;
+        if (dayCount) duration += ` ${dayCount}д`;
+        if (hourCount) duration += ` ${hourCount}ч`;
+        if (minCount) duration += ` ${minCount}мин`;
+        duration = duration.trim();
     }
 
     return (
@@ -32,10 +56,36 @@ function OrderDetailsViewer({order, button}) {
                         parameterValue={`${order.carId.name}`}
                     />
                     }
+                    {order.color &&
+                    <ViewerParameter
+                        parameterName="Цвет"
+                        parameterValue={capitalize(order.color)}
+                    />
+                    }
+                    {options.map(
+                        option =>
+                            <ViewerParameter
+                                key={option}
+                                parameterName={option}
+                                parameterValue="Да"
+                            />
+                    )}
+                    {order.rateId &&
+                    <ViewerParameter
+                        parameterName="Тариф"
+                        parameterValue={order.rateId.rateTypeId.name}
+                    />
+                    }
+                    {duration &&
+                    <ViewerParameter
+                        parameterName="Длительность аренды"
+                        parameterValue={duration}
+                    />
+                    }
                 </ul>
                 {priceString &&
-                <span className="order_details_viewer__price">
-                    {priceString} &#8381;
+                <span className={priceBlockClasses}>
+                    {priceString}
                 </span>
                 }
                 {button}
@@ -46,7 +96,8 @@ function OrderDetailsViewer({order, button}) {
 
 OrderDetailsViewer.propTypes = {
     order: PropTypes.object,
-    button: PropTypes.element
+    button: PropTypes.element,
+    optionList: PropTypes.array
 }
 
 export default createStoreConnectedComponent('OrderDetailsViewer')(OrderDetailsViewer);

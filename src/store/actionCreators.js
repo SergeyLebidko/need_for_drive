@@ -4,8 +4,6 @@ import {
     ENG,
     GEO_API_URL,
     TAB_ITEMS_DATA,
-    COLOR_LIST,
-    RATE_LIST,
     OPTION_LIST
 } from '../settings';
 import {
@@ -14,7 +12,8 @@ import {
     loadCityCoords,
     loadPointCoords,
     loadModelList,
-    loadCategoryList
+    loadCategoryList,
+    loadRateList
 } from '../utils/fetch_utils';
 
 // Создатель действия для установки языка
@@ -96,19 +95,6 @@ export function setModelList(modelList) {
     }
 }
 
-/*
-  Создатель действия для установки списка цветов выбранного автомобиля.
-  TODO При реализации логики, рассмотреть необходимость удаления или сохранения этой функции.
-  Возможно, данные списка цветов будет рациональнее получать из объекта, соответствующего выбранному автомобилю. Сейчас
-  этот код нужен для тестирования верстки.
-*/
-export function setColorList(colorList) {
-    return {
-        type: act.SET_COLOR_LIST,
-        colorList
-    }
-}
-
 // Создатель действия для установки списка тарифов
 export function setRateList(rateList) {
     return {
@@ -142,10 +128,8 @@ export function hideModal() {
 // Функция инициализирует все данные, необходимые для страницы создания заказа
 export function loadOrderCreatorData() {
     return async dispatch => {
+        // Инициализируем данные с именами вкладок
         dispatch(setTabItemsData(TAB_ITEMS_DATA));
-        dispatch(setColorList(COLOR_LIST));
-        dispatch(setRateList(RATE_LIST));
-        dispatch(setOptionList(OPTION_LIST));
 
         // Инициализируем заказ как пустой объект
         dispatch(initOrder({}));
@@ -196,8 +180,34 @@ export function loadOrderCreatorData() {
         categoryList = categoryList.filter(
             category => !!modelList.find(model => model.categoryId ? model.categoryId.id === category.id : false)
         );
-
         dispatch(setCategoryList(categoryList));
+
+        // Загружаем список тарифов
+        let rateList = await loadRateList();
+        dispatch(setRateList(rateList));
+
+        // Инициализируем список дополнительных опций
+        dispatch(setOptionList(OPTION_LIST));
+    }
+}
+
+// Создатель действия для очистки данных всех вкладок после вкладки Местоположение
+export function clearTabsAfterLocation(){
+    return dispatch => {
+        dispatch(clearOrderModel());
+        dispatch(clearTabsAfterModel());
+    }
+}
+
+// Создатель действия для очистки данных всех после вкладки выбора модели
+export function clearTabsAfterModel() {
+    return dispatch => {
+        dispatch(clearOrderColor());
+        dispatch(clearOrderOptions(OPTION_LIST));
+        dispatch(clearOrderRate());
+        dispatch(clearOrderDateFrom());
+        dispatch(clearOrderDateTo());
+        dispatch(clearOrderPrice());
     }
 }
 
@@ -283,5 +293,96 @@ export function setOrderModel(model) {
 export function clearOrderModel() {
     return {
         type: act.CLEAR_ORDER_MODEL
+    }
+}
+
+// Создатель действия для установки выбранного цвета авто
+export function setOrderColor(color) {
+    return {
+        type: act.SET_ORDER_COLOR,
+        color
+    }
+}
+
+// Создатель действия для удаления цвета авто из заказа
+export function clearOrderColor() {
+    return {
+        type: act.CLEAR_ORDER_COLOR
+    }
+}
+
+// Создатель действия для установки дополнительных опций заказа
+export function setOrderOptions(options) {
+    return {
+        type: act.SET_ORDER_OPTIONS,
+        options
+    }
+}
+
+// Создатель действия для удаления дополнительных опций из заказа
+export function clearOrderOptions(options) {
+    return {
+        type: act.CLEAR_ORDER_OPTIONS,
+        options
+    }
+}
+
+// Создатель действия для установки тарифа в заказе
+export function setOrderRate(rate) {
+    return {
+        type: act.SET_ORDER_RATE,
+        rate
+    }
+}
+
+// Создатель действия для удаления информации о тарифе из заказа
+export function clearOrderRate() {
+    return {
+        type: act.CLEAR_ORDER_RATE
+    }
+}
+
+// Создатель действия для установки даты и времени начала аренды
+export function setOrderDateFrom(date) {
+    return {
+        type: act.SET_ORDER_DATE_FROM,
+        date
+    }
+}
+
+// Создатель действия для удаления даты и времени начала аренды
+export function clearOrderDateFrom() {
+    return {
+        type: act.CLEAR_ORDER_DATE_FROM
+    }
+}
+
+// Создатель действия для установки дата и времени окончания аренды
+export function setOrderDateTo(date) {
+    return {
+        type: act.SET_ORDER_DATE_TO,
+        date
+    }
+}
+
+// Создатель действия для удаления даты и времени окончания аренды
+export function clearOrderDateTo() {
+    return {
+        type: act.CLEAR_ORDER_DATE_TO
+    }
+}
+
+// Создатель действия для установки цены заказа
+export function setOrderPrice(price){
+    return {
+        type: act.SET_ORDER_PRICE,
+        price
+    }
+}
+
+// Создатель действия для удаления цены заказа
+export function clearOrderPrice(){
+    return {
+        type: act.CLEAR_ORDER_PRICE
     }
 }
