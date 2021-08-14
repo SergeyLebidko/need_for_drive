@@ -430,11 +430,9 @@ export function sendOrder() {
 // Создатель действия для загрузки заказа с сервера
 export function loadOrderViewerData(orderId) {
     return async dispatch => {
-        // Загружаем статусы
         let statusList = await loadStatusList();
         dispatch(setStatusList(statusList));
 
-        // Загружаем заказ. Если загрузка не удалась - инициализируем заказ в хранилище как пустой объект
         let order;
         try {
             order = await loadOrder(orderId);
@@ -448,15 +446,12 @@ export function loadOrderViewerData(orderId) {
 // Создатель действия для отмены заказа
 export function cancelOrder(){
     return async (dispatch, getState) => {
-        // Меняем статус заказа на Отмененный
         let canceledStatusObj = getState().statusList.find(status => status.id === CANCELED_ORDER_STATUS_ID);
         dispatch(setOrderStatus(canceledStatusObj));
 
-        // Отправляем заказ
         let order = getState().order;
         order = await sendOrderData(order);
 
-        // Полученный объект заказа с измененным статусом записываем в хранилище
         dispatch(initOrder(order));
     }
 }
