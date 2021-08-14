@@ -11,7 +11,7 @@ function OrderPane({showModal}) {
     return (
         <div className="order_pane">
             <div className="order_pane__content">
-                <TotalTab order={{id: 'ORDER01234567890'}}/>
+                <TotalTab/>
                 <OrderDetailsViewer button={<OrderDetailsActionButton caption="Отменить" action={showModal} hasDifferentColor/>}/>
             </div>
         </div>

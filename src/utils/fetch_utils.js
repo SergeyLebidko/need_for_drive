@@ -71,3 +71,7 @@ export async function sendNewOrder(order) {
         .then(response => response.json())
         .then(json => json.data);
 }
+
+export async function loadOrder(orderId){
+    return loadData(ORDER_URL + `/${orderId}`);
+}

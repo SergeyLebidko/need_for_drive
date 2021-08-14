@@ -16,7 +16,8 @@ import {
     loadCategoryList,
     loadRateList,
     loadStatusList,
-    sendNewOrder
+    sendNewOrder,
+    loadOrder
 } from '../utils/fetch_utils';
 
 // Создатель действия для установки языка
@@ -422,5 +423,13 @@ export function sendOrder() {
         let order = getState().order;
         let createdOrder = await sendNewOrder(order);
         return createdOrder.id;
+    }
+}
+
+// Создатель действия для загрузки заказа с сервера
+export function loadOrderViewerData(orderId){
+    return async dispatch => {
+        let order = await loadOrder(orderId);
+        dispatch(initOrder(order));
     }
 }

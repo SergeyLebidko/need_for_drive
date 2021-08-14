@@ -32,11 +32,11 @@ function TotalTab({order}) {
     }
 
     const ORDER_STATUS_SELECTOR = {
-        [NEW_ORDER_STATUS_ID]: 'Новый',
-        [CONFIRMED_ORDER_STATUS_ID]: 'Подтвержденный',
-        [CANCELED_ORDER_STATUS_ID]: 'Отмененный',
-        [TEMP_ORDER_STATUS_ID]: 'Временный',
-        [TEST_ORDER_STATUS_ID]: 'Тест'
+        [NEW_ORDER_STATUS_ID]: 'Ваш заказ создан',
+        [CONFIRMED_ORDER_STATUS_ID]: 'Ваш заказ подтвержден',
+        [CANCELED_ORDER_STATUS_ID]: 'Ваш заказ отменен',
+        [TEMP_ORDER_STATUS_ID]: 'Временный заказ',
+        [TEST_ORDER_STATUS_ID]: 'Тестовый заказ'
     }
 
     return (
@@ -45,7 +45,7 @@ function TotalTab({order}) {
                 {orderStatusId &&
                 <li>
                     <span
-                        className="total_tab__confirm_caption">Ваш заказ: {ORDER_STATUS_SELECTOR[orderStatusId]}
+                        className="total_tab__confirm_caption">{ORDER_STATUS_SELECTOR[orderStatusId]}
                     </span>
                 </li>
                 }

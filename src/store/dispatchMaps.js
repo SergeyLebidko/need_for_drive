@@ -22,7 +22,9 @@ import {
     clearOrderPrice,
     clearTabsAfterLocation,
     clearTabsAfterModel,
-    sendOrder, initOrder
+    sendOrder,
+    initOrder,
+    loadOrderViewerData
 } from './actionCreators';
 
 function dispatchMapsFactory(component) {
@@ -95,6 +97,10 @@ function dispatchMapsFactory(component) {
                 setOrderDateTo: date => dispatch(setOrderDateTo(date)),
                 clearOrderDateFrom: () => dispatch(clearOrderDateFrom()),
                 clearOrderDateTo: () => dispatch(clearOrderDateTo())
+            });
+        case 'OrderViewer':
+            return dispatch => ({
+                loadOrderViewerData: orderId => dispatch(loadOrderViewerData(orderId))
             });
         default:
             return null;
