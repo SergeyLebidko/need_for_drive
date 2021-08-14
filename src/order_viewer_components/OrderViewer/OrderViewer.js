@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
 import Menu from '../../common_components/menu_components/Menu/Menu';
 import PageHeader from '../../common_components/PageHeader/PageHeader';
@@ -10,26 +10,24 @@ import {createStoreConnectedComponent} from '../../store/connector';
 import './OrderViewer.scss';
 import NoMatch from "../../common_components/NoMatch/NoMatch";
 
-function OrderViewer(props) {
-    let {
-        order,
-        loadOrderViewerData,
-        hasLoadOrderViewerData,
-        history,
-        match,
-        cancelOrder,
-        hasModalShow,
-        hideModal
-    } = props;
+function OrderViewer({order, loadOrderViewerData, history, match, cancelOrder, hasModalShow, hideModal}) {
+    let [done, setDone] = useState(false);
+
     let {params: {orderId}} = match;
 
-    useEffect(() => loadOrderViewerData(orderId), []);
+    useEffect(() => loadOrderViewerData(orderId).then(() => setDone(true)), []);
 
-    let handleOrderRemove = () => cancelOrder().then(() => hideModal());
+    let handleOrderRemove = () => {
+        setDone(false);
+        cancelOrder().then(() => {
+            setDone(true);
+            hideModal();
+        });
+    };
 
     return (
         <div className="order_viewer">
-            {hasLoadOrderViewerData ?
+            {done ?
                 (
                     ('id' in order) ?
                         <>
@@ -54,7 +52,6 @@ function OrderViewer(props) {
 OrderViewer.propTypes = {
     order: PropTypes.object,
     loadOrderViewerData: PropTypes.func,
-    hasLoadOrderViewerData: PropTypes.bool,
     history: PropTypes.object,
     match: PropTypes.object,
     cancelOrder: PropTypes.func,
