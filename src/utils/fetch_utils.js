@@ -20,6 +20,20 @@ async function loadData(url) {
         .then(json => json.data);
 }
 
+async function sendData(url, method, data) {
+    let options = {
+        method,
+        headers: {
+            'Content-Type': 'application/json',
+            ...DEFAULT_REQUEST_HEADERS
+        },
+        body: JSON.stringify(data)
+    }
+    return fetch(url, options)
+        .then(response => response.json())
+        .then(json => json.data);
+}
+
 export async function loadCityList() {
     return loadData(CITY_LIST_URL);
 }
@@ -59,17 +73,17 @@ export async function loadStatusList() {
 }
 
 export async function sendOrder(order) {
-    let options = {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            ...DEFAULT_REQUEST_HEADERS
-        },
-        body: JSON.stringify(order)
-    }
-    return fetch(ORDER_URL, options)
-        .then(response => response.json())
-        .then(json => json.data);
+    let {method, url} = ('id' in order) ?
+        {
+            method: 'PUT',
+            url: `${ORDER_URL}/${order.id}`
+        }
+        :
+        {
+            method: 'POST',
+            url: ORDER_URL
+        };
+    return sendData(url, method, order);
 }
 
 export async function loadOrder(orderId) {
