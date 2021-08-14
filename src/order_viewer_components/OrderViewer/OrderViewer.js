@@ -15,6 +15,7 @@ function OrderViewer(props) {
         order,
         loadOrderViewerData,
         hasLoadOrderViewerData,
+        history,
         match,
         cancelOrder,
         hasModalShow,
@@ -41,7 +42,7 @@ function OrderViewer(props) {
                             </section>
                         </>
                         :
-                        <NoMatch location={{pathname: `/order/${orderId}`}}/>
+                        <NoMatch history={history} location={{pathname: `/order/${orderId}`}}/>
                 )
                 :
                 <Preloader/>
@@ -54,6 +55,7 @@ OrderViewer.propTypes = {
     order: PropTypes.object,
     loadOrderViewerData: PropTypes.func,
     hasLoadOrderViewerData: PropTypes.bool,
+    history: PropTypes.object,
     match: PropTypes.object,
     cancelOrder: PropTypes.func,
     hasModalShow: PropTypes.bool,

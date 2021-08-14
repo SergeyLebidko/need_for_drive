@@ -100,6 +100,7 @@ function stateMapsFactory(component) {
         case 'LocationTab':
         case 'TotalTab':
         case 'DateSelector':
+        case 'OrderPane':
             return state => ({
                 order: state.order
             });
