@@ -45,7 +45,7 @@ function TotalTab({order}) {
                 {orderStatusId &&
                 <li>
                     <span
-                        className="total_tab__confirm_caption">{ORDER_STATUS_SELECTOR[orderStatusId]}
+                        className="total_tab__confirm_caption">{ORDER_STATUS_SELECTOR[orderStatusId.id]}
                     </span>
                 </li>
                 }
