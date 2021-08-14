@@ -24,7 +24,7 @@ import {
     clearTabsAfterModel,
     sendOrder,
     initOrder,
-    loadOrderViewerData
+    loadOrderViewerData, cancelOrder
 } from './actionCreators';
 
 function dispatchMapsFactory(component) {
@@ -100,7 +100,9 @@ function dispatchMapsFactory(component) {
             });
         case 'OrderViewer':
             return dispatch => ({
-                loadOrderViewerData: orderId => dispatch(loadOrderViewerData(orderId))
+                loadOrderViewerData: orderId => dispatch(loadOrderViewerData(orderId)),
+                cancelOrder: () => dispatch(cancelOrder()),
+                hideModal: () => dispatch(hideModal())
             });
         default:
             return null;

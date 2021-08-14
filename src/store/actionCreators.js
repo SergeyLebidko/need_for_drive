@@ -5,7 +5,8 @@ import {
     GEO_API_URL,
     TAB_ITEMS_DATA,
     OPTION_LIST,
-    NEW_ORDER_STATUS_ID
+    NEW_ORDER_STATUS_ID,
+    CANCELED_ORDER_STATUS_ID
 } from '../settings';
 import {
     loadCityList,
@@ -16,7 +17,7 @@ import {
     loadCategoryList,
     loadRateList,
     loadStatusList,
-    sendNewOrder,
+    sendOrder as sendOrderData,
     loadOrder
 } from '../utils/fetch_utils';
 
@@ -421,7 +422,7 @@ export function sendOrder() {
 
         // Отправляем заказ и возвращаем вызывающему коду его идентификатор
         let order = getState().order;
-        let createdOrder = await sendNewOrder(order);
+        let createdOrder = await sendOrderData(order);
         return createdOrder.id;
     }
 }
@@ -429,6 +430,11 @@ export function sendOrder() {
 // Создатель действия для загрузки заказа с сервера
 export function loadOrderViewerData(orderId) {
     return async dispatch => {
+        // Загружаем статусы
+        let statusList = await loadStatusList();
+        dispatch(setStatusList(statusList));
+
+        // Загружаем заказ. Если загрузка не удалась - инициализируем заказ в хранилище как пустой объект
         let order;
         try {
             order = await loadOrder(orderId);
@@ -436,5 +442,21 @@ export function loadOrderViewerData(orderId) {
             order = {};
         }
         if (order) dispatch(initOrder(order));
+    }
+}
+
+// Создатель действия для отмены заказа
+export function cancelOrder(){
+    return async (dispatch, getState) => {
+        // Меняем статус заказа на Отмененный
+        let canceledStatusObj = getState().statusList.find(status => status.id === CANCELED_ORDER_STATUS_ID);
+        dispatch(setOrderStatus(canceledStatusObj));
+
+        // Отправляем заказ
+        let order = getState().order;
+        order = await sendOrderData(order);
+
+        // Полученный объект заказа с измененным статусом записываем в хранилище
+        dispatch(initOrder(order));
     }
 }

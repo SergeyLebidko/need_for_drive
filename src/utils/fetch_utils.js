@@ -58,7 +58,7 @@ export async function loadStatusList() {
     return loadData(STATUS_LIST_URL);
 }
 
-export async function sendNewOrder(order) {
+export async function sendOrder(order) {
     let options = {
         method: 'POST',
         headers: {
@@ -72,6 +72,6 @@ export async function sendNewOrder(order) {
         .then(json => json.data);
 }
 
-export async function loadOrder(orderId){
+export async function loadOrder(orderId) {
     return loadData(ORDER_URL + `/${orderId}`);
 }

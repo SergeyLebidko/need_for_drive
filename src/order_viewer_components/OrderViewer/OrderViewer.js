@@ -10,17 +10,25 @@ import {createStoreConnectedComponent} from '../../store/connector';
 import './OrderViewer.scss';
 import NoMatch from "../../common_components/NoMatch/NoMatch";
 
-function OrderViewer({order, loadOrderViewerData, match, history, hasModalShow}) {
+function OrderViewer(props) {
+    let {
+        order,
+        loadOrderViewerData,
+        hasLoadOrderViewerData,
+        match,
+        cancelOrder,
+        hasModalShow,
+        hideModal
+    } = props;
     let {params: {orderId}} = match;
 
     useEffect(() => loadOrderViewerData(orderId), []);
 
-    // TODO При реализации функциональности добавить код отмены заказа и только после его выполнения перебрасывать пользователя на главную страницу
-    let handleOrderRemove = () => history.push('/');
+    let handleOrderRemove = () => cancelOrder().then(() => hideModal());
 
     return (
         <div className="order_viewer">
-            {order ?
+            {hasLoadOrderViewerData ?
                 (
                     ('id' in order) ?
                         <>
@@ -45,9 +53,11 @@ function OrderViewer({order, loadOrderViewerData, match, history, hasModalShow})
 OrderViewer.propTypes = {
     order: PropTypes.object,
     loadOrderViewerData: PropTypes.func,
+    hasLoadOrderViewerData: PropTypes.bool,
     match: PropTypes.object,
-    history: PropTypes.object,
-    hasModalShow: PropTypes.bool
+    cancelOrder: PropTypes.func,
+    hasModalShow: PropTypes.bool,
+    hideModal: PropTypes.func
 }
 
 export default createStoreConnectedComponent('OrderViewer')(OrderViewer);

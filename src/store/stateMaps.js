@@ -56,6 +56,7 @@ function stateMapsFactory(component) {
             return state => ({
                 order: state.order,
                 hasModalShow: state.hasModalShow,
+                hasLoadOrderViewerData: !!state.order && !!state.statusList
             });
         case 'ModelTab':
             return state => ({
