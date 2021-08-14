@@ -54,8 +54,8 @@ function stateMapsFactory(component) {
             });
         case 'OrderViewer':
             return state => ({
+                order: state.order,
                 hasModalShow: state.hasModalShow,
-                hasLoadOrderViewerData: !!state.order
             });
         case 'ModelTab':
             return state => ({

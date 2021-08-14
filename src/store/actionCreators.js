@@ -427,9 +427,14 @@ export function sendOrder() {
 }
 
 // Создатель действия для загрузки заказа с сервера
-export function loadOrderViewerData(orderId){
+export function loadOrderViewerData(orderId) {
     return async dispatch => {
-        let order = await loadOrder(orderId);
-        dispatch(initOrder(order));
+        let order;
+        try {
+            order = await loadOrder(orderId);
+        } catch (e) {
+            order = {};
+        }
+        if (order) dispatch(initOrder(order));
     }
 }

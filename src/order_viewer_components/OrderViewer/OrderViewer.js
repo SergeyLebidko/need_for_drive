@@ -5,10 +5,12 @@ import PageHeader from '../../common_components/PageHeader/PageHeader';
 import NumberPane from '../NumberPane/NumberPane';
 import OrderPane from '../OrderPane/OrderPane';
 import Modal, {REMOVE_ORDER_MODAL} from '../../common_components/Modal/Modal';
+import Preloader from '../../common_components/Preloader/Preloader';
 import {createStoreConnectedComponent} from '../../store/connector';
 import './OrderViewer.scss';
+import NoMatch from "../../common_components/NoMatch/NoMatch";
 
-function OrderViewer({loadOrderViewerData, hasLoadOrderViewerData, match, history, hasModalShow}) {
+function OrderViewer({order, loadOrderViewerData, match, history, hasModalShow}) {
     let {params: {orderId}} = match;
 
     useEffect(() => loadOrderViewerData(orderId), []);
@@ -18,24 +20,31 @@ function OrderViewer({loadOrderViewerData, hasLoadOrderViewerData, match, histor
 
     return (
         <div className="order_viewer">
-            {hasLoadOrderViewerData &&
-            <>
-                {hasModalShow && <Modal type={REMOVE_ORDER_MODAL} action={handleOrderRemove}/>}
-                <Menu/>
-                <section className="order_viewer__content">
-                    <PageHeader/>
-                    <NumberPane orderNumber={orderId}/>
-                    <OrderPane/>
-                </section>
-            </>
+            {order ?
+                (
+                    ('id' in order) ?
+                        <>
+                            {hasModalShow && <Modal type={REMOVE_ORDER_MODAL} action={handleOrderRemove}/>}
+                            <Menu/>
+                            <section className="order_viewer__content">
+                                <PageHeader/>
+                                <NumberPane orderNumber={orderId}/>
+                                <OrderPane/>
+                            </section>
+                        </>
+                        :
+                        <NoMatch location={{pathname: `/order/${orderId}`}}/>
+                )
+                :
+                <Preloader/>
             }
         </div>
     )
 }
 
 OrderViewer.propTypes = {
+    order: PropTypes.object,
     loadOrderViewerData: PropTypes.func,
-    hasLoadOrderViewerData: PropTypes.func,
     match: PropTypes.object,
     history: PropTypes.object,
     hasModalShow: PropTypes.bool
