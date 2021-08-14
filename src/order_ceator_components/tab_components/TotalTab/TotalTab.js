@@ -21,7 +21,7 @@ function TotalTab({order}) {
         name = carId.name;
         number = carId.number;
         tank = carId.tank;
-        path = carId.thumbnail;
+        path = carId.thumbnail.path;
     }
 
     let format = value => ('0' + value).slice(-2);
