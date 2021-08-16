@@ -7,19 +7,19 @@ import './RadioSelector.scss';
 function RadioSelector({caption, items, onlyColumn, handleSelect, defaultSelectedIndex}) {
     let [selectedCategoryIndex, setSelectedCategoryIndex] = useState(defaultSelectedIndex);
 
-    let getTitleClassNames = index => classNames('radio_selector__title', {
+    const getTitleClassNames = index => classNames('radio_selector__title', {
         'checked_title': index === selectedCategoryIndex,
         'not_checked_title': index !== selectedCategoryIndex
     });
 
-    let handleClick = index => {
+    const handleClick = index => {
         setSelectedCategoryIndex(index);
         handleSelect(items[index]);
     };
 
-    let radioGroupName = getRandomString();
+    const radioGroupName = getRandomString();
 
-    let itemsContainerClassNames = classNames('radio_selector__items_container', {'only_column': onlyColumn})
+    const itemsContainerClassNames = classNames('radio_selector__items_container', {'only_column': onlyColumn})
 
     return (
         <div className="radio_selector">
