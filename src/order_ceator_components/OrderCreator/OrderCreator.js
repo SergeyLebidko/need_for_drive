@@ -11,7 +11,7 @@ import './OrderCreator.scss';
 function OrderCreator({sendOrder, clearOrder, loadOrderCreatorData, hasOrderCreatorDataLoaded, hasModalShow, history}) {
     useEffect(() => loadOrderCreatorData(), []);
 
-    let handleOrderCreate = () => sendOrder().then(orderId => {
+    const handleOrderCreate = () => sendOrder().then(orderId => {
         clearOrder();
         history.push(`/order/${orderId}`);
     });
