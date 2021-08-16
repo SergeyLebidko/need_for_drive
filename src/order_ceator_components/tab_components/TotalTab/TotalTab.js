@@ -13,7 +13,7 @@ import {DOMEN} from '../../../urls';
 import './TotalTab.scss';
 
 function TotalTab({order}) {
-    let [hasPhoto, setHasPhoto] = useState(true);
+    let [hasShowPhoto, setHasShowPhoto] = useState(true);
 
     let name, number, tank, path;
     const {carId, dateFrom, orderStatusId} = order;
@@ -38,6 +38,8 @@ function TotalTab({order}) {
         [TEMP_ORDER_STATUS_ID]: 'Временный заказ',
         [TEST_ORDER_STATUS_ID]: 'Тестовый заказ'
     }
+
+    const handlePhotoLoadError = () => setHasShowPhoto(false);
 
     return (
         <div className="total_tab">
@@ -81,8 +83,14 @@ function TotalTab({order}) {
                 }
             </ul>
             <div className="total_tab__photo_block">
-                {(hasPhoto && path) &&
-                <img src={path[0] === '/' ? `${DOMEN}${path}` : path} onError={() => setHasPhoto(false)}/>
+                {hasShowPhoto ?
+                    (path && <img
+                        src={path[0] === '/' ? `${DOMEN}${path}` : path}
+                        onError={handlePhotoLoadError}
+                        alt="Фото автомобиля"
+                    />)
+                    :
+                    <span className="total_tab__no_photo">Нет фото...</span>
                 }
             </div>
         </div>

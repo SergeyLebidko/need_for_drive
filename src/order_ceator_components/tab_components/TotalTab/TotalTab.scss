@@ -47,6 +47,10 @@
       object-fit: contain;
     }
   }
+
+  &__no_photo {
+    color: $gray;
+  }
 }
 
 @media (min-width: $desktop-min-start) {

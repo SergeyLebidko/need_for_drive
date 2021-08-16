@@ -55,9 +55,8 @@ export async function loadPointCoords(point, cityList) {
     return {id: point.id, lat, lng};
 }
 
-// TODO Временно установим ограничение на количество загружаемых машин
 export async function loadModelList() {
-    return loadData(CAR_LIST_URL + '?limit=15');
+    return loadData(CAR_LIST_URL);
 }
 
 export async function loadCategoryList() {

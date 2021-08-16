@@ -26,7 +26,7 @@ function ModelCard({model, hasSelected, handleClick}) {
                 <img
                     src={model.thumbnail.path[0] === '/' ? `${DOMEN}${model.thumbnail.path}` : model.thumbnail.path}
                     className="model_card__photo"
-                    alt={model.name}
+                    alt="Фото автомобиля"
                     onError={handleErrorImageLoad}
                 />
                 :
