@@ -13,11 +13,11 @@ import NoMatch from "../../common_components/NoMatch/NoMatch";
 function OrderViewer({order, loadOrderViewerData, history, match, cancelOrder, hasModalShow, hideModal}) {
     let [done, setDone] = useState(false);
 
-    let {params: {orderId}} = match;
+    const {params: {orderId}} = match;
 
     useEffect(() => loadOrderViewerData(orderId).then(() => setDone(true)), []);
 
-    let handleOrderRemove = () => {
+    const handleOrderRemove = () => {
         setDone(false);
         cancelOrder().then(() => {
             setDone(true);
