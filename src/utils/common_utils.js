@@ -4,7 +4,7 @@ export function getFormattedPrice(price) {
 
 export function getRandomString(size = 16) {
     const CHARS = 'QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm';
-    let result = [];
+    const result = [];
     for (let index = 0; index < size; index++) {
         result.push(CHARS[Math.floor(Math.random() * CHARS.length)]);
     }
