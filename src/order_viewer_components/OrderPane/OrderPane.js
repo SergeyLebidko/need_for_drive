@@ -9,7 +9,7 @@ import {CANCELED_ORDER_STATUS_ID} from '../../settings';
 import './OrderPane.scss';
 
 function OrderPane({order, showModal}) {
-    let actionForButton = order.orderStatusId.id === CANCELED_ORDER_STATUS_ID ? null : showModal;
+    const actionForButton = order.orderStatusId.id === CANCELED_ORDER_STATUS_ID ? null : showModal;
 
     return (
         <div className="order_pane">
