@@ -14,12 +14,12 @@ function TabTitles({order, tabItemsData, mode, setMode}) {
         [TOTAL_MODE]: hasSelectedExtra(order)
     }
 
-    let handleChangeMode = selectedMode => {
+    const handleChangeMode = selectedMode => {
         if (!MODE_CHECKER[selectedMode]) return;
         setMode(selectedMode);
     }
 
-    let getItemClassNames = boundMode => {
+    const getItemClassNames = boundMode => {
         let hasModeAvailable = MODE_CHECKER[boundMode];
         return classNames({
             'disabled_title': !hasModeAvailable,
