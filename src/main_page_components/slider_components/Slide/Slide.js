@@ -7,18 +7,18 @@ export const CURRENT_SLIDE = 'cs';
 export const NEXT_SLIDE = 'ns';
 
 function Slide({slideData}) {
-    let {title, description, image, buttonColor, buttonText, position} = slideData;
+    const {title, description, image, buttonColor, buttonText, position} = slideData;
 
     const slideClassSelector = {
         [PREV_SLIDE]: 'slide prev_slide',
         [CURRENT_SLIDE]: 'slide',
         [NEXT_SLIDE]: 'slide next_slide'
     }
-    let slideClassName = slideClassSelector[position];
+    const slideClassName = slideClassSelector[position];
 
-    let buttonClassName = `button slide__button button_${buttonColor} button_small_round_border`;
+    const buttonClassName = `button slide__button button_${buttonColor} button_small_round_border`;
 
-    let backgroundImageStyle = {
+    const backgroundImageStyle = {
         backgroundImage: `linear-gradient(to bottom, transparent 50%, black 100%), url("${image}")`
     };
 
