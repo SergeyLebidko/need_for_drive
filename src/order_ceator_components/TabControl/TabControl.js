@@ -22,7 +22,7 @@ function TabControl({order, showModal}) {
         [EXTRA_MODE]: ExtraTab,
         [TOTAL_MODE]: TotalTab
     }
-    let TabComponent = TAB_SELECTOR[mode];
+    const TabComponent = TAB_SELECTOR[mode];
 
     const BUTTON_PROPS_SELECTOR = {
         [LOCATION_MODE]: {
