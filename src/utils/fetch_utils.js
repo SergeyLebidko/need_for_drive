@@ -21,7 +21,7 @@ async function loadData(url) {
 }
 
 async function sendData(url, method, data) {
-    let options = {
+    const options = {
         method,
         headers: {
             'Content-Type': 'application/json',
@@ -43,15 +43,15 @@ export async function loadPointList() {
 }
 
 export async function loadCityCoords(city) {
-    let geoData = await Geocode.fromAddress(city.name);
-    let {lat, lng} = geoData.results[0].geometry.location;
+    const geoData = await Geocode.fromAddress(city.name);
+    const {lat, lng} = geoData.results[0].geometry.location;
     return {id: city.id, lat, lng};
 }
 
 export async function loadPointCoords(point, cityList) {
-    let cityOfPoint = cityList.find(city => city.id === point.cityId.id);
-    let geoData = await Geocode.fromAddress(cityOfPoint.name + ' ' + point.address);
-    let {lat, lng} = geoData.results[0].geometry.location;
+    const cityOfPoint = cityList.find(city => city.id === point.cityId.id);
+    const geoData = await Geocode.fromAddress(cityOfPoint.name + ' ' + point.address);
+    const {lat, lng} = geoData.results[0].geometry.location;
     return {id: point.id, lat, lng};
 }
 
@@ -73,7 +73,7 @@ export async function loadStatusList() {
 }
 
 export async function sendOrder(order) {
-    let {method, url} = ('id' in order) ?
+    const {method, url} = ('id' in order) ?
         {
             method: 'PUT',
             url: `${ORDER_URL}/${order.id}`
