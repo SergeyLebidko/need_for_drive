@@ -18,7 +18,7 @@ function Menu() {
         }
     }, [opened]);
 
-    let handleMenuButtonClick = () => setOpened(menuOpened => !menuOpened);
+    const handleMenuButtonClick = () => setOpened(menuOpened => !menuOpened);
 
     return (
         <section className="menu">
