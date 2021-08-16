@@ -10,9 +10,9 @@ function SelectorItem({caption, placeholder, items, defaultItem, handleSelect, s
     let [popupItems, setPopupItems] = useState([]);
     let [selectedPopupIndex, setSelectedPopupIndex] = useState(null);
 
-    let selectorRef = useRef(null);
+    const selectorRef = useRef(null);
 
-    let inputId = getRandomString();
+    const inputId = getRandomString();
 
     function filterItems(filterValue = null) {
         if (!filterValue) return items;
@@ -26,7 +26,7 @@ function SelectorItem({caption, placeholder, items, defaultItem, handleSelect, s
 
     // Отлавливаем клик за пределами селектора, убираем всплывающее окошко и вставляем в поле значение по-умолчанию
     useEffect(() => {
-        let documentClickHandler = event => {
+        const documentClickHandler = event => {
             if (selectorRef.current && !selectorRef.current.contains(event.target)) {
                 setInputValue(defaultItem ? defaultItem[searchFieldName] : '');
                 setPopupItems([]);
@@ -37,18 +37,18 @@ function SelectorItem({caption, placeholder, items, defaultItem, handleSelect, s
     }, [defaultItem])
 
     // При получении полем ввода фокуса, выводим выпадающий список
-    let handleInputFocus = () => {
-        let nextPopupItems = filterItems(inputValue);
+    const handleInputFocus = () => {
+        const nextPopupItems = filterItems(inputValue);
         setSelectedPopupIndex(nextPopupItems.length > 0 ? 0 : null);
         setPopupItems(nextPopupItems);
     }
 
     // Обрабатываем наведение мышки на элемент всплывающего блока
-    let popupMouseEnterHandler = index => setSelectedPopupIndex(index);
+    const popupMouseEnterHandler = index => setSelectedPopupIndex(index);
 
     // Обработчик ввода символов в поле поиска
-    let handleChangeInputValue = event => {
-        let nextInputValue = event.target.value;
+    const handleChangeInputValue = event => {
+        const nextInputValue = event.target.value;
         if (nextInputValue.length > 0 && nextInputValue.trim() === '') return;
 
         setInputValue(nextInputValue);
@@ -78,20 +78,20 @@ function SelectorItem({caption, placeholder, items, defaultItem, handleSelect, s
     }
 
     // Обработчик нажатия на кнопку очистки
-    let handleClearValue = () => {
+    const handleClearValue = () => {
         setInputValue('');
         setPopupItems([]);
         handleSelect(null);
     }
 
     // Обработчик клика по элементу выпадающего списка
-    let popupItemClickHandler = item => {
+    const popupItemClickHandler = item => {
         setPopupItems([]);
         setInputValue(item[searchFieldName]);
         handleSelect(item);
     }
 
-    let clearButtonClasses = classNames('selector_item__clear_button', {'disabled_clear_button': items.length === 0});
+    const clearButtonClasses = classNames('selector_item__clear_button', {'disabled_clear_button': items.length === 0});
 
     return (
         <div className="selector_item" ref={selectorRef}>
