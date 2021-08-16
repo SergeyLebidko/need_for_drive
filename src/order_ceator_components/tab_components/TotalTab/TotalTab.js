@@ -16,7 +16,7 @@ function TotalTab({order}) {
     let [hasPhoto, setHasPhoto] = useState(true);
 
     let name, number, tank, path;
-    let {carId, dateFrom, orderStatusId} = order;
+    const {carId, dateFrom, orderStatusId} = order;
     if (carId) {
         name = carId.name;
         number = carId.number;
@@ -24,9 +24,9 @@ function TotalTab({order}) {
         path = carId.thumbnail.path;
     }
 
-    let format = value => ('0' + value).slice(-2);
+    const format = value => ('0' + value).slice(-2);
 
-    let getFormattedDate = timestamp => {
+    const getFormattedDate = timestamp => {
         let [year, mon, day, hour, min] = extractDateParts(new Date(timestamp));
         return `${format(day)}.${format(mon)}.${year} ${format(hour)}:${format(min)}`;
     }
