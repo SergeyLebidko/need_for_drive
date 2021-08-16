@@ -20,16 +20,16 @@ export function getDuration(dateFrom, dateTo) {
     const minMs = 1000 * 60;
 
     let totalMs = dateTo - dateFrom + 1;
-    let weekCount = Math.floor(totalMs / weekMs);
+    const weekCount = Math.floor(totalMs / weekMs);
     totalMs -= (weekCount * weekMs);
 
-    let dayCount = Math.floor(totalMs / dayMs);
+    const dayCount = Math.floor(totalMs / dayMs);
     totalMs -= (dayCount * dayMs);
 
-    let hourCount = Math.floor(totalMs / hourMs);
+    const hourCount = Math.floor(totalMs / hourMs);
     totalMs -= (hourCount * hourMs);
 
-    let minCount = Math.floor(totalMs / minMs);
+    const minCount = Math.floor(totalMs / minMs);
 
     return {weekCount, dayCount, hourCount, minCount};
 }
@@ -38,7 +38,7 @@ export function calcOrderPrice(order) {
     // Проверяем наличие всех необходимых для вычисления стоимости заказа данных. Если чего-то не хватает - возвращаем null
     if (!order) return null;
 
-    let {rateId, dateFrom, dateTo} = order;
+    const {rateId, dateFrom, dateTo} = order;
     if (!rateId || !dateFrom || !dateTo) return null;
 
     for (let option of OPTION_LIST) {
@@ -46,15 +46,15 @@ export function calcOrderPrice(order) {
     }
 
     // Количество минут в неделе, дне, часе
-    let weekMinutes = 60 * 24 * 7;
-    let dayMinutes = 60 * 24;
-    let hourMinutes = 60;
+    const weekMinutes = 60 * 24 * 7;
+    const dayMinutes = 60 * 24;
+    const hourMinutes = 60;
 
-    let {weekCount, dayCount, hourCount, minCount} = getDuration(dateFrom, dateTo);
-    let totalMinutes = (weekCount * weekMinutes) + (dayCount * dayMinutes) + (hourCount * hourMinutes) + minCount;
+    const {weekCount, dayCount, hourCount, minCount} = getDuration(dateFrom, dateTo);
+    const totalMinutes = (weekCount * weekMinutes) + (dayCount * dayMinutes) + (hourCount * hourMinutes) + minCount;
 
-    let {price} = order.rateId;
-    let {id} = order.rateId.rateTypeId;
+    const {price} = order.rateId;
+    const {id} = order.rateId.rateTypeId;
 
     const RATE_SELECTOR = {
         [MIN_RATE_ID]: totalMinutes * price,
