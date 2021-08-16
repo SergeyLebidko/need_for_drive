@@ -4,11 +4,11 @@ import classNames from 'classnames';
 import '../../../styles/vars.scss';
 
 function OrderDetailsActionButton({caption, hasDifferentColor, action}) {
-    let handleClick = () => {
+    const handleClick = () => {
         if (action) action();
     }
 
-    let buttonClassNames = classNames(
+    const buttonClassNames = classNames(
         'button',
         'button_main_round_border',
         {
