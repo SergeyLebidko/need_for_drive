@@ -9,9 +9,9 @@ const BIG_ZOOM = 14
 const SMALL_ZOOM = 11
 
 function Map({order, cityCoords, pointCoords, cityList, pointList, setOrderCity, setOrderPoint, clearOrderPoint}) {
-    let {cityId: selectedCity, pointId: selectedPoint} = order;
+    const {cityId: selectedCity, pointId: selectedPoint} = order;
 
-    let getCenter = () => {
+    const getCenter = () => {
         // Если не выбран ни город ни местоположение, то центром карты станут координаты первого города
         if (!selectedCity && !selectedPoint) return cityCoords[0]
 
@@ -26,16 +26,16 @@ function Map({order, cityCoords, pointCoords, cityList, pointList, setOrderCity,
         }
     }
 
-    let getCityCoords = city => cityCoords.find(cityCoord => cityCoord.id === city.id);
+    const getCityCoords = city => cityCoords.find(cityCoord => cityCoord.id === city.id);
 
-    let getPointCoords = point => pointCoords.find(pointCoord => pointCoord.id === point.id);
+    const getPointCoords = point => pointCoords.find(pointCoord => pointCoord.id === point.id);
 
-    let handleCityLabelClick = city => {
+    const handleCityLabelClick = city => {
         setOrderCity(city);
         clearOrderPoint();
     }
 
-    let handlePointLabelClick = point => {
+    const handlePointLabelClick = point => {
         setOrderCity(point.cityId)
         setOrderPoint(point);
     }
