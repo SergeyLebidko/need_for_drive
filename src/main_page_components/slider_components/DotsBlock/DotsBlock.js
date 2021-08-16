@@ -1,16 +1,15 @@
 import React from 'react';
+import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import './DotsBlock.scss';
 
 function DotsBlock({dotsCount, currentIndex, handleClick}) {
-    let dots = [];
+    const dots = [];
     let dotClassList;
+    let hasIndexEquals;
     for (let index = 0; index < dotsCount; index++) {
-        if (index === currentIndex) {
-            dotClassList = 'dots_block__dot full_dot';
-        } else {
-            dotClassList = 'dots_block__dot empty_dot';
-        }
+        hasIndexEquals = index === currentIndex;
+        dotClassList = classNames('dots_block__dot', {'full_dot': hasIndexEquals, 'empty_dot': !hasIndexEquals});
         dots.push(<div key={index} className={dotClassList} onClick={() => handleClick(index)}/>);
     }
 
