@@ -10,7 +10,7 @@ function Menu() {
 
     // Если меню открыто, то запрещаем прокрутку тела страницы
     useEffect(() => {
-        let body = document.body;
+        const body = document.body;
         if (opened) {
             body.style.overflow = 'hidden';
         } else {

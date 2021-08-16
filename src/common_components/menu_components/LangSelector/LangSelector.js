@@ -9,7 +9,7 @@ function LangSelector({lang, setLang}) {
 
     // При смене языка - сохраняем выбор пользователя также и в local storage, чтобы он был доступен при следующем входе на сайт
     const handleClick = () => {
-        let nextLang = LANG_SWITCHER_MAP[lang];
+        const nextLang = LANG_SWITCHER_MAP[lang];
         setLang(LANG_SWITCHER_MAP[lang]);
         localStorage.setItem(LS_LANG_KEY, nextLang);
     };
