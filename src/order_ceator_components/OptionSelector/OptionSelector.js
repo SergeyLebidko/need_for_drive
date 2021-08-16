@@ -9,7 +9,7 @@ function OptionSelector({order, optionList, setOrderOptions}) {
     let [options, setOptions] = useState([]);
 
     useEffect(() => {
-        let _options = [];
+        const _options = [];
 
         optionList.forEach(option => {
             if (order[option.field] === undefined) {
@@ -27,7 +27,7 @@ function OptionSelector({order, optionList, setOrderOptions}) {
 
     useEffect(() => setOrderOptions(options), [options]);
 
-    let handleChange = option => {
+    const handleChange = option => {
         setOptions(oldOptions => oldOptions.map(_option => {
             if (_option.field !== option.field) return _option;
             return {
