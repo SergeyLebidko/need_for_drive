@@ -46,8 +46,8 @@ export function loadCity(lang) {
 
         // При возникновении ошибок - выводим в консоль диагностическое сообщение
         try {
-            let response = await fetch(url, options);
-            let json = await response.json();
+            const response = await fetch(url, options);
+            const json = await response.json();
 
             if (json.location) {
                 dispatch(setCity(json.location.data.city));
@@ -166,14 +166,14 @@ export function loadOrderCreatorData() {
         let coords;
 
         // Создаем список координат городов
-        let cityCoords = [];
+        const cityCoords = [];
         for (let city of cityList) {
             coords = await loadCityCoords(city);
             cityCoords.push(coords);
         }
 
         // Создаем список координат поинтов
-        let pointCoords = [];
+        const pointCoords = [];
         for (let point of pointList) {
             coords = await loadPointCoords(point, cityList);
             pointCoords.push(coords);
@@ -185,7 +185,7 @@ export function loadOrderCreatorData() {
         dispatch(setPointCoords(pointCoords));
 
         // Загружаем список автомобилей
-        let modelList = await loadModelList();
+        const modelList = await loadModelList();
         dispatch(setModelList(modelList));
 
         // Загружаем список категорий авто и отбрасываем категории, для которых нет ни одного автомобиля
@@ -196,14 +196,14 @@ export function loadOrderCreatorData() {
         dispatch(setCategoryList(categoryList));
 
         // Загружаем список тарифов
-        let rateList = await loadRateList();
+        const rateList = await loadRateList();
         dispatch(setRateList(rateList));
 
         // Инициализируем список дополнительных опций
         dispatch(setOptionList(OPTION_LIST));
 
         // Загружаем список возможных статусов заказов
-        let statusList = await loadStatusList();
+        const statusList = await loadStatusList();
         dispatch(setStatusList(statusList));
     }
 }
@@ -416,13 +416,13 @@ export function setOrderStatus(status) {
 export function sendOrder() {
     return async (dispatch, getState) => {
         // Перед отправкой проставляем заказу статус нового
-        let statusList = getState().statusList;
-        let newStatus = statusList.find(status => status.id === NEW_ORDER_STATUS_ID);
+        const statusList = getState().statusList;
+        const newStatus = statusList.find(status => status.id === NEW_ORDER_STATUS_ID);
         dispatch(setOrderStatus(newStatus));
 
         // Отправляем заказ и возвращаем вызывающему коду его идентификатор
-        let order = getState().order;
-        let createdOrder = await sendOrderData(order);
+        const order = getState().order;
+        const createdOrder = await sendOrderData(order);
         return createdOrder.id;
     }
 }
@@ -430,7 +430,7 @@ export function sendOrder() {
 // Создатель действия для загрузки заказа с сервера
 export function loadOrderViewerData(orderId) {
     return async dispatch => {
-        let statusList = await loadStatusList();
+        const statusList = await loadStatusList();
         dispatch(setStatusList(statusList));
 
         let order;
@@ -446,12 +446,12 @@ export function loadOrderViewerData(orderId) {
 // Создатель действия для отмены заказа
 export function cancelOrder(){
     return async (dispatch, getState) => {
-        let canceledStatusObj = getState().statusList.find(status => status.id === CANCELED_ORDER_STATUS_ID);
+        const canceledStatusObj = getState().statusList.find(status => status.id === CANCELED_ORDER_STATUS_ID);
         dispatch(setOrderStatus(canceledStatusObj));
 
-        let order = getState().order;
-        order = await sendOrderData(order);
+        const order = getState().order;
+        const canceledOrder = await sendOrderData(order);
 
-        dispatch(initOrder(order));
+        dispatch(initOrder(canceledOrder));
     }
 }
