@@ -41,6 +41,7 @@ function OrderViewer({loadOrderViewerData, history, match, cancelOrder, hasModal
         });
     };
 
+    // При рендеринге учитываем возможные ошибки и их характер (заказ не найден, сетевая ошибка и т.п.)
     return (
         <div className="order_viewer">
             {done ?
