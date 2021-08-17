@@ -70,8 +70,9 @@ export async function loadPointCoords(point, cityList) {
     return {id: point.id, lat, lng};
 }
 
+// TODO Временное ограничение на количество загружаемых моделей авто
 export async function loadModelList() {
-    return loadData(CAR_LIST_URL);
+    return loadData(CAR_LIST_URL + '?limit=15');
 }
 
 export async function loadCategoryList() {
