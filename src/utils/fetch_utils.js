@@ -14,19 +14,26 @@ Geocode.setApiKey(process.env.REACT_APP_GEOCODER_API_KEY);
 Geocode.setLanguage('ru');
 Geocode.setRegion('ru');
 
-async function loadData(url) {
-    let response;
+async function executeFetch(url, options) {
     try {
-        response = await fetch(url, {headers: DEFAULT_REQUEST_HEADERS});
+        return await fetch(url, options);
     } catch (err) {
         return Promise.reject({httpStatus: '', httpText: err.message});
     }
+}
+
+async function extractData(response) {
     if (!response.ok) {
         const text = await response.text();
         return Promise.reject({httpStatus: response.status, httpText: text});
     }
     const json = await response.json();
     return json.data;
+}
+
+async function loadData(url) {
+    const response = await executeFetch(url, {headers: DEFAULT_REQUEST_HEADERS});
+    return await extractData(response);
 }
 
 async function sendData(url, method, data) {
