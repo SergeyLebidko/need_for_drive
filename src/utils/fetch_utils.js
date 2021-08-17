@@ -103,3 +103,5 @@ export async function sendOrder(order) {
 export async function loadOrder(orderId) {
     return loadData(ORDER_URL + `/${orderId}`);
 }
+
+export const getErrText = err => err.httpStatus === '' ? err.httpText : `${err.httpStatus} ${err.httpText}`;

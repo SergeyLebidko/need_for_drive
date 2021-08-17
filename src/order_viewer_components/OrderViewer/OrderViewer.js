@@ -7,9 +7,10 @@ import OrderPane from '../OrderPane/OrderPane';
 import Modal, {CANCEL_ORDER_MODAL} from '../../common_components/Modal/Modal';
 import Preloader from '../../common_components/Preloader/Preloader';
 import ErrorPane from '../../common_components/ErrorPane/ErrorPane';
+import NoMatch from '../../common_components/NoMatch/NoMatch';
+import {getErrText} from '../../utils/fetch_utils';
 import {createStoreConnectedComponent} from '../../store/connector';
 import './OrderViewer.scss';
-import NoMatch from "../../common_components/NoMatch/NoMatch";
 
 function OrderViewer({loadOrderViewerData, history, match, cancelOrder, hasModalShow, hideModal}) {
     let [done, setDone] = useState(false);
@@ -18,8 +19,6 @@ function OrderViewer({loadOrderViewerData, history, match, cancelOrder, hasModal
     const {params: {orderId}} = match;
 
     const toMainPage = () => history.push('/');
-
-    const getErrText = err => err.httpStatus === '' ? err.httpText : `${err.httpStatus} ${err.httpText}`;
 
     useEffect(() => {
         loadOrderViewerData(orderId)

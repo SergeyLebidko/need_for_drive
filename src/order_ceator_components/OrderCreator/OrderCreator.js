@@ -1,15 +1,33 @@
-import React, {useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
 import Menu from '../../common_components/menu_components/Menu/Menu';
 import PageHeader from '../../common_components/PageHeader/PageHeader';
 import TabControl from '../TabControl/TabControl';
 import Modal, {CONFIRM_ORDER_MODAL} from '../../common_components/Modal/Modal';
 import Preloader from '../../common_components/Preloader/Preloader';
+import ErrorPane from '../../common_components/ErrorPane/ErrorPane';
+import {getErrText} from '../../utils/fetch_utils';
 import {createStoreConnectedComponent} from '../../store/connector';
 import './OrderCreator.scss';
 
-function OrderCreator({sendOrder, clearOrder, loadOrderCreatorData, hasOrderCreatorDataLoaded, hasModalShow, history}) {
-    useEffect(() => loadOrderCreatorData(), []);
+function OrderCreator({sendOrder, clearOrder, loadOrderCreatorData, hasModalShow, history}) {
+    let [done, setDone] = useState(false);
+    let [errorComponent, setErrorComponent] = useState(null);
+
+    useEffect(() => {
+        loadOrderCreatorData()
+            .then(() => setDone(true))
+            .catch(err => {
+                setDone(true);
+                setErrorComponent(
+                    <ErrorPane
+                        text={`Не удалось загрузить необходимые данные: ${getErrText(err)}`}
+                        action={() => history.push('/')}
+                        buttonCaption="На главную"
+                    />
+                );
+            })
+    }, []);
 
     const handleOrderCreate = () => sendOrder().then(orderId => {
         clearOrder();
@@ -18,13 +36,19 @@ function OrderCreator({sendOrder, clearOrder, loadOrderCreatorData, hasOrderCrea
 
     return (
         <div className="order_creator">
-            {hasOrderCreatorDataLoaded ?
+            {done ?
                 <>
                     {hasModalShow && <Modal type={CONFIRM_ORDER_MODAL} action={handleOrderCreate}/>}
                     <Menu/>
                     <section className="order_creator__content">
-                        <PageHeader/>
-                        <TabControl/>
+                        {errorComponent ?
+                            errorComponent
+                            :
+                            <>
+                                <PageHeader/>
+                                <TabControl/>
+                            </>
+                        }
                     </section>
                 </>
                 :
@@ -38,7 +62,6 @@ OrderCreator.propTypes = {
     sendOrder: PropTypes.func,
     clearOrder: PropTypes.func,
     loadOrderCreatorData: PropTypes.func,
-    hasOrderCreatorDataLoaded: PropTypes.bool,
     hasModalShow: PropTypes.bool,
     history: PropTypes.object
 }
