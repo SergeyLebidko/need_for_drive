@@ -52,11 +52,6 @@ function stateMapsFactory(component) {
                     );
                 })()
             });
-        case 'OrderViewer':
-            return state => ({
-                order: state.order,
-                hasModalShow: state.hasModalShow
-            });
         case 'ModelTab':
             return state => ({
                 categoryList: state.categoryList,
@@ -67,6 +62,7 @@ function stateMapsFactory(component) {
                 order: state.order,
                 rateList: state.rateList
             });
+        case 'OrderViewer':
         case 'Modal':
             return state => ({
                 hasModalShow: state.hasModalShow

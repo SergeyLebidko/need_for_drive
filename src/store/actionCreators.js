@@ -433,18 +433,13 @@ export function loadOrderViewerData(orderId) {
         const statusList = await loadStatusList();
         dispatch(setStatusList(statusList));
 
-        let order;
-        try {
-            order = await loadOrder(orderId);
-        } catch (e) {
-            order = {};
-        }
-        if (order) dispatch(initOrder(order));
+        const order = await loadOrder(orderId);
+        dispatch(initOrder(order));
     }
 }
 
 // Создатель действия для отмены заказа
-export function cancelOrder(){
+export function cancelOrder() {
     return async (dispatch, getState) => {
         const canceledStatusObj = getState().statusList.find(status => status.id === CANCELED_ORDER_STATUS_ID);
         dispatch(setOrderStatus(canceledStatusObj));

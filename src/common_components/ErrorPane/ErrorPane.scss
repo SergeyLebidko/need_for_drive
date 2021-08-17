@@ -20,7 +20,8 @@
   }
 
   &__text {
-    font-size: 2em;
-    color: $gary;
+    font-size: 1.5em;
+    color: $gray;
+    margin-bottom: $step * 2;
   }
 }
