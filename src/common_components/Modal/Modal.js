@@ -4,7 +4,7 @@ import {createStoreConnectedComponent} from '../../store/connector';
 import './Modal.scss';
 
 export const CONFIRM_ORDER_MODAL = 'confirm_order_modal';
-export const REMOVE_ORDER_MODAL = 'cancel_order_modal';
+export const CANCEL_ORDER_MODAL = 'cancel_order_modal';
 
 function Modal({type, action, hasModalShow, hideModal}) {
     // Перед выполнением действия подтверждения обязательно закрываем модальное окно
@@ -27,7 +27,7 @@ function Modal({type, action, hasModalShow, hideModal}) {
             noCaption: 'Вернуться',
             noButtonClassNames: 'button button_dark_red button_main_round_border'
         },
-        [REMOVE_ORDER_MODAL]: {
+        [CANCEL_ORDER_MODAL]: {
             mainCaption: 'Отменить заказ?',
             yesCaption: 'Отменить',
             yesButtonClassNames: 'button button_dark_red button_main_round_border',

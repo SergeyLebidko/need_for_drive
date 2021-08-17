@@ -4,7 +4,7 @@ import Menu from '../../common_components/menu_components/Menu/Menu';
 import PageHeader from '../../common_components/PageHeader/PageHeader';
 import NumberPane from '../NumberPane/NumberPane';
 import OrderPane from '../OrderPane/OrderPane';
-import Modal, {REMOVE_ORDER_MODAL} from '../../common_components/Modal/Modal';
+import Modal, {CANCEL_ORDER_MODAL} from '../../common_components/Modal/Modal';
 import Preloader from '../../common_components/Preloader/Preloader';
 import ErrorPane from '../../common_components/ErrorPane/ErrorPane';
 import {createStoreConnectedComponent} from '../../store/connector';
@@ -19,10 +19,7 @@ function OrderViewer({loadOrderViewerData, history, match, cancelOrder, hasModal
 
     const toMainPage = () => history.push('/');
 
-    const getErrText = err => {
-        if (err.httpStatus === '') return err.httpText;
-        return `${err.httpStatus} ${err.httpText}`;
-    }
+    const getErrText = err => err.httpStatus === '' ? err.httpText : `${err.httpStatus} ${err.httpText}`;
 
     useEffect(() => {
         loadOrderViewerData(orderId)
@@ -33,12 +30,17 @@ function OrderViewer({loadOrderViewerData, history, match, cancelOrder, hasModal
             });
     }, []);
 
-    const handleOrderRemove = () => {
+    const handleOrderCancel = () => {
         setDone(false);
-        cancelOrder().then(() => {
-            setDone(true);
-            hideModal();
-        });
+        hideModal();
+        cancelOrder()
+            .then(() => {
+                setDone(true);
+            })
+            .catch(err => {
+                setError(err);
+                setDone(true);
+            });
     };
 
     // При рендеринге учитываем возможные ошибки и их характер (заказ не найден, сетевая ошибка и т.п.)
@@ -62,7 +64,7 @@ function OrderViewer({loadOrderViewerData, history, match, cancelOrder, hasModal
                         )
                         :
                         <>
-                            {hasModalShow && <Modal type={REMOVE_ORDER_MODAL} action={handleOrderRemove}/>}
+                            {hasModalShow && <Modal type={CANCEL_ORDER_MODAL} action={handleOrderCancel}/>}
                             <Menu/>
                             <section className="order_viewer__content">
                                 <PageHeader/>

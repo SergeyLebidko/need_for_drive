@@ -442,11 +442,9 @@ export function loadOrderViewerData(orderId) {
 export function cancelOrder() {
     return async (dispatch, getState) => {
         const canceledStatusObj = getState().statusList.find(status => status.id === CANCELED_ORDER_STATUS_ID);
-        dispatch(setOrderStatus(canceledStatusObj));
+        const order = {...getState().order, orderStatusId: canceledStatusObj};
 
-        const order = getState().order;
         const canceledOrder = await sendOrderData(order);
-
         dispatch(initOrder(canceledOrder));
     }
 }
