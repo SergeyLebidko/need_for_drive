@@ -46,7 +46,8 @@ function dispatchMapsFactory(component) {
             return dispatch => ({
                 sendOrder: () => dispatch(sendOrder()),
                 clearOrder: () => dispatch(initOrder({})),
-                loadOrderCreatorData: () => dispatch(loadOrderCreatorData())
+                loadOrderCreatorData: () => dispatch(loadOrderCreatorData()),
+                hideModal: () => dispatch(hideModal())
             });
         case 'OrderPane':
         case 'TabControl':

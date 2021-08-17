@@ -10,7 +10,7 @@ import {getErrText} from '../../utils/fetch_utils';
 import {createStoreConnectedComponent} from '../../store/connector';
 import './OrderCreator.scss';
 
-function OrderCreator({sendOrder, clearOrder, loadOrderCreatorData, hasModalShow, history}) {
+function OrderCreator({sendOrder, clearOrder, loadOrderCreatorData, hasModalShow, hideModal, history}) {
     let [done, setDone] = useState(false);
     let [errorComponent, setErrorComponent] = useState(null);
 
@@ -29,10 +29,24 @@ function OrderCreator({sendOrder, clearOrder, loadOrderCreatorData, hasModalShow
             })
     }, []);
 
-    const handleOrderCreate = () => sendOrder().then(orderId => {
-        clearOrder();
-        history.push(`/order/${orderId}`);
-    });
+    const handleOrderCreate = () => {
+        setDone(false);
+        hideModal();
+        sendOrder()
+            .then(orderId => {
+                clearOrder();
+                history.push(`/order/${orderId}`);
+            })
+            .catch(err => {
+                setErrorComponent(
+                    <ErrorPane
+                        text={`Не удалось сохранить заказ: ${getErrText(err)}. Попробуйте выполнить это позже`}
+                        action={() => setErrorComponent(null)}
+                        buttonCaption="Ок"
+                    />
+                );
+            });
+    };
 
     return (
         <div className="order_creator">
@@ -63,6 +77,7 @@ OrderCreator.propTypes = {
     clearOrder: PropTypes.func,
     loadOrderCreatorData: PropTypes.func,
     hasModalShow: PropTypes.bool,
+    hideModal: PropTypes.func,
     history: PropTypes.object
 }
 
