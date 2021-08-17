@@ -45,9 +45,8 @@ async function sendData(url, method, data) {
         },
         body: JSON.stringify(data)
     }
-    return fetch(url, options)
-        .then(response => response.json())
-        .then(json => json.data);
+    const response = await executeFetch(url, options);
+    return await extractData(response);
 }
 
 export async function loadCityList() {
