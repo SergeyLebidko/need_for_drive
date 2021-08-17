@@ -9,30 +9,26 @@ import Preloader from '../../common_components/Preloader/Preloader';
 import ErrorPane from '../../common_components/ErrorPane/ErrorPane';
 import {createStoreConnectedComponent} from '../../store/connector';
 import './OrderViewer.scss';
+import NoMatch from "../../common_components/NoMatch/NoMatch";
 
 function OrderViewer({loadOrderViewerData, history, match, cancelOrder, hasModalShow, hideModal}) {
     let [done, setDone] = useState(false);
-    let [errorComponent, setErrorComponent] = useState(null);
+    let [error, setError] = useState(null);
 
     const {params: {orderId}} = match;
+
     const toMainPage = () => history.push('/');
+
+    const getErrText = err => {
+        if (err.httpStatus === '') return err.httpText;
+        return `${err.httpStatus} ${err.httpText}`;
+    }
 
     useEffect(() => {
         loadOrderViewerData(orderId)
             .then(() => setDone(true))
             .catch(err => {
-                const {httpStatus, httpText} = err;
-                let errorText;
-                if (httpStatus) {
-                    if (httpStatus === 404) {
-                        errorText = `Заказ с номером ${orderId} не найден...`;
-                    } else {
-                        errorText = `Произошла ошибка: ${httpStatus}:${httpText}. Попробуйте повторить запрос позже`
-                    }
-                } else {
-                    errorText = `Произошла непредвиденная ошибка: ${err.message}`;
-                }
-                setErrorComponent(<ErrorPane text={errorText} buttonCaption="На главную" action={toMainPage}/>);
+                setError(err);
                 setDone(true);
             });
     }, []);
@@ -48,27 +44,37 @@ function OrderViewer({loadOrderViewerData, history, match, cancelOrder, hasModal
     return (
         <div className="order_viewer">
             {done ?
-                <>
-                    {hasModalShow && <Modal type={REMOVE_ORDER_MODAL} action={handleOrderRemove}/>}
-                    <Menu/>
-                    <section className="order_viewer__content">
-                        {errorComponent ?
-                            errorComponent
-                            :
-                            <>
+                (error ?
+                        (error.httpStatus === 404 ?
+                                <NoMatch history={history} location={{pathname: `/order/${orderId}`}}/>
+                                :
+                                <>
+                                    <Menu/>
+                                    <section className="order_viewer__content">
+                                        <ErrorPane
+                                            text={`Произошла ошибка: ${getErrText(error)}. Попробуйте выполнить запрос позже...`}
+                                            buttonCaption="На главную"
+                                            action={toMainPage}
+                                        />
+                                    </section>
+                                </>
+                        )
+                        :
+                        <>
+                            {hasModalShow && <Modal type={REMOVE_ORDER_MODAL} action={handleOrderRemove}/>}
+                            <Menu/>
+                            <section className="order_viewer__content">
                                 <PageHeader/>
                                 <NumberPane orderNumber={orderId}/>
                                 <OrderPane/>
-                            </>
-                        }
-
-                    </section>
-                </>
+                            </section>
+                        </>
+                )
                 :
                 <Preloader/>
             }
         </div>
-    )
+    );
 }
 
 OrderViewer.propTypes = {
