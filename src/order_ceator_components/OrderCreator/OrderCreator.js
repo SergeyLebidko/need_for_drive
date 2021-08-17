@@ -40,11 +40,12 @@ function OrderCreator({sendOrder, clearOrder, loadOrderCreatorData, hasModalShow
             .catch(err => {
                 setErrorComponent(
                     <ErrorPane
-                        text={`Не удалось сохранить заказ: ${getErrText(err)}. Попробуйте выполнить это позже`}
+                        text={`Не удалось сохранить заказ: ${getErrText(err)}. Попробуйте сделать это позже...`}
                         action={() => setErrorComponent(null)}
                         buttonCaption="Ок"
                     />
                 );
+                setDone(true);
             });
     };
 
