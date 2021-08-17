@@ -15,9 +15,13 @@ Geocode.setLanguage('ru');
 Geocode.setRegion('ru');
 
 async function loadData(url) {
-    return fetch(url, {headers: DEFAULT_REQUEST_HEADERS})
-        .then(response => response.json())
-        .then(json => json.data);
+    const response = await fetch(url, {headers: DEFAULT_REQUEST_HEADERS});
+    if (!response.ok) {
+        const text = await response.text();
+        return Promise.reject({httpStatus: response.status, httpText: text});
+    }
+    const json = await response.json();
+    return json.data;
 }
 
 async function sendData(url, method, data) {
