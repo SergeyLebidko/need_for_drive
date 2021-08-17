@@ -28,29 +28,7 @@ function stateMapsFactory(component) {
         case 'OrderCreator':
             return state => ({
                 order: state.order,
-                hasModalShow: state.hasModalShow,
-                hasOrderCreatorDataLoaded: (function () {
-                    let {
-                        cityList,
-                        pointList,
-                        cityCoords,
-                        pointCoords,
-                        modelList,
-                        categoryList,
-                        rateList,
-                        statusList
-                    } = state;
-                    return (
-                        cityList.length > 0 &&
-                        pointList.length > 0 &&
-                        cityCoords.length > 0 &&
-                        pointCoords.length > 0 &&
-                        modelList.length > 0 &&
-                        categoryList.length > 0 &&
-                        rateList.length > 0 &&
-                        statusList.length > 0
-                    );
-                })()
+                hasModalShow: state.hasModalShow
             });
         case 'ModelTab':
             return state => ({
