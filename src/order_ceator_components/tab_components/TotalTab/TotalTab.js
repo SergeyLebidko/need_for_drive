@@ -56,9 +56,9 @@ function TotalTab({order}) {
                     <span className="total_tab__model_field">{name}</span>
                 </li>
                 }
-                {number &&
+                {(number && number !== 'undefined') &&
                 <li>
-                    {number && <span className="total_tab__auto_number_field">{number}</span>}
+                    <span className="total_tab__auto_number_field">{number}</span>
                 </li>
                 }
                 {tank &&
