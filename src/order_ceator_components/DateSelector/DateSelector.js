@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import ru from 'date-fns/locale/ru';
 import DatePicker, {setDefaultLocale} from 'react-datepicker';
 import {createStoreConnectedComponent} from '../../store/connector';
+import {extractDateParts} from '../../utils/common_utils';
 import 'react-datepicker/dist/react-datepicker.css';
 import './DateSelector.scss';
 
@@ -14,62 +15,52 @@ function DateSelector({order, setOrderDateFrom, setOrderDateTo, clearOrderDateFr
     let [dateFrom, setDateFrom] = useState(order.dateFrom || null);
     let [dateTo, setDateTo] = useState(order.dateTo || null);
 
-    let extract = date => [
-        date.getFullYear(),
-        date.getMonth(),
-        date.getDate(),
-        date.getHours(),
-        date.getMinutes(),
-        date.getSeconds(),
-        date.getMilliseconds()
-    ];
-
-    let shortCorrectDate = date => {
-        let [year, mon, day, hour, min] = extract(date);
+    const shortCorrectDate = date => {
+        const [year, mon, day, hour, min] = extractDateParts(date);
         return new Date(year, mon, day, hour, min);
     };
 
-    let fullCorrectDate = date => {
-        let [year, mon, day] = extract(date);
+    const fullCorrectDate = date => {
+        const [year, mon, day] = extractDateParts(date);
         return new Date(year, mon, day);
     }
 
-    let incDateByInterval = date => {
-        let [year, mon, day, hour, min, sec, ms] = extract(date);
-        let result = new Date(year, mon, day, hour, min, sec, ms);
+    const incDateByInterval = date => {
+        const [year, mon, day, hour, min, sec, ms] = extractDateParts(date);
+        const result = new Date(year, mon, day, hour, min, sec, ms);
         result.setMinutes(result.getMinutes() + MINUTES_INTERVAL);
         return result;
     }
 
     // Метод возвращает дату и время большие или равные текущим, но при этом содержащие целое количество интервалов MINUTES_INTERVAL
-    function getNormalizedDate() {
-        let now = shortCorrectDate(new Date());
-        let result = fullCorrectDate(new Date());
+    const getNormalizedDate = () => {
+        const now = shortCorrectDate(new Date());
+        const result = fullCorrectDate(new Date());
         while (+result < +now) result.setMinutes(result.getMinutes() + MINUTES_INTERVAL);
         return result;
     }
 
     // Фильтр для поля from, отсекающий даты, меньше текущей
-    let dateFromFilter = value => +value >= +fullCorrectDate(new Date());
+    const dateFromFilter = value => +value >= +fullCorrectDate(new Date());
 
     // Фильтр для поля from, отсекающий время меньше текущего
-    let timeFromFilter = value => +value >= +shortCorrectDate(new Date());
+    const timeFromFilter = value => +value >= +shortCorrectDate(new Date());
 
     // Фильтр для поля to, отсекающий время меньше времени в поле from с учетом допустимого интервала
-    let timeToFilter = value => {
-        let [year, mon, day, hour, min] = extract(dateFrom);
-        let limit = incDateByInterval(new Date(year, mon, day, hour, min));
+    const timeToFilter = value => {
+        const [year, mon, day, hour, min] = extractDateParts(dateFrom);
+        const limit = incDateByInterval(new Date(year, mon, day, hour, min));
 
         // Приходится учитывать весьма странную особенность работы DatePicker при фильтрации времени...
         if (+fullCorrectDate(value) === +fullCorrectDate(new Date())) {
-            let [year, mon, day] = extract(dateFrom);
+            const [year, mon, day] = extractDateParts(dateFrom);
             return +(new Date(year, mon, day, value.getHours(), value.getMinutes())) >= +limit;
         }
 
         return +shortCorrectDate(value) >= +limit;
     }
 
-    let handleChangeDateFrom = date => {
+    const handleChangeDateFrom = date => {
         if (!date) {
             setDateFrom(null);
             setDateTo(null);
@@ -89,7 +80,7 @@ function DateSelector({order, setOrderDateFrom, setOrderDateTo, clearOrderDateFr
         clearOrderDateTo();
     };
 
-    let handleChangeDateTo = date => {
+    const handleChangeDateTo = date => {
         if (!date) {
             setDateTo(null);
             clearOrderDateTo();
@@ -97,7 +88,7 @@ function DateSelector({order, setOrderDateFrom, setOrderDateTo, clearOrderDateFr
         }
         let _date = shortCorrectDate(date);
         if (+_date < +dateFrom) {
-            let [year, mon, day, hour, min] = extract(dateFrom);
+            const [year, mon, day, hour, min] = extractDateParts(dateFrom);
             _date = incDateByInterval(new Date(year, mon, day, hour, min));
         }
         setDateTo(_date);

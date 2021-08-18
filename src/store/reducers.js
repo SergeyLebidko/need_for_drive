@@ -73,6 +73,15 @@ export function optionList(state = [], action) {
     }
 }
 
+export function statusList(state = [], action) {
+    switch (action.type) {
+        case act.SET_STATUS_LIST:
+            return action.statusList;
+        default:
+            return state;
+    }
+}
+
 export function hasModalShow(state = false, action) {
     switch (action.type) {
         case act.SHOW_MODAL:
@@ -121,18 +130,17 @@ export function pointCoords(state = [], action) {
 }
 
 export function order(state = null, action) {
-    let _order;
-    if (state) _order = {...state};
+    const _order = state ? {...state} : null;
     switch (action.type) {
         case act.INIT_ORDER:
             return action.order;
         case act.SET_ORDER_CITY: {
-            let {id, name} = action.city;
+            const {id, name} = action.city;
             _order.cityId = {id, name}
             return _order;
         }
         case act.SET_ORDER_POINT: {
-            let {id, address, name} = action.point;
+            const {id, address, name} = action.point;
             _order.pointId = {id, address, name}
             return _order
         }
@@ -145,7 +153,7 @@ export function order(state = null, action) {
             return _order;
         }
         case act.SET_ORDER_MODEL: {
-            let _model = {...action.model};
+            const _model = {...action.model};
             delete _model.createdAt;
             delete _model.updatedAt;
             _order.carId = _model;
@@ -172,7 +180,7 @@ export function order(state = null, action) {
             return _order;
         }
         case act.SET_ORDER_RATE: {
-            let _rate = action.rate;
+            const _rate = action.rate;
             delete _rate.updatedAt;
             delete _rate.createdAt;
             _order.rateId = _rate;
@@ -204,6 +212,10 @@ export function order(state = null, action) {
         }
         case act.CLEAR_ORDER_PRICE: {
             delete _order.price;
+            return _order;
+        }
+        case act.SET_ORDER_STATUS: {
+            _order.orderStatusId = action.status;
             return _order;
         }
         default:

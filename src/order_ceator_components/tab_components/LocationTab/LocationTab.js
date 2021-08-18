@@ -6,8 +6,8 @@ import {createStoreConnectedComponent} from '../../../store/connector';
 import './LocationTab.scss';
 
 function LocationTab({order, clearTabsAfterLocation}) {
-    let {cityId: selectedCity, pointId: selectedPoint} = order;
-    let isFirstRender = useRef(true);
+    const {cityId: selectedCity, pointId: selectedPoint} = order;
+    const isFirstRender = useRef(true);
 
     // При изменении данных вкладки - сбрасываем данные последующих вкладок (как того требует ТЗ)
     useEffect(() => {

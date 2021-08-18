@@ -7,7 +7,7 @@ export const CITY_LABEL = 'cl';
 export const POINT_LABEL = 'pl';
 
 function MapLabel({type, handleClick}) {
-    let labelClassNames = classNames(
+    const labelClassNames = classNames(
         'map_label',
         {
             'city_label': type === CITY_LABEL,

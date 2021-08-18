@@ -14,7 +14,9 @@ import {hasSelectedLocation, hasSelectedModel, hasSelectedExtra} from '../../uti
 import './TabControl.scss';
 
 function TabControl({order, showModal}) {
-    let [mode, setMode] = useState(LOCATION_MODE);
+    let [mode, setMode] = useState(
+        hasSelectedLocation(order) && hasSelectedModel(order) && hasSelectedExtra(order) ? TOTAL_MODE : LOCATION_MODE
+    );
 
     const TAB_SELECTOR = {
         [LOCATION_MODE]: LocationTab,
@@ -22,7 +24,7 @@ function TabControl({order, showModal}) {
         [EXTRA_MODE]: ExtraTab,
         [TOTAL_MODE]: TotalTab
     }
-    let TabComponent = TAB_SELECTOR[mode];
+    const TabComponent = TAB_SELECTOR[mode];
 
     const BUTTON_PROPS_SELECTOR = {
         [LOCATION_MODE]: {

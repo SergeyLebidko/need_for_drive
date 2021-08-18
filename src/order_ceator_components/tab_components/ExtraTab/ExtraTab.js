@@ -11,11 +11,11 @@ const ALL_COLORS_ID = 'all_colors';
 
 function ExtraTab({order, rateList, setOrderColor, clearOrderColor, setOrderRate, setOrderPrice, clearOrderPrice}) {
     let colors;
-    let {carId, color, rateId} = order;
+    const {carId, color, rateId} = order;
     if (carId) colors = carId.colors;
 
     useEffect(() => {
-        let nextPrice = calcOrderPrice(order);
+        const nextPrice = calcOrderPrice(order);
 
         // Так как может сложиться ситуация, при которой цена заказа равна 0 - используем явную проверку на неравенство с null
         if ('price' in order) {
@@ -45,7 +45,7 @@ function ExtraTab({order, rateList, setOrderColor, clearOrderColor, setOrderRate
     }
 
     // Формируем данные для селектора тарифов
-    let ratesForSelector = [];
+    const ratesForSelector = [];
     let defaultRateIndex = -1;
     rateList.forEach((rate, index) => {
         ratesForSelector.push({
@@ -55,7 +55,7 @@ function ExtraTab({order, rateList, setOrderColor, clearOrderColor, setOrderRate
         if (rateId && rateId.id === rate.id) defaultRateIndex = index;
     });
 
-    let handleColorSelect = selectedColor => {
+    const handleColorSelect = selectedColor => {
         if (selectedColor.id === ALL_COLORS_ID) {
             clearOrderColor();
             return;
@@ -63,7 +63,7 @@ function ExtraTab({order, rateList, setOrderColor, clearOrderColor, setOrderRate
         setOrderColor(selectedColor.name);
     }
 
-    let handleRateSelect = selectedRate => setOrderRate(selectedRate.rate);
+    const handleRateSelect = selectedRate => setOrderRate(selectedRate.rate);
 
     return (
         <div className="extra_tab">

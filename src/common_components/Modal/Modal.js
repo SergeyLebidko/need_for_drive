@@ -4,11 +4,11 @@ import {createStoreConnectedComponent} from '../../store/connector';
 import './Modal.scss';
 
 export const CONFIRM_ORDER_MODAL = 'confirm_order_modal';
-export const REMOVE_ORDER_MODAL = 'cancel_order_modal';
+export const CANCEL_ORDER_MODAL = 'cancel_order_modal';
 
 function Modal({type, action, hasModalShow, hideModal}) {
     // Перед выполнением действия подтверждения обязательно закрываем модальное окно
-    let handleYesButtonClick = () => {
+    const handleYesButtonClick = () => {
         hideModal();
         action();
     }
@@ -17,7 +17,7 @@ function Modal({type, action, hasModalShow, hideModal}) {
         if (hasModalShow) hideModal();
     }, [hasModalShow]);
 
-    let handleNoButtonClick = () => hideModal();
+    const handleNoButtonClick = () => hideModal();
 
     const PROPS_SELECTOR = {
         [CONFIRM_ORDER_MODAL]: {
@@ -27,7 +27,7 @@ function Modal({type, action, hasModalShow, hideModal}) {
             noCaption: 'Вернуться',
             noButtonClassNames: 'button button_dark_red button_main_round_border'
         },
-        [REMOVE_ORDER_MODAL]: {
+        [CANCEL_ORDER_MODAL]: {
             mainCaption: 'Отменить заказ?',
             yesCaption: 'Отменить',
             yesButtonClassNames: 'button button_dark_red button_main_round_border',
@@ -35,7 +35,7 @@ function Modal({type, action, hasModalShow, hideModal}) {
             noButtonClassNames: 'button button_main_accent button_main_round_border'
         }
     }
-    let {mainCaption, yesCaption, noCaption, yesButtonClassNames, noButtonClassNames} = PROPS_SELECTOR[type];
+    const {mainCaption, yesCaption, noCaption, yesButtonClassNames, noButtonClassNames} = PROPS_SELECTOR[type];
 
     return (
         <div className="confirm_modal">

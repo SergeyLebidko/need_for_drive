@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import './NoMatch.scss';
 
 function NoMatch({history, location}) {
-    let handleToMainPageButtonClick = () => history.push('/');
+    const handleToMainPageButtonClick = () => history.push('/');
 
     return (
         <div className="no_match">

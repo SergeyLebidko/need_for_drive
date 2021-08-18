@@ -1,54 +1,104 @@
-import React from 'react';
+import React, {useState} from 'react';
 import PropTypes from 'prop-types';
-import car from '../../../content/images/car.png';
+import {createStoreConnectedComponent} from '../../../store/connector';
+import {extractDateParts} from '../../../utils/common_utils';
+import {
+    NEW_ORDER_STATUS_ID,
+    CONFIRMED_ORDER_STATUS_ID,
+    CANCELED_ORDER_STATUS_ID,
+    TEMP_ORDER_STATUS_ID,
+    TEST_ORDER_STATUS_ID
+} from '../../../settings';
+import {DOMEN} from '../../../urls';
 import './TotalTab.scss';
 
-// TODO При реализации функциональности компонент будет получать объект заказа из хранилища Redux. Сейчас нужен для тестирования верстки
 function TotalTab({order}) {
+    let [hasShowPhoto, setHasShowPhoto] = useState(true);
+
+    let name, number, tank, path;
+    const {carId, dateFrom, orderStatusId} = order;
+    if (carId) {
+        name = carId.name;
+        number = carId.number;
+        tank = carId.tank;
+        path = carId.thumbnail.path;
+    }
+
+    const format = value => ('0' + value).slice(-2);
+
+    const getFormattedDate = timestamp => {
+        const [year, mon, day, hour, min] = extractDateParts(new Date(timestamp));
+        return `${format(day)}.${format(mon)}.${year} ${format(hour)}:${format(min)}`;
+    }
+
+    const ORDER_STATUS_SELECTOR = {
+        [NEW_ORDER_STATUS_ID]: 'Ваш заказ создан',
+        [CONFIRMED_ORDER_STATUS_ID]: 'Ваш заказ подтвержден',
+        [CANCELED_ORDER_STATUS_ID]: 'Ваш заказ отменен',
+        [TEMP_ORDER_STATUS_ID]: 'Временный заказ',
+        [TEST_ORDER_STATUS_ID]: 'Тестовый заказ'
+    }
+
+    const handlePhotoLoadError = () => setHasShowPhoto(false);
+
     return (
         <div className="total_tab">
             <ul className="total_tab__details_block">
-                {('id' in order) &&
+                {orderStatusId &&
                 <li>
-                    <span className="total_tab__confirm_caption">Ваш заказ подтвержден</span>
+                    <span
+                        className="total_tab__confirm_caption">{ORDER_STATUS_SELECTOR[orderStatusId.id]}
+                    </span>
                 </li>
                 }
+                {name &&
                 <li>
-                    <span className="total_tab__model_field">Hyundai, i30 N</span>
+                    <span className="total_tab__model_field">{name}</span>
                 </li>
+                }
+                {(number && number !== 'undefined') &&
                 <li>
-                    <span className="total_tab__auto_number_field">K 761 HA 73</span>
+                    <span className="total_tab__auto_number_field">{number}</span>
                 </li>
+                }
+                {tank &&
                 <li>
                     <span className="total_tab__gas_caption">
                         Топливо
                     </span>
                     <span className="total_tab__gas_value">
-                        100%
+                        {tank}%
                     </span>
                 </li>
+                }
+                {dateFrom &&
                 <li>
                     <span className="total_tab__available_caption">
                         Доступна с
                     </span>
                     <span className="total_tab__available_value">
-                        01.08.2021 12:00
+                        {getFormattedDate(dateFrom)}
                     </span>
                 </li>
+                }
             </ul>
             <div className="total_tab__photo_block">
-                <img src={car}/>
+                {hasShowPhoto ?
+                    (path && <img
+                        src={path[0] === '/' ? `${DOMEN}${path}` : path}
+                        onError={handlePhotoLoadError}
+                        alt="Фото автомобиля"
+                    />)
+                    :
+                    <span className="total_tab__no_photo">Нет фото...</span>
+                }
             </div>
         </div>
     )
-}
-
-TotalTab.defaultProps = {
-    order: {}
 }
 
 TotalTab.propTypes = {
     order: PropTypes.object
 }
 
-export default TotalTab;
+export default createStoreConnectedComponent('TotalTab')(TotalTab);

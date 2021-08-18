@@ -7,10 +7,10 @@ import {createStoreConnectedComponent} from '../../store/connector';
 import './Title.scss';
 
 function Title({lang, city, history}) {
-    let {serviceName, slogan, reservationButton} = LANG_PACK['Title'][lang];
-    let currentYear = (new Date()).getFullYear();
+    const {serviceName, slogan, reservationButton} = LANG_PACK['Title'][lang];
+    const currentYear = (new Date()).getFullYear();
 
-    let handleReservationButtonClick = () => history.push('/order');
+    const handleReservationButtonClick = () => history.push('/order');
 
     return (
         <section className="title">

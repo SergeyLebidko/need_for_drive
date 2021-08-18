@@ -9,11 +9,11 @@ import './OrderDetailsViewer.scss';
 function OrderDetailsViewer({order, button, optionList}) {
     let priceString;
     let priceBlockClasses = 'order_details_viewer__price';
-    let {carId} = order;
+    const {carId} = order;
     if (carId) {
-        let {priceMin, priceMax} = carId;
+        const {priceMin, priceMax} = carId;
         if ('price' in order) {
-            let {price} = order;
+            const {price} = order;
             priceString = `Цена: ${getFormattedPrice(order.price)}р.`;
             priceString += (price < priceMin ? ` меньше минимальной (${priceMin}р.)` : '');
             priceString += (price > priceMax ? ` больше максимальной (${priceMax}р.)` : '');
@@ -23,7 +23,7 @@ function OrderDetailsViewer({order, button, optionList}) {
         }
     }
 
-    let options = [];
+    const options = [];
     optionList.forEach(option => {
         if (order[option.field]) options.push(option.name);
     });
@@ -31,7 +31,7 @@ function OrderDetailsViewer({order, button, optionList}) {
     let duration;
     if (order.dateFrom && order.dateTo) {
         duration = '';
-        let {weekCount, dayCount, hourCount, minCount} = getDuration(order.dateFrom, order.dateTo);
+        const {weekCount, dayCount, hourCount, minCount} = getDuration(order.dateFrom, order.dateTo);
         if (weekCount) duration += `${weekCount}нед`;
         if (dayCount) duration += ` ${dayCount}д`;
         if (hourCount) duration += ` ${hourCount}ч`;

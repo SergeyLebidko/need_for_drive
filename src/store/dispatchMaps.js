@@ -19,7 +19,12 @@ import {
     setOrderDateTo,
     clearOrderDateTo,
     setOrderPrice,
-    clearOrderPrice, clearTabsAfterLocation, clearTabsAfterModel
+    clearOrderPrice,
+    clearTabsAfterLocation,
+    clearTabsAfterModel,
+    sendOrder,
+    initOrder,
+    loadOrderViewerData, cancelOrder
 } from './actionCreators';
 
 function dispatchMapsFactory(component) {
@@ -39,7 +44,10 @@ function dispatchMapsFactory(component) {
             });
         case 'OrderCreator':
             return dispatch => ({
-                loadOrderCreatorData: () => dispatch(loadOrderCreatorData())
+                sendOrder: () => dispatch(sendOrder()),
+                clearOrder: () => dispatch(initOrder({})),
+                loadOrderCreatorData: () => dispatch(loadOrderCreatorData()),
+                hideModal: () => dispatch(hideModal())
             });
         case 'OrderPane':
         case 'TabControl':
@@ -90,6 +98,12 @@ function dispatchMapsFactory(component) {
                 setOrderDateTo: date => dispatch(setOrderDateTo(date)),
                 clearOrderDateFrom: () => dispatch(clearOrderDateFrom()),
                 clearOrderDateTo: () => dispatch(clearOrderDateTo())
+            });
+        case 'OrderViewer':
+            return dispatch => ({
+                loadOrderViewerData: orderId => dispatch(loadOrderViewerData(orderId)),
+                cancelOrder: () => dispatch(cancelOrder()),
+                hideModal: () => dispatch(hideModal())
             });
         default:
             return null;

@@ -27,22 +27,7 @@ function stateMapsFactory(component) {
             });
         case 'OrderCreator':
             return state => ({
-                hasModalShow: state.hasModalShow,
-                hasOrderCreatorDataLoaded: (function () {
-                    let {cityList, pointList, cityCoords, pointCoords, modelList, categoryList, rateList} = state;
-                    return (
-                        cityList.length > 0 &&
-                        pointList.length > 0 &&
-                        cityCoords.length > 0 &&
-                        pointCoords.length > 0 &&
-                        modelList.length > 0 &&
-                        categoryList.length > 0 &&
-                        rateList.length > 0
-                    );
-                })()
-            });
-        case 'OrderViewer':
-            return state => ({
+                order: state.order,
                 hasModalShow: state.hasModalShow
             });
         case 'ModelTab':
@@ -55,6 +40,7 @@ function stateMapsFactory(component) {
                 order: state.order,
                 rateList: state.rateList
             });
+        case 'OrderViewer':
         case 'Modal':
             return state => ({
                 hasModalShow: state.hasModalShow
@@ -85,7 +71,9 @@ function stateMapsFactory(component) {
                 optionList: state.optionList
             });
         case 'LocationTab':
+        case 'TotalTab':
         case 'DateSelector':
+        case 'OrderPane':
             return state => ({
                 order: state.order
             });

@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import './PopupItem.scss';
 
 function PopupItem({item, fieldName, hasSelect, handleClick, handleMouseEnter}) {
-    let itemClassNames = classNames('popup_item', {'selected_popup_item': hasSelect});
+    const itemClassNames = classNames('popup_item', {'selected_popup_item': hasSelect});
 
     return (
         <li className={itemClassNames} onClick={handleClick} onMouseEnter={handleMouseEnter}>

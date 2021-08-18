@@ -10,29 +10,29 @@ import {createStoreConnectedComponent} from "../../../store/connector";
 function Slider({sliderData}) {
     let [index, setIndex] = useState(0);
 
-    let getNextIndex = index => index === (sliderData.length - 1) ? 0 : index + 1;
-    let getPrevIndex = index => index ? index - 1 : (sliderData.length - 1);
+    const getNextIndex = index => index === (sliderData.length - 1) ? 0 : index + 1;
+    const getPrevIndex = index => index ? index - 1 : (sliderData.length - 1);
 
     // Добавляем автоматическую перемотку слайдов по таймеру (каждые 10 сек)
     useEffect(() => {
         if (!sliderData.length) return;
-        let interval = setInterval(() => {
+        const interval = setInterval(() => {
             setIndex(oldIndex => getNextIndex(oldIndex));
         }, 10000);
         return () => clearInterval(interval);
     }, [sliderData]);
 
-    let handleRightArrowClick = () => setIndex(oldIndex => getNextIndex(oldIndex));
-    let handleLeftArrowClick = () => setIndex(oldIndex => getPrevIndex(oldIndex));
+    const handleRightArrowClick = () => setIndex(oldIndex => getNextIndex(oldIndex));
+    const handleLeftArrowClick = () => setIndex(oldIndex => getPrevIndex(oldIndex));
 
     // При клике на точку - реализовываем "перемотку" до нужного слайда
-    let handleDotClick = dotIndex => {
+    const handleDotClick = dotIndex => {
         if (dotIndex === index) return;
-        let distance = Math.abs(dotIndex - index);
+        const distance = Math.abs(dotIndex - index);
         if (distance === 1 || distance === (sliderData.length - 1)) setIndex(dotIndex);
 
         // Если слайды не находятся рядом, то перематываем их в несколько шагов
-        let interval = setInterval(() => {
+        const interval = setInterval(() => {
             setIndex(oldIndex => {
                 if (oldIndex < dotIndex) return oldIndex + 1;
                 if (oldIndex > dotIndex) return oldIndex - 1;
@@ -42,9 +42,9 @@ function Slider({sliderData}) {
         }, 300);
     };
 
-    let prevIndex = getPrevIndex(index);
-    let nextIndex = getNextIndex(index);
-    let currentSlidesData = [
+    const prevIndex = getPrevIndex(index);
+    const nextIndex = getNextIndex(index);
+    const currentSlidesData = [
         {
             ...sliderData[prevIndex],
             position: PREV_SLIDE,

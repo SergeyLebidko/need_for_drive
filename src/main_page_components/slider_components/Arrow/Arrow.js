@@ -9,7 +9,7 @@ export const TO_LEFT_ARROW = 'tl';
 export const TO_RIGHT_ARROW = 'tr';
 
 function Arrow({direction, handleClick}) {
-    let containerClassNames = classNames('arrow', {
+    const containerClassNames = classNames('arrow', {
         'arrow_left': direction === TO_LEFT_ARROW,
         'arrow_right': direction === TO_RIGHT_ARROW
     });
@@ -17,7 +17,7 @@ function Arrow({direction, handleClick}) {
         [TO_LEFT_ARROW]: <ArrowLeft/>,
         [TO_RIGHT_ARROW]: <ArrowRight/>
     }
-    let arrow = ARROW_SELECTOR[direction];
+    const arrow = ARROW_SELECTOR[direction];
 
     return (
         <div className={containerClassNames} onClick={handleClick}>

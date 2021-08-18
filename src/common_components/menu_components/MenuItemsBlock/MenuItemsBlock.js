@@ -10,8 +10,8 @@ import {LANG_PACK} from '../../../langPack';
 import './MenuItemsBlock.scss';
 
 function MenuItemsBlock({hasOpened, lang}) {
-    let {menuItems} = LANG_PACK['MenuItemsBlock'][lang];
-    let containerClassNames = classNames('menu_items_block', {'menu_items_block_visible': hasOpened});
+    const {menuItems} = LANG_PACK['MenuItemsBlock'][lang];
+    const containerClassNames = classNames('menu_items_block', {'menu_items_block_visible': hasOpened});
 
     return (
         <div className={containerClassNames}>

@@ -14,7 +14,7 @@ function ModelSelector({order, modelList, setOrderModel, clearTabsAfterModel}) {
         setCurrentShowLimit(SHOW_LIMIT);
     }, [modelList])
 
-    let handleCardClick = model => {
+    const handleCardClick = model => {
         setSelectedModel(model);
         setOrderModel(model);
 
@@ -22,7 +22,7 @@ function ModelSelector({order, modelList, setOrderModel, clearTabsAfterModel}) {
         clearTabsAfterModel();
     };
 
-    let handleMoreButtonClick = () => setCurrentShowLimit(oldLimit => oldLimit + SHOW_LIMIT);
+    const handleMoreButtonClick = () => setCurrentShowLimit(oldLimit => oldLimit + SHOW_LIMIT);
 
     return (
         <div className="model_selector">

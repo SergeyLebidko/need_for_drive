@@ -8,9 +8,9 @@ import './ModelCard.scss';
 function ModelCard({model, hasSelected, handleClick}) {
     let [hasCarImage, setHasCarImage] = useState(true);
 
-    let handleErrorImageLoad = () => setHasCarImage(false);
+    const handleErrorImageLoad = () => setHasCarImage(false);
 
-    let cardClassNames = classNames('model_card', {
+    const cardClassNames = classNames('model_card', {
         'selected_card': hasSelected
     });
 
@@ -26,7 +26,7 @@ function ModelCard({model, hasSelected, handleClick}) {
                 <img
                     src={model.thumbnail.path[0] === '/' ? `${DOMEN}${model.thumbnail.path}` : model.thumbnail.path}
                     className="model_card__photo"
-                    alt={model.name}
+                    alt="Фото автомобиля"
                     onError={handleErrorImageLoad}
                 />
                 :

@@ -7,7 +7,7 @@ import './PlaceSelector.scss';
 function PlaceSelector({order, cityList, pointList, setOrderCity, setOrderPoint, clearOrderCity, clearOrderPoint}) {
     let [pointListToSelector, setPointListToSelector] = useState([]);
 
-    let {cityId: selectedCity, pointId: selectedPoint} = order;
+    const {cityId: selectedCity, pointId: selectedPoint} = order;
 
     // Учитываем, что изменение выбранного города может произойти и от компонента карты
     useEffect(() => {
@@ -18,7 +18,7 @@ function PlaceSelector({order, cityList, pointList, setOrderCity, setOrderPoint,
         }
     }, [selectedCity]);
 
-    let handleCitySelect = city => {
+    const handleCitySelect = city => {
         if (city) {
             setOrderCity(city);
             clearOrderPoint();
@@ -28,7 +28,7 @@ function PlaceSelector({order, cityList, pointList, setOrderCity, setOrderPoint,
         }
     }
 
-    let handlePointSelect = point => {
+    const handlePointSelect = point => {
         if (point) {
             setOrderPoint(point);
         } else {
