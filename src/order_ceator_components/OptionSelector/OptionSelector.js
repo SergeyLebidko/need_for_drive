@@ -44,8 +44,8 @@ function OptionSelector({order, optionList, setOrderOptions}) {
             <ul>
                 {options.map(
                     option => {
-                        let inputId = getRandomString();
-                        let optionClassNames = classNames('option_selector__option', {'checked_option': option.value})
+                        const inputId = getRandomString();
+                        const optionClassNames = classNames('option_selector__option', {'checked_option': option.value})
                         return (
                             <li key={option.field} className="option_selector__item">
                                 <input type="checkbox" id={inputId}/>

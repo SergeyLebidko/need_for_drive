@@ -13,7 +13,7 @@ function ModelTab({categoryList, modelList}) {
 
     useEffect(() => setModelListForShow(modelList), [modelList]);
 
-    let handleCategorySelect = selectedCategory => {
+    const handleCategorySelect = selectedCategory => {
         if (selectedCategory.id === ALL_MODELS_ID) {
             setModelListForShow(modelList);
         } else {

@@ -27,7 +27,7 @@ function RadioSelector({caption, items, onlyColumn, handleSelect, defaultSelecte
             <ul className={itemsContainerClassNames}>
                 {items.map(
                     (item, index) => {
-                        let radioId = getRandomString('alphabetic');
+                        const radioId = getRandomString();
                         return (
                             <li key={item.name} className="radio_selector__item">
                                 <input type="radio" name={`radio_selector_${radioGroupName}`} id={radioId}/>

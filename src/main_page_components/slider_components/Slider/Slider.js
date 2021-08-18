@@ -32,7 +32,7 @@ function Slider({sliderData}) {
         if (distance === 1 || distance === (sliderData.length - 1)) setIndex(dotIndex);
 
         // Если слайды не находятся рядом, то перематываем их в несколько шагов
-        let interval = setInterval(() => {
+        const interval = setInterval(() => {
             setIndex(oldIndex => {
                 if (oldIndex < dotIndex) return oldIndex + 1;
                 if (oldIndex > dotIndex) return oldIndex - 1;

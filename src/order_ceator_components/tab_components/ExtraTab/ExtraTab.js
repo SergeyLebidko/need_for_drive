@@ -45,7 +45,7 @@ function ExtraTab({order, rateList, setOrderColor, clearOrderColor, setOrderRate
     }
 
     // Формируем данные для селектора тарифов
-    let ratesForSelector = [];
+    const ratesForSelector = [];
     let defaultRateIndex = -1;
     rateList.forEach((rate, index) => {
         ratesForSelector.push({

@@ -20,7 +20,7 @@ function TabTitles({order, tabItemsData, mode, setMode}) {
     }
 
     const getItemClassNames = boundMode => {
-        let hasModeAvailable = MODE_CHECKER[boundMode];
+        const hasModeAvailable = MODE_CHECKER[boundMode];
         return classNames({
             'disabled_title': !hasModeAvailable,
             'available_title': hasModeAvailable && boundMode !== mode,

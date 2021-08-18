@@ -153,13 +153,13 @@ export function loadOrderCreatorData() {
 
         // Отсекаем города, не имеющие поинтов
         cityList = cityList.filter(city => {
-            let point = pointList.find(point => point.cityId && point.cityId.id === city.id);
+            const point = pointList.find(point => point.cityId && point.cityId.id === city.id);
             return !!point;
         });
 
         // Отсекаем поинты, не привязанные ни к одному городу
         pointList = pointList.filter(point => {
-            let city = cityList.find(city => point.cityId && point.cityId.id === city.id);
+            const city = cityList.find(city => point.cityId && point.cityId.id === city.id);
             return !!city;
         });
 

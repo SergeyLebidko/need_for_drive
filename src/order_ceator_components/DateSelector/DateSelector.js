@@ -80,7 +80,7 @@ function DateSelector({order, setOrderDateFrom, setOrderDateTo, clearOrderDateFr
         clearOrderDateTo();
     };
 
-    let handleChangeDateTo = date => {
+    const handleChangeDateTo = date => {
         if (!date) {
             setDateTo(null);
             clearOrderDateTo();
@@ -88,7 +88,7 @@ function DateSelector({order, setOrderDateFrom, setOrderDateTo, clearOrderDateFr
         }
         let _date = shortCorrectDate(date);
         if (+_date < +dateFrom) {
-            let [year, mon, day, hour, min] = extractDateParts(dateFrom);
+            const [year, mon, day, hour, min] = extractDateParts(dateFrom);
             _date = incDateByInterval(new Date(year, mon, day, hour, min));
         }
         setDateTo(_date);

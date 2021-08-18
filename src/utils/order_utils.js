@@ -66,7 +66,7 @@ export function calcOrderPrice(order) {
 
     // Учитываем стоимость дополнительных опций
     OPTION_LIST.forEach(option => {
-        let optionValue = order[option.field];
+        const optionValue = order[option.field];
         if (optionValue) result += option.price
     });
 

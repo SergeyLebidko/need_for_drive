@@ -56,7 +56,7 @@ function SelectorItem({caption, placeholder, items, defaultItem, handleSelect, s
     }
 
     // Обработчик нажатия кнопок в поле ввода
-    let handleInputKeyDown = event => {
+    const handleInputKeyDown = event => {
         if (popupItems.length === 0) return;
 
         // Enter
