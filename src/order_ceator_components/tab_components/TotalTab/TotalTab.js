@@ -28,7 +28,7 @@ function TotalTab({order}) {
 
     const getFormattedDate = timestamp => {
         const [year, mon, day, hour, min] = extractDateParts(new Date(timestamp));
-        return `${format(day)}.${format(mon)}.${year} ${format(hour)}:${format(min)}`;
+        return `${format(day)}.${format(mon + 1)}.${year} ${format(hour)}:${format(min)}`;
     }
 
     const ORDER_STATUS_SELECTOR = {
