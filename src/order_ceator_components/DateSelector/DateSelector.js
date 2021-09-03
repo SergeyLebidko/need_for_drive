@@ -12,8 +12,8 @@ setDefaultLocale(ru);
 const MINUTES_INTERVAL = 10;
 
 function DateSelector({order, setOrderDateFrom, setOrderDateTo, clearOrderDateFrom, clearOrderDateTo}) {
-    let [dateFrom, setDateFrom] = useState(order.dateFrom || null);
-    let [dateTo, setDateTo] = useState(order.dateTo || null);
+    const [dateFrom, setDateFrom] = useState(order.dateFrom || null);
+    const [dateTo, setDateTo] = useState(order.dateTo || null);
 
     const shortCorrectDate = date => {
         const [year, mon, day, hour, min] = extractDateParts(date);

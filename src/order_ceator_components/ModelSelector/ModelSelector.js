@@ -7,8 +7,8 @@ import './ModelSelector.scss';
 const SHOW_LIMIT = 10;
 
 function ModelSelector({order, modelList, setOrderModel, clearTabsAfterModel}) {
-    let [selectedModel, setSelectedModel] = useState(order.carId ? order.carId : null);
-    let [currentShowLimit, setCurrentShowLimit] = useState(SHOW_LIMIT);
+    const [selectedModel, setSelectedModel] = useState(order.carId ? order.carId : null);
+    const [currentShowLimit, setCurrentShowLimit] = useState(SHOW_LIMIT);
 
     useEffect(() => {
         setCurrentShowLimit(SHOW_LIMIT);

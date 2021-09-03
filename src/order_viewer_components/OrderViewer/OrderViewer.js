@@ -13,8 +13,8 @@ import {createStoreConnectedComponent} from '../../store/connector';
 import './OrderViewer.scss';
 
 function OrderViewer({loadOrderViewerData, history, match, cancelOrder, hasModalShow, hideModal}) {
-    let [done, setDone] = useState(false);
-    let [error, setError] = useState(null);
+    const [done, setDone] = useState(false);
+    const [error, setError] = useState(null);
 
     const {params: {orderId}} = match;
 

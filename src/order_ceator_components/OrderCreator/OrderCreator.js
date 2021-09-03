@@ -11,8 +11,8 @@ import {createStoreConnectedComponent} from '../../store/connector';
 import './OrderCreator.scss';
 
 function OrderCreator({sendOrder, clearOrder, loadOrderCreatorData, hasModalShow, hideModal, history}) {
-    let [done, setDone] = useState(false);
-    let [errorComponent, setErrorComponent] = useState(null);
+    const [done, setDone] = useState(false);
+    const [errorComponent, setErrorComponent] = useState(null);
 
     useEffect(() => {
         loadOrderCreatorData()

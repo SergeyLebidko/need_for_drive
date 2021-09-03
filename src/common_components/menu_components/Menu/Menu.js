@@ -6,7 +6,7 @@ import LangSelector from '../LangSelector/LangSelector';
 import './Menu.scss';
 
 function Menu() {
-    let [opened, setOpened] = useState(false);
+    const [opened, setOpened] = useState(false);
 
     // Если меню открыто, то запрещаем прокрутку тела страницы
     useEffect(() => {

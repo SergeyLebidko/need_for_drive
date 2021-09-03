@@ -8,7 +8,7 @@ import './ModelTab.scss';
 const ALL_MODELS_ID = 'all_models';
 
 function ModelTab({categoryList, modelList}) {
-    let [modelListForShow, setModelListForShow] = useState([]);
+    const [modelListForShow, setModelListForShow] = useState([]);
     const categoryListForShow = [{id: ALL_MODELS_ID, name: 'Все модели'}, ...categoryList];
 
     useEffect(() => setModelListForShow(modelList), [modelList]);

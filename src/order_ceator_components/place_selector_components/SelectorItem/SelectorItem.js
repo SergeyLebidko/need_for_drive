@@ -6,9 +6,9 @@ import './SelectorItem.scss';
 import {getRandomString} from "../../../utils/common_utils";
 
 function SelectorItem({caption, placeholder, items, defaultItem, handleSelect, searchFieldName}) {
-    let [inputValue, setInputValue] = useState('');
-    let [popupItems, setPopupItems] = useState([]);
-    let [selectedPopupIndex, setSelectedPopupIndex] = useState(null);
+    const [inputValue, setInputValue] = useState('');
+    const [popupItems, setPopupItems] = useState([]);
+    const [selectedPopupIndex, setSelectedPopupIndex] = useState(null);
 
     const selectorRef = useRef(null);
 

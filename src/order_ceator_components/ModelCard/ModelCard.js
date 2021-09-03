@@ -6,7 +6,7 @@ import {DOMEN} from '../../urls';
 import './ModelCard.scss';
 
 function ModelCard({model, hasSelected, handleClick}) {
-    let [hasCarImage, setHasCarImage] = useState(true);
+    const [hasCarImage, setHasCarImage] = useState(true);
 
     const handleErrorImageLoad = () => setHasCarImage(false);
 

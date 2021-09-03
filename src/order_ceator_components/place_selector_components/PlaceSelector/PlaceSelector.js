@@ -5,7 +5,7 @@ import {createStoreConnectedComponent} from '../../../store/connector';
 import './PlaceSelector.scss';
 
 function PlaceSelector({order, cityList, pointList, setOrderCity, setOrderPoint, clearOrderCity, clearOrderPoint}) {
-    let [pointListToSelector, setPointListToSelector] = useState([]);
+    const [pointListToSelector, setPointListToSelector] = useState([]);
 
     const {cityId: selectedCity, pointId: selectedPoint} = order;
 

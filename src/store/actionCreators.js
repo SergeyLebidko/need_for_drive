@@ -167,14 +167,14 @@ export function loadOrderCreatorData() {
 
         // Создаем список координат городов
         const cityCoords = [];
-        for (let city of cityList) {
+        for (const city of cityList) {
             coords = await loadCityCoords(city);
             cityCoords.push(coords);
         }
 
         // Создаем список координат поинтов
         const pointCoords = [];
-        for (let point of pointList) {
+        for (const point of pointList) {
             coords = await loadPointCoords(point, cityList);
             pointCoords.push(coords);
         }

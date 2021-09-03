@@ -5,7 +5,7 @@ import {capitalize, getRandomString} from '../../utils/common_utils';
 import './RadioSelector.scss';
 
 function RadioSelector({caption, items, onlyColumn, handleSelect, defaultSelectedIndex}) {
-    let [selectedCategoryIndex, setSelectedCategoryIndex] = useState(defaultSelectedIndex);
+    const [selectedCategoryIndex, setSelectedCategoryIndex] = useState(defaultSelectedIndex);
 
     const getTitleClassNames = index => classNames('radio_selector__title', {
         'checked_title': index === selectedCategoryIndex,

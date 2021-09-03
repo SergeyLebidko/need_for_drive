@@ -13,7 +13,7 @@ import {DOMEN} from '../../../urls';
 import './TotalTab.scss';
 
 function TotalTab({order}) {
-    let [hasShowPhoto, setHasShowPhoto] = useState(true);
+    const [hasShowPhoto, setHasShowPhoto] = useState(true);
 
     let name, number, tank, path;
     const {carId, dateFrom, orderStatusId} = order;

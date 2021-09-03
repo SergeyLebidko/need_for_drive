@@ -6,7 +6,7 @@ import {createStoreConnectedComponent} from '../../store/connector';
 import './OptionSelector.scss';
 
 function OptionSelector({order, optionList, setOrderOptions}) {
-    let [options, setOptions] = useState([]);
+    const [options, setOptions] = useState([]);
 
     useEffect(() => {
         const _options = [];

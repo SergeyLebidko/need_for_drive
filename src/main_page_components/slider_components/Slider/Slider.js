@@ -8,7 +8,7 @@ import './Slider.scss';
 import {createStoreConnectedComponent} from "../../../store/connector";
 
 function Slider({sliderData}) {
-    let [index, setIndex] = useState(0);
+    const [index, setIndex] = useState(0);
 
     const getNextIndex = index => index === (sliderData.length - 1) ? 0 : index + 1;
     const getPrevIndex = index => index ? index - 1 : (sliderData.length - 1);

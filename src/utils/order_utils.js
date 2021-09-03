@@ -41,7 +41,7 @@ export function calcOrderPrice(order) {
     const {rateId, dateFrom, dateTo} = order;
     if (!rateId || !dateFrom || !dateTo) return null;
 
-    for (let option of OPTION_LIST) {
+    for (const option of OPTION_LIST) {
         if (order[option.field] === undefined) return null;
     }
 
