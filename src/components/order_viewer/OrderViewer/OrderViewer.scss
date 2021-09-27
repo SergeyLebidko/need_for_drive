@@ -1,0 +1,24 @@
+@import '../../../styles/vars';
+
+.order_viewer {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  &__content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+}
+
+@media (min-width: $tablet-start) {
+  .order_viewer {
+    flex-direction: row;
+
+    &__content {
+      margin-left: $step * 8;
+    }
+  }
+}

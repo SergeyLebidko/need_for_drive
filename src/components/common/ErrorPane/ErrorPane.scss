@@ -1,0 +1,27 @@
+@import '../../../styles/vars';
+@import '../../../styles/buttons';
+
+.error_pane {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: $step;
+
+  &__content {
+    padding: $step;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__text {
+    font-size: 1.5em;
+    color: $gray;
+    margin-bottom: $step * 2;
+  }
+}

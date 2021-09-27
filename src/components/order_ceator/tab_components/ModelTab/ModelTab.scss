@@ -1,0 +1,16 @@
+@import '../../../../styles/vars';
+@import '../../ModelSelector/ModelSelector';
+
+.model_tab {
+  padding: ($step * 2) 0 ($step * 2) 0;
+
+  .model_selector {
+    margin-top: $step * 8;
+  }
+}
+
+@media (min-width: $tablet-start) {
+  .model_tab {
+    padding: ($step * 2) ($step * 2) ($step * 2) 0;
+  }
+}

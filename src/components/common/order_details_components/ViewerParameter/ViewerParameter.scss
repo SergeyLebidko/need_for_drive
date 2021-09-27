@@ -1,0 +1,24 @@
+@import '../../../../styles/vars';
+
+.viewer_parameter {
+  display: flex;
+  justify-content: space-between;
+
+  &__name {
+    color: $black;
+    font-weight: 300;
+  }
+
+  &__spacer {
+    flex: 1;
+    border-bottom: 1px dotted $gray;
+    min-width: $step * 4;
+    margin: 0 $step;
+  }
+
+  &__value {
+    color: $gray;
+    text-align: right;
+    font-weight: 300;
+  }
+}

@@ -1,0 +1,50 @@
+@import '../../../styles/vars';
+
+.date_selector {
+
+  &__caption {
+    font-weight: 300;
+    margin-bottom: $step;
+  }
+
+  &__selector_container {
+    display: table;
+  }
+
+  &__row {
+    display: table-row;
+  }
+
+  &__cell {
+    display: table-cell;
+    padding: $step 0;
+    text-align: right;
+
+    label {
+      font-weight: 300;
+      padding-right: $step * 2;
+    }
+
+    input {
+      font-size: 1em;
+      font-weight: 300;
+      outline: none;
+      border: none;
+      border-bottom: 1px solid $gray;
+      cursor: pointer;
+    }
+  }
+
+  // Переопределяем стили кнопки очистки даты в DatePicker
+  .react-datepicker__close-icon::after {
+    background-color: transparent;
+    color: $black;
+    font-size: 1.4em;
+    padding: 0;
+  }
+
+  // Переопределяем стиль для отображения месяца в окошке DatePicker
+  .react-datepicker__current-month {
+    text-transform: capitalize;
+  }
+}

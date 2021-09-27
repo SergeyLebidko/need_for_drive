@@ -1,0 +1,24 @@
+@import '../../../styles/vars';
+
+.number_pane {
+  border-bottom: 1px solid $gray-light;
+  padding: $step * 2;
+
+  &__caption_block {
+    max-width: $content-width;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (min-width: $tablet-start) and (max-width: $desktop-min-end) {
+  .number_pane {
+    padding: ($step * 2) ($step * 4);
+  }
+}
+
+@media (min-width: $desktop-start) {
+  .number_pane {
+    padding: ($step * 2) ($step * 6);
+  }
+}

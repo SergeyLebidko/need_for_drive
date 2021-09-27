@@ -1,0 +1,35 @@
+@import '../../../styles/vars';
+@import '../../../styles/buttons';
+
+.no_match {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: $step;
+
+  * + * {
+    margin-top: $step * 2;
+  }
+
+  &__content {
+    padding: $step;
+    text-align: center;
+  }
+
+  &__404 {
+    font-size: 6em;
+    font-weight: bold;
+    color: $gray;
+  }
+
+  &__path {
+    text-align: center;
+    color: $gray;
+  }
+
+}

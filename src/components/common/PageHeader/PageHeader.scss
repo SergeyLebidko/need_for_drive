@@ -1,0 +1,52 @@
+@import '../../../styles/vars';
+
+.page_header {
+  border-bottom: 1px solid $gray-light;
+  padding: 0 ($step * 2) ($step * 2);
+
+  &__content {
+    max-width: $content-width;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    align-items: center;
+  }
+
+  &__title {
+    display: none;
+  }
+
+  &__city {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    color: $gray;
+
+    svg {
+      margin-right: $step;
+    }
+  }
+}
+
+@media (min-width: $tablet-start) {
+  .page_header {
+    &__title {
+      display: block;
+      font-weight: bold;
+      font-size: 2em;
+      color: $main-accent;
+    }
+  }
+}
+
+@media (min-width: $tablet-start) and (max-width: $desktop-min-end) {
+  .page_header {
+    padding: ($step * 2) ($step * 4);
+  }
+}
+
+@media (min-width: $desktop-start) {
+  .page_header {
+    padding: ($step * 4) ($step * 6);
+  }
+}
