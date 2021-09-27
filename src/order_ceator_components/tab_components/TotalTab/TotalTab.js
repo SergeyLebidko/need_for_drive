@@ -8,8 +8,8 @@ import {
     CANCELED_ORDER_STATUS_ID,
     TEMP_ORDER_STATUS_ID,
     TEST_ORDER_STATUS_ID
-} from '../../../settings';
-import {DOMEN} from '../../../urls';
+} from '../../../constants/settings';
+import {DOMEN} from '../../../constants/urls';
 import './TotalTab.scss';
 
 function TotalTab({order}) {

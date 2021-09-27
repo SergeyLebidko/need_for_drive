@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {withRouter} from 'react-router-dom';
 import {ReactComponent as Pin} from '../../content/images/icons/pin.svg';
-import {LANG_PACK} from '../../langPack';
+import {LANG_PACK} from '../../constants/langPack';
 import {createStoreConnectedComponent} from '../../store/connector';
 import './Title.scss';
 

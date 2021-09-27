@@ -6,7 +6,7 @@ import OrderCreator from './order_ceator_components/OrderCreator/OrderCreator';
 import OrderViewer from './order_viewer_components/OrderViewer/OrderViewer';
 import NoMatch from './common_components/NoMatch/NoMatch';
 import {createStoreConnectedComponent} from './store/connector';
-import {RUS, ENG, LS_LANG_KEY} from './settings';
+import {RUS, ENG, LS_LANG_KEY} from './constants/settings';
 import 'dotenv';
 
 function App({lang, setLang, defineCity}) {

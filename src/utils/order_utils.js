@@ -1,4 +1,4 @@
-import {OPTION_LIST, MIN_RATE_ID, DAY_RATE_ID, WEEK_RATE_ID, MONTH_RATE_ID} from '../settings';
+import {OPTION_LIST, MIN_RATE_ID, DAY_RATE_ID, WEEK_RATE_ID, MONTH_RATE_ID} from '../constants/settings';
 
 export function hasSelectedLocation(order) {
     return ('cityId' in order) && ('pointId' in order);

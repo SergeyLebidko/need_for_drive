@@ -9,7 +9,7 @@ import ExtraTab from '../tab_components/ExtraTab/ExtraTab';
 import TotalTab from '../tab_components/TotalTab/TotalTab';
 import TabTitles from '../TabTitles/TabTitles';
 import {createStoreConnectedComponent} from '../../store/connector';
-import {LOCATION_MODE, MODEL_MODE, EXTRA_MODE, TOTAL_MODE} from '../../settings';
+import {LOCATION_MODE, MODEL_MODE, EXTRA_MODE, TOTAL_MODE} from '../../constants/settings';
 import {hasSelectedLocation, hasSelectedModel, hasSelectedExtra} from '../../utils/order_utils';
 import './TabControl.scss';
 

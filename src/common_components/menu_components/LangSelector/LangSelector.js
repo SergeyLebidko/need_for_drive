@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {createStoreConnectedComponent} from '../../../store/connector';
-import {ENG, RUS, LANG_SWITCHER_MAP, LS_LANG_KEY} from '../../../settings';
+import {ENG, RUS, LANG_SWITCHER_MAP, LS_LANG_KEY} from '../../../constants/settings';
 import './LangSelector.scss';
 
 function LangSelector({lang, setLang}) {

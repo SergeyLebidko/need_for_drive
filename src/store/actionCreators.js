@@ -7,7 +7,7 @@ import {
     OPTION_LIST,
     NEW_ORDER_STATUS_ID,
     CANCELED_ORDER_STATUS_ID
-} from '../settings';
+} from '../constants/settings';
 import {
     loadCityList,
     loadPointList,

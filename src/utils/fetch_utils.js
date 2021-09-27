@@ -7,7 +7,7 @@ import {
     RATE_LIST_URL,
     STATUS_LIST_URL,
     ORDER_URL
-} from '../urls';
+} from '../constants/urls';
 import Geocode from 'react-geocode';
 
 Geocode.setApiKey(process.env.REACT_APP_GEOCODER_API_KEY);

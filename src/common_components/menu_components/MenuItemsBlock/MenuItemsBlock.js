@@ -6,7 +6,7 @@ import {ReactComponent as TelegramIcon} from '../../../content/images/icons/tele
 import {ReactComponent as FacebookIcon} from '../../../content/images/icons/facebook_icon.svg';
 import {ReactComponent as InstagramIcon} from '../../../content/images/icons/instagram_icon.svg';
 import {createStoreConnectedComponent} from '../../../store/connector';
-import {LANG_PACK} from '../../../langPack';
+import {LANG_PACK} from '../../../constants/langPack';
 import './MenuItemsBlock.scss';
 
 function MenuItemsBlock({hasOpened, lang}) {

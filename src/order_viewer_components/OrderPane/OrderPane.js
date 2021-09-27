@@ -5,7 +5,7 @@ import OrderDetailsViewer from '../../common_components/order_details_components
 import OrderDetailsActionButton
     from '../../common_components/order_details_components/OrdeDetailsActionButton/OrderDetailsActionButton';
 import {createStoreConnectedComponent} from '../../store/connector';
-import {CANCELED_ORDER_STATUS_ID} from '../../settings';
+import {CANCELED_ORDER_STATUS_ID} from '../../constants/settings';
 import './OrderPane.scss';
 
 function OrderPane({order, showModal}) {

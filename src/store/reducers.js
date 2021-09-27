@@ -1,4 +1,4 @@
-import {RUS} from '../settings';
+import {RUS} from '../constants/settings';
 import * as act from './actions';
 
 export function lang(state = RUS, action) {

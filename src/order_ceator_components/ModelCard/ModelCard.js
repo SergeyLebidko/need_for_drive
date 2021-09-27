@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import propTypes from 'prop-types';
 import classNames from 'classnames';
 import {getFormattedPrice} from '../../utils/common_utils';
-import {DOMEN} from '../../urls';
+import {DOMEN} from '../../constants/urls';
 import './ModelCard.scss';
 
 function ModelCard({model, hasSelected, handleClick}) {

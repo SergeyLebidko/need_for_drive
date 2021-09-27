@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import {createStoreConnectedComponent} from '../../store/connector';
 import {hasSelectedLocation, hasSelectedModel, hasSelectedExtra} from '../../utils/order_utils';
-import {LOCATION_MODE, MODEL_MODE, EXTRA_MODE, TOTAL_MODE} from '../../settings';
+import {LOCATION_MODE, MODEL_MODE, EXTRA_MODE, TOTAL_MODE} from '../../constants/settings';
 import './TabTitles.scss';
 
 function TabTitles({order, tabItemsData, mode, setMode}) {
