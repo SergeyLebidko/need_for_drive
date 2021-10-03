@@ -151,13 +151,13 @@ export function loadOrderCreatorData() {
         let cityList = await loadCityList();
         let pointList = await loadPointList();
 
-        // Отсекаем города, не имеющие поинтов
+        // Отсекаем города, не имеющие пунктов выдачи
         cityList = cityList.filter(city => {
             const point = pointList.find(point => point.cityId && point.cityId.id === city.id);
             return !!point;
         });
 
-        // Отсекаем поинты, не привязанные ни к одному городу
+        // Отсекаем пункты выдачи, не привязанные ни к одному городу
         pointList = pointList.filter(point => {
             const city = cityList.find(city => point.cityId && point.cityId.id === city.id);
             return !!city;
