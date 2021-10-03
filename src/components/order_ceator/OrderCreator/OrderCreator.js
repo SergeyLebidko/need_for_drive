@@ -18,6 +18,9 @@ function OrderCreator({sendOrder, clearOrder, loadOrderCreatorData, hasModalShow
         loadOrderCreatorData()
             .then(() => setDone(true))
             .catch(err => {
+
+                console.log(err);
+
                 setDone(true);
                 setErrorComponent(
                     <ErrorPane
