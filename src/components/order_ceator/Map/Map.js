@@ -61,10 +61,7 @@ function Map({order, cityCoords, pointCoords, cityList, pointList, setOrderCity,
                     iconColor: 'red'
                 }
             );
-            mark.events.add('click', () => {
-                handleCityLabelClick(city);
-                // rewindMapToCoords([lat, lng], SMALL_ZOOM);
-            });
+            mark.events.add('click', () => handleCityLabelClick(city));
             mapRef.current.geoObjects.add(mark);
         });
 
@@ -79,10 +76,7 @@ function Map({order, cityCoords, pointCoords, cityList, pointList, setOrderCity,
                     iconColor: 'blue'
                 }
             );
-            mark.events.add('click', () => {
-                handlePointLabelClick(point);
-                // rewindMapToCoords([lat, lng], BIG_ZOOM);
-            });
+            mark.events.add('click', () => handlePointLabelClick(point));
             mapRef.current.geoObjects.add(mark);
         });
     }, []);
