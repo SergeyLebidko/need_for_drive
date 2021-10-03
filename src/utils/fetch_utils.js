@@ -9,11 +9,6 @@ import {
     ORDER_URL,
     YANDEX_MAP_API_URL
 } from '../constants/urls';
-import Geocode from 'react-geocode';
-
-Geocode.setApiKey(process.env.REACT_APP_GEOCODER_API_KEY);
-Geocode.setLanguage('ru');
-Geocode.setRegion('ru');
 
 async function executeFetch(url, options) {
     try {
@@ -74,9 +69,6 @@ export async function loadPointList() {
 }
 
 export async function loadCityCoords(city) {
-    // const geoData = await Geocode.fromAddress(city.name);
-    // const {lat, lng} = geoData.results[0].geometry.location;
-    // return {id: city.id, lat, lng};
     const ymaps = await loadYandexMapApi();
     const geocodeResult = await ymaps.geocode(city.name);
     const [lat, lng] = geocodeResult.geoObjects.get(0).geometry._coordinates;
@@ -84,10 +76,6 @@ export async function loadCityCoords(city) {
 }
 
 export async function loadPointCoords(point, cityList) {
-    // const cityOfPoint = cityList.find(city => city.id === point.cityId.id);
-    // const geoData = await Geocode.fromAddress(cityOfPoint.name + ' ' + point.address);
-    // const {lat, lng} = geoData.results[0].geometry.location;
-    // return {id: point.id, lat, lng};
     const cityOfPoint = cityList.find(city => city.id === point.cityId.id);
     const ymaps = await loadYandexMapApi();
     const geocodeResult = await ymaps.geocode(cityOfPoint.name + ' ' + point.address);
