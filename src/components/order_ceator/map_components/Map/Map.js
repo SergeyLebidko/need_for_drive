@@ -88,14 +88,14 @@ _Map.propTypes = {
     clearOrderPoint: PropTypes.func
 }
 
-// setOrderCity, setOrderPoint, clearOrderPoint
-function Map({order, cityCoords, pointCoords, cityList, pointList}) {
+function Map({order, cityCoords, pointCoords, cityList, pointList, setOrderCity, setOrderPoint, clearOrderPoint}) {
     const {cityId: selectedCity, pointId: selectedPoint} = order;
     const mapContainerRef = useRef();
+    const mapRef = useRef();
 
-    // const getCityCoords = city => cityCoords.find(cityCoord => cityCoord.id === city.id);
-    //
-    // const getPointCoords = point => pointCoords.find(pointCoord => pointCoord.id === point.id);
+    const getCityCoords = city => cityCoords.find(cityCoord => cityCoord.id === city.id);
+
+    const getPointCoords = point => pointCoords.find(pointCoord => pointCoord.id === point.id);
 
     const getCenter = () => {
         // Если не выбран ни город ни местоположение, то центром карты станут координаты первого города
@@ -117,7 +117,7 @@ function Map({order, cityCoords, pointCoords, cityList, pointList}) {
 
         // Создаем карту
         const ymaps = window.ymaps;
-        new ymaps.Map(
+        mapRef.current = new ymaps.Map(
             mapContainerRef.current,
             {
                 center: [lat, lng],
@@ -131,46 +131,60 @@ function Map({order, cityCoords, pointCoords, cityList, pointList}) {
 
         // Добавляем метки городов
         cityList.forEach(city => {
-            // const {lat, lng} = getCityCoords(city);
-            // const mark = ymaps.Placemark(
-            //     [lat, lng],
-            //     {},
-            //     {
-            //         preset: 'islands#icon',
-            //         iconColor: 'red'
-            //     }
-            // );
-            // mark.events.add('click', () => handleCityLabelClick(city));
-            // map.geoObjects.add(mark);
-            console.log(city);
+            const {lat, lng} = getCityCoords(city);
+            const mark = new ymaps.Placemark(
+                [lat, lng],
+                {},
+                {
+                    preset: 'islands#icon',
+                    iconColor: 'red'
+                }
+            );
+            mark.events.add('click', () => {
+                handleCityLabelClick(city);
+                rewindMapToCoords([lat, lng], SMALL_ZOOM);
+            });
+            mapRef.current.geoObjects.add(mark);
         });
 
         // Добавляем метки пунктов выдачи
         pointList.forEach(point => {
-            // const {lat, lng} = getPointCoords(point);
-            // const mark = ymaps.Placemark(
-            //     [lat, lng],
-            //     {},
-            //     {
-            //         preset: 'islands#icon',
-            //         iconColor: 'green'
-            //     }
-            // );
-            // mark.events.add('click', () => handlePointLabelClick(point));
-            // map.geoObjects.add(mark);
-            console.log(point);
+            const {lat, lng} = getPointCoords(point);
+            const mark = new ymaps.Placemark(
+                [lat, lng],
+                {},
+                {
+                    preset: 'islands#icon',
+                    iconColor: 'green'
+                }
+            );
+            mark.events.add('click', () => {
+                handlePointLabelClick(point);
+                rewindMapToCoords([lat, lng], BIG_ZOOM);
+            });
+            mapRef.current.geoObjects.add(mark);
         });
     }, []);
 
-    // const handleCityLabelClick = city => {
-    //     setOrderCity(city);
-    //     clearOrderPoint();
-    // }
-    //
-    // const handlePointLabelClick = point => {
-    //     setOrderCity(point.cityId)
-    //     setOrderPoint(point);
-    // }
+    useEffect(() => {
+        const {lat, lng} = getCenter();
+        rewindMapToCoords([lat, lng], (selectedPoint ? BIG_ZOOM : SMALL_ZOOM));
+    }, [selectedCity, selectedPoint]);
+
+    // Функция, осуществляющая "перемотку" карты до нужных координат
+    const rewindMapToCoords = (coords, zoom) => {
+        mapRef.current.panTo(coords).then(() => mapRef.current.setZoom(zoom, {duration: 200}));
+    }
+
+    const handleCityLabelClick = city => {
+        setOrderCity(city);
+        clearOrderPoint();
+    }
+
+    const handlePointLabelClick = point => {
+        setOrderCity(point.cityId)
+        setOrderPoint(point);
+    }
 
     return (
         <div className="map">
