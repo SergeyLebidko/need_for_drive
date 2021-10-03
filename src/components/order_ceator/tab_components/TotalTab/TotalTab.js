@@ -61,7 +61,7 @@ function TotalTab({order}) {
                     <span className="total_tab__auto_number_field">{number}</span>
                 </li>
                 }
-                {tank &&
+                {tank !== null && tank !== undefined &&
                 <li>
                     <span className="total_tab__gas_caption">
                         Топливо
