@@ -1,7 +1,7 @@
 import React, {useEffect, useRef} from 'react';
 import PropTypes from 'prop-types';
 import PlaceSelector from '../../place_selector_components/PlaceSelector/PlaceSelector';
-import Map from '../../map_components/Map/Map';
+import Map from '../../Map/Map';
 import {createStoreConnectedComponent} from '../../../../store/connector';
 import './LocationTab.scss';
 
