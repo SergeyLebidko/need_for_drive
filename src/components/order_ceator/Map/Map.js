@@ -55,7 +55,9 @@ function Map({order, cityCoords, pointCoords, cityList, pointList, setOrderCity,
             const {lat, lng} = getCityCoords(city);
             const mark = new ymaps.Placemark(
                 [lat, lng],
-                {},
+                {
+                    hintContent: city.name
+                },
                 {
                     preset: 'islands#icon',
                     iconColor: 'red'
@@ -70,7 +72,9 @@ function Map({order, cityCoords, pointCoords, cityList, pointList, setOrderCity,
             const {lat, lng} = getPointCoords(point);
             const mark = new ymaps.Placemark(
                 [lat, lng],
-                {},
+                {
+                    hintContent: point.address
+                },
                 {
                     preset: 'islands#icon',
                     iconColor: 'blue'
