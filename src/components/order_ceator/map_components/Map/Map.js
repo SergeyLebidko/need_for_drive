@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useRef} from 'react';
 import PropTypes from 'prop-types';
 import GoogleMapReact from 'google-map-react';
 import MapLabel, {CITY_LABEL, POINT_LABEL} from '../MapLabel/MapLabel';
@@ -8,7 +8,7 @@ import './Map.scss';
 const BIG_ZOOM = 14
 const SMALL_ZOOM = 11
 
-function Map({order, cityCoords, pointCoords, cityList, pointList, setOrderCity, setOrderPoint, clearOrderPoint}) {
+function _Map({order, cityCoords, pointCoords, cityList, pointList, setOrderCity, setOrderPoint, clearOrderPoint}) {
     const {cityId: selectedCity, pointId: selectedPoint} = order;
 
     const getCenter = () => {
@@ -73,6 +73,109 @@ function Map({order, cityCoords, pointCoords, cityList, pointList, setOrderCity,
                     )}
                 </GoogleMapReact>
             </div>
+        </div>
+    );
+}
+
+_Map.propTypes = {
+    order: PropTypes.object,
+    cityCoords: PropTypes.array,
+    pointCoords: PropTypes.array,
+    cityList: PropTypes.array,
+    pointList: PropTypes.array,
+    setOrderCity: PropTypes.func,
+    setOrderPoint: PropTypes.func,
+    clearOrderPoint: PropTypes.func
+}
+
+// setOrderCity, setOrderPoint, clearOrderPoint
+function Map({order, cityCoords, pointCoords, cityList, pointList}) {
+    const {cityId: selectedCity, pointId: selectedPoint} = order;
+    const mapContainerRef = useRef();
+
+    // const getCityCoords = city => cityCoords.find(cityCoord => cityCoord.id === city.id);
+    //
+    // const getPointCoords = point => pointCoords.find(pointCoord => pointCoord.id === point.id);
+
+    const getCenter = () => {
+        // Если не выбран ни город ни местоположение, то центром карты станут координаты первого города
+        if (!selectedCity && !selectedPoint) return cityCoords[0]
+
+        // Если выбран город, но не выбрана точка в нем, то центром карты станет этот город
+        if (selectedCity && !selectedPoint) {
+            return cityCoords.find(cityCoord => cityCoord.id === selectedCity.id);
+        }
+
+        // Если выбраны и город и местоположение, то центром карты станет местоположение пункта выдачи
+        if (selectedCity && selectedPoint) {
+            return pointCoords.find(pointCoord => pointCoord.id === selectedPoint.id);
+        }
+    }
+
+    useEffect(() => {
+        const {lat, lng} = getCenter();
+
+        // Создаем карту
+        const ymaps = window.ymaps;
+        new ymaps.Map(
+            mapContainerRef.current,
+            {
+                center: [lat, lng],
+                zoom: (selectedPoint ? BIG_ZOOM : SMALL_ZOOM),
+                controls: ['smallMapDefaultSet']
+            },
+            {
+                autoFitToViewport: 'always'
+            }
+        );
+
+        // Добавляем метки городов
+        cityList.forEach(city => {
+            // const {lat, lng} = getCityCoords(city);
+            // const mark = ymaps.Placemark(
+            //     [lat, lng],
+            //     {},
+            //     {
+            //         preset: 'islands#icon',
+            //         iconColor: 'red'
+            //     }
+            // );
+            // mark.events.add('click', () => handleCityLabelClick(city));
+            // map.geoObjects.add(mark);
+            console.log(city);
+        });
+
+        // Добавляем метки пунктов выдачи
+        pointList.forEach(point => {
+            // const {lat, lng} = getPointCoords(point);
+            // const mark = ymaps.Placemark(
+            //     [lat, lng],
+            //     {},
+            //     {
+            //         preset: 'islands#icon',
+            //         iconColor: 'green'
+            //     }
+            // );
+            // mark.events.add('click', () => handlePointLabelClick(point));
+            // map.geoObjects.add(mark);
+            console.log(point);
+        });
+    }, []);
+
+    // const handleCityLabelClick = city => {
+    //     setOrderCity(city);
+    //     clearOrderPoint();
+    // }
+    //
+    // const handlePointLabelClick = point => {
+    //     setOrderCity(point.cityId)
+    //     setOrderPoint(point);
+    // }
+
+    return (
+        <div className="map">
+            <h1 className="map__caption">Выбрать на карте</h1>
+            <div className="map__container" ref={mapContainerRef}/>
         </div>
     );
 }
