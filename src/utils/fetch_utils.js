@@ -6,7 +6,8 @@ import {
     CATEGORY_LIST_URL,
     RATE_LIST_URL,
     STATUS_LIST_URL,
-    ORDER_URL
+    ORDER_URL,
+    YANDEX_MAP_API_URL
 } from '../constants/urls';
 import Geocode from 'react-geocode';
 
@@ -47,6 +48,21 @@ async function sendData(url, method, data) {
     }
     const response = await executeFetch(url, options);
     return await extractData(response);
+}
+
+export async function loadYandexMapApi(){
+    return new Promise(resolve => {
+        if (window.ymaps) {
+            resolve(window.ymaps);
+        } else {
+            const src = YANDEX_MAP_API_URL;
+            const mapScript = document.createElement('script');
+            mapScript.src = src;
+            mapScript.async = true;
+            mapScript.onload = () => window.ymaps.ready(() => resolve(window.ymaps));
+            document.body.appendChild(mapScript);
+        }
+    });
 }
 
 export async function loadCityList() {
