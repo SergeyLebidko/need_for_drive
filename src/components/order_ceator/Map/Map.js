@@ -8,8 +8,11 @@ const SMALL_ZOOM = 11
 
 function Map({order, cityCoords, pointCoords, cityList, pointList, setOrderCity, setOrderPoint, clearOrderPoint}) {
     const {cityId: selectedCity, pointId: selectedPoint} = order;
+
     const mapContainerRef = useRef();
     const mapRef = useRef();
+
+    const rewindTimer = useRef();
 
     const getCityCoords = city => cityCoords.find(cityCoord => cityCoord.id === city.id);
 
@@ -26,7 +29,7 @@ function Map({order, cityCoords, pointCoords, cityList, pointList, setOrderCity,
 
         // Если выбраны и город и местоположение, то центром карты станет местоположение пункта выдачи
         if (selectedCity && selectedPoint) {
-            return  pointCoords.find(pointCoord => pointCoord.id === selectedPoint.id);
+            return pointCoords.find(pointCoord => pointCoord.id === selectedPoint.id);
         }
     }
 
@@ -60,7 +63,7 @@ function Map({order, cityCoords, pointCoords, cityList, pointList, setOrderCity,
             );
             mark.events.add('click', () => {
                 handleCityLabelClick(city);
-                rewindMapToCoords([lat, lng], SMALL_ZOOM);
+                // rewindMapToCoords([lat, lng], SMALL_ZOOM);
             });
             mapRef.current.geoObjects.add(mark);
         });
@@ -73,20 +76,23 @@ function Map({order, cityCoords, pointCoords, cityList, pointList, setOrderCity,
                 {},
                 {
                     preset: 'islands#icon',
-                    iconColor: 'green'
+                    iconColor: 'blue'
                 }
             );
             mark.events.add('click', () => {
                 handlePointLabelClick(point);
-                rewindMapToCoords([lat, lng], BIG_ZOOM);
+                // rewindMapToCoords([lat, lng], BIG_ZOOM);
             });
             mapRef.current.geoObjects.add(mark);
         });
     }, []);
 
     useEffect(() => {
-        const {lat, lng} = getCenter();
-        rewindMapToCoords([lat, lng], (selectedPoint ? BIG_ZOOM : SMALL_ZOOM));
+        clearTimeout(rewindTimer.current);
+        rewindTimer.current = setTimeout(() => {
+            const {lat, lng} = getCenter();
+            rewindMapToCoords([lat, lng], (selectedPoint ? BIG_ZOOM : SMALL_ZOOM));
+        }, 500);
     }, [selectedCity, selectedPoint]);
 
     // Функция, осуществляющая "перемотку" карты до нужных координат
