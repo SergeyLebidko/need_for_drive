@@ -11,6 +11,8 @@
 
 [ссылка на запущенный сервис](https://hproger.ru/need_for_drive/#/)
 
+UPD. Первая версия сервиса использовала карты Google, затем я переделал компоненты для использования карт от Яндекс. Но в перечне скриншотов ниже я, все же, оставил скриншот и с первоначальной версией карт (от Google).
+
 ![screenshot](screenshots/screen1.png)
 
 ![screenshot](screenshots/screen2.png)
@@ -18,6 +20,8 @@
 ![screenshot](screenshots/screen3.png)
 
 ![screenshot](screenshots/screen4.png)
+
+![screenshot](screenshots/screen4-1.png)
 
 ![screenshot](screenshots/screen5.png)
 
